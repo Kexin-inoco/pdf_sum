@@ -1,15 +1,16 @@
 ```markdown
-Table of Contents
-1. Leveraging Association Rules for Better Predictions .......................................... 1
-2. 1 Univ. Artois, CNRS, CRIL ............................................................................ 1
-3. 1 Introduction ................................................................................................ 1
-4. 2.1 Decision tree, random forests, and classifiers ............................................ 3
-5. 2.2 Implicants and abductive explanations .................................................... 6
-6. 2.3 Association rules ..................................................................................... 7
-7. 5 Experiments ............................................................................................. 14
-8. 5.1 Empirical protocol ................................................................................ 14
-9. 7 Note that generating the rules by decreasing lift would not be discriminant enough. Indeed, the ........................................................................................................... 15
-10. 5.2 Empirical results ................................................................................... 16
-11. 8 It must also be kept in mind that if decision trees with a limited depth are more “human com- ........................................................................................................... 17
-12. 7 Conclusion ................................................................................................ 21
+# Table of Contents
+
+1. Introduction .................................................. Page 1  
+2. Formal Preliminaries .......................................... Page 3  
+   2.1 Decision tree, random forests, and classifiers ............ Page 3  
+   2.2 Implicants and abductive explanations ...................... Page 6  
+   2.3 Association rules ......................................... Page 7  
+3. Rectifying Decision Trees and Random Forests ................ Page 7  
+4. Deriving Abductive Explanations .............................. Page 10  
+5. Experiments .................................................. Page 14  
+   5.1 Empirical protocol ....................................... Page 14  
+   5.2 Empirical results ........................................ Page 16  
+6. Other Related Work .......................................... Page 19  
+7. Conclusion ................................................... Page 21  
 ```

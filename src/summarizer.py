@@ -77,8 +77,10 @@ class Summarizer:
                         if len(title_text) < 10 and len(lines) > 1:
                             title_text = f"{title_text} {lines[1]}"
                         
-                        # Filter out non-title content
-                        if self._is_valid_title(title_text):
+                        # Filter out non-title content using both text patterns and font info
+                        font_info = doc.get('font_info', [])
+                        page_median_size = doc.get('page_median_size', None)
+                        if self._is_valid_title(title_text, font_info, page_median_size):
                             if len(title_text) > 100:
                                 title_text = title_text[:100] + "..."
                             
@@ -165,12 +167,15 @@ Table of Contents:"""
         
         return output
     
-    def _is_valid_title(self, title: str) -> bool:
+    def _is_valid_title(self, title: str, font_info: List[Dict] = None, page_median_size: float = None) -> bool:
         """
         Check if text is a valid title (not author info, references, etc.).
+        Uses both text patterns and font information for validation.
         
         Args:
             title: Text to validate
+            font_info: Font information for the text
+            page_median_size: Median font size for the page
             
         Returns:
             True if text appears to be a valid title
@@ -181,20 +186,22 @@ Table of Contents:"""
         if len(title) < 3 or len(title) > 200:
             return False
         
-        # Filter out common non-title patterns
-        non_title_patterns = [
-            r'^\d+\s+[A-Z][a-z]+\s+[A-Z][a-z]+',  # "1 Univ. Artois, CNRS, CRIL"
-            r'^\d+\s+[A-Z][a-z]+\s+et\s+al\.',  # "2 G. Audemard et al."
-            r'^\d+\s+[A-Z][a-z]+,\s+[A-Z]',  # "1 Agrawal, R., Srikant, R."
-            r'^[A-Z][a-z]+,\s+[A-Z]\.',  # "Agrawal, R., Srikant, R."
-            r'^\d+\.\s*[A-Z][a-z]+,\s+[A-Z]',  # "1. Agrawal, R., Srikant, R."
-            r'^[A-Z][a-z]+\s+[A-Z][a-z]+\s+[A-Z][a-z]+:',  # "Fast algorithms for mining"
-            r'^\d+\s+[A-Z][a-z]+\s+[A-Z][a-z]+:',  # "16 Huang, X., Izza, Y."
-            r'^As in \[',  # "As in [19] and unlike [18]"
-            r'^\d+\.\s*[A-Z][a-z]+\s+[A-Z][a-z]+\s+[A-Z][a-z]+:',  # References
-            r'^\d+\s+[A-Z][a-z]+\s+[A-Z][a-z]+\s+[A-Z][a-z]+:',  # More references
+        # Special case: Standard section titles should always be valid
+        standard_sections = [
+            'Abstract', 'Introduction', 'Related Work', 'Background', 
+            'Methods', 'Materials and Methods', 'Experiments', 'Results', 
+            'Discussion', 'Conclusion', 'Conclusions', 'References', 
+            'Bibliography', 'Acknowledgments', 'Acknowledgements'
         ]
         
+        # Check both exact case and case-insensitive
+        if title in standard_sections or title.lower() in [s.lower() for s in standard_sections]:
+            return True
+        
+        # Filter out common non-title patterns (but keep it minimal)
+        non_title_patterns = [
+            r'^As in \[',  # "As in [19] and unlike [18]"
+        ]
         
         for pattern in non_title_patterns:
             if re.match(pattern, title):
@@ -209,10 +216,53 @@ Table of Contents:"""
             return False
         
         # Check for very long sentences (likely not titles)
-        if len(title.split('.')) > 2:
+        # But be more lenient with section numbers like "2.1. Title"
+        sentence_parts = title.split('.')
+        if len(sentence_parts) > 3:  # Allow up to 3 parts (like "2.1. Title")
             return False
         
+        # Font-based validation (if font info is available)
+        if font_info and page_median_size:
+            # Check if numbers in the title have appropriate font characteristics
+            if self._has_number_font_issues(title, font_info, page_median_size):
+                return False
+        
         return True
+    
+    def _has_number_font_issues(self, title: str, font_info: List[Dict], page_median_size: float) -> bool:
+        """
+        Check if numbers in the title have font issues that suggest it's not a real title.
+        This is now much more lenient - only filters out very obvious non-titles.
+        
+        Args:
+            title: Title text
+            font_info: Font information for the text
+            page_median_size: Median font size for the page
+            
+        Returns:
+            True if there are font issues, False otherwise
+        """
+        if not font_info or not page_median_size:
+            return False
+        
+        # Find numbers in the title
+        numbers = re.findall(r'\d+', title)
+        if not numbers:
+            return False
+        
+        # Only filter out if numbers are VERY small (less than 70% of median)
+        # This catches things like page numbers or footnotes that got mixed in
+        for span_info in font_info:
+            text = span_info.get('text', '')
+            size = span_info.get('size', 0)
+            
+            # If this span contains numbers
+            if any(num in text for num in numbers):
+                # Only filter if numbers are VERY small (likely footnotes/page numbers)
+                if size < page_median_size * 0.7:  # Much more lenient threshold
+                    return True
+        
+        return False
     
     def __repr__(self) -> str:
         """String representation of summarizer."""

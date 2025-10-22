@@ -1,23 +1,20 @@
 ```markdown
-Table of Contents
-1. Introduction (Page 1)
-2. We propose (Page 2)
-3. Related Work (Page 2)
-4. Method (Page 3)
-5. Experiments (Page 6)
-6. Is the target candidate's hair color white and (Page 7)
-7. Is the target candidate C33? (Page 7)
-8. Conclusions (Page 8)
-9. (e) Qwen2.5-32B (Page 13)
-10. (a) Qwen2.5-7B+GRPO (Page 13)
-11. (f) Qwen2.5-7B + SFT (Page 13)
-12. (f) Qwen2.5-7B + SFT (Page 14)
-13. (a) Qwen2.5-7B+GRPO (Page 14)
-14. (a) DeepSeek model. (Page 15)
-15. Does the target face have any scars or (Page 15)
-16. Does the target face have any birthmarks or (Page 15)
-17. Does the target face have any scars or (Page 15)
-18. Does the target face have any scars or (Page 15)
-19. Is the target a young woman with an oval- (Page 15)
-20. Is the target wearing a hat? (Page 15)
+# Table of Contents
+
+1. Introduction ................................................. Page 1  
+2. We propose ................................................... Page 2  
+3. Related Work ................................................ Page 2  
+4. Method ...................................................... Page 3  
+   4.1. Questioner .............................................. Page 3  
+   4.2. Retriever ............................................... Page 4  
+   4.3. User .................................................... Page 4  
+   4.4. Reinforcement Learning ................................ Page 4  
+   4.5. Reward Functions ....................................... Page 5  
+5. Experiments .................................................. Page 6  
+   5.1. Datasets ................................................ Page 6  
+   5.2. Implementation Details ................................ Page 6  
+   5.3. Baselines ............................................... Page 6  
+   5.4. Metrics ................................................. Page 7  
+   5.5. Results and Analysis ................................... Page 7  
+6. Conclusions .................................................. Page 8  
 ```

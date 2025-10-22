@@ -1,15 +1,15 @@
 {
-  "ai_generated_toc": "```markdown\nTable of Contents\n1. Seg the HAB: Language-Guided Geospatial Algae (Page 1)\n2. Introduction (Page 1)\n3. Cyanobacteria Detection and Segmentation (Page 2)\n4. Geospatial Foundation Models (Page 2)\n5. Methods (Page 2)\n   5.1. HAB Segmentation Dataset Curation (Page 2)\n   5.2. HAB Reasoning Dataset Curation (Page 3)\n   5.3. Vision-Language Model Architecture for HAB Monitoring (Page 3)\n6. Results (Page 4)\n   6.1. Setup (Page 4)\n   6.2. Results and Observations (Page 4)\n7. Conclusion (Page 4)\n```",
+  "ai_generated_toc": "```markdown\n# Table of Contents\n\n1. [Introduction](#introduction) (Page 1)  \n2. [Related Work](#related-work) (Page 2)  \n   2.1. [Cyanobacteria Detection and Segmentation](#cyanobacteria-detection-and-segmentation) (Page 2)  \n   2.2. [Geospatial Foundation Models](#geospatial-foundation-models) (Page 2)  \n3. [Methods](#methods) (Page 2)  \n   3.1. [HAB Segmentation Dataset Curation](#hab-segmentation-dataset-curation) (Page 2)  \n   3.2. [HAB Reasoning Dataset Curation](#hab-reasoning-dataset-curation) (Page 3)  \n   3.3. [Vision-Language Model Architecture for HAB Monitoring](#vision-language-model-architecture-for-hab-monitoring) (Page 3)  \n4. [Results](#results) (Page 4)  \n   4.1. [Setup](#setup) (Page 4)  \n   4.2. [Results and Observations](#results-and-observations) (Page 4)  \n5. [Conclusion](#conclusion) (Page 4)  \n```",
   "extracted_titles": [
-    {
-      "title": "Seg the HAB: Language-Guided Geospatial Algae",
-      "page": 1,
-      "original_text": "Seg the HAB: Language-Guided Geospatial Algae (Page 1)"
-    },
     {
       "title": "1 Introduction",
       "page": 1,
       "original_text": "1 Introduction (Page 1)"
+    },
+    {
+      "title": "2 Related Work",
+      "page": 2,
+      "original_text": "2 Related Work (Page 2)"
     },
     {
       "title": "2.1 Cyanobacteria Detection and Segmentation",
@@ -64,9 +64,9 @@
   ],
   "metadata": {
     "total_pages": 9,
-    "titles_found": 13,
-    "model": "gpt-4-turbo-preview",
+    "titles_found": 12,
+    "model": "gpt-4o-mini",
     "temperature": 0.3,
-    "timestamp": "2025-10-22T16:12:35.440631"
+    "timestamp": "2025-10-22T18:53:06.779978"
   }
 }

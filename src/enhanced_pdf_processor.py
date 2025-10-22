@@ -100,14 +100,12 @@ class EnhancedPDFProcessor:
                             structured_blocks.append({
                                 'text': block_text.strip(),
                                 'is_title': is_title,
-                                'page': page_num + 1
+                                'page': page_num + 1,
+                                'font_info': block_fonts,
+                                'page_median_size': page_median_size
                             })
                             
                             page_text += block_text + "\n"
-                
-                # Special handling for first page: mark first substantial block as title
-                if page_num == 0 and structured_blocks:
-                    self._mark_first_page_title(structured_blocks)
                 
                 # Create document with structural metadata
                 if page_text.strip():
@@ -128,30 +126,6 @@ class EnhancedPDFProcessor:
             
         except Exception as e:
             raise IOError(f"Failed to load PDF {pdf_path}: {str(e)}")
-    
-    def _mark_first_page_title(self, structured_blocks: List[Dict]) -> None:
-        """
-        Mark the first substantial text block on first page as document title.
-        
-        Args:
-            structured_blocks: List of structured blocks from first page
-        """
-        for block in structured_blocks:
-            text = block.get('text', '').strip()
-            
-            # Skip very short text or pure numbers
-            if len(text) <= 5:
-                continue
-            
-            # Skip page numbers
-            if text.replace('.', '').replace('-', '').isdigit():
-                continue
-            
-            # First substantial block is the document title
-            if len(text) > 10:
-                block['is_title'] = True
-                block['is_document_title'] = True
-                break
     
     def _is_likely_title(self, text: str, font_info: List[Dict], page_median_size: Optional[float]=None) -> bool:
         """
@@ -233,7 +207,10 @@ class EnhancedPDFProcessor:
             r'^Discussion$',
             r'^Conclusion$',
             r'^Conclusions?$',
-            r'^References$',
+            r'^References?$',  # Allow both "Reference" and "References"
+            r'^references?$',  # Allow lowercase versions
+            r'^Bibliography$',
+            r'^bibliography$',
             r'^Acknowledgments?$',
             r'^Acknowledgements?$',
         ]

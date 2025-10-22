@@ -1,25 +1,35 @@
 {
-  "ai_generated_toc": "```markdown\nTable of Contents\n1. Leveraging Association Rules for Better Predictions .......................................... 1\n2. 1 Univ. Artois, CNRS, CRIL ............................................................................ 1\n3. 1 Introduction ................................................................................................ 1\n4. 2.1 Decision tree, random forests, and classifiers ............................................ 3\n5. 2.2 Implicants and abductive explanations .................................................... 6\n6. 2.3 Association rules ..................................................................................... 7\n7. 5 Experiments ............................................................................................. 14\n8. 5.1 Empirical protocol ................................................................................ 14\n9. 7 Note that generating the rules by decreasing lift would not be discriminant enough. Indeed, the ........................................................................................................... 15\n10. 5.2 Empirical results ................................................................................... 16\n11. 8 It must also be kept in mind that if decision trees with a limited depth are more “human com- ........................................................................................................... 17\n12. 7 Conclusion ................................................................................................ 21\n```",
+  "ai_generated_toc": "```markdown\n# Table of Contents\n\n1. Introduction .................................................. Page 1  \n2. Formal Preliminaries .......................................... Page 3  \n   2.1 Decision tree, random forests, and classifiers ............ Page 3  \n   2.2 Implicants and abductive explanations ...................... Page 6  \n   2.3 Association rules ......................................... Page 7  \n3. Rectifying Decision Trees and Random Forests ................ Page 7  \n4. Deriving Abductive Explanations .............................. Page 10  \n5. Experiments .................................................. Page 14  \n   5.1 Empirical protocol ....................................... Page 14  \n   5.2 Empirical results ........................................ Page 16  \n6. Other Related Work .......................................... Page 19  \n7. Conclusion ................................................... Page 21  \n```",
   "extracted_titles": [
-    {
-      "title": "Leveraging Association Rules for Better Predictions",
-      "page": 1,
-      "original_text": "Leveraging Association Rules for Better Predictions (Page 1)"
-    },
-    {
-      "title": "1 Univ. Artois, CNRS, CRIL",
-      "page": 1,
-      "original_text": "1 Univ. Artois, CNRS, CRIL (Page 1)"
-    },
     {
       "title": "1 Introduction",
       "page": 1,
       "original_text": "1 Introduction (Page 1)"
     },
     {
+      "title": "2 G. Audemard et al.",
+      "page": 2,
+      "original_text": "2 G. Audemard et al. (Page 2)"
+    },
+    {
+      "title": "2 Formal Preliminaries",
+      "page": 3,
+      "original_text": "2 Formal Preliminaries (Page 3)"
+    },
+    {
       "title": "2.1 Decision tree, random forests, and classifiers",
       "page": 3,
       "original_text": "2.1 Decision tree, random forests, and classifiers (Page 3)"
+    },
+    {
+      "title": "4 G. Audemard et al.",
+      "page": 4,
+      "original_text": "4 G. Audemard et al. (Page 4)"
+    },
+    {
+      "title": "6 G. Audemard et al.",
+      "page": 6,
+      "original_text": "6 G. Audemard et al. (Page 6)"
     },
     {
       "title": "2.2 Implicants and abductive explanations",
@@ -32,6 +42,36 @@
       "original_text": "2.3 Association rules (Page 7)"
     },
     {
+      "title": "3 Rectifying Decision Trees and Random Forests",
+      "page": 7,
+      "original_text": "3 Rectifying Decision Trees and Random Forests (Page 7)"
+    },
+    {
+      "title": "8 G. Audemard et al.",
+      "page": 8,
+      "original_text": "8 G. Audemard et al. (Page 8)"
+    },
+    {
+      "title": "10 G. Audemard et al.",
+      "page": 10,
+      "original_text": "10 G. Audemard et al. (Page 10)"
+    },
+    {
+      "title": "4 Deriving Abductive Explanations",
+      "page": 10,
+      "original_text": "4 Deriving Abductive Explanations (Page 10)"
+    },
+    {
+      "title": "12 G. Audemard et al.",
+      "page": 12,
+      "original_text": "12 G. Audemard et al. (Page 12)"
+    },
+    {
+      "title": "14 G. Audemard et al.",
+      "page": 14,
+      "original_text": "14 G. Audemard et al. (Page 14)"
+    },
+    {
       "title": "5 Experiments",
       "page": 14,
       "original_text": "5 Experiments (Page 14)"
@@ -42,9 +82,9 @@
       "original_text": "5.1 Empirical protocol (Page 14)"
     },
     {
-      "title": "7 Note that generating the rules by decreasing lift would not be discriminant enough. Indeed, the",
-      "page": 15,
-      "original_text": "7 Note that generating the rules by decreasing lift would not be discriminant enough. Indeed, the (Page 15)"
+      "title": "16 G. Audemard et al.",
+      "page": 16,
+      "original_text": "16 G. Audemard et al. (Page 16)"
     },
     {
       "title": "5.2 Empirical results",
@@ -52,21 +92,41 @@
       "original_text": "5.2 Empirical results (Page 16)"
     },
     {
-      "title": "8 It must also be kept in mind that if decision trees with a limited depth are more “human com-",
-      "page": 17,
-      "original_text": "8 It must also be kept in mind that if decision trees with a limited depth are more “human com- (Page 17)"
+      "title": "18 G. Audemard et al.",
+      "page": 18,
+      "original_text": "18 G. Audemard et al. (Page 18)"
+    },
+    {
+      "title": "6 Other Related Work",
+      "page": 19,
+      "original_text": "6 Other Related Work (Page 19)"
+    },
+    {
+      "title": "20 G. Audemard et al.",
+      "page": 20,
+      "original_text": "20 G. Audemard et al. (Page 20)"
     },
     {
       "title": "7 Conclusion",
       "page": 21,
       "original_text": "7 Conclusion (Page 21)"
+    },
+    {
+      "title": "22 G. Audemard et al.",
+      "page": 22,
+      "original_text": "22 G. Audemard et al. (Page 22)"
+    },
+    {
+      "title": "24 G. Audemard et al.",
+      "page": 24,
+      "original_text": "24 G. Audemard et al. (Page 24)"
     }
   ],
   "metadata": {
     "total_pages": 24,
-    "titles_found": 31,
-    "model": "gpt-4-turbo-preview",
+    "titles_found": 30,
+    "model": "gpt-4o-mini",
     "temperature": 0.3,
-    "timestamp": "2025-10-22T16:12:03.873359"
+    "timestamp": "2025-10-22T18:52:52.850388"
   }
 }

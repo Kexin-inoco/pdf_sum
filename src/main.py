@@ -99,7 +99,9 @@ class PDFSummarizationPipeline:
                     documents_data.append({
                         'text': block.get('text', ''),
                         'is_title': block.get('is_title', False),
-                        'page': block.get('page', '')
+                        'page': block.get('page', ''),
+                        'font_info': block.get('font_info', []),
+                        'page_median_size': block.get('page_median_size', None)
                     })
         
         summary, titles_data = self.summarizer.summarize([], documents_data)  # Empty chunks list

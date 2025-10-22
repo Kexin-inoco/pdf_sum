@@ -1,5 +1,5 @@
 {
-  "ai_generated_toc": "```markdown\nTable of Contents\n1. Introduction (Page 1)\n2. We propose (Page 2)\n3. Related Work (Page 2)\n4. Method (Page 3)\n5. Experiments (Page 6)\n6. Is the target candidate's hair color white and (Page 7)\n7. Is the target candidate C33? (Page 7)\n8. Conclusions (Page 8)\n9. (e) Qwen2.5-32B (Page 13)\n10. (a) Qwen2.5-7B+GRPO (Page 13)\n11. (f) Qwen2.5-7B + SFT (Page 13)\n12. (f) Qwen2.5-7B + SFT (Page 14)\n13. (a) Qwen2.5-7B+GRPO (Page 14)\n14. (a) DeepSeek model. (Page 15)\n15. Does the target face have any scars or (Page 15)\n16. Does the target face have any birthmarks or (Page 15)\n17. Does the target face have any scars or (Page 15)\n18. Does the target face have any scars or (Page 15)\n19. Is the target a young woman with an oval- (Page 15)\n20. Is the target wearing a hat? (Page 15)\n```",
+  "ai_generated_toc": "```markdown\n# Table of Contents\n\n1. Introduction ................................................. Page 1  \n2. We propose ................................................... Page 2  \n3. Related Work ................................................ Page 2  \n4. Method ...................................................... Page 3  \n   4.1. Questioner .............................................. Page 3  \n   4.2. Retriever ............................................... Page 4  \n   4.3. User .................................................... Page 4  \n   4.4. Reinforcement Learning ................................ Page 4  \n   4.5. Reward Functions ....................................... Page 5  \n5. Experiments .................................................. Page 6  \n   5.1. Datasets ................................................ Page 6  \n   5.2. Implementation Details ................................ Page 6  \n   5.3. Baselines ............................................... Page 6  \n   5.4. Metrics ................................................. Page 7  \n   5.5. Results and Analysis ................................... Page 7  \n6. Conclusions .................................................. Page 8  \n```",
   "extracted_titles": [
     {
       "title": "1. Introduction",
@@ -22,9 +22,49 @@
       "original_text": "3. Method (Page 3)"
     },
     {
+      "title": "3.1. Questioner",
+      "page": 3,
+      "original_text": "3.1. Questioner (Page 3)"
+    },
+    {
+      "title": "3.2. Retriever",
+      "page": 4,
+      "original_text": "3.2. Retriever (Page 4)"
+    },
+    {
+      "title": "3.3. User",
+      "page": 4,
+      "original_text": "3.3. User (Page 4)"
+    },
+    {
+      "title": "3.4. Reinforcement Learning",
+      "page": 4,
+      "original_text": "3.4. Reinforcement Learning (Page 4)"
+    },
+    {
+      "title": "3.5. Reward Functions",
+      "page": 5,
+      "original_text": "3.5. Reward Functions (Page 5)"
+    },
+    {
       "title": "4. Experiments",
       "page": 6,
       "original_text": "4. Experiments (Page 6)"
+    },
+    {
+      "title": "4.1. Datasets",
+      "page": 6,
+      "original_text": "4.1. Datasets (Page 6)"
+    },
+    {
+      "title": "4.2. Implementation Details",
+      "page": 6,
+      "original_text": "4.2. Implementation Details (Page 6)"
+    },
+    {
+      "title": "4.3. Baselines",
+      "page": 6,
+      "original_text": "4.3. Baselines (Page 6)"
     },
     {
       "title": "6 Is the target candidate's hair color white and",
@@ -35,6 +75,16 @@
       "title": "7 Is the target candidate C33?",
       "page": 7,
       "original_text": "7 Is the target candidate C33? (Page 7)"
+    },
+    {
+      "title": "4.4. Metrics",
+      "page": 7,
+      "original_text": "4.4. Metrics (Page 7)"
+    },
+    {
+      "title": "4.5. Results and Analysis",
+      "page": 7,
+      "original_text": "4.5. Results and Analysis (Page 7)"
     },
     {
       "title": "5. Conclusions",
@@ -100,13 +150,18 @@
       "title": "19 Is the target wearing a hat?",
       "page": 15,
       "original_text": "19 Is the target wearing a hat? (Page 15)"
+    },
+    {
+      "title": "(c) Qwen2.5-7B model.",
+      "page": 15,
+      "original_text": "(c) Qwen2.5-7B model. (Page 15)"
     }
   ],
   "metadata": {
     "total_pages": 19,
-    "titles_found": 36,
-    "model": "gpt-4-turbo-preview",
+    "titles_found": 35,
+    "model": "gpt-4o-mini",
     "temperature": 0.3,
-    "timestamp": "2025-10-22T16:12:22.825632"
+    "timestamp": "2025-10-22T18:52:58.425892"
   }
 }

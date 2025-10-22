@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-10-22T16:12:53.912664",
+  "timestamp": "2025-10-22T18:53:23.908475",
   "total_files": 4,
   "successful": 4,
   "failed": 0,
@@ -7,22 +7,22 @@
     {
       "file": "2510.18628v1.pdf",
       "status": "success",
-      "summary_length": 1550
+      "summary_length": 946
     },
     {
       "file": "2510.18659v1.pdf",
       "status": "success",
-      "summary_length": 790
+      "summary_length": 1228
     },
     {
       "file": "2510.18751v1.pdf",
       "status": "success",
-      "summary_length": 508
+      "summary_length": 833
     },
     {
       "file": "2510.18803v1.pdf",
       "status": "success",
-      "summary_length": 1522
+      "summary_length": 2968
     }
   ]
 }
