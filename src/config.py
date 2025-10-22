@@ -43,7 +43,7 @@ class Config:
     @property
     def llm_model(self) -> str:
         """Get LLM model name."""
-        return os.getenv("OPENAI_MODEL", "gpt-5-mini-2025-08-07")
+        return os.getenv("OPENAI_MODEL", "gpt-4o-mini")
     
     @property
     def temperature(self) -> float:

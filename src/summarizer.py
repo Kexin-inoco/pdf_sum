@@ -1,7 +1,4 @@
-"""
-Simple summarization module using direct LLM calls.
-No dependency on langchain.chains which doesn't exist in newer versions.
-"""
+import re
 from typing import List, Dict, Any, Optional
 from datetime import datetime
 from langchain_openai import ChatOpenAI
@@ -80,12 +77,14 @@ class Summarizer:
                         if len(title_text) < 10 and len(lines) > 1:
                             title_text = f"{title_text} {lines[1]}"
                         
-                        if len(title_text) > 100:
-                            title_text = title_text[:100] + "..."
-                        
-                        # Add page number if available
-                        title_with_page = f"{title_text} (Page {page})" if page else title_text
-                        titles.append(title_with_page)
+                        # Filter out non-title content
+                        if self._is_valid_title(title_text):
+                            if len(title_text) > 100:
+                                title_text = title_text[:100] + "..."
+                            
+                            # Add page number if available
+                            title_with_page = f"{title_text} (Page {page})" if page else title_text
+                            titles.append(title_with_page)
         
         if not titles:
             return "No section titles found in the document."
@@ -107,7 +106,6 @@ class Summarizer:
             clean_title = title.split(" (Page ")[0] if " (Page " in title else title
             
             titles_data.append({
-                "index": i + 1,
                 "title": clean_title,
                 "page": page_num,
                 "original_text": title
@@ -166,6 +164,55 @@ Table of Contents:"""
             output["metadata"].update(metadata)
         
         return output
+    
+    def _is_valid_title(self, title: str) -> bool:
+        """
+        Check if text is a valid title (not author info, references, etc.).
+        
+        Args:
+            title: Text to validate
+            
+        Returns:
+            True if text appears to be a valid title
+        """
+        title = title.strip()
+        
+        # Basic length checks
+        if len(title) < 3 or len(title) > 200:
+            return False
+        
+        # Filter out common non-title patterns
+        non_title_patterns = [
+            r'^\d+\s+[A-Z][a-z]+\s+[A-Z][a-z]+',  # "1 Univ. Artois, CNRS, CRIL"
+            r'^\d+\s+[A-Z][a-z]+\s+et\s+al\.',  # "2 G. Audemard et al."
+            r'^\d+\s+[A-Z][a-z]+,\s+[A-Z]',  # "1 Agrawal, R., Srikant, R."
+            r'^[A-Z][a-z]+,\s+[A-Z]\.',  # "Agrawal, R., Srikant, R."
+            r'^\d+\.\s*[A-Z][a-z]+,\s+[A-Z]',  # "1. Agrawal, R., Srikant, R."
+            r'^[A-Z][a-z]+\s+[A-Z][a-z]+\s+[A-Z][a-z]+:',  # "Fast algorithms for mining"
+            r'^\d+\s+[A-Z][a-z]+\s+[A-Z][a-z]+:',  # "16 Huang, X., Izza, Y."
+            r'^As in \[',  # "As in [19] and unlike [18]"
+            r'^\d+\.\s*[A-Z][a-z]+\s+[A-Z][a-z]+\s+[A-Z][a-z]+:',  # References
+            r'^\d+\s+[A-Z][a-z]+\s+[A-Z][a-z]+\s+[A-Z][a-z]+:',  # More references
+        ]
+        
+        
+        for pattern in non_title_patterns:
+            if re.match(pattern, title):
+                return False
+        
+        # Check for too many numbers (likely not a title)
+        if len(re.findall(r'\d+', title)) > 3:
+            return False
+        
+        # Check for too many special characters
+        if len(re.findall(r'[^\w\s\.\-\(\)]', title)) > 5:
+            return False
+        
+        # Check for very long sentences (likely not titles)
+        if len(title.split('.')) > 2:
+            return False
+        
+        return True
     
     def __repr__(self) -> str:
         """String representation of summarizer."""

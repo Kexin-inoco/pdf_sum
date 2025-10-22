@@ -1,239 +1,105 @@
 {
-  "ai_generated_toc": "```markdown\nTable of Contents\n- Decoding Funded Research: Comparative Analysis of Topic (Page 1)\n- 1. Introduction (Page 1)\n- 2. Literature Review (Page 3)\n    - 2.1. Research Funding and Its Impact (Page 3)\n    - 2.2. Gender Disparities in Scientific Research (Page 3)\n    - 2.3. Geographical Disparities in Research Funding (Page 4)\n    - 2.4. Topic Modelling (Page 4)\n    - 2.5. Methodological Approaches to Effect Estimation (Page 4)\n- 3. Data (Page 5)\n- 4. Methodology (Page 6)\n    - 4.1. Data Preprocessing (Page 7)\n        - 1. Removal of incomplete entries (Page 7)\n        - 2. Elimination of duplicates (Page 7)\n        - 3. Translation of non-English content (Page 7)\n        - 4. Cleaning of non-textual elements (Page 7)\n        - 5. Text normalization (Page 7)\n        - 6. Stop-word removal (Page 7)\n        - 7. Exclusion of domain-specific terms (Page 7)\n        - 8. Lemmatization (Page 7)\n        - 9. N-grams (Page 7)\n    - 4.2. Topic Modelling (Page 7)\n    - 4.3. Comparative Analysis of Topic Models (Page 8)\n        - 4.3.1. Cross-Model Topic Alignment (Page 8)\n            - • Triplet Matches (n=5) (Page 8)\n            - • Unique Topics (n=8) (Page 9)\n        - 4.3.2. Topic Quality Evaluation (Page 9)\n    - 4.4. Covariate Effect Estimation (Page 10)\n- 5. Results (Page 12)\n    - 5.1. Comparative Analysis of Topic Models (Page 12)\n        - 5.1.1. Unique Topics (Page 13)\n        - 5.1.2. Triple Alignement (Page 14)\n            - • BERTopic (Page 16)\n            - • LDA (Page 17)\n    - 5.2. Covariate Effect Estimation (Page 17)\n        - 5.2.1. Geographical Location (Page 17)\n        - 5.2.2. Gender (Page 20)\n- 6. Conclusion (Page 20)\n- 7. Limitations and Future Work (Page 21)\n```",
+  "ai_generated_toc": "```markdown\nTable of Contents\n1. Introduction (Page 1)\n2. Literature Review (Page 3)\n3. Data (Page 5)\n4. Methodology (Page 6)\n    4.1. Removal of incomplete entries: All entries lacking application summaries were (Page 7)\n    4.2. Elimination of duplicates: Duplicate records were identified and eliminated to maintain (Page 7)\n    4.3. Translation of non-English content: Non-English content, such as French and Italian, (Page 7)\n    4.4. Cleaning of non-textual elements: Non-textual elements, including punctuation, (Page 7)\n    4.5. Text normalization: The text was converted to lowercase and tokenized, facilitating (Page 7)\n    4.6. Stop-word removal: Common English stop-words were removed to reduce noise and (Page 7)\n    4.7. Exclusion of domain-specific terms: In addition to general stop-words, domain-specific (Page 7)\n    4.8. Lemmatization: Words were reduced to their root forms by lemmatization, aiding in the (Page 7)\n    4.9. N-grams: Bigrams and trigrams were also considered to capture contextually relevant (Page 7)\n    4.10. Triplet Matches (n=5): Groups consisting of one topic from each model (BERTopic, (Page 8)\n    4.11. Unique Topics (n=8): Topics from a single model that did not achieve a cosine (Page 9)\n5. Results (Page 12)\n    5.1. BERTopic: Leverages pre-trained transformer models to generate context-aware (Page 16)\n    5.2. LDA: As a generative probabilistic model, LDA assumes topics are distributions over (Page 17)\n6. Conclusion (Page 20)\n7. Limitations and Future Work (Page 21)\n```",
   "extracted_titles": [
     {
-      "index": 1,
-      "title": "Decoding Funded Research: Comparative Analysis of Topic",
-      "page": 1,
-      "original_text": "Decoding Funded Research: Comparative Analysis of Topic (Page 1)"
-    },
-    {
-      "index": 2,
       "title": "1. Introduction",
       "page": 1,
       "original_text": "1. Introduction (Page 1)"
     },
     {
-      "index": 3,
       "title": "2. Literature Review",
       "page": 3,
       "original_text": "2. Literature Review (Page 3)"
     },
     {
-      "index": 4,
-      "title": "2.1. Research Funding and Its Impact",
-      "page": 3,
-      "original_text": "2.1. Research Funding and Its Impact (Page 3)"
-    },
-    {
-      "index": 5,
-      "title": "2.2. Gender Disparities in Scientific Research",
-      "page": 3,
-      "original_text": "2.2. Gender Disparities in Scientific Research (Page 3)"
-    },
-    {
-      "index": 6,
-      "title": "2.3. Geographical Disparities in Research Funding",
-      "page": 4,
-      "original_text": "2.3. Geographical Disparities in Research Funding (Page 4)"
-    },
-    {
-      "index": 7,
-      "title": "2.4. Topic Modelling",
-      "page": 4,
-      "original_text": "2.4. Topic Modelling (Page 4)"
-    },
-    {
-      "index": 8,
-      "title": "2.5. Methodological Approaches to Effect Estimation",
-      "page": 4,
-      "original_text": "2.5. Methodological Approaches to Effect Estimation (Page 4)"
-    },
-    {
-      "index": 9,
       "title": "3. Data",
       "page": 5,
       "original_text": "3. Data (Page 5)"
     },
     {
-      "index": 10,
       "title": "4. Methodology",
       "page": 6,
       "original_text": "4. Methodology (Page 6)"
     },
     {
-      "index": 11,
-      "title": "4.1. Data Preprocessing",
-      "page": 7,
-      "original_text": "4.1. Data Preprocessing (Page 7)"
-    },
-    {
-      "index": 12,
       "title": "1. Removal of incomplete entries: All entries lacking application summaries were",
       "page": 7,
       "original_text": "1. Removal of incomplete entries: All entries lacking application summaries were (Page 7)"
     },
     {
-      "index": 13,
       "title": "2.  Elimination of duplicates: Duplicate records were identified and eliminated to maintain",
       "page": 7,
       "original_text": "2.  Elimination of duplicates: Duplicate records were identified and eliminated to maintain (Page 7)"
     },
     {
-      "index": 14,
       "title": "3. Translation of non-English content: Non-English content, such as French and Italian,",
       "page": 7,
       "original_text": "3. Translation of non-English content: Non-English content, such as French and Italian, (Page 7)"
     },
     {
-      "index": 15,
       "title": "4. Cleaning of non-textual elements: Non-textual elements, including punctuation,",
       "page": 7,
       "original_text": "4. Cleaning of non-textual elements: Non-textual elements, including punctuation, (Page 7)"
     },
     {
-      "index": 16,
       "title": "5. Text normalization: The text was converted to lowercase and tokenized, facilitating",
       "page": 7,
       "original_text": "5. Text normalization: The text was converted to lowercase and tokenized, facilitating (Page 7)"
     },
     {
-      "index": 17,
       "title": "6. Stop-word removal: Common English stop-words were removed to reduce noise and",
       "page": 7,
       "original_text": "6. Stop-word removal: Common English stop-words were removed to reduce noise and (Page 7)"
     },
     {
-      "index": 18,
       "title": "7. Exclusion of domain-specific terms: In addition to general stop-words, domain-specific",
       "page": 7,
       "original_text": "7. Exclusion of domain-specific terms: In addition to general stop-words, domain-specific (Page 7)"
     },
     {
-      "index": 19,
       "title": "8. Lemmatization: Words were reduced to their root forms by lemmatization, aiding in the",
       "page": 7,
       "original_text": "8. Lemmatization: Words were reduced to their root forms by lemmatization, aiding in the (Page 7)"
     },
     {
-      "index": 20,
       "title": "9. N-grams: Bigrams and trigrams were also considered to capture contextually relevant",
       "page": 7,
       "original_text": "9. N-grams: Bigrams and trigrams were also considered to capture contextually relevant (Page 7)"
     },
     {
-      "index": 21,
-      "title": "4.2. Topic Modelling",
-      "page": 7,
-      "original_text": "4.2. Topic Modelling (Page 7)"
-    },
-    {
-      "index": 22,
-      "title": "4.3. Comparative Analysis of Topic Models",
-      "page": 8,
-      "original_text": "4.3. Comparative Analysis of Topic Models (Page 8)"
-    },
-    {
-      "index": 23,
-      "title": "4.3.1. Cross-Model Topic Alignment",
-      "page": 8,
-      "original_text": "4.3.1. Cross-Model Topic Alignment (Page 8)"
-    },
-    {
-      "index": 24,
       "title": "• Triplet Matches (n=5): Groups consisting of one topic from each model (BERTopic,",
       "page": 8,
       "original_text": "• Triplet Matches (n=5): Groups consisting of one topic from each model (BERTopic, (Page 8)"
     },
     {
-      "index": 25,
       "title": "• Unique Topics (n=8): Topics from a single model that did not achieve a cosine",
       "page": 9,
       "original_text": "• Unique Topics (n=8): Topics from a single model that did not achieve a cosine (Page 9)"
     },
     {
-      "index": 26,
-      "title": "4.3.2. Topic Quality Evaluation",
-      "page": 9,
-      "original_text": "4.3.2. Topic Quality Evaluation (Page 9)"
-    },
-    {
-      "index": 27,
-      "title": "4.4. Covariate Effect Estimation",
-      "page": 10,
-      "original_text": "4.4. Covariate Effect Estimation (Page 10)"
-    },
-    {
-      "index": 28,
       "title": "5. Results",
       "page": 12,
       "original_text": "5. Results (Page 12)"
     },
     {
-      "index": 29,
-      "title": "5.1. Comparative Analysis of Topic Models",
-      "page": 12,
-      "original_text": "5.1. Comparative Analysis of Topic Models (Page 12)"
-    },
-    {
-      "index": 30,
-      "title": "5.1.1. Unique Topics",
-      "page": 13,
-      "original_text": "5.1.1. Unique Topics (Page 13)"
-    },
-    {
-      "index": 31,
-      "title": "5.1.2. Triple Alignement",
-      "page": 14,
-      "original_text": "5.1.2. Triple Alignement (Page 14)"
-    },
-    {
-      "index": 32,
       "title": "• BERTopic: Leverages pre-trained transformer models to generate context-aware",
       "page": 16,
       "original_text": "• BERTopic: Leverages pre-trained transformer models to generate context-aware (Page 16)"
     },
     {
-      "index": 33,
       "title": "• LDA: As a generative probabilistic model, LDA assumes topics are distributions over",
       "page": 17,
       "original_text": "• LDA: As a generative probabilistic model, LDA assumes topics are distributions over (Page 17)"
     },
     {
-      "index": 34,
-      "title": "5.2. Covariate Effect Estimation",
-      "page": 17,
-      "original_text": "5.2. Covariate Effect Estimation (Page 17)"
-    },
-    {
-      "index": 35,
-      "title": "5.2.1. Geographical Location",
-      "page": 17,
-      "original_text": "5.2.1. Geographical Location (Page 17)"
-    },
-    {
-      "index": 36,
-      "title": "5.2.2. Gender",
-      "page": 20,
-      "original_text": "5.2.2. Gender (Page 20)"
-    },
-    {
-      "index": 37,
       "title": "6. Conclusion",
       "page": 20,
       "original_text": "6. Conclusion (Page 20)"
     },
     {
-      "index": 38,
       "title": "7. Limitations and Future Work",
       "page": 21,
       "original_text": "7. Limitations and Future Work (Page 21)"
-    },
-    {
-      "index": 39,
-      "title": "1022. Blei, David M., and John D. Lafferty. 2006. “Dynamic Topic Models.” Pp. 113–20 in",
-      "page": 23,
-      "original_text": "1022. Blei, David M., and John D. Lafferty. 2006. “Dynamic Topic Models.” Pp. 113–20 in (Page 23)"
     }
   ],
   "metadata": {
@@ -241,6 +107,6 @@
     "titles_found": 39,
     "model": "gpt-4-turbo-preview",
     "temperature": 0.3,
-    "timestamp": "2025-10-22T15:50:46.642975"
+    "timestamp": "2025-10-22T16:12:53.888976"
   }
 }

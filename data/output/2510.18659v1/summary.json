@@ -1,221 +1,105 @@
 {
-  "ai_generated_toc": "```markdown\nTable of Contents\n-----------------\n\n1. Sherlock Your Queries: Learning to Ask the Right Questions (Page 1)\n2. Introduction (Page 1)\n3. We propose (Page 2)\n4. Related Work (Page 2)\n5. Method (Page 3)\n   5.1. Questioner (Page 3)\n   5.2. Retriever (Page 4)\n   5.3. User (Page 4)\n   5.4. Reinforcement Learning (Page 4)\n   5.5. Reward Functions (Page 5)\n6. 0.5B 0.0 (Page 5)\n7. Experiments (Page 6)\n   7.1. Datasets (Page 6)\n   7.2. Implementation Details (Page 6)\n   7.3. Baselines (Page 6)\n   7.4. Metrics (Page 7)\n   7.5. Results and Analysis (Page 7)\n8. Is the target candidate's hair color white and (Page 7)\n9. Is the target candidate C33? (Page 7)\n10. Conclusions (Page 8)\n11. (e) Qwen2.5-32B (Page 13)\n12. (a) Qwen2.5-7B+GRPO (Page 13)\n13. (c) Qwen2.5-1.5B (Page 13)\n14. (f) Qwen2.5-7B + SFT (Page 13)\n15. (f) Qwen2.5-7B + SFT (Page 14)\n16. (a) Qwen2.5-7B+GRPO (Page 14)\n17. (c) Qwen2.5-1.5B (Page 14)\n18. (a) DeepSeek model. (Page 15)\n19. Does the target face have any scars or (Page 15)\n20. Does the target face have any birthmarks or (Page 15)\n21. Does the target face have any scars or (Page 15)\n22. Does the target face have any scars or (Page 15)\n23. (b) Qwen2.5-1.5B model. (Page 15)\n24. Is the target a young woman with an oval- (Page 15)\n25. Is the target wearing a hat? (Page 15)\n26. (c) Qwen2.5-7B model. (Page 15)\n```",
+  "ai_generated_toc": "```markdown\nTable of Contents\n1. Introduction (Page 1)\n2. We propose (Page 2)\n3. Related Work (Page 2)\n4. Method (Page 3)\n5. Experiments (Page 6)\n6. Is the target candidate's hair color white and (Page 7)\n7. Is the target candidate C33? (Page 7)\n8. Conclusions (Page 8)\n9. (e) Qwen2.5-32B (Page 13)\n10. (a) Qwen2.5-7B+GRPO (Page 13)\n11. (f) Qwen2.5-7B + SFT (Page 13)\n12. (f) Qwen2.5-7B + SFT (Page 14)\n13. (a) Qwen2.5-7B+GRPO (Page 14)\n14. (a) DeepSeek model. (Page 15)\n15. Does the target face have any scars or (Page 15)\n16. Does the target face have any birthmarks or (Page 15)\n17. Does the target face have any scars or (Page 15)\n18. Does the target face have any scars or (Page 15)\n19. Is the target a young woman with an oval- (Page 15)\n20. Is the target wearing a hat? (Page 15)\n```",
   "extracted_titles": [
     {
-      "index": 1,
-      "title": "Sherlock Your Queries: Learning to Ask the Right Questions",
-      "page": 1,
-      "original_text": "Sherlock Your Queries: Learning to Ask the Right Questions (Page 1)"
-    },
-    {
-      "index": 2,
       "title": "1. Introduction",
       "page": 1,
       "original_text": "1. Introduction (Page 1)"
     },
     {
-      "index": 3,
       "title": "1. We propose",
       "page": 2,
       "original_text": "1. We propose (Page 2)"
     },
     {
-      "index": 4,
       "title": "2. Related Work",
       "page": 2,
       "original_text": "2. Related Work (Page 2)"
     },
     {
-      "index": 5,
       "title": "3. Method",
       "page": 3,
       "original_text": "3. Method (Page 3)"
     },
     {
-      "index": 6,
-      "title": "3.1. Questioner",
-      "page": 3,
-      "original_text": "3.1. Questioner (Page 3)"
-    },
-    {
-      "index": 7,
-      "title": "3.2. Retriever",
-      "page": 4,
-      "original_text": "3.2. Retriever (Page 4)"
-    },
-    {
-      "index": 8,
-      "title": "3.3. User",
-      "page": 4,
-      "original_text": "3.3. User (Page 4)"
-    },
-    {
-      "index": 9,
-      "title": "3.4. Reinforcement Learning",
-      "page": 4,
-      "original_text": "3.4. Reinforcement Learning (Page 4)"
-    },
-    {
-      "index": 10,
-      "title": "3.5. Reward Functions",
-      "page": 5,
-      "original_text": "3.5. Reward Functions (Page 5)"
-    },
-    {
-      "index": 11,
-      "title": "0.5B 0.0",
-      "page": 5,
-      "original_text": "0.5B 0.0 (Page 5)"
-    },
-    {
-      "index": 12,
       "title": "4. Experiments",
       "page": 6,
       "original_text": "4. Experiments (Page 6)"
     },
     {
-      "index": 13,
-      "title": "4.1. Datasets",
-      "page": 6,
-      "original_text": "4.1. Datasets (Page 6)"
-    },
-    {
-      "index": 14,
-      "title": "4.2. Implementation Details",
-      "page": 6,
-      "original_text": "4.2. Implementation Details (Page 6)"
-    },
-    {
-      "index": 15,
-      "title": "4.3. Baselines",
-      "page": 6,
-      "original_text": "4.3. Baselines (Page 6)"
-    },
-    {
-      "index": 16,
       "title": "6 Is the target candidate's hair color white and",
       "page": 7,
       "original_text": "6 Is the target candidate's hair color white and (Page 7)"
     },
     {
-      "index": 17,
       "title": "7 Is the target candidate C33?",
       "page": 7,
       "original_text": "7 Is the target candidate C33? (Page 7)"
     },
     {
-      "index": 18,
-      "title": "4.4. Metrics",
-      "page": 7,
-      "original_text": "4.4. Metrics (Page 7)"
-    },
-    {
-      "index": 19,
-      "title": "4.5. Results and Analysis",
-      "page": 7,
-      "original_text": "4.5. Results and Analysis (Page 7)"
-    },
-    {
-      "index": 20,
       "title": "5. Conclusions",
       "page": 8,
       "original_text": "5. Conclusions (Page 8)"
     },
     {
-      "index": 21,
       "title": "(e) Qwen2.5-32B",
       "page": 13,
       "original_text": "(e) Qwen2.5-32B (Page 13)"
     },
     {
-      "index": 22,
       "title": "(a) Qwen2.5-7B+GRPO",
       "page": 13,
       "original_text": "(a) Qwen2.5-7B+GRPO (Page 13)"
     },
     {
-      "index": 23,
-      "title": "(c) Qwen2.5-1.5B",
-      "page": 13,
-      "original_text": "(c) Qwen2.5-1.5B (Page 13)"
-    },
-    {
-      "index": 24,
       "title": "(f) Qwen2.5-7B + SFT",
       "page": 13,
       "original_text": "(f) Qwen2.5-7B + SFT (Page 13)"
     },
     {
-      "index": 25,
       "title": "(f) Qwen2.5-7B + SFT",
       "page": 14,
       "original_text": "(f) Qwen2.5-7B + SFT (Page 14)"
     },
     {
-      "index": 26,
       "title": "(a) Qwen2.5-7B+GRPO",
       "page": 14,
       "original_text": "(a) Qwen2.5-7B+GRPO (Page 14)"
     },
     {
-      "index": 27,
-      "title": "(c) Qwen2.5-1.5B",
-      "page": 14,
-      "original_text": "(c) Qwen2.5-1.5B (Page 14)"
-    },
-    {
-      "index": 28,
       "title": "(a) DeepSeek model.",
       "page": 15,
       "original_text": "(a) DeepSeek model. (Page 15)"
     },
     {
-      "index": 29,
       "title": "17 Does the target face have any scars or",
       "page": 15,
       "original_text": "17 Does the target face have any scars or (Page 15)"
     },
     {
-      "index": 30,
       "title": "18 Does the target face have any birthmarks or",
       "page": 15,
       "original_text": "18 Does the target face have any birthmarks or (Page 15)"
     },
     {
-      "index": 31,
       "title": "19 Does the target face have any scars or",
       "page": 15,
       "original_text": "19 Does the target face have any scars or (Page 15)"
     },
     {
-      "index": 32,
       "title": "20 Does the target face have any scars or",
       "page": 15,
       "original_text": "20 Does the target face have any scars or (Page 15)"
     },
     {
-      "index": 33,
-      "title": "(b) Qwen2.5-1.5B model.",
-      "page": 15,
-      "original_text": "(b) Qwen2.5-1.5B model. (Page 15)"
-    },
-    {
-      "index": 34,
       "title": "18 Is the target a young woman with an oval-",
       "page": 15,
       "original_text": "18 Is the target a young woman with an oval- (Page 15)"
     },
     {
-      "index": 35,
       "title": "19 Is the target wearing a hat?",
       "page": 15,
       "original_text": "19 Is the target wearing a hat? (Page 15)"
-    },
-    {
-      "index": 36,
-      "title": "(c) Qwen2.5-7B model.",
-      "page": 15,
-      "original_text": "(c) Qwen2.5-7B model. (Page 15)"
     }
   ],
   "metadata": {
@@ -223,6 +107,6 @@
     "titles_found": 36,
     "model": "gpt-4-turbo-preview",
     "temperature": 0.3,
-    "timestamp": "2025-10-22T15:50:22.915534"
+    "timestamp": "2025-10-22T16:12:22.825632"
   }
 }

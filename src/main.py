@@ -86,7 +86,6 @@ class PDFSummarizationPipeline:
         # Step 1: Extract and chunk text
         print("\n[1/3] Extracting and chunking text...")
         documents = self.processor.load_pdf_with_structure(pdf_path)
-        # No need for chunks anymore - we work directly with documents data
         
         # Step 2: Generate summary
         print("\n[2/3] Generating summary with LLM...")
@@ -116,7 +115,7 @@ class PDFSummarizationPipeline:
         
         return result
     
-    def save_outputs(self, result: Dict, pdf_name: str, chunks: List[Document] = None, documents: List[Document] = None):
+    def save_outputs(self, result: Dict, pdf_name: str, documents: List[Document] = None):
         """
         Save results in configured output formats.
         Creates a separate folder for each PDF file.
@@ -124,7 +123,6 @@ class PDFSummarizationPipeline:
         Args:
             result: Summary result dictionary
             pdf_name: Original PDF filename
-            chunks: List of document chunks (optional)
             documents: List of original documents (optional)
         """
         base_name = Path(pdf_name).stem
@@ -145,31 +143,6 @@ class PDFSummarizationPipeline:
                 f.write(result['ai_generated_toc'])
             print(f"  ✓ Saved Markdown: {pdf_folder.name}/table_of_contents.md")
         
-        # Save semantic chunks if available
-        if chunks and chunks[0].metadata.get('is_semantic_chunk', False):
-            chunks_data = []
-            for chunk in chunks:
-                chunks_data.append({
-                    'chunk_index': chunk.metadata.get('chunk_index', 0),
-                    'section_type': chunk.metadata.get('section_type', 'unknown'),
-                    'section_title': chunk.metadata.get('section_title', 'Untitled'),
-                    'content': chunk.page_content,
-                    'chunk_length': len(chunk.page_content),
-                    'page': chunk.metadata.get('page', 'unknown')
-                })
-            
-            chunks_output = {
-                'source_file': pdf_name,
-                'total_chunks': len(chunks),
-                'chunks': chunks_data,
-                'section_distribution': self._get_section_distribution(chunks),
-                'timestamp': result['metadata']['timestamp']
-            }
-            
-            chunks_path = pdf_folder / "chunks.json"
-            self.save_json(chunks_output, chunks_path)
-            print(f"  ✓ Saved semantic chunks: {pdf_folder.name}/chunks.json")
-        
         # Save original documents if available
         if documents:
             documents_data = []
@@ -183,7 +156,6 @@ class PDFSummarizationPipeline:
                     'has_titles': doc.metadata.get('has_titles', False)
                 }
                 
-                # Add structured blocks if available
                 if 'structured_blocks' in doc.metadata:
                     doc_data['structured_blocks'] = []
                     for block in doc.metadata['structured_blocks']:
@@ -206,14 +178,6 @@ class PDFSummarizationPipeline:
             documents_path = pdf_folder / "documents.json"
             self.save_json(documents_output, documents_path)
             print(f"  ✓ Saved documents: {pdf_folder.name}/documents.json")
-    
-    def _get_section_distribution(self, chunks: List[Document]) -> Dict[str, int]:
-        """Get distribution of chunks by section type."""
-        distribution = {}
-        for chunk in chunks:
-            section_type = chunk.metadata.get('section_type', 'unknown')
-            distribution[section_type] = distribution.get(section_type, 0) + 1
-        return distribution
             
     
     def run(self):
@@ -253,7 +217,7 @@ class PDFSummarizationPipeline:
                     documents = self._last_documents
                 
                 # Save outputs
-                self.save_outputs(result, pdf_path.name, None, documents)
+                self.save_outputs(result, pdf_path.name, documents)
                 
                 results.append({
                     "file": pdf_path.name,
