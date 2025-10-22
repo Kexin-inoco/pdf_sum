@@ -43,7 +43,7 @@ class Config:
     @property
     def llm_model(self) -> str:
         """Get LLM model name."""
-        return os.getenv("OPENAI_MODEL", "gpt-4-turbo-preview")
+        return os.getenv("OPENAI_MODEL", "gpt-5-mini-2025-08-07")
     
     @property
     def temperature(self) -> float:
@@ -53,7 +53,7 @@ class Config:
     @property
     def max_tokens(self) -> int:
         """Get max tokens for LLM response."""
-        return int(os.getenv("MAX_TOKENS", "500"))
+        return int(os.getenv("MAX_TOKENS", "3000"))
     
     def __repr__(self) -> str:
         """String representation of configuration."""

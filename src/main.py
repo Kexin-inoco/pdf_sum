@@ -86,28 +86,32 @@ class PDFSummarizationPipeline:
         # Step 1: Extract and chunk text
         print("\n[1/3] Extracting and chunking text...")
         documents = self.processor.load_pdf_with_structure(pdf_path)
-        chunks = self.processor.split_documents(documents)
-        
-        stats = self.processor.get_statistics(chunks)
-        print(f"  ✓ Extracted {stats['pages']} pages")
-        print(f"  ✓ Created {stats['total_chunks']} chunks")
-        print(f"  ✓ Average chunk size: {stats['avg_chunk_size']} characters")
+        # No need for chunks anymore - we work directly with documents data
         
         # Step 2: Generate summary
         print("\n[2/3] Generating summary with LLM...")
         print(f"  Model: {self.summarizer.model}")
         
-        summary = self.summarizer.summarize(chunks)
-
+        # Get documents data for title extraction from current documents
+        documents_data = []
+        for doc in documents:
+            if hasattr(doc, 'metadata') and 'structured_blocks' in doc.metadata:
+                for block in doc.metadata['structured_blocks']:
+                    documents_data.append({
+                        'text': block.get('text', ''),
+                        'is_title': block.get('is_title', False),
+                        'page': block.get('page', '')
+                    })
         
-        print(f"  ✓ Summary generated ({len(summary)} characters)")
+        summary, titles_data = self.summarizer.summarize([], documents_data)  # Empty chunks list
+        
+        print(f"  ✓ Table of contents generated ({len(summary)} characters)")
         
         # Step 3: Format output
         print("\n[3/3] Formatting output...")
-        result = self.summarizer.format_output(summary, chunks)
+        result = self.summarizer.format_output(summary, documents_data, titles_data=titles_data)
         
-        # Store chunks and documents for potential saving
-        self._last_chunks = chunks
+        # Store documents for potential saving
         self._last_documents = documents
         
         return result
@@ -115,6 +119,7 @@ class PDFSummarizationPipeline:
     def save_outputs(self, result: Dict, pdf_name: str, chunks: List[Document] = None, documents: List[Document] = None):
         """
         Save results in configured output formats.
+        Creates a separate folder for each PDF file.
         
         Args:
             result: Summary result dictionary
@@ -124,10 +129,21 @@ class PDFSummarizationPipeline:
         """
         base_name = Path(pdf_name).stem
         
-        # Save summary
-        output_path = self.output_dir / f"{base_name}_summary.json"
+        # Create folder for this PDF
+        pdf_folder = self.output_dir / base_name
+        pdf_folder.mkdir(exist_ok=True)
+        
+        # Save summary JSON
+        output_path = pdf_folder / "summary.json"
         self.save_json(result, output_path)
-        print(f"  ✓ Saved JSON: {output_path.name}")
+        print(f"  ✓ Saved JSON: {pdf_folder.name}/summary.json")
+        
+        # Save AI-generated TOC as Markdown
+        if 'ai_generated_toc' in result:
+            markdown_path = pdf_folder / "table_of_contents.md"
+            with open(markdown_path, 'w', encoding='utf-8') as f:
+                f.write(result['ai_generated_toc'])
+            print(f"  ✓ Saved Markdown: {pdf_folder.name}/table_of_contents.md")
         
         # Save semantic chunks if available
         if chunks and chunks[0].metadata.get('is_semantic_chunk', False):
@@ -150,9 +166,9 @@ class PDFSummarizationPipeline:
                 'timestamp': result['metadata']['timestamp']
             }
             
-            chunks_path = self.output_dir / f"{base_name}_chunks.json"
+            chunks_path = pdf_folder / "chunks.json"
             self.save_json(chunks_output, chunks_path)
-            print(f"  ✓ Saved semantic chunks: {chunks_path.name}")
+            print(f"  ✓ Saved semantic chunks: {pdf_folder.name}/chunks.json")
         
         # Save original documents if available
         if documents:
@@ -187,9 +203,9 @@ class PDFSummarizationPipeline:
                 'timestamp': result['metadata']['timestamp']
             }
             
-            documents_path = self.output_dir / f"{base_name}_documents.json"
+            documents_path = pdf_folder / "documents.json"
             self.save_json(documents_output, documents_path)
-            print(f"  ✓ Saved documents: {documents_path.name}")
+            print(f"  ✓ Saved documents: {pdf_folder.name}/documents.json")
     
     def _get_section_distribution(self, chunks: List[Document]) -> Dict[str, int]:
         """Get distribution of chunks by section type."""
@@ -231,21 +247,18 @@ class PDFSummarizationPipeline:
                 # Process PDF
                 result = self.process_single_pdf(pdf_path)
                 
-                # Get chunks and documents for saving (if available)
-                chunks = None
+                # Get documents for saving (if available)
                 documents = None
-                if hasattr(self, '_last_chunks'):
-                    chunks = self._last_chunks
                 if hasattr(self, '_last_documents'):
                     documents = self._last_documents
                 
                 # Save outputs
-                self.save_outputs(result, pdf_path.name, chunks, documents)
+                self.save_outputs(result, pdf_path.name, None, documents)
                 
                 results.append({
                     "file": pdf_path.name,
                     "status": "success",
-                    "summary_length": len(result['summary'])
+                    "summary_length": len(result['ai_generated_toc'])
                 })
                 successful += 1
                 

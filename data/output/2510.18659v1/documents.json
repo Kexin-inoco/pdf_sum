@@ -178,7 +178,7 @@
         },
         {
           "text": "1. We\npropose\nSherlockLLM,\na\nRL\nframework\nfor\ndialogue-driven retrieval that autonomously learns a pol-\nicy to generate optimally informative questions.\n2. We introduce a benchmark comprising both structured\n(Guess Number and Guess Who) and unstructured (Im-\nage Retrieval) tasks to assess dialogue policy.\n3. Experimental results demonstrate that our approach is\na robust and generalizable solution for interactive in-\nformation retrieval. On tabular tasks, its performance\nmatches strong baselines like DeepSeek-V3.1 [24] and\napproaches the theoretical optimum. On the more chal-\nlenging image retrieval task, it comprehensively outper-\nforms strong LLMs with 96× more parameters.",
-          "is_title": false,
+          "is_title": true,
           "page": 2,
           "text_length": 682
         },
@@ -646,7 +646,7 @@
         },
         {
           "text": "0.5B\n0.0\n16\n0.0\n16\n1.5B\n0.07\n15.61\n0.0\n16\n7B\n0.68\n12.43\n0.46 13.26\n32B\n0.92\n9.39\n0.56 11.44",
-          "is_title": false,
+          "is_title": true,
           "page": 5,
           "text_length": 91
         },
@@ -2509,5 +2509,5 @@
       ]
     }
   ],
-  "timestamp": "2025-10-22T13:22:47.928916"
+  "timestamp": "2025-10-22T15:50:22.915534"
 }

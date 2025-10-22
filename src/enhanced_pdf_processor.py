@@ -8,7 +8,7 @@ from pathlib import Path
 from typing import List, Dict, Optional
 from langchain_core.documents import Document
 
-from semantic_splitter import AcademicPaperSplitter
+# No longer needed - we work directly with documents data
 
 
 class EnhancedPDFProcessor:
@@ -16,15 +16,11 @@ class EnhancedPDFProcessor:
     Enhanced PDF processor using PyMuPDF for better structural analysis.
     """
     
-    def __init__(self, use_semantic_splitting: bool = True):
+    def __init__(self):
         """
         Initialize enhanced PDF processor.
-        
-        Args:
-            use_semantic_splitting: Whether to use semantic splitting
         """
-        self.use_semantic_splitting = use_semantic_splitting
-        self.semantic_splitter = AcademicPaperSplitter()
+        # No longer needed - we work directly with documents data
     
     def load_pdf_with_structure(self, pdf_path: str) -> List[Document]:
         """
@@ -196,11 +192,16 @@ class EnhancedPDFProcessor:
         # 1) Numbered sections (strict pattern)
         numbered_patterns = [
             r'^\d+\s+[A-Z]',  # "1 Introduction"
-            r'^\d+\.\d+\s+[A-Z]',  # "1.1 Methods"
-            r'^\d+\.\d+\.\d+\s+[A-Z]',  # "1.1.1 Details"
-            r'^\d+\.\d+\.\d+\.\d+\s+[A-Z]',  # "1.1.1.1 Specifics"
+            r'^\d+\.\s*[A-Z]',  # "1. Introduction" (with optional space after dot)
+            r'^\d+\.\d+\s*[A-Z]',  # "1.1 Methods" (with optional space)
+            r'^\d+\.\d+\.\s*[A-Z]',  # "1.1. Details" (with optional space after dot)
+            r'^\d+\.\d+\.\d+\s*[A-Z]',  # "1.1.1 Details" (with optional space)
+            r'^\d+\.\d+\.\d+\.\s*[A-Z]',  # "1.1.1. Specifics" (with optional space after dot)
+            r'^\d+\.\d+\.\d+\.\d+\s*[A-Z]',  # "1.1.1.1 Specifics" (with optional space)
             r'^\d+\n[A-Z]',  # "1\nIntroduction" (with line break)
+            r'^\d+\.\n[A-Z]',  # "1.\nIntroduction" (with line break)
             r'^\d+\.\d+\n[A-Z]',  # "1.1\nMethods" (with line break)
+            r'^\d+\.\d+\.\n[A-Z]',  # "1.1.\nMethods" (with line break)
             r'^\d+\.\d+\.\d+\n[A-Z]',  # "1.1.1\nDetails" (with line break)
         ]
         
@@ -208,7 +209,7 @@ class EnhancedPDFProcessor:
             if re.match(pattern, t):
                 return True
         
-        # 2) Special headers (Figure, Table, Algorithm)
+        # 2) Special headers (Figure, Table, Algorithm) - these ARE titles
         special_headers = [
             r'^Figure\s+\d+',
             r'^Table\s+\d+',
@@ -217,7 +218,7 @@ class EnhancedPDFProcessor:
         
         for pattern in special_headers:
             if re.match(pattern, t, re.I):
-                return False
+                return True
         
         # 3) Common section names (only if they appear alone)
         section_names = [
@@ -251,23 +252,7 @@ class EnhancedPDFProcessor:
         return (is_large_font or is_bold) and is_reasonable_length
 
     
-    def split_documents(self, documents: List[Document]) -> List[Document]:
-        """
-        Split documents using enhanced structural information.
-        
-        Args:
-            documents: List of Document objects to split
-            
-        Returns:
-            List of chunked Document objects
-        """
-        if not documents:
-            return []
-        
-        chunks = self.semantic_splitter.split_documents(documents)
-        print(f"  Using enhanced semantic splitting: {len(chunks)} semantic chunks created")
-        
-        return chunks
+    # split_documents method removed - no longer needed
     
     def process(self, pdf_path: str) -> List[Document]:
         """
@@ -288,61 +273,10 @@ class EnhancedPDFProcessor:
         if not documents:
             raise ValueError(f"No content extracted from PDF: {pdf_path}")
         
-        # Split into chunks
-        chunks = self.split_documents(documents)
-        
-        return chunks
+        return documents
     
-    def get_statistics(self, chunks: List[Document]) -> Dict:
-        """
-        Get processing statistics for chunks.
-        
-        Args:
-            chunks: List of Document chunks
-            
-        Returns:
-            Dictionary with statistics
-        """
-        if not chunks:
-            return {
-                "total_chunks": 0,
-                "total_characters": 0,
-                "avg_chunk_size": 0,
-                "pages": 0,
-                "title_chunks": 0
-            }
-        
-        total_chars = sum(len(chunk.page_content) for chunk in chunks)
-        pages = set()
-        title_chunks = 0
-        
-        for chunk in chunks:
-            if 'page' in chunk.metadata:
-                pages.add(chunk.metadata['page'])
-            if chunk.metadata.get('is_title', False):
-                title_chunks += 1
-        
-        stats = {
-            "total_chunks": len(chunks),
-            "total_characters": total_chars,
-            "avg_chunk_size": total_chars // len(chunks) if chunks else 0,
-            "pages": len(pages),
-            "title_chunks": title_chunks,
-            "source_file": chunks[0].metadata.get('source_file', 'unknown') if chunks else None
-        }
-        
-        # Add semantic splitting statistics if available
-        if chunks and chunks[0].metadata.get('is_semantic_chunk', False):
-            semantic_stats = self.semantic_splitter.get_chunk_statistics(chunks)
-            stats.update({
-                "section_distribution": semantic_stats.get('section_distribution', {}),
-                "is_semantic_split": True
-            })
-        else:
-            stats["is_semantic_split"] = False
-        
-        return stats
+    # get_statistics method removed - no longer needed
     
     def __repr__(self) -> str:
         """String representation of processor."""
-        return f"EnhancedPDFProcessor(use_semantic_splitting={self.use_semantic_splitting})"
+        return f"EnhancedPDFProcessor()"

@@ -1,0 +1,198 @@
+{
+  "ai_generated_toc": "```markdown\nTable of Contents\n1. Leveraging Association Rules for Better Predictions .......................................... 1\n2. 1 Univ. Artois, CNRS, CRIL ........................................................................ 1\n3. 1 Introduction .............................................................................................. 1\n4. 2 G. Audemard et al. .................................................................................. 2\n5. 2 Formal Preliminaries ............................................................................... 3\n    5.1. Decision tree, random forests, and classifiers ........................................ 3\n6. 2.2 Implicants and abductive explanations .................................................... 6\n7. 3 As in [19] and unlike [18], in this paper, abductive explanations are not required to be minimal .......................................................................................................... 6\n8. 2.3 Association rules .................................................................................... 7\n9. 3 Rectifying Decision Trees and Random Forests ........................................... 7\n10. 4 Deriving Abductive Explanations ............................................................. 10\n11. 5 Experiments ............................................................................................ 14\n    11.1. Empirical protocol ............................................................................ 14\n    11.2. Empirical results .............................................................................. 16\n12. 6 Other Related Work ................................................................................ 19\n13. 7 Conclusion .............................................................................................. 21\n14. 1. Agrawal, R., Srikant, R.: Fast algorithms for mining association rules in large databases .......................................................................................................... 22\n15. 16. Huang, X., Izza, Y., Ignatiev, A., Cooper, M.C., Asher, N., Marques-Silva, J.: Efficient ................................................................................................................... 23\n```",
+  "extracted_titles": [
+    {
+      "index": 1,
+      "title": "Leveraging Association Rules for Better Predictions",
+      "page": 1,
+      "original_text": "Leveraging Association Rules for Better Predictions (Page 1)"
+    },
+    {
+      "index": 2,
+      "title": "1 Univ. Artois, CNRS, CRIL",
+      "page": 1,
+      "original_text": "1 Univ. Artois, CNRS, CRIL (Page 1)"
+    },
+    {
+      "index": 3,
+      "title": "1 Introduction",
+      "page": 1,
+      "original_text": "1 Introduction (Page 1)"
+    },
+    {
+      "index": 4,
+      "title": "2 G. Audemard et al.",
+      "page": 2,
+      "original_text": "2 G. Audemard et al. (Page 2)"
+    },
+    {
+      "index": 5,
+      "title": "2 Formal Preliminaries",
+      "page": 3,
+      "original_text": "2 Formal Preliminaries (Page 3)"
+    },
+    {
+      "index": 6,
+      "title": "2.1 Decision tree, random forests, and classifiers",
+      "page": 3,
+      "original_text": "2.1 Decision tree, random forests, and classifiers (Page 3)"
+    },
+    {
+      "index": 7,
+      "title": "4 G. Audemard et al.",
+      "page": 4,
+      "original_text": "4 G. Audemard et al. (Page 4)"
+    },
+    {
+      "index": 8,
+      "title": "6 G. Audemard et al.",
+      "page": 6,
+      "original_text": "6 G. Audemard et al. (Page 6)"
+    },
+    {
+      "index": 9,
+      "title": "2.2 Implicants and abductive explanations",
+      "page": 6,
+      "original_text": "2.2 Implicants and abductive explanations (Page 6)"
+    },
+    {
+      "index": 10,
+      "title": "3 As in [19] and unlike [18], in this paper, abductive explanations are not required to be minimal",
+      "page": 6,
+      "original_text": "3 As in [19] and unlike [18], in this paper, abductive explanations are not required to be minimal (Page 6)"
+    },
+    {
+      "index": 11,
+      "title": "2.3 Association rules",
+      "page": 7,
+      "original_text": "2.3 Association rules (Page 7)"
+    },
+    {
+      "index": 12,
+      "title": "3 Rectifying Decision Trees and Random Forests",
+      "page": 7,
+      "original_text": "3 Rectifying Decision Trees and Random Forests (Page 7)"
+    },
+    {
+      "index": 13,
+      "title": "8 G. Audemard et al.",
+      "page": 8,
+      "original_text": "8 G. Audemard et al. (Page 8)"
+    },
+    {
+      "index": 14,
+      "title": "10 G. Audemard et al.",
+      "page": 10,
+      "original_text": "10 G. Audemard et al. (Page 10)"
+    },
+    {
+      "index": 15,
+      "title": "4 Deriving Abductive Explanations",
+      "page": 10,
+      "original_text": "4 Deriving Abductive Explanations (Page 10)"
+    },
+    {
+      "index": 16,
+      "title": "12 G. Audemard et al.",
+      "page": 12,
+      "original_text": "12 G. Audemard et al. (Page 12)"
+    },
+    {
+      "index": 17,
+      "title": "14 G. Audemard et al.",
+      "page": 14,
+      "original_text": "14 G. Audemard et al. (Page 14)"
+    },
+    {
+      "index": 18,
+      "title": "5 Experiments",
+      "page": 14,
+      "original_text": "5 Experiments (Page 14)"
+    },
+    {
+      "index": 19,
+      "title": "5.1 Empirical protocol",
+      "page": 14,
+      "original_text": "5.1 Empirical protocol (Page 14)"
+    },
+    {
+      "index": 20,
+      "title": "7 Note that generating the rules by decreasing lift would not be discriminant enough. Indeed, the",
+      "page": 15,
+      "original_text": "7 Note that generating the rules by decreasing lift would not be discriminant enough. Indeed, the (Page 15)"
+    },
+    {
+      "index": 21,
+      "title": "16 G. Audemard et al.",
+      "page": 16,
+      "original_text": "16 G. Audemard et al. (Page 16)"
+    },
+    {
+      "index": 22,
+      "title": "5.2 Empirical results",
+      "page": 16,
+      "original_text": "5.2 Empirical results (Page 16)"
+    },
+    {
+      "index": 23,
+      "title": "8 It must also be kept in mind that if decision trees with a limited depth are more “human com-",
+      "page": 17,
+      "original_text": "8 It must also be kept in mind that if decision trees with a limited depth are more “human com- (Page 17)"
+    },
+    {
+      "index": 24,
+      "title": "18 G. Audemard et al.",
+      "page": 18,
+      "original_text": "18 G. Audemard et al. (Page 18)"
+    },
+    {
+      "index": 25,
+      "title": "6 Other Related Work",
+      "page": 19,
+      "original_text": "6 Other Related Work (Page 19)"
+    },
+    {
+      "index": 26,
+      "title": "20 G. Audemard et al.",
+      "page": 20,
+      "original_text": "20 G. Audemard et al. (Page 20)"
+    },
+    {
+      "index": 27,
+      "title": "7 Conclusion",
+      "page": 21,
+      "original_text": "7 Conclusion (Page 21)"
+    },
+    {
+      "index": 28,
+      "title": "22 G. Audemard et al.",
+      "page": 22,
+      "original_text": "22 G. Audemard et al. (Page 22)"
+    },
+    {
+      "index": 29,
+      "title": "1. Agrawal, R., Srikant, R.: Fast algorithms for mining association rules in large databases. In:",
+      "page": 22,
+      "original_text": "1. Agrawal, R., Srikant, R.: Fast algorithms for mining association rules in large databases. In: (Page 22)"
+    },
+    {
+      "index": 30,
+      "title": "16. Huang, X., Izza, Y., Ignatiev, A., Cooper, M.C., Asher, N., Marques-Silva, J.: Efficient",
+      "page": 23,
+      "original_text": "16. Huang, X., Izza, Y., Ignatiev, A., Cooper, M.C., Asher, N., Marques-Silva, J.: Efficient (Page 23)"
+    },
+    {
+      "index": 31,
+      "title": "24 G. Audemard et al.",
+      "page": 24,
+      "original_text": "24 G. Audemard et al. (Page 24)"
+    }
+  ],
+  "metadata": {
+    "total_pages": 24,
+    "titles_found": 31,
+    "model": "gpt-4-turbo-preview",
+    "temperature": 0.3,
+    "timestamp": "2025-10-22T15:50:07.631937"
+  }
+}

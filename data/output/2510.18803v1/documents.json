@@ -122,13 +122,13 @@
         },
         {
           "text": "2.1. \nResearch Funding and Its Impact \nInvesting in research and development is a critical driver of innovation and economic \nsustainability (Ebadi et al. 2020; Stephan 2012). Understanding the downstream impact of grant \nfunding on scientific productivity is crucial for optimizing resource allocation and maximizing \nsocietal benefits (Ebadi and Schiffauerova 2016a; Jacob and Lefgren 2011). This necessitates a \ncomprehensive understanding of evolving research trends for effective and equitable allocation of \nresources. Recent analyses of global R&D expenditure highlight the increasing prioritization of \nscience and technology as tools for addressing societal challenges, though disparities in funding \ndistribution persist across regions and demographics (Bloch and Sørensen 2014; Ebadi et al. 2020). \nIn Canada, initiatives such as the Tri-Agency Equity, Diversity, and Inclusion (EDI) Action Plan \n(NSERC 2021) reflect a growing recognition of systemic inequities in research ecosystems, \nunderscoring the need for data-driven assessments of funding patterns.",
-          "is_title": false,
+          "is_title": true,
           "page": 3,
           "text_length": 1069
         },
         {
           "text": "2.2. \nGender Disparities in Scientific Research \nThe role of demographic factors, such as gender, in shaping research priorities remains \nrelatively less explored. Studies have consistently demonstrated gender disparities within scientific \nresearch (Abramo, D’Angelo, and Di Costa 2019; van den Besselaar and Mom 2021). For instance, \nLarivière et al. (Larivière et al. 2013) highlighted global gender disparities, indicating that women \nare often underrepresented in scientific authorship. Similarly, van Arensbergen et al. (van \nArensbergen, van der Weijden, and van den Besselaar 2014) found that gender differences in \nscientific productivity and funding success persist across various disciplines, emphasizing the \ncontinued need for more inclusive approaches to funding allocation. In Canada, Else et al. (Else et \nal. 2020) found that factors predicting research grant success vary, suggesting the potential \ninfluence of gender. Moreover, persistent gender gaps in Canadian STEM funding, particularly in \nengineering and physical sciences, have been documented, showing, for instance, higher rejection \nrates for early-career women scientists and slightly less funding for successful female applicants \n(Goldin and Urquhart-Cronish 2019). Hajibabaei et al. (Hajibabaei, Schiffauerova, and Ebadi \n2022, 2023) found that in AI research networks. At the same time, scientific performance is key",
-          "is_title": false,
+          "is_title": true,
           "page": 3,
           "text_length": 1400
         }
@@ -140,7 +140,7 @@
       "content": "4 \n\nfor both genders to achieve central roles. Women face subtle disadvantages in possessing core \npositions, which further highlights ongoing gender disparities (Hajibabaei et al. 2023). These \ndisparities are potentially exacerbated by biases in evaluation processes, as evidenced by studies \nsuggesting that grant applications led by women may be evaluated less favorably than those led \nby men, even when scientific quality is comparable (Bornmann et al. 2007; Wennerås and Wold \n1997; Witteman et al. 2019). \n\n2.3. \nGeographical Disparities in Research Funding \nGeographical disparities in research funding allocation remain a persistent challenge, \nmirroring demographic inequities. Breschi and Lissoni (Breschi and Lissoni 2010) illustrate how \nregional proximity and inventor mobility drive knowledge spillovers, emphasizing the role of \ngeography in shaping innovation. The concentration of funding in metropolitan hubs can \nmarginalize researchers in peripheral regions, limiting access to resources and collaboration \nopportunities (Grillitsch et al. 2019; Rodriguez-Pose et al. 2019). This spatial inequity aligns with \nthe “Matthew Effect” in science described by Merton (Merton 1968), where established centers \nattract disproportionate resources, exacerbating regional imbalance. Broader studies on regional \ninnovation systems (Grillitsch et al. 2019) and the socio-economic impacts of regional inequality \n(Rodriguez-Pose et al. 2019) highlight the importance of considering geographical factors in \nscience policy. \n\n2.4. \nTopic Modelling \nTopic modelling has emerged as a crucial tool for analyzing large text datasets to identify \npatterns and recurring themes. The foundation for modern topic modelling was established by Blei \net al. (Blei 2003), who introduced Latent Dirichlet Allocation (LDA). LDA, a generative \nprobabilistic model, has since become a fundamental method for text analysis. Building upon \nLDA, Structural Topic Models (STM) (Roberts et al. 2013) enable researchers to incorporate \nmetadata (e.g., authorship demographics, temporal trends) directly into topic discovery, a feature \ncritical for analyzing the interplay between research content and contextual factors (Roberts et al. \n2019). The emergence of transformer-based architectures, such as BERT (Devlin et al. 2019), has \nrecently revolutionized natural language processing by enabling models to capture intricate \ncontextual relationships within text. Building upon this, transformer-based topic models, e.g., \nBERTopic (Grootendorst 2020), leverage advanced contextual embeddings to capture semantic \nrelationships in text, showing strong performance for analyzing complex documents (Bianchi et \nal. 2021). Comparative studies of LDA, STM, and BERTopic emphasize trade-offs between \nprobabilistic interpretability and contextual nuance (Egger and Yu 2023), a methodological tension \ncentral to our study. Evaluating topic models involves assessing topic coherence, which quantifies \nthe interpretability of topics (Mimno et al. 2011; Röder, Both, and Hinneburg 2015), particularly \nrelevant for models such as BERTopic. The underlying dimensionality reduction techniques used \nin some models, e.g., BERTopic, often rely on algorithms such as Uniform Manifold \nApproximation and Projection (UMAP) (Healy and McInnes 2024), while clustering is performed \nwith methods like HDBSCAN (McInnes, Healy, and Astels 2017), highlighting the mixed nature \nof these approaches. \n\n2.5. \nMethodological Approaches to Effect Estimation \nThe application of regression techniques to topic model outputs for effect estimation builds \nupon a growing body of work in computational social science and text analysis. For instance, \nstudies have utilized models that link author characteristics to topics discussed in scientific \nliterature (Rosen-Zvi et al. 2004) and used regression to understand how temporal trends affect",
       "content_length": 3904,
       "source_file": "2510.18803v1.pdf",
-      "has_titles": false,
+      "has_titles": true,
       "structured_blocks": [
         {
           "text": "4",
@@ -156,19 +156,19 @@
         },
         {
           "text": "2.3. \nGeographical Disparities in Research Funding \nGeographical disparities in research funding allocation remain a persistent challenge, \nmirroring demographic inequities. Breschi and Lissoni (Breschi and Lissoni 2010) illustrate how \nregional proximity and inventor mobility drive knowledge spillovers, emphasizing the role of \ngeography in shaping innovation. The concentration of funding in metropolitan hubs can \nmarginalize researchers in peripheral regions, limiting access to resources and collaboration \nopportunities (Grillitsch et al. 2019; Rodriguez-Pose et al. 2019). This spatial inequity aligns with \nthe “Matthew Effect” in science described by Merton (Merton 1968), where established centers \nattract disproportionate resources, exacerbating regional imbalance. Broader studies on regional \ninnovation systems (Grillitsch et al. 2019) and the socio-economic impacts of regional inequality \n(Rodriguez-Pose et al. 2019) highlight the importance of considering geographical factors in \nscience policy.",
-          "is_title": false,
+          "is_title": true,
           "page": 4,
           "text_length": 1017
         },
         {
           "text": "2.4. \nTopic Modelling \nTopic modelling has emerged as a crucial tool for analyzing large text datasets to identify \npatterns and recurring themes. The foundation for modern topic modelling was established by Blei \net al. (Blei 2003), who introduced Latent Dirichlet Allocation (LDA). LDA, a generative \nprobabilistic model, has since become a fundamental method for text analysis. Building upon \nLDA, Structural Topic Models (STM) (Roberts et al. 2013) enable researchers to incorporate \nmetadata (e.g., authorship demographics, temporal trends) directly into topic discovery, a feature \ncritical for analyzing the interplay between research content and contextual factors (Roberts et al. \n2019). The emergence of transformer-based architectures, such as BERT (Devlin et al. 2019), has \nrecently revolutionized natural language processing by enabling models to capture intricate \ncontextual relationships within text. Building upon this, transformer-based topic models, e.g., \nBERTopic (Grootendorst 2020), leverage advanced contextual embeddings to capture semantic \nrelationships in text, showing strong performance for analyzing complex documents (Bianchi et \nal. 2021). Comparative studies of LDA, STM, and BERTopic emphasize trade-offs between \nprobabilistic interpretability and contextual nuance (Egger and Yu 2023), a methodological tension \ncentral to our study. Evaluating topic models involves assessing topic coherence, which quantifies \nthe interpretability of topics (Mimno et al. 2011; Röder, Both, and Hinneburg 2015), particularly \nrelevant for models such as BERTopic. The underlying dimensionality reduction techniques used \nin some models, e.g., BERTopic, often rely on algorithms such as Uniform Manifold \nApproximation and Projection (UMAP) (Healy and McInnes 2024), while clustering is performed \nwith methods like HDBSCAN (McInnes, Healy, and Astels 2017), highlighting the mixed nature \nof these approaches.",
-          "is_title": false,
+          "is_title": true,
           "page": 4,
           "text_length": 1932
         },
         {
           "text": "2.5. \nMethodological Approaches to Effect Estimation \nThe application of regression techniques to topic model outputs for effect estimation builds \nupon a growing body of work in computational social science and text analysis. For instance, \nstudies have utilized models that link author characteristics to topics discussed in scientific \nliterature (Rosen-Zvi et al. 2004) and used regression to understand how temporal trends affect",
-          "is_title": false,
+          "is_title": true,
           "page": 4,
           "text_length": 434
         }
@@ -266,7 +266,7 @@
       "content": "7 \n\n4.1. \nData Preprocessing \nThe collected data underwent a thorough cleaning and preprocessing process to ensure its \ncompatibility with our modelling techniques. The following steps were implemented:  \n\n1. Removal of incomplete entries: All entries lacking application summaries were \nremoved to ensure that each record contained sufficient information for analysis. \n\n2.  Elimination of duplicates: Duplicate records were identified and eliminated to maintain \ndata integrity and prevent redundancy.  \n\n3. Translation of non-English content: Non-English content, such as French and Italian, \nwas translated into English using the deep_translator package in Python. To verify the \naccuracy of the translations, a random sample of 5% of the translated content was manually \nreviewed, confirming its suitability for subsequent analysis.  \n\n4. Cleaning of non-textual elements: Non-textual elements, including punctuation, \nnumbers, and special characters, were removed to streamline the text for processing.  \n\n5. Text normalization: The text was converted to lowercase and tokenized, facilitating \nconsistent analysis across all entries.  \n\n6. Stop-word removal: Common English stop-words were removed to reduce noise and \nfocus on meaningful content.  \n\n7. Exclusion of domain-specific terms: In addition to general stop-words, domain-specific \nterms such as “Canada”, “NSERC”, and “Research” were excluded to prevent skewing of \nthematic analysis.  \n\n8. Lemmatization: Words were reduced to their root forms by lemmatization, aiding in the \nconsolidation of similar terms. \n\n9. N-grams: Bigrams and trigrams were also considered to capture contextually relevant \nphrases and enhance thematic richness. \n\nThis comprehensive preprocessing approach ensured that the dataset was optimized for \nsubsequent modelling and analysis, allowing for accurate exploration of research themes. \n\n4.2. \nTopic Modelling \nIn this study, we employed and compared three topic modelling techniques to extract themes \nfrom our corpus. Each model is described below. \n4.2.1. Latent Dirichlet Allocation (LDA) \n\nIntroduced by Blei et al. (Blei 2003), LDA is a foundational generative probabilistic model \ndesigned to uncover latent topics within a document collection. LDA operates under the \nassumption that each document is a mixture of multiple topics, and each topic is characterized by \na distribution of words. To determine the optimal number of topics (K), we conducted a thorough \nanalysis by combining coherence scores (Cv) with a grid search spanning 2 to 20 topics. \nAdditionally, we examined the top keywords for each topic to ensure meaningful categorization. \nThrough this approach, we identified 11 as the optimal number of topics. \n4.2.2. Structural Topic Modelling (STM) \n\nSTM (Roberts et al. 2013) enhances the traditional topic modelling framework by integrating \ndocument-level metadata, allowing for a nuanced analysis of topic prevalence and content. The \nSTM model was implemented using the stm package in R. To determine the optimal number of",
       "content_length": 3046,
       "source_file": "2510.18803v1.pdf",
-      "has_titles": false,
+      "has_titles": true,
       "structured_blocks": [
         {
           "text": "7",
@@ -276,61 +276,61 @@
         },
         {
           "text": "4.1. \nData Preprocessing \nThe collected data underwent a thorough cleaning and preprocessing process to ensure its \ncompatibility with our modelling techniques. The following steps were implemented:",
-          "is_title": false,
+          "is_title": true,
           "page": 7,
           "text_length": 198
         },
         {
           "text": "1. Removal of incomplete entries: All entries lacking application summaries were \nremoved to ensure that each record contained sufficient information for analysis.",
-          "is_title": false,
+          "is_title": true,
           "page": 7,
           "text_length": 163
         },
         {
           "text": "2.  Elimination of duplicates: Duplicate records were identified and eliminated to maintain \ndata integrity and prevent redundancy.",
-          "is_title": false,
+          "is_title": true,
           "page": 7,
           "text_length": 131
         },
         {
           "text": "3. Translation of non-English content: Non-English content, such as French and Italian, \nwas translated into English using the deep_translator package in Python. To verify the \naccuracy of the translations, a random sample of 5% of the translated content was manually \nreviewed, confirming its suitability for subsequent analysis.",
-          "is_title": false,
+          "is_title": true,
           "page": 7,
           "text_length": 330
         },
         {
           "text": "4. Cleaning of non-textual elements: Non-textual elements, including punctuation, \nnumbers, and special characters, were removed to streamline the text for processing.",
-          "is_title": false,
+          "is_title": true,
           "page": 7,
           "text_length": 167
         },
         {
           "text": "5. Text normalization: The text was converted to lowercase and tokenized, facilitating \nconsistent analysis across all entries.",
-          "is_title": false,
+          "is_title": true,
           "page": 7,
           "text_length": 127
         },
         {
           "text": "6. Stop-word removal: Common English stop-words were removed to reduce noise and \nfocus on meaningful content.",
-          "is_title": false,
+          "is_title": true,
           "page": 7,
           "text_length": 110
         },
         {
           "text": "7. Exclusion of domain-specific terms: In addition to general stop-words, domain-specific \nterms such as “Canada”, “NSERC”, and “Research” were excluded to prevent skewing of \nthematic analysis.",
-          "is_title": false,
+          "is_title": true,
           "page": 7,
           "text_length": 194
         },
         {
           "text": "8. Lemmatization: Words were reduced to their root forms by lemmatization, aiding in the \nconsolidation of similar terms.",
-          "is_title": false,
+          "is_title": true,
           "page": 7,
           "text_length": 121
         },
         {
           "text": "9. N-grams: Bigrams and trigrams were also considered to capture contextually relevant \nphrases and enhance thematic richness.",
-          "is_title": false,
+          "is_title": true,
           "page": 7,
           "text_length": 126
         },
@@ -342,7 +342,7 @@
         },
         {
           "text": "4.2. \nTopic Modelling \nIn this study, we employed and compared three topic modelling techniques to extract themes \nfrom our corpus. Each model is described below. \n4.2.1. Latent Dirichlet Allocation (LDA)",
-          "is_title": false,
+          "is_title": true,
           "page": 7,
           "text_length": 204
         },
@@ -388,7 +388,7 @@
         },
         {
           "text": "4.3. \nComparative Analysis of Topic Models \nTo conduct a robust comparison of the topics generated by the three models—LDA, STM, \nand BERTopic—we adopted a systematic approach combining cross-model topic alignment, \nsemantic interpretability assessment, and quantitative evaluation metrics.",
-          "is_title": false,
+          "is_title": true,
           "page": 8,
           "text_length": 290
         },
@@ -578,7 +578,7 @@
       "content": "10 \n\n    where Wall is the multiset of all top words from the triplet topics for the model, and count(w, \nWall) denotes the number of occurrences of word w in Wall. The model’s uniqueness score is the \naverage of Uniqueness(T) across all its matched topics. \n4.3.2.3. Topic Diversity \n\nThis metric represents the vocabulary range across the evaluated topics for a given model. It \nis calculated as the proportion of unique words among all top words from the triplet topics. \nFormally: \n\n𝐷𝑖𝑣𝑒𝑟𝑠𝑖𝑡𝑦= | ⋃\n𝑊𝑇\n𝑇∈𝑀\n|\n∑\n|𝑊𝑇|\n𝑇∈𝑀\n\n             (4) \n\nwhere M is the set of matched triplet topics for the model, and ∑\n|𝑊𝑇|\n𝑇∈𝑀\n is the total number \nof words (with duplicates) across all topics. Higher scores indicate a broader range of distinct terms \nacross topics. \n\n4.4. \nCovariate Effect Estimation \nAfter extracting topics, we aimed to estimate the effects of geographic location and gender on \nresearch themes. To address the uneven distribution of scientific publications across provinces, we \npreprocessed the geographic location variable. Provinces with fewer than 1000 publications were \ncombined into a single ``Other'' group. This step enhances the statistical stability of the regression \nestimates for the larger, more frequently sampled provinces while still accounting for the \ncontributions from smaller regions.  \n\nWe estimated the effect of province and gender on the prevalence of each topic identified by \nthe STM and BERTopic model.  Topic prevalence, defined as the proportion of a document d \nassigned to a given topic k (𝜃𝑑,𝑘), was treated as the dependent variable in a regression model, \nwith province and gender as key predictors separately. The resulting categorical variables were \nhandled using sum contrasts. Sum contrasts compare the mean of each category to the overall mean \nof the dependent variable across all observations. In this context, the intercept of the regression \nrepresents the estimated overall mean topic proportion across all publications, and the coefficient \nfor each province or gender category represents the estimated difference between that category’s \nmean topic proportion and this overall mean. The general form of the regression model for topic k \nis \n\n𝜃𝑑,𝑘= 𝛽0,𝑘+ ∑𝛽𝑗,𝑘𝐶𝑑,𝑗+ 𝜀𝑑,𝑘\n\n𝑃−1\n\n𝑗=1\n\n           (5) \n\nwhere 𝜃𝑑,𝑘 is the proportion of document d in topic k, 𝛽0,𝑘 is the intercept (overall mean), 𝛽𝑗,𝑘 \nis the coefficient for the j-th category (representing the difference from the overall mean), 𝐶𝑑,𝑗 is \nthe sum contrast variables for the P categories of the relevant covariate (e.g., gender or geographic \nlocation), and 𝜀𝑑,𝑘 is the error term.",
       "content_length": 2604,
       "source_file": "2510.18803v1.pdf",
-      "has_titles": false,
+      "has_titles": true,
       "structured_blocks": [
         {
           "text": "10",
@@ -618,7 +618,7 @@
         },
         {
           "text": "4.4. \nCovariate Effect Estimation \nAfter extracting topics, we aimed to estimate the effects of geographic location and gender on \nresearch themes. To address the uneven distribution of scientific publications across provinces, we \npreprocessed the geographic location variable. Provinces with fewer than 1000 publications were \ncombined into a single ``Other'' group. This step enhances the statistical stability of the regression \nestimates for the larger, more frequently sampled provinces while still accounting for the \ncontributions from smaller regions.",
-          "is_title": false,
+          "is_title": true,
           "page": 10,
           "text_length": 560
         },
@@ -716,7 +716,7 @@
         },
         {
           "text": "5.1. \nComparative Analysis of Topic Models \nThe comparative analysis highlights both similarities and differences in the thematic structures \nidentified by BERTopic, STM, and LDA, shedding light on each model's strengths and \nweaknesses. Figure 3 presents the t-SNE visualization of the topics identified by these models. In \nthe plot, clustered points represent semantically similar topics, regardless of their originating \nmodel, while more isolated points indicate distinct thematic spaces. This visualization not only \nconfirms quantitative similarities and differences but also serves as a foundational reference for \nunderstanding the thematic relationships explored in detail below.",
-          "is_title": false,
+          "is_title": true,
           "page": 12,
           "text_length": 689
         },
@@ -1420,7 +1420,7 @@
         },
         {
           "text": "5.2. \nCovariate Effect Estimation \nIn addition to the comparative analysis, a key contribution of this work is the development of \nthe COFFEE algorithm, which allows for robust statistical analysis and effect estimation from \nBERTopic's non-probabilistic outputs. By systematically comparing the insights derived from \nBERTopic, processed via COFFEE (see Tables 12 and 14 in Appendix A) against those obtained \nfrom Structural Topic Model (STM) (see Tables 13 and 15 in Appendix A, for more details), we \nhighlight BERTopic's ability to corroborate established patterns while revealing unique, granular \nthemes that traditional models such as STM may overlook.",
-          "is_title": false,
+          "is_title": true,
           "page": 17,
           "text_length": 660
         },
@@ -2052,7 +2052,7 @@
       "content": "23 \n\nProceedings of the 59th Annual Meeting of the Association for Computational Linguistics \n(Short Papers). \nBlei, David M. 2003. “Latent Dirichlet Allocation.” Journal of Machine Learning Research 993–\n\n1022. \nBlei, David M., and John D. Lafferty. 2006. “Dynamic Topic Models.” Pp. 113–20 in \n\nProceedings of the 23rd international conference on Machine learning - ICML ’06. ACM \nPress. \nBloch, Carter, and Mads P. Sørensen. 2014. “Funding Disparities across Regions.” Research \n\nPolicy 43(10):1803–17. doi:10.1016/j.respol.2014.06.003. \nBornmann, Lutz, Rüdiger Mutz, and Hans-Dieter Daniel. 2007. “Gender Differences in Grant \n\nPeer Review: A Meta-Analysis.” Royal Society Open Science 8(3):201468. \nBoyack, Kevin W., and Richard Klavans. 2011. “Comparison of Methods for Document \n\nClustering.” Journal of Informetrics 5(4):621–39. \nBreschi, Stefano, and Francesco Lissoni. 2010. “The Geography of Knowledge Spillovers: The \n\nRole of Inventors’ Mobility Across Firms and Space.” Journal of Economic Geography \n10(1):105–26. doi:10.1093/jeg/lbp049. \nBurney, Sheraza, Lorie Donelle, and Anita Kothari. 2025. “Exploring the Public Health Agency \n\nof Canada’s and the Ontario Government’s Vaccine-Related Crisis Communication on X \nduring the COVID-19 Pandemic.” FACETS 10:1–16. doi:10.1139/facets-2022-0186. \nCanadian Nurses Association. 2023. “Nursing Statistics.” \nDevlin, Jacob, Ming-Wei Chang, Kenton Lee, and Kristina Toutanova. 2019. “BERT: Pre-\n\nTraining of Deep Bidirectional Transformers for Language Understanding.” Pp. 4171–86 \nin Proceedings of the 2019 Conference of the North American Chapter of the Association \nfor Computational Linguistics: Human Language Technologies, Volume 1 (Long and \nShort Papers), edited by J. Burstein, C. Doran, and T. Solorio. Minneapolis, Minnesota: \nAssociation for Computational Linguistics. \nDubé, Monique G., Jenna M. Dunlop, Carla Davidson, Danielle L. Beausoleil, Roderick R. O. \n\nHazewinkel, and Faye Wyatt. 2022. “History, Overview, and Governance of \nEnvironmental Monitoring in the Oil Sands Region of Alberta, Canada.” Integrated \nEnvironmental Assessment and Management 18(2):319–32. doi:10.1002/ieam.4490. \nEbadi, Ashkan, and Andrea Schiffauerova. 2016. “How to Boost Scientific Production? A \n\nStatistical Analysis of Research Funding and Other Influencing Factors.” Scientometrics \n106(3):1093–1116. doi:10.1007/s11192-015-1825-x. \nEbadi, Ashkan, Stéphane Tremblay, Cyril Goutte, and Andrea Schiffauerova. 2020. “Application \n\nof Machine Learning Techniques to Assess the Trends and Alignment of the Funded \nResearch Output.” Journal of Informetrics 14(2):101018. doi:10.1016/j.joi.2020.101018. \nEfron, Bradley, and R. J. Tibshirani. 1994. An Introduction to the Bootstrap. Chapman and \n\nHall/CRC. \nEgger, R., and J. Yu. 2023. “Comparing Topic Models: A Systematic Analysis of LDA, STM, \n\nand BERTopic.” Journal of Computational Social Science 6(1):112–35. \ndoi:10.1007/s42001-023-00212-z. \nElse, Paul, Paula Rochon, R. Goldfarb, C. A. Klinger, and S. E. Straus. 2020. “Identifying \n\nFactors Associated with Grant Success: A Case Study from the Canadian Institutes of \nHealth Research.” BMJ Open 10(11):e040439. doi:10.1136/bmjopen-2020-040439. \nGoldin, D., and M. Urquhart-Cronish. 2019. “Study Finds Gender Differences in Success Rates \n\nfor Canadian Scientific Research Grants.” University Affairs.",
       "content_length": 3363,
       "source_file": "2510.18803v1.pdf",
-      "has_titles": false,
+      "has_titles": true,
       "structured_blocks": [
         {
           "text": "23",
@@ -2068,7 +2068,7 @@
         },
         {
           "text": "1022. \nBlei, David M., and John D. Lafferty. 2006. “Dynamic Topic Models.” Pp. 113–20 in",
-          "is_title": false,
+          "is_title": true,
           "page": 23,
           "text_length": 88
         },
@@ -2519,5 +2519,5 @@
       ]
     }
   ],
-  "timestamp": "2025-10-22T13:23:09.458949"
+  "timestamp": "2025-10-22T15:50:46.642975"
 }

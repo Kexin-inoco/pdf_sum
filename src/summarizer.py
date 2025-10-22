@@ -42,111 +42,96 @@ class Summarizer:
             openai_api_key=config.openai_api_key
         )
     
-    def _select_key_chunks(self, chunks: List[Document]) -> List[Document]:
-        """
-        Select key chunks for summarization:
-        - First chunk (title + abstract/opening) - FULL CONTENT
-        - Abstract section - FULL CONTENT
-        - Introduction section - FULL CONTENT
-        - All section titles - TITLE ONLY
-        - Conclusion section - FULL CONTENT
-        
-        Args:
-            chunks: All document chunks
-            
-        Returns:
-            Selected key chunks
-        """
-        key_chunks = []
-        section_titles = []
-        
-        for i, chunk in enumerate(chunks):
-            section_title = chunk.metadata.get('section_title', '')
-            section_title_lower = section_title.lower()
-            content_lower = chunk.page_content.lower()
-            
-            # First chunk: always include full content (title + abstract)
-            if i == 0:
-                key_chunks.append(chunk)
-            
-            # Abstract: include full content (check both title and content)
-            elif 'abstract' in section_title_lower or content_lower.startswith('abstract'):
-                key_chunks.append(chunk)
-            
-            # Introduction: include full content
-            elif 'introduction' in section_title_lower:
-                key_chunks.append(chunk)
-            
-            # Conclusion/Future Work/Limitations: include full content
-            elif 'conclusion' in section_title_lower or 'future work' in section_title_lower or 'limitation' in section_title_lower:
-                key_chunks.append(chunk)
-            
-            # Other sections: only collect titles
-            else:
-                # Only add if it has a meaningful numbered title
-                if section_title and len(section_title) < 200:
-                    # Check if it's a numbered section
-                    if any(section_title.strip().startswith(f"{n}.") for n in range(1, 10)):
-                        section_titles.append(section_title)
-        
-        # Add section titles as structure overview
-        if section_titles:
-            structure_overview = "Document Structure:\n" + "\n".join(f"- {title}" for title in section_titles)
-            key_chunks.insert(1, Document(
-                page_content=structure_overview,
-                metadata={'section_type': 'structure_overview'}
-            ))
-        
-        return key_chunks
     
-    def summarize(self, chunks: List[Document]) -> str:
+    def summarize(self, chunks: List[Document], documents_data: List[Dict] = None) -> tuple[str, List[Dict]]:
         """
-        Generate summary from key document chunks.
-        Focuses on: opening, introduction, section titles, and conclusion.
+        Generate table of contents from document titles.
+        Directly extracts titles from documents_data where is_title=True.
         
         Args:
-            chunks: List of Document chunks to summarize
+            chunks: List of Document chunks (not used anymore)
+            documents_data: List of document data with is_title information
             
         Returns:
-            Generated summary text
+            Generated table of contents text
             
         Raises:
-            ValueError: If chunks is empty or invalid
+            ValueError: If documents_data is empty or no titles found
         """
-        if not chunks:
-            raise ValueError("Cannot summarize empty chunks list")
+        if not documents_data:
+            raise ValueError("Cannot summarize: documents_data is empty")
         
-        # Select key chunks for summarization
-        key_chunks = self._select_key_chunks(chunks)
+        # Extract titles directly from documents_data
+        titles = []
+        for doc in documents_data:
+            if doc.get('is_title', False):
+                text = doc.get('text', '').strip()
+                page = doc.get('page', '')
+                
+                if text:
+                    # Extract only the first line or first few lines for titles
+                    # Split by newlines and take the first non-empty line
+                    lines = [line.strip() for line in text.split('\n') if line.strip()]
+                    if lines:
+                        # Take the first line as the title
+                        title_text = lines[0]
+                        
+                        # If the first line is very short (like "2.1."), try to get the next line too
+                        if len(title_text) < 10 and len(lines) > 1:
+                            title_text = f"{title_text} {lines[1]}"
+                        
+                        if len(title_text) > 100:
+                            title_text = title_text[:100] + "..."
+                        
+                        # Add page number if available
+                        title_with_page = f"{title_text} (Page {page})" if page else title_text
+                        titles.append(title_with_page)
         
-        # Combine key chunks
-        text_parts = [chunk.page_content for chunk in key_chunks]
-        combined_text = "\n\n".join(text_parts)
+        if not titles:
+            return "No section titles found in the document."
         
-        # Limit to approximately 15000 characters (increased for academic papers)
-        if len(combined_text) > 15000:
-            combined_text = combined_text[:15000] + "..."
+        # Create structured titles data for JSON output
+        titles_data = []
+        for i, title in enumerate(titles):
+            # Extract page number from title if present
+            page_num = None
+            if " (Page " in title:
+                try:
+                    page_part = title.split(" (Page ")[1].rstrip(")")
+                except:
+                    page_part = None
+                if page_part and page_part.isdigit():
+                    page_num = int(page_part)
+            
+            # Clean title text (remove page number)
+            clean_title = title.split(" (Page ")[0] if " (Page " in title else title
+            
+            titles_data.append({
+                "index": i + 1,
+                "title": clean_title,
+                "page": page_num,
+                "original_text": title
+            })
         
-        # Create prompt
-        prompt = f"""Please provide a concise summary (200-300 words) of the following research paper.
+        # Create prompt for table of contents
+        titles_text = "\n".join(f"- {title}" for title in titles)
+        prompt = f"""Please format the following section titles into a table of contents in markdown format, keeping the EXACT SAME ORDER as provided.
 
-The content includes the paper's opening, introduction, section structure, and conclusion.
+Do NOT reorder or reorganize the sections. Just format them with proper numbering while maintaining the original sequence.
 
-Structure your summary to include:
-1. Main research problem or objective
-2. Proposed method or approach  
-3. Key results and conclusions
+Include page numbers where available.
+If a title appears to be a **person's name** (for example, "David M. Blei" or "John D. Lafferty") and it **appears multiple times**, ignore it completely — do NOT include it in the table of contents.
 
-Paper content:
-{combined_text}
+Section titles (in order):
+{titles_text}
 
-Summary:"""
+Table of Contents:"""
         
         try:
             # Call LLM directly
             response = self.llm.invoke(prompt)
             summary = response.content.strip()
-            return summary
+            return summary, titles_data
             
         except Exception as e:
             raise Exception(f"Summarization failed: {str(e)}")
@@ -154,26 +139,22 @@ Summary:"""
     def format_output(
         self,
         summary: str,
-        chunks: List[Document],
-        metadata: Optional[Dict[str, Any]] = None
+        documents_data: List[Dict] = None,
+        metadata: Optional[Dict[str, Any]] = None,
+        titles_data: List[Dict] = None
     ) -> Dict[str, Any]:
-        """
-        Format summary with metadata into structured output.
+
+        # Calculate metadata from documents_data
+        total_pages = 0
+        if documents_data:
+            total_pages = len(set(doc.get('page', 0) for doc in documents_data))
         
-        Args:
-            summary: Generated summary text
-            chunks: Original document chunks
-            metadata: Additional metadata to include
-            
-        Returns:
-            Structured dictionary with summary and metadata
-        """
         output = {
-            "summary": summary,
+            "ai_generated_toc": summary,
+            "extracted_titles": titles_data or [],
             "metadata": {
-                "source_file": chunks[0].metadata.get('source_file', 'unknown') if chunks else None,
-                "total_pages": len(set(c.metadata.get('page', 0) for c in chunks)),
-                "chunks_processed": len(chunks),
+                "total_pages": total_pages,
+                "titles_found": len([d for d in documents_data or [] if d.get('is_title', False)]),
                 "model": self.model,
                 "temperature": self.temperature,
                 "timestamp": datetime.now().isoformat()

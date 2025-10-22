@@ -1,0 +1,90 @@
+{
+  "ai_generated_toc": "```markdown\nTable of Contents\n1. Seg the HAB: Language-Guided Geospatial Algae (Page 1)\n2. Introduction (Page 1)\n3. Related Work (Page 2)\n   3.1. Cyanobacteria Detection and Segmentation (Page 2)\n   3.2. Geospatial Foundation Models (Page 2)\n4. Methods (Page 2)\n   4.1. HAB Segmentation Dataset Curation (Page 2)\n   4.2. HAB Reasoning Dataset Curation (Page 3)\n   4.3. Vision-Language Model Architecture for HAB Monitoring (Page 3)\n5. Results (Page 4)\n   5.1. Setup (Page 4)\n   5.2. Results and Observations (Page 4)\n6. Conclusion (Page 4)\n```",
+  "extracted_titles": [
+    {
+      "index": 1,
+      "title": "Seg the HAB: Language-Guided Geospatial Algae",
+      "page": 1,
+      "original_text": "Seg the HAB: Language-Guided Geospatial Algae (Page 1)"
+    },
+    {
+      "index": 2,
+      "title": "1 Introduction",
+      "page": 1,
+      "original_text": "1 Introduction (Page 1)"
+    },
+    {
+      "index": 3,
+      "title": "2 Related Work",
+      "page": 2,
+      "original_text": "2 Related Work (Page 2)"
+    },
+    {
+      "index": 4,
+      "title": "2.1 Cyanobacteria Detection and Segmentation",
+      "page": 2,
+      "original_text": "2.1 Cyanobacteria Detection and Segmentation (Page 2)"
+    },
+    {
+      "index": 5,
+      "title": "2.2 Geospatial Foundation Models",
+      "page": 2,
+      "original_text": "2.2 Geospatial Foundation Models (Page 2)"
+    },
+    {
+      "index": 6,
+      "title": "3 Methods",
+      "page": 2,
+      "original_text": "3 Methods (Page 2)"
+    },
+    {
+      "index": 7,
+      "title": "3.1 HAB Segmentation Dataset Curation",
+      "page": 2,
+      "original_text": "3.1 HAB Segmentation Dataset Curation (Page 2)"
+    },
+    {
+      "index": 8,
+      "title": "3.2 HAB Reasoning Dataset Curation",
+      "page": 3,
+      "original_text": "3.2 HAB Reasoning Dataset Curation (Page 3)"
+    },
+    {
+      "index": 9,
+      "title": "3.3 Vision-Language Model Architecture for HAB Monitoring",
+      "page": 3,
+      "original_text": "3.3 Vision-Language Model Architecture for HAB Monitoring (Page 3)"
+    },
+    {
+      "index": 10,
+      "title": "4 Results",
+      "page": 4,
+      "original_text": "4 Results (Page 4)"
+    },
+    {
+      "index": 11,
+      "title": "4.1 Setup",
+      "page": 4,
+      "original_text": "4.1 Setup (Page 4)"
+    },
+    {
+      "index": 12,
+      "title": "4.2 Results and Observations",
+      "page": 4,
+      "original_text": "4.2 Results and Observations (Page 4)"
+    },
+    {
+      "index": 13,
+      "title": "5 Conclusion",
+      "page": 4,
+      "original_text": "5 Conclusion (Page 4)"
+    }
+  ],
+  "metadata": {
+    "total_pages": 9,
+    "titles_found": 13,
+    "model": "gpt-4-turbo-preview",
+    "temperature": 0.3,
+    "timestamp": "2025-10-22T15:50:32.936436"
+  }
+}
