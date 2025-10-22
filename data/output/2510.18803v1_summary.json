@@ -1,0 +1,11 @@
+{
+  "summary": "This research paper, authored by Shirin Tavakoli Kafiabad, Andrea Schiffauerova, and Ashkan Ebadi, delves into the optimization of national scientific investment through a detailed analysis of research proposals funded by the Natural Sciences and Engineering Research Council of Canada (NSERC) over an 18-year period (2005–2022). The main objective is to understand evolving research trends and the impact of demographic and geographical variables, with a focus on gender and geographic location, in the context of equity, diversity, and inclusion.\n\nThe authors propose a comparative evaluation of three topic modeling approaches: Latent Dirichlet Allocation (LDA), Structural Topic Modeling (STM), and BERTopic, alongside the introduction of a novel algorithm named COFFEE. This algorithm is designed to enable robust covariate effect estimation specifically for BERTopic, addressing the lack of a native function for covariate analysis in BERTopic compared to STM.\n\nThe key results from this study indicate that while all models were effective in identifying core scientific domains, BERTopic was superior in uncovering more detailed, coherent, and emergent themes, such as the significant growth of artificial intelligence research. Furthermore, the COFFEE algorithm facilitated the discovery of distinct provincial research specializations and consistent gender-based thematic patterns across various scientific disciplines. These findings suggest that funding organizations can leverage this analysis to develop more equitable and impactful funding strategies, ultimately enhancing the scientific ecosystem's effectiveness.\n\nIn conclusion, the study underscores the importance of advanced topic modeling techniques in deciphering the thematic structures of funded research proposals, offering valuable insights for future funding policy and strategy development. Despite its contributions, the study acknowledges limitations related to the preprocessing of data and suggests areas for future research to further refine and expand upon the findings presented.",
+  "metadata": {
+    "source_file": "2510.18803v1.pdf",
+    "total_pages": 25,
+    "chunks_processed": 57,
+    "model": "gpt-4-turbo-preview",
+    "temperature": 0.3,
+    "timestamp": "2025-10-22T12:27:41.651426"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "timestamp": "2025-10-22T12:27:41.685021",
+  "total_files": 1,
+  "successful": 1,
+  "failed": 0,
+  "results": [
+    {
+      "file": "2510.18803v1.pdf",
+      "status": "success",
+      "summary_length": 2063
+    }
+  ]
+}

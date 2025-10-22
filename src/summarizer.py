@@ -6,7 +6,6 @@ from typing import List, Dict, Any, Optional
 from datetime import datetime
 from langchain_openai import ChatOpenAI
 from langchain_core.documents import Document
-from langchain_core.prompts import PromptTemplate
 
 from config import config
 
@@ -43,9 +42,61 @@ class Summarizer:
             openai_api_key=config.openai_api_key
         )
     
+    def _select_key_chunks(self, chunks: List[Document]) -> List[Document]:
+        """
+        Select key chunks for summarization:
+        - First chunk (abstract/opening) - FULL CONTENT
+        - Introduction section - FULL CONTENT
+        - All section titles - TITLE ONLY
+        - Conclusion section - FULL CONTENT
+        
+        Args:
+            chunks: All document chunks
+            
+        Returns:
+            Selected key chunks
+        """
+        key_chunks = []
+        section_titles = []
+        
+        for i, chunk in enumerate(chunks):
+            section_title = chunk.metadata.get('section_title', '')
+            section_title_lower = section_title.lower()
+            
+            # First chunk: always include full content (title + abstract)
+            if i == 0:
+                key_chunks.append(chunk)
+            
+            # Introduction: include full content
+            elif 'introduction' in section_title_lower:
+                key_chunks.append(chunk)
+            
+            # Conclusion/Future Work: include full content
+            elif 'conclusion' in section_title_lower or 'future work' in section_title_lower or 'limitation' in section_title_lower:
+                key_chunks.append(chunk)
+            
+            # Other sections: only collect titles
+            else:
+                # Only add if it has a meaningful numbered title
+                if section_title and len(section_title) < 200:
+                    # Check if it's a numbered section
+                    if any(section_title.strip().startswith(f"{n}.") for n in range(1, 10)):
+                        section_titles.append(section_title)
+        
+        # Add section titles as structure overview
+        if section_titles:
+            structure_overview = "Document Structure:\n" + "\n".join(f"- {title}" for title in section_titles)
+            key_chunks.insert(1, Document(
+                page_content=structure_overview,
+                metadata={'section_type': 'structure_overview'}
+            ))
+        
+        return key_chunks
+    
     def summarize(self, chunks: List[Document]) -> str:
         """
-        Generate summary from document chunks using simple approach.
+        Generate summary from key document chunks.
+        Focuses on: opening, introduction, section titles, and conclusion.
         
         Args:
             chunks: List of Document chunks to summarize
@@ -59,26 +110,31 @@ class Summarizer:
         if not chunks:
             raise ValueError("Cannot summarize empty chunks list")
         
-        # Combine first 10 chunks to keep within token limits
-        text_parts = [chunk.page_content for chunk in chunks[:10]]
+        # Select key chunks for summarization
+        key_chunks = self._select_key_chunks(chunks)
+        
+        # Combine key chunks
+        text_parts = [chunk.page_content for chunk in key_chunks]
         combined_text = "\n\n".join(text_parts)
         
-        # Limit to approximately 4000 characters to stay within token limits
-        if len(combined_text) > 4000:
-            combined_text = combined_text[:4000] + "..."
+        # Limit to approximately 6000 characters
+        if len(combined_text) > 6000:
+            combined_text = combined_text[:6000] + "..."
         
         # Create prompt
-        prompt = f"""Please provide a concise summary (200-300 words) of the following research paper excerpt.
+        prompt = f"""Please provide a concise summary (200-300 words) of the following research paper.
 
-            Structure your summary to include:
-            1. Main research problem or objective
-            2. Proposed method or approach
-            3. Key results and conclusions
+The content includes the paper's opening, introduction, section structure, and conclusion.
 
-            Paper content:
-            {combined_text}
+Structure your summary to include:
+1. Main research problem or objective
+2. Proposed method or approach  
+3. Key results and conclusions
 
-            Summary:"""
+Paper content:
+{combined_text}
+
+Summary:"""
         
         try:
             # Call LLM directly

@@ -4,10 +4,9 @@ Provides better text extraction with structural information.
 """
 import fitz  # PyMuPDF
 from pathlib import Path
-from typing import List, Dict, Tuple, Optional
+from typing import List, Dict, Optional
 from langchain_core.documents import Document
 
-from config import config
 from semantic_splitter import AcademicPaperSplitter
 
 
@@ -94,6 +93,10 @@ class EnhancedPDFProcessor:
                             
                             page_text += block_text + "\n"
                 
+                # Special handling for first page: mark first substantial block as title
+                if page_num == 0 and structured_blocks:
+                    self._mark_first_page_title(structured_blocks)
+                
                 # Create document with structural metadata
                 if page_text.strip():
                     doc_obj = Document(
@@ -114,9 +117,34 @@ class EnhancedPDFProcessor:
         except Exception as e:
             raise IOError(f"Failed to load PDF {pdf_path}: {str(e)}")
     
+    def _mark_first_page_title(self, structured_blocks: List[Dict]) -> None:
+        """
+        Mark the first substantial text block on first page as document title.
+        
+        Args:
+            structured_blocks: List of structured blocks from first page
+        """
+        for block in structured_blocks:
+            text = block.get('text', '').strip()
+            
+            # Skip very short text or pure numbers
+            if len(text) <= 5:
+                continue
+            
+            # Skip page numbers
+            if text.replace('.', '').replace('-', '').isdigit():
+                continue
+            
+            # First substantial block is the document title
+            if len(text) > 10:
+                block['is_title'] = True
+                block['is_document_title'] = True
+                break
+    
     def _is_likely_title(self, font_info: List[Dict]) -> bool:
         """
         Determine if a text block is likely a title based on font information.
+        Uses stricter criteria to avoid over-detection.
         
         Args:
             font_info: List of font information dictionaries
@@ -127,34 +155,64 @@ class EnhancedPDFProcessor:
         if not font_info:
             return False
         
-        # Check font size (titles are usually larger)
+        # Calculate average font size
         avg_font_size = sum(span['size'] for span in font_info) / len(font_info)
         
-        bold_count = sum(1 for span in font_info if span['flags'] & 2**4)  # Bold flag
+        # Count bold text
+        bold_count = sum(1 for span in font_info if span['flags'] & 2**4)
         
-        # Check text length (titles are usually shorter)
+        # Get text content
         total_text = ''.join(span['text'] for span in font_info)
-        text_length = len(total_text.strip())
+        text = total_text.strip()
+        text_length = len(text)
         
-        # Title criteria
-        is_large_font = avg_font_size > 12
-        is_bold = bold_count > len(font_info) * 0.5
-        is_short = text_length < 200
-        is_short_line = text_length < 100
+        # Skip very short text (likely page numbers or noise)
+        if text_length <= 3:
+            return False
         
-        # Check for common title patterns
-        title_patterns = [
-            r'^\d+\.?\s+[A-Z]',  # Numbered sections
-            r'^(abstract|introduction|methodology|results|conclusion)',
-            r'^[A-Z][A-Z\s]+$'  # All caps
+        # Skip pure numbers
+        if text.replace('.', '').replace('-', '').isdigit():
+            return False
+        
+        # Check for numbered section patterns (required for title)
+        numbered_section_patterns = [
+            r'^\d+\.?\s+[A-Z]',              # "1. Introduction" or "1 Introduction"
+            r'^\d+\.\d+\.?\s+',              # "1.1. Subsection"
+            r'^\d+\.\d+\.\d+\.?\s+',         # "1.1.1. Subsubsection"
+            r'^\d+\.\d+\.\d+\.\d+\.?\s+',    # "1.1.1.1. Level 4"
+            r'^\d+\.\s*\n',                  # "1.\n" followed by text
+            r'^\d+\.\d+\.\s*\n',             # "2.1.\n" followed by text
+            r'^\d+\.\d+\.\d+\.\s*\n',        # "2.1.3.\n" followed by text
         ]
         
-        has_title_pattern = any(
-            __import__('re').search(pattern, total_text, __import__('re').IGNORECASE)
-            for pattern in title_patterns
+        is_numbered_section = any(
+            __import__('re').search(pattern, text)
+            for pattern in numbered_section_patterns
         )
         
-        return (is_large_font and (is_bold or is_short or has_title_pattern)) or is_short_line
+        # Additional patterns (figures, tables, etc.)
+        special_patterns = [
+            r'^Figure\s+\d+',
+            r'^Table\s+\d+',
+            r'^Algorithm\s+\d+',
+        ]
+        
+        is_special_header = any(
+            __import__('re').search(pattern, text, __import__('re').IGNORECASE)
+            for pattern in special_patterns
+        )
+        
+        # Criteria for being a title
+        is_large_font = avg_font_size > 11.5
+        is_bold = bold_count > len(font_info) * 0.5
+        is_reasonable_length = 5 < text_length < 200
+        
+        # MUST have numbered section pattern OR special header pattern
+        if is_numbered_section or is_special_header:
+            # Additional check: should have reasonable formatting
+            return is_reasonable_length and (is_large_font or is_bold)
+        
+        return False
     
     def split_documents(self, documents: List[Document]) -> List[Document]:
         """

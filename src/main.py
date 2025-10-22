@@ -58,8 +58,7 @@ class PDFSummarizationPipeline:
             print(f"Warning: Input directory does not exist: {self.input_dir}")
             return []
         
-        pdf_files = list(self.input_dir.glob("*.pdf"))
-        return sorted(pdf_files)
+        return sorted(self.input_dir.glob("*.pdf"))
     
     def save_json(self, data: Dict, output_path: Path):
         """Save data as JSON file."""
@@ -98,8 +97,7 @@ class PDFSummarizationPipeline:
         print("\n[2/3] Generating summary with LLM...")
         print(f"  Model: {self.summarizer.model}")
         
-        #  summary = self.summarizer.summarize(chunks)
-        summary = "test"
+        summary = self.summarizer.summarize(chunks)
 
         
         print(f"  ✓ Summary generated ({len(summary)} characters)")
