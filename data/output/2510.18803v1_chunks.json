@@ -1,6 +1,6 @@
 {
   "source_file": "2510.18803v1.pdf",
-  "total_chunks": 57,
+  "total_chunks": 95,
   "chunks": [
     {
       "chunk_index": 0,
@@ -37,21 +37,53 @@
     {
       "chunk_index": 4,
       "section_type": "semantic_section",
-      "section_title": "2. Literature Review",
-      "content": "2. Literature Review\n\n2.1. \nResearch Funding and Its Impact \nInvesting in research and development is a critical driver of innovation and economic \nsustainability (Ebadi et al. 2020; Stephan 2012). Understanding the downstream impact of grant \nfunding on scientific productivity is crucial for optimizing resource allocation and maximizing \nsocietal benefits (Ebadi and Schiffauerova 2016a; Jacob and Lefgren 2011). This necessitates a \ncomprehensive understanding of evolving research trends for effective and equitable allocation of \nresources. Recent analyses of global R&D expenditure highlight the increasing prioritization of \nscience and technology as tools for addressing societal challenges, though disparities in funding \ndistribution persist across regions and demographics (Bloch and Sørensen 2014; Ebadi et al. 2020). \nIn Canada, initiatives such as the Tri-Agency Equity, Diversity, and Inclusion (EDI) Action Plan \n(NSERC 2021) reflect a growing recognition of systemic inequities in research ecosystems, \nunderscoring the need for data-driven assessments of funding patterns.\n\n2.2. \nGender Disparities in Scientific Research \nThe role of demographic factors, such as gender, in shaping research priorities remains \nrelatively less explored. Studies have consistently demonstrated gender disparities within scientific \nresearch (Abramo, D’Angelo, and Di Costa 2019; van den Besselaar and Mom 2021). For instance, \nLarivière et al. (Larivière et al. 2013) highlighted global gender disparities, indicating that women \nare often underrepresented in scientific authorship. Similarly, van Arensbergen et al. (van \nArensbergen, van der Weijden, and van den Besselaar 2014) found that gender differences in \nscientific productivity and funding success persist across various disciplines, emphasizing the \ncontinued need for more inclusive approaches to funding allocation. In Canada, Else et al. (Else et \nal. 2020) found that factors predicting research grant success vary, suggesting the potential \ninfluence of gender. Moreover, persistent gender gaps in Canadian STEM funding, particularly in \nengineering and physical sciences, have been documented, showing, for instance, higher rejection \nrates for early-career women scientists and slightly less funding for successful female applicants \n(Goldin and Urquhart-Cronish 2019). Hajibabaei et al. (Hajibabaei, Schiffauerova, and Ebadi \n2022, 2023) found that in AI research networks. At the same time, scientific performance is key",
-      "chunk_length": 2493,
+      "section_title": "2.1. \nResearch Funding and Its Impact \nInvesting in research and development is a critical driver of innovation and economic \nsustainability (Ebadi et al. 2020; Stephan 2012). Understanding the downstream impact of grant \nfunding on scientific productivity is crucial for optimizing resource allocation and maximizing \nsocietal benefits (Ebadi and Schiffauerova 2016a; Jacob and Lefgren 2011). This necessitates a \ncomprehensive understanding of evolving research trends for effective and equitable allocation of \nresources. Recent analyses of global R&D expenditure highlight the increasing prioritization of \nscience and technology as tools for addressing societal challenges, though disparities in funding \ndistribution persist across regions and demographics (Bloch and Sørensen 2014; Ebadi et al. 2020). \nIn Canada, initiatives such as the Tri-Agency Equity, Diversity, and Inclusion (EDI) Action Plan \n(NSERC 2021) reflect a growing recognition of systemic inequities in research ecosystems, \nunderscoring the need for data-driven assessments of funding patterns.",
+      "content": "2.1. \nResearch Funding and Its Impact \nInvesting in research and development is a critical driver of innovation and economic \nsustainability (Ebadi et al. 2020; Stephan 2012). Understanding the downstream impact of grant \nfunding on scientific productivity is crucial for optimizing resource allocation and maximizing \nsocietal benefits (Ebadi and Schiffauerova 2016a; Jacob and Lefgren 2011). This necessitates a \ncomprehensive understanding of evolving research trends for effective and equitable allocation of \nresources. Recent analyses of global R&D expenditure highlight the increasing prioritization of \nscience and technology as tools for addressing societal challenges, though disparities in funding \ndistribution persist across regions and demographics (Bloch and Sørensen 2014; Ebadi et al. 2020). \nIn Canada, initiatives such as the Tri-Agency Equity, Diversity, and Inclusion (EDI) Action Plan \n(NSERC 2021) reflect a growing recognition of systemic inequities in research ecosystems, \nunderscoring the need for data-driven assessments of funding patterns.",
+      "chunk_length": 1069,
       "page": 3
     },
     {
       "chunk_index": 5,
       "section_type": "semantic_section",
-      "section_title": "Untitled Section",
-      "content": "for both genders to achieve central roles. Women face subtle disadvantages in possessing core \npositions, which further highlights ongoing gender disparities (Hajibabaei et al. 2023). These \ndisparities are potentially exacerbated by biases in evaluation processes, as evidenced by studies \nsuggesting that grant applications led by women may be evaluated less favorably than those led \nby men, even when scientific quality is comparable (Bornmann et al. 2007; Wennerås and Wold \n1997; Witteman et al. 2019).\n\n2.3. \nGeographical Disparities in Research Funding \nGeographical disparities in research funding allocation remain a persistent challenge, \nmirroring demographic inequities. Breschi and Lissoni (Breschi and Lissoni 2010) illustrate how \nregional proximity and inventor mobility drive knowledge spillovers, emphasizing the role of \ngeography in shaping innovation. The concentration of funding in metropolitan hubs can \nmarginalize researchers in peripheral regions, limiting access to resources and collaboration \nopportunities (Grillitsch et al. 2019; Rodriguez-Pose et al. 2019). This spatial inequity aligns with \nthe “Matthew Effect” in science described by Merton (Merton 1968), where established centers \nattract disproportionate resources, exacerbating regional imbalance. Broader studies on regional \ninnovation systems (Grillitsch et al. 2019) and the socio-economic impacts of regional inequality \n(Rodriguez-Pose et al. 2019) highlight the importance of considering geographical factors in \nscience policy.\n\n2.4. \nTopic Modelling \nTopic modelling has emerged as a crucial tool for analyzing large text datasets to identify \npatterns and recurring themes. The foundation for modern topic modelling was established by Blei \net al. (Blei 2003), who introduced Latent Dirichlet Allocation (LDA). LDA, a generative \nprobabilistic model, has since become a fundamental method for text analysis. Building upon \nLDA, Structural Topic Models (STM) (Roberts et al. 2013) enable researchers to incorporate \nmetadata (e.g., authorship demographics, temporal trends) directly into topic discovery, a feature \ncritical for analyzing the interplay between research content and contextual factors (Roberts et al. \n2019). The emergence of transformer-based architectures, such as BERT (Devlin et al. 2019), has \nrecently revolutionized natural language processing by enabling models to capture intricate \ncontextual relationships within text. Building upon this, transformer-based topic models, e.g., \nBERTopic (Grootendorst 2020), leverage advanced contextual embeddings to capture semantic \nrelationships in text, showing strong performance for analyzing complex documents (Bianchi et \nal. 2021). Comparative studies of LDA, STM, and BERTopic emphasize trade-offs between \nprobabilistic interpretability and contextual nuance (Egger and Yu 2023), a methodological tension \ncentral to our study. Evaluating topic models involves assessing topic coherence, which quantifies \nthe interpretability of topics (Mimno et al. 2011; Röder, Both, and Hinneburg 2015), particularly \nrelevant for models such as BERTopic. The underlying dimensionality reduction techniques used \nin some models, e.g., BERTopic, often rely on algorithms such as Uniform Manifold \nApproximation and Projection (UMAP) (Healy and McInnes 2024), while clustering is performed \nwith methods like HDBSCAN (McInnes, Healy, and Astels 2017), highlighting the mixed nature \nof these approaches.\n\n2.5. \nMethodological Approaches to Effect Estimation \nThe application of regression techniques to topic model outputs for effect estimation builds \nupon a growing body of work in computational social science and text analysis. For instance, \nstudies have utilized models that link author characteristics to topics discussed in scientific \nliterature (Rosen-Zvi et al. 2004) and used regression to understand how temporal trends affect",
-      "chunk_length": 3897,
-      "page": 4
+      "section_title": "2.2. \nGender Disparities in Scientific Research \nThe role of demographic factors, such as gender, in shaping research priorities remains \nrelatively less explored. Studies have consistently demonstrated gender disparities within scientific \nresearch (Abramo, D’Angelo, and Di Costa 2019; van den Besselaar and Mom 2021). For instance, \nLarivière et al. (Larivière et al. 2013) highlighted global gender disparities, indicating that women \nare often underrepresented in scientific authorship. Similarly, van Arensbergen et al. (van \nArensbergen, van der Weijden, and van den Besselaar 2014) found that gender differences in \nscientific productivity and funding success persist across various disciplines, emphasizing the \ncontinued need for more inclusive approaches to funding allocation. In Canada, Else et al. (Else et \nal. 2020) found that factors predicting research grant success vary, suggesting the potential \ninfluence of gender. Moreover, persistent gender gaps in Canadian STEM funding, particularly in \nengineering and physical sciences, have been documented, showing, for instance, higher rejection \nrates for early-career women scientists and slightly less funding for successful female applicants \n(Goldin and Urquhart-Cronish 2019). Hajibabaei et al. (Hajibabaei, Schiffauerova, and Ebadi \n2022, 2023) found that in AI research networks. At the same time, scientific performance is key",
+      "content": "2.2. \nGender Disparities in Scientific Research \nThe role of demographic factors, such as gender, in shaping research priorities remains \nrelatively less explored. Studies have consistently demonstrated gender disparities within scientific \nresearch (Abramo, D’Angelo, and Di Costa 2019; van den Besselaar and Mom 2021). For instance, \nLarivière et al. (Larivière et al. 2013) highlighted global gender disparities, indicating that women \nare often underrepresented in scientific authorship. Similarly, van Arensbergen et al. (van \nArensbergen, van der Weijden, and van den Besselaar 2014) found that gender differences in \nscientific productivity and funding success persist across various disciplines, emphasizing the \ncontinued need for more inclusive approaches to funding allocation. In Canada, Else et al. (Else et \nal. 2020) found that factors predicting research grant success vary, suggesting the potential \ninfluence of gender. Moreover, persistent gender gaps in Canadian STEM funding, particularly in \nengineering and physical sciences, have been documented, showing, for instance, higher rejection \nrates for early-career women scientists and slightly less funding for successful female applicants \n(Goldin and Urquhart-Cronish 2019). Hajibabaei et al. (Hajibabaei, Schiffauerova, and Ebadi \n2022, 2023) found that in AI research networks. At the same time, scientific performance is key",
+      "chunk_length": 1400,
+      "page": 3
     },
     {
       "chunk_index": 6,
+      "section_type": "semantic_section",
+      "section_title": "Untitled Section",
+      "content": "for both genders to achieve central roles. Women face subtle disadvantages in possessing core \npositions, which further highlights ongoing gender disparities (Hajibabaei et al. 2023). These \ndisparities are potentially exacerbated by biases in evaluation processes, as evidenced by studies \nsuggesting that grant applications led by women may be evaluated less favorably than those led \nby men, even when scientific quality is comparable (Bornmann et al. 2007; Wennerås and Wold \n1997; Witteman et al. 2019).",
+      "chunk_length": 508,
+      "page": 4
+    },
+    {
+      "chunk_index": 7,
+      "section_type": "semantic_section",
+      "section_title": "2.3. \nGeographical Disparities in Research Funding \nGeographical disparities in research funding allocation remain a persistent challenge, \nmirroring demographic inequities. Breschi and Lissoni (Breschi and Lissoni 2010) illustrate how \nregional proximity and inventor mobility drive knowledge spillovers, emphasizing the role of \ngeography in shaping innovation. The concentration of funding in metropolitan hubs can \nmarginalize researchers in peripheral regions, limiting access to resources and collaboration \nopportunities (Grillitsch et al. 2019; Rodriguez-Pose et al. 2019). This spatial inequity aligns with \nthe “Matthew Effect” in science described by Merton (Merton 1968), where established centers \nattract disproportionate resources, exacerbating regional imbalance. Broader studies on regional \ninnovation systems (Grillitsch et al. 2019) and the socio-economic impacts of regional inequality \n(Rodriguez-Pose et al. 2019) highlight the importance of considering geographical factors in \nscience policy.",
+      "content": "2.3. \nGeographical Disparities in Research Funding \nGeographical disparities in research funding allocation remain a persistent challenge, \nmirroring demographic inequities. Breschi and Lissoni (Breschi and Lissoni 2010) illustrate how \nregional proximity and inventor mobility drive knowledge spillovers, emphasizing the role of \ngeography in shaping innovation. The concentration of funding in metropolitan hubs can \nmarginalize researchers in peripheral regions, limiting access to resources and collaboration \nopportunities (Grillitsch et al. 2019; Rodriguez-Pose et al. 2019). This spatial inequity aligns with \nthe “Matthew Effect” in science described by Merton (Merton 1968), where established centers \nattract disproportionate resources, exacerbating regional imbalance. Broader studies on regional \ninnovation systems (Grillitsch et al. 2019) and the socio-economic impacts of regional inequality \n(Rodriguez-Pose et al. 2019) highlight the importance of considering geographical factors in \nscience policy.",
+      "chunk_length": 1017,
+      "page": 4
+    },
+    {
+      "chunk_index": 8,
+      "section_type": "semantic_section",
+      "section_title": "2.4. \nTopic Modelling \nTopic modelling has emerged as a crucial tool for analyzing large text datasets to identify \npatterns and recurring themes. The foundation for modern topic modelling was established by Blei \net al. (Blei 2003), who introduced Latent Dirichlet Allocation (LDA). LDA, a generative \nprobabilistic model, has since become a fundamental method for text analysis. Building upon \nLDA, Structural Topic Models (STM) (Roberts et al. 2013) enable researchers to incorporate \nmetadata (e.g., authorship demographics, temporal trends) directly into topic discovery, a feature \ncritical for analyzing the interplay between research content and contextual factors (Roberts et al. \n2019). The emergence of transformer-based architectures, such as BERT (Devlin et al. 2019), has \nrecently revolutionized natural language processing by enabling models to capture intricate \ncontextual relationships within text. Building upon this, transformer-based topic models, e.g., \nBERTopic (Grootendorst 2020), leverage advanced contextual embeddings to capture semantic \nrelationships in text, showing strong performance for analyzing complex documents (Bianchi et \nal. 2021). Comparative studies of LDA, STM, and BERTopic emphasize trade-offs between \nprobabilistic interpretability and contextual nuance (Egger and Yu 2023), a methodological tension \ncentral to our study. Evaluating topic models involves assessing topic coherence, which quantifies \nthe interpretability of topics (Mimno et al. 2011; Röder, Both, and Hinneburg 2015), particularly \nrelevant for models such as BERTopic. The underlying dimensionality reduction techniques used \nin some models, e.g., BERTopic, often rely on algorithms such as Uniform Manifold \nApproximation and Projection (UMAP) (Healy and McInnes 2024), while clustering is performed \nwith methods like HDBSCAN (McInnes, Healy, and Astels 2017), highlighting the mixed nature \nof these approaches.",
+      "content": "2.4. \nTopic Modelling \nTopic modelling has emerged as a crucial tool for analyzing large text datasets to identify \npatterns and recurring themes. The foundation for modern topic modelling was established by Blei \net al. (Blei 2003), who introduced Latent Dirichlet Allocation (LDA). LDA, a generative \nprobabilistic model, has since become a fundamental method for text analysis. Building upon \nLDA, Structural Topic Models (STM) (Roberts et al. 2013) enable researchers to incorporate \nmetadata (e.g., authorship demographics, temporal trends) directly into topic discovery, a feature \ncritical for analyzing the interplay between research content and contextual factors (Roberts et al. \n2019). The emergence of transformer-based architectures, such as BERT (Devlin et al. 2019), has \nrecently revolutionized natural language processing by enabling models to capture intricate \ncontextual relationships within text. Building upon this, transformer-based topic models, e.g., \nBERTopic (Grootendorst 2020), leverage advanced contextual embeddings to capture semantic \nrelationships in text, showing strong performance for analyzing complex documents (Bianchi et \nal. 2021). Comparative studies of LDA, STM, and BERTopic emphasize trade-offs between \nprobabilistic interpretability and contextual nuance (Egger and Yu 2023), a methodological tension \ncentral to our study. Evaluating topic models involves assessing topic coherence, which quantifies \nthe interpretability of topics (Mimno et al. 2011; Röder, Both, and Hinneburg 2015), particularly \nrelevant for models such as BERTopic. The underlying dimensionality reduction techniques used \nin some models, e.g., BERTopic, often rely on algorithms such as Uniform Manifold \nApproximation and Projection (UMAP) (Healy and McInnes 2024), while clustering is performed \nwith methods like HDBSCAN (McInnes, Healy, and Astels 2017), highlighting the mixed nature \nof these approaches.",
+      "chunk_length": 1932,
+      "page": 4
+    },
+    {
+      "chunk_index": 9,
+      "section_type": "semantic_section",
+      "section_title": "2.5. \nMethodological Approaches to Effect Estimation \nThe application of regression techniques to topic model outputs for effect estimation builds \nupon a growing body of work in computational social science and text analysis. For instance, \nstudies have utilized models that link author characteristics to topics discussed in scientific \nliterature (Rosen-Zvi et al. 2004) and used regression to understand how temporal trends affect",
+      "content": "2.5. \nMethodological Approaches to Effect Estimation \nThe application of regression techniques to topic model outputs for effect estimation builds \nupon a growing body of work in computational social science and text analysis. For instance, \nstudies have utilized models that link author characteristics to topics discussed in scientific \nliterature (Rosen-Zvi et al. 2004) and used regression to understand how temporal trends affect",
+      "chunk_length": 434,
+      "page": 4
+    },
+    {
+      "chunk_index": 10,
       "section_type": "semantic_section",
       "section_title": "Untitled Section",
       "content": "thematic shifts (Blei and Lafferty 2006). Our approach extends this line of inquiry by specifically \nfocusing on gender and geographic covariates within the context of publicly funded research \nproposals in Canada. By employing and adapting these effect estimation techniques for both STM \nand BERTopic models, we aim to provide a more comprehensive understanding of the factors \nshaping the landscape of Canadian research funding. The application of topic modelling to \nunderstand research trends and inform science policy has been explored in studies tracking the \ndynamics of research topics and comparing different topic modelling methods for analyzing \nscientific literature (Boyack and Klavans 2011; Ebadi et al. 2020). By integrating these \nmethodological and empirical foundations, this study bridges gaps in understanding how gender \nand geographical factors intersect with funded research projects.",
@@ -59,7 +91,7 @@
       "page": 5
     },
     {
-      "chunk_index": 7,
+      "chunk_index": 11,
       "section_type": "semantic_section",
       "section_title": "3. Data",
       "content": "3. Data\n\nIn this study, we utilized a comprehensive dataset of scientific projects and research proposals \nfunded by the Natural Sciences and Engineering Research Council of Canada (NSERC), spanning \nthe years 2005 to 2022. The final dataset contained 78,863 proposal summaries. This publicly \navailable dataset includes key features such as: Application ID, Application Title, First name and \nlast name of the Researcher, Organization, Province, Country, Competition Type, Award Amount, \nand Application summary.\n\nTo determine the gender of the researchers, we employed a multifaceted approach using the \nGPT-4 model (OpenAI Team et al. 2024). For each researcher, GPT-4 was prompted with the \nresearcher's first name, last name, and country of origin to classify the gender as “male”, “female”, \nor “ambiguous”. The prompt was carefully engineered to encourage GPT-4 to utilize its extensive \ntraining data, which includes implicit linguistic patterns (e.g., gendered name suffixes in various \nlanguages) and the regional prevalence of names. In instances where GPT-4 classified a name as \n“ambiguous”, we subsequently adopted the most frequently used gender associated with that name \nhistorically. For example, if “Taylor” was historically more commonly associated with males, it \nwas classified as male in our dataset.\n\nTo ensure the accuracy of our gender classifications, we conducted a thorough validation \nprocess. A stratified random sample of 100 researchers was manually checked against established \nrecords and common knowledge. This verification process revealed an overall accuracy rate of \n93%, with a breakdown showing 91% accuracy for female classifications and 95% accuracy for \nmale classifications. For names initially classified as “ambiguous” by GPT-4 and subsequently \nresolved using historical frequency data, our accuracy was confirmed at 88%. The resulting gender \ndistribution is shown in Figure 1.",
@@ -67,7 +99,7 @@
       "page": 5
     },
     {
-      "chunk_index": 8,
+      "chunk_index": 12,
       "section_type": "semantic_section",
       "section_title": "4. Methodology",
       "content": "4. Methodology\n\nOur methodology consists of four key components, as shown in Figure 2: (1) Data collection \nand pre-processing, (2) Topic modelling, (3) Comparative analysis and evaluation, and (4) Effect \nestimation of geographical locations and gender. The following subsections describe each of these \nkey components in more detail.",
@@ -75,7 +107,7 @@
       "page": 6
     },
     {
-      "chunk_index": 9,
+      "chunk_index": 13,
       "section_type": "semantic_section",
       "section_title": "4.1. \nData Preprocessing \nThe collected data underwent a thorough cleaning and preprocessing process to ensure its \ncompatibility with our modelling techniques. The following steps were implemented:",
       "content": "4.1. \nData Preprocessing \nThe collected data underwent a thorough cleaning and preprocessing process to ensure its \ncompatibility with our modelling techniques. The following steps were implemented:",
@@ -83,7 +115,7 @@
       "page": 7
     },
     {
-      "chunk_index": 10,
+      "chunk_index": 14,
       "section_type": "semantic_section",
       "section_title": "1. Removal of incomplete entries: All entries lacking application summaries were \nremoved to ensure that each record contained sufficient information for analysis.",
       "content": "1. Removal of incomplete entries: All entries lacking application summaries were \nremoved to ensure that each record contained sufficient information for analysis.",
@@ -91,15 +123,23 @@
       "page": 7
     },
     {
-      "chunk_index": 11,
+      "chunk_index": 15,
       "section_type": "semantic_section",
       "section_title": "2.  Elimination of duplicates: Duplicate records were identified and eliminated to maintain \ndata integrity and prevent redundancy.",
-      "content": "2.  Elimination of duplicates: Duplicate records were identified and eliminated to maintain \ndata integrity and prevent redundancy.\n\n3. Translation of non-English content: Non-English content, such as French and Italian, \nwas translated into English using the deep_translator package in Python. To verify the \naccuracy of the translations, a random sample of 5% of the translated content was manually \nreviewed, confirming its suitability for subsequent analysis.",
-      "chunk_length": 463,
+      "content": "2.  Elimination of duplicates: Duplicate records were identified and eliminated to maintain \ndata integrity and prevent redundancy.",
+      "chunk_length": 131,
       "page": 7
     },
     {
-      "chunk_index": 12,
+      "chunk_index": 16,
+      "section_type": "semantic_section",
+      "section_title": "3. Translation of non-English content: Non-English content, such as French and Italian, \nwas translated into English using the deep_translator package in Python. To verify the \naccuracy of the translations, a random sample of 5% of the translated content was manually \nreviewed, confirming its suitability for subsequent analysis.",
+      "content": "3. Translation of non-English content: Non-English content, such as French and Italian, \nwas translated into English using the deep_translator package in Python. To verify the \naccuracy of the translations, a random sample of 5% of the translated content was manually \nreviewed, confirming its suitability for subsequent analysis.",
+      "chunk_length": 330,
+      "page": 7
+    },
+    {
+      "chunk_index": 17,
       "section_type": "semantic_section",
       "section_title": "4. Cleaning of non-textual elements: Non-textual elements, including punctuation, \nnumbers, and special characters, were removed to streamline the text for processing.",
       "content": "4. Cleaning of non-textual elements: Non-textual elements, including punctuation, \nnumbers, and special characters, were removed to streamline the text for processing.",
@@ -107,7 +147,7 @@
       "page": 7
     },
     {
-      "chunk_index": 13,
+      "chunk_index": 18,
       "section_type": "semantic_section",
       "section_title": "5. Text normalization: The text was converted to lowercase and tokenized, facilitating \nconsistent analysis across all entries.",
       "content": "5. Text normalization: The text was converted to lowercase and tokenized, facilitating \nconsistent analysis across all entries.",
@@ -115,7 +155,7 @@
       "page": 7
     },
     {
-      "chunk_index": 14,
+      "chunk_index": 19,
       "section_type": "semantic_section",
       "section_title": "6. Stop-word removal: Common English stop-words were removed to reduce noise and \nfocus on meaningful content.",
       "content": "6. Stop-word removal: Common English stop-words were removed to reduce noise and \nfocus on meaningful content.",
@@ -123,7 +163,7 @@
       "page": 7
     },
     {
-      "chunk_index": 15,
+      "chunk_index": 20,
       "section_type": "semantic_section",
       "section_title": "7. Exclusion of domain-specific terms: In addition to general stop-words, domain-specific \nterms such as “Canada”, “NSERC”, and “Research” were excluded to prevent skewing of \nthematic analysis.",
       "content": "7. Exclusion of domain-specific terms: In addition to general stop-words, domain-specific \nterms such as “Canada”, “NSERC”, and “Research” were excluded to prevent skewing of \nthematic analysis.",
@@ -131,7 +171,7 @@
       "page": 7
     },
     {
-      "chunk_index": 16,
+      "chunk_index": 21,
       "section_type": "semantic_section",
       "section_title": "8. Lemmatization: Words were reduced to their root forms by lemmatization, aiding in the \nconsolidation of similar terms.",
       "content": "8. Lemmatization: Words were reduced to their root forms by lemmatization, aiding in the \nconsolidation of similar terms.",
@@ -139,23 +179,47 @@
       "page": 7
     },
     {
-      "chunk_index": 17,
+      "chunk_index": 22,
       "section_type": "semantic_section",
       "section_title": "9. N-grams: Bigrams and trigrams were also considered to capture contextually relevant \nphrases and enhance thematic richness.",
-      "content": "9. N-grams: Bigrams and trigrams were also considered to capture contextually relevant \nphrases and enhance thematic richness.\n\nThis comprehensive preprocessing approach ensured that the dataset was optimized for \nsubsequent modelling and analysis, allowing for accurate exploration of research themes.\n\n4.2. \nTopic Modelling \nIn this study, we employed and compared three topic modelling techniques to extract themes \nfrom our corpus. Each model is described below. \n4.2.1. Latent Dirichlet Allocation (LDA)\n\nIntroduced by Blei et al. (Blei 2003), LDA is a foundational generative probabilistic model \ndesigned to uncover latent topics within a document collection. LDA operates under the \nassumption that each document is a mixture of multiple topics, and each topic is characterized by \na distribution of words. To determine the optimal number of topics (K), we conducted a thorough \nanalysis by combining coherence scores (Cv) with a grid search spanning 2 to 20 topics. \nAdditionally, we examined the top keywords for each topic to ensure meaningful categorization. \nThrough this approach, we identified 11 as the optimal number of topics. \n4.2.2. Structural Topic Modelling (STM)\n\nSTM (Roberts et al. 2013) enhances the traditional topic modelling framework by integrating \ndocument-level metadata, allowing for a nuanced analysis of topic prevalence and content. The \nSTM model was implemented using the stm package in R. To determine the optimal number of",
-      "chunk_length": 1463,
+      "content": "9. N-grams: Bigrams and trigrams were also considered to capture contextually relevant \nphrases and enhance thematic richness.\n\nThis comprehensive preprocessing approach ensured that the dataset was optimized for \nsubsequent modelling and analysis, allowing for accurate exploration of research themes.",
+      "chunk_length": 302,
       "page": 7
     },
     {
-      "chunk_index": 18,
+      "chunk_index": 23,
       "section_type": "semantic_section",
-      "section_title": "Untitled Section",
-      "content": "topics, we employed the searchK() function from the same package, conducting a grid search over \n2 to 20 topics. This method also identified 11 as the optimal number of topics (K). \n4.2.3. BERTopic\n\nWe employed the BERTopic model (Grootendorst 2022), which effectively combines BERT \nembeddings with a clustering technique. Initially, document embeddings were generated using a \npre-trained BERT model to capture the contextual semantics of each document. To manage the \nhigh dimensionality inherent in these embeddings, we applied Uniform Manifold Approximation \nand Projection (UMAP) (Healy and McInnes 2024) for dimensionality reduction. Subsequently, \nwe employed Hierarchical Density-Based Spatial Clustering of Applications with Noise \n(HDBSCAN) (McInnes et al. 2017) to cluster similar document embeddings, with each cluster \nrepresenting a distinct topic. Representative keywords for each topic were extracted using class-\nbased TF-IDF (c-TF-IDF). The resulting topic model was evaluated for coherence and \nqualitatively assessed to ensure interpretability and relevance. For BERTopic, the optimal number \nof topics (K) was determined to be 13.\n\n4.3. \nComparative Analysis of Topic Models \nTo conduct a robust comparison of the topics generated by the three models—LDA, STM, \nand BERTopic—we adopted a systematic approach combining cross-model topic alignment, \nsemantic interpretability assessment, and quantitative evaluation metrics.",
-      "chunk_length": 1444,
+      "section_title": "4.2. \nTopic Modelling \nIn this study, we employed and compared three topic modelling techniques to extract themes \nfrom our corpus. Each model is described below. \n4.2.1. Latent Dirichlet Allocation (LDA)",
+      "content": "4.2. \nTopic Modelling \nIn this study, we employed and compared three topic modelling techniques to extract themes \nfrom our corpus. Each model is described below. \n4.2.1. Latent Dirichlet Allocation (LDA)\n\nIntroduced by Blei et al. (Blei 2003), LDA is a foundational generative probabilistic model \ndesigned to uncover latent topics within a document collection. LDA operates under the \nassumption that each document is a mixture of multiple topics, and each topic is characterized by \na distribution of words. To determine the optimal number of topics (K), we conducted a thorough \nanalysis by combining coherence scores (Cv) with a grid search spanning 2 to 20 topics. \nAdditionally, we examined the top keywords for each topic to ensure meaningful categorization. \nThrough this approach, we identified 11 as the optimal number of topics. \n4.2.2. Structural Topic Modelling (STM)",
+      "chunk_length": 881,
+      "page": 7
+    },
+    {
+      "chunk_index": 24,
+      "section_type": "semantic_section",
+      "section_title": "STM (Roberts et al. 2013) enhances the traditional topic modelling framework by integrating \ndocument-level metadata, allowing for a nuanced analysis of topic prevalence and content. The \nSTM model was implemented using the stm package in R. To determine the optimal number of",
+      "content": "STM (Roberts et al. 2013) enhances the traditional topic modelling framework by integrating \ndocument-level metadata, allowing for a nuanced analysis of topic prevalence and content. The \nSTM model was implemented using the stm package in R. To determine the optimal number of",
+      "chunk_length": 276,
+      "page": 7
+    },
+    {
+      "chunk_index": 25,
+      "section_type": "semantic_section",
+      "section_title": "topics, we employed the searchK() function from the same package, conducting a grid search over \n2 to 20 topics. This method also identified 11 as the optimal number of topics (K). \n4.2.3. BERTopic",
+      "content": "topics, we employed the searchK() function from the same package, conducting a grid search over \n2 to 20 topics. This method also identified 11 as the optimal number of topics (K). \n4.2.3. BERTopic\n\nWe employed the BERTopic model (Grootendorst 2022), which effectively combines BERT \nembeddings with a clustering technique. Initially, document embeddings were generated using a \npre-trained BERT model to capture the contextual semantics of each document. To manage the \nhigh dimensionality inherent in these embeddings, we applied Uniform Manifold Approximation \nand Projection (UMAP) (Healy and McInnes 2024) for dimensionality reduction. Subsequently, \nwe employed Hierarchical Density-Based Spatial Clustering of Applications with Noise \n(HDBSCAN) (McInnes et al. 2017) to cluster similar document embeddings, with each cluster \nrepresenting a distinct topic. Representative keywords for each topic were extracted using class-\nbased TF-IDF (c-TF-IDF). The resulting topic model was evaluated for coherence and \nqualitatively assessed to ensure interpretability and relevance. For BERTopic, the optimal number \nof topics (K) was determined to be 13.",
+      "chunk_length": 1152,
       "page": 8
     },
     {
-      "chunk_index": 19,
+      "chunk_index": 26,
+      "section_type": "semantic_section",
+      "section_title": "4.3. \nComparative Analysis of Topic Models \nTo conduct a robust comparison of the topics generated by the three models—LDA, STM, \nand BERTopic—we adopted a systematic approach combining cross-model topic alignment, \nsemantic interpretability assessment, and quantitative evaluation metrics.",
+      "content": "4.3. \nComparative Analysis of Topic Models \nTo conduct a robust comparison of the topics generated by the three models—LDA, STM, \nand BERTopic—we adopted a systematic approach combining cross-model topic alignment, \nsemantic interpretability assessment, and quantitative evaluation metrics.",
+      "chunk_length": 290,
+      "page": 8
+    },
+    {
+      "chunk_index": 27,
       "section_type": "semantic_section",
       "section_title": "4.3.1. Cross-Model Topic Alignment",
       "content": "4.3.1. Cross-Model Topic Alignment\n\nTo represent each topic consistently, we derived vector representations from the top keywords \nof each topic. Specifically, we computed the mean vector of Sentence-BERT embeddings \n(Reimers and Gurevych 2019) for the top-30 keywords of each topic using HuggingFace's all-\nMiniLM-L6-v2 pre-trained model. This enabled us to quantify thematic correspondence and \noverlap among different topic sets by measuring the semantic similarity between their vector \nrepresentations. We calculated the semantic similarity between any two topic vectors, vi and vj, \nusing the cosine similarity metric.\n\nBased on these pairwise cosine similarity scores, topics identified by different models were \ngrouped to pinpoint thematic correspondences. Through an iterative qualitative assessment \nprocess, we set a grouping threshold at 0.82. We experimented with various thresholds (e.g., 0.70, \n0.75, 0.80, 0.85, 0.90), manually inspecting grouped topics for coherence. A lower threshold \ntended to group dissimilar topics, introducing noise, while a higher one missed clear thematic \noverlap. The 0.82 threshold emerged as the optimal balance, maximizing meaningful thematic \ncorrespondences while minimizing unrelated topic inclusion. Once grouped, these topic groups \nwere categorized as follows:\n\n• Triplet Matches (n=5): Groups consisting of one topic from each model (BERTopic,\n\nSTM, LDA), where the cosine similarity between all three pairs met or exceeded the \nthreshold. \n• Semi-Matches (n=6): Groups consisting of two topics from different models with a\n\ncosine similarity equal to or greater than the threshold, which were not part of a \n“Triplet Match”.",
@@ -163,7 +227,7 @@
       "page": 8
     },
     {
-      "chunk_index": 20,
+      "chunk_index": 28,
       "section_type": "semantic_section",
       "section_title": "Untitled Section",
       "content": "• Unique Topics (n=8): Topics from a single model that did not achieve a cosine\n\nsimilarity above the threshold with any topic from another model.\n\nAdditionally, a t-SNE (t-Distributed Stochastic Neighbour Embedding) visualization was \ngenerated using the Sentence-BERT topic embeddings (van der Maaten and Hinton 2008). This \nvisualization provided a lower-dimensional spatial representation of the topic space, facilitating a \nqualitative assessment of clustering and interrelationships between topics across different models. \nTo assign thematic labels to each group, we utilized the GPT-4 model (OpenAI Team et al. 2024) \nto synthesize the core concept from the constituent keywords. Each generated label was then \nsubjected to a final qualitative validation to ensure its fidelity to the underlying concepts of the \nkeyword cluster.",
@@ -171,7 +235,7 @@
       "page": 9
     },
     {
-      "chunk_index": 21,
+      "chunk_index": 29,
       "section_type": "semantic_section",
       "section_title": "4.3.2. Topic Quality Evaluation",
       "content": "4.3.2. Topic Quality Evaluation\n\nFor a quantitative comparison of topic quality, we computed three metrics for topics that \nformed triplet matches. These metrics were calculated using the original lemmatized corpus and \nthe derived dictionary:  \n4.3.2.1. Topic Coherence (Cv)\n\nThis metric measures the semantic consistency within a topic based on word co-occurrence \npatterns in the corpus (Röder et al. 2015). A higher Cv score indicates greater interpretability and \nreliability. Formally, for a topic T with top words WT, coherence is computed as follows:\n\n𝐶𝑣(𝑇) = \n1\n\n(|𝑊𝑇|\n\n𝑊𝑖,𝑊𝑗∈𝑊𝑇\n\n𝑖<𝑗\n\nwhere the average pairwise Normalized Pointwise Mutual Information (NPMI) score is:\n\n𝑁𝑃𝑀𝐼(𝑊𝑖, 𝑊𝑗) =\n\nlog 𝑃(𝑊𝑖, 𝑊𝑗) + 𝜀\n\n𝑃(𝑊𝑖)𝑃(𝑊𝑗)\n\nwith P(wi, wj) and P(wi) estimated from the corpus using co-occurrence counts, and 𝜀 is a \nsmall constant to ensure numerical stability. \n4.3.2.2. Topic Uniqueness\n\nThis metric quantifies the distinctiveness of a topic's top words within the set of evaluated \ntriplet topics. It is calculated as the average inverse frequency of each word among all top words \nacross the triplet topics for a given model. A higher score indicates less word overlap and greater \ndistinctiveness. For a topic T with top words WT:\n\n𝑈𝑛𝑖𝑞𝑢𝑒𝑛𝑒𝑠𝑠(𝑇) =\n1\n|𝑊𝑇| ∑\n1\n𝐶𝑜𝑢𝑛𝑡(𝑤, 𝑊𝑎𝑙𝑙)           (3)\n\n𝑊∈𝑊𝑇",
@@ -179,15 +243,23 @@
       "page": 9
     },
     {
-      "chunk_index": 22,
+      "chunk_index": 30,
       "section_type": "semantic_section",
       "section_title": "Untitled Section",
-      "content": "where Wall is the multiset of all top words from the triplet topics for the model, and count(w, \nWall) denotes the number of occurrences of word w in Wall. The model’s uniqueness score is the \naverage of Uniqueness(T) across all its matched topics. \n4.3.2.3. Topic Diversity\n\nThis metric represents the vocabulary range across the evaluated topics for a given model. It \nis calculated as the proportion of unique words among all top words from the triplet topics. \nFormally:\n\n𝐷𝑖𝑣𝑒𝑟𝑠𝑖𝑡𝑦= | ⋃\n𝑊𝑇\n𝑇∈𝑀\n|\n∑\n|𝑊𝑇|\n𝑇∈𝑀\n\nwhere M is the set of matched triplet topics for the model, and ∑\n|𝑊𝑇|\n𝑇∈𝑀\n is the total number \nof words (with duplicates) across all topics. Higher scores indicate a broader range of distinct terms \nacross topics.\n\n4.4. \nCovariate Effect Estimation \nAfter extracting topics, we aimed to estimate the effects of geographic location and gender on \nresearch themes. To address the uneven distribution of scientific publications across provinces, we \npreprocessed the geographic location variable. Provinces with fewer than 1000 publications were \ncombined into a single ``Other'' group. This step enhances the statistical stability of the regression \nestimates for the larger, more frequently sampled provinces while still accounting for the \ncontributions from smaller regions.\n\nWe estimated the effect of province and gender on the prevalence of each topic identified by \nthe STM and BERTopic model.  Topic prevalence, defined as the proportion of a document d \nassigned to a given topic k (𝜃𝑑,𝑘), was treated as the dependent variable in a regression model, \nwith province and gender as key predictors separately. The resulting categorical variables were \nhandled using sum contrasts. Sum contrasts compare the mean of each category to the overall mean \nof the dependent variable across all observations. In this context, the intercept of the regression \nrepresents the estimated overall mean topic proportion across all publications, and the coefficient \nfor each province or gender category represents the estimated difference between that category’s \nmean topic proportion and this overall mean. The general form of the regression model for topic k \nis\n\n𝜃𝑑,𝑘= 𝛽0,𝑘+ ∑𝛽𝑗,𝑘𝐶𝑑,𝑗+ 𝜀𝑑,𝑘\n\n𝑃−1\n\n𝑗=1\n\nwhere 𝜃𝑑,𝑘 is the proportion of document d in topic k, 𝛽0,𝑘 is the intercept (overall mean), 𝛽𝑗,𝑘 \nis the coefficient for the j-th category (representing the difference from the overall mean), 𝐶𝑑,𝑗 is \nthe sum contrast variables for the P categories of the relevant covariate (e.g., gender or geographic \nlocation), and 𝜀𝑑,𝑘 is the error term.",
-      "chunk_length": 2553,
+      "content": "where Wall is the multiset of all top words from the triplet topics for the model, and count(w, \nWall) denotes the number of occurrences of word w in Wall. The model’s uniqueness score is the \naverage of Uniqueness(T) across all its matched topics. \n4.3.2.3. Topic Diversity\n\nThis metric represents the vocabulary range across the evaluated topics for a given model. It \nis calculated as the proportion of unique words among all top words from the triplet topics. \nFormally:\n\n𝐷𝑖𝑣𝑒𝑟𝑠𝑖𝑡𝑦= | ⋃\n𝑊𝑇\n𝑇∈𝑀\n|\n∑\n|𝑊𝑇|\n𝑇∈𝑀\n\nwhere M is the set of matched triplet topics for the model, and ∑\n|𝑊𝑇|\n𝑇∈𝑀\n is the total number \nof words (with duplicates) across all topics. Higher scores indicate a broader range of distinct terms \nacross topics.",
+      "chunk_length": 727,
       "page": 10
     },
     {
-      "chunk_index": 23,
+      "chunk_index": 31,
+      "section_type": "semantic_section",
+      "section_title": "4.4. \nCovariate Effect Estimation \nAfter extracting topics, we aimed to estimate the effects of geographic location and gender on \nresearch themes. To address the uneven distribution of scientific publications across provinces, we \npreprocessed the geographic location variable. Provinces with fewer than 1000 publications were \ncombined into a single ``Other'' group. This step enhances the statistical stability of the regression \nestimates for the larger, more frequently sampled provinces while still accounting for the \ncontributions from smaller regions.",
+      "content": "4.4. \nCovariate Effect Estimation \nAfter extracting topics, we aimed to estimate the effects of geographic location and gender on \nresearch themes. To address the uneven distribution of scientific publications across provinces, we \npreprocessed the geographic location variable. Provinces with fewer than 1000 publications were \ncombined into a single ``Other'' group. This step enhances the statistical stability of the regression \nestimates for the larger, more frequently sampled provinces while still accounting for the \ncontributions from smaller regions.\n\nWe estimated the effect of province and gender on the prevalence of each topic identified by \nthe STM and BERTopic model.  Topic prevalence, defined as the proportion of a document d \nassigned to a given topic k (𝜃𝑑,𝑘), was treated as the dependent variable in a regression model, \nwith province and gender as key predictors separately. The resulting categorical variables were \nhandled using sum contrasts. Sum contrasts compare the mean of each category to the overall mean \nof the dependent variable across all observations. In this context, the intercept of the regression \nrepresents the estimated overall mean topic proportion across all publications, and the coefficient \nfor each province or gender category represents the estimated difference between that category’s \nmean topic proportion and this overall mean. The general form of the regression model for topic k \nis\n\n𝜃𝑑,𝑘= 𝛽0,𝑘+ ∑𝛽𝑗,𝑘𝐶𝑑,𝑗+ 𝜀𝑑,𝑘\n\n𝑃−1\n\n𝑗=1\n\nwhere 𝜃𝑑,𝑘 is the proportion of document d in topic k, 𝛽0,𝑘 is the intercept (overall mean), 𝛽𝑗,𝑘 \nis the coefficient for the j-th category (representing the difference from the overall mean), 𝐶𝑑,𝑗 is \nthe sum contrast variables for the P categories of the relevant covariate (e.g., gender or geographic \nlocation), and 𝜀𝑑,𝑘 is the error term.",
+      "chunk_length": 1824,
+      "page": 10
+    },
+    {
+      "chunk_index": 32,
       "section_type": "semantic_section",
       "section_title": "Untitled Section",
       "content": "For the STM model, we utilized the estimateEffect function from the stm R package. This \nfunction is specifically designed to estimate the effects of document metadata on topic prevalence, \nincorporating uncertainty by drawing samples from the model's variational posterior distribution. \nThis method provides a principled, model-integrated approach to inference within the STM \nframework.\n\nFor the BERTopic model, which lacks a native probabilistic structure and does not support \nthe same model-integrated inference as STM, we developed an algorithm, named Covariate Effect \nEstimation for BERTopic (COFFEE). This algorithm conducts a comparable statistical analysis \nand quantifies uncertainty. Unlike the STM approach, which samples from a model-specific \nposterior, COFFEE employs bootstrapping, a general resampling technique, to estimate effects. \nThe COFFEE algorithm was developed in Python, providing a robust alternative for effect \nestimation in the BERTopic framework, as outlined in Algorithm 1.",
@@ -195,7 +267,7 @@
       "page": 11
     },
     {
-      "chunk_index": 24,
+      "chunk_index": 33,
       "section_type": "semantic_section",
       "section_title": "Untitled Section",
       "content": "The COFFEE algorithm enables us to replicate the statistical objective of R's estimateEffect \nfunction, which regresses topic proportions on metadata using sum contrast. Additionally, \nCOFFEE provides a non-parametric means of approximating the sampling distribution of \ncoefficient estimates through resampling, thereby quantifying uncertainty in the absence of a \nmodel-based posterior. By mirroring the analytical structure of STM's estimateEffect, this \napproach allows for a direct and methodologically consistent comparison of the estimated \nrelationships between the selected covariates (e.g., province or gender) and topic prevalence across \nboth STM and BERTopic outputs.",
@@ -203,15 +275,23 @@
       "page": 12
     },
     {
-      "chunk_index": 25,
+      "chunk_index": 34,
       "section_type": "semantic_section",
-      "section_title": "5. Results",
-      "content": "5. Results\n\n5.1. \nComparative Analysis of Topic Models \nThe comparative analysis highlights both similarities and differences in the thematic structures \nidentified by BERTopic, STM, and LDA, shedding light on each model's strengths and \nweaknesses. Figure 3 presents the t-SNE visualization of the topics identified by these models. In \nthe plot, clustered points represent semantically similar topics, regardless of their originating \nmodel, while more isolated points indicate distinct thematic spaces. This visualization not only \nconfirms quantitative similarities and differences but also serves as a foundational reference for \nunderstanding the thematic relationships explored in detail below.\n\nFigure 3. t-SNE plot of topics identified by BERTopic, STM, and LDA. Each point represents a \ntopic, and clusters indicate semantic similarity.\n\nThe clear groupings in the plot correspond to the triple alignments, where BERTopic, STM, \nand LDA often cluster together. For example, B0, S10, and L5 are grouped near the top-left, \nrepresenting “Environmental Science & Industrial Processes”, while B1, S2, and L10 are clustered \nin the lower-right for “Computer Science & Artificial Intelligence”. Conversely, the dispersion of",
-      "chunk_length": 1228,
+      "section_title": "5.1. \nComparative Analysis of Topic Models \nThe comparative analysis highlights both similarities and differences in the thematic structures \nidentified by BERTopic, STM, and LDA, shedding light on each model's strengths and \nweaknesses. Figure 3 presents the t-SNE visualization of the topics identified by these models. In \nthe plot, clustered points represent semantically similar topics, regardless of their originating \nmodel, while more isolated points indicate distinct thematic spaces. This visualization not only \nconfirms quantitative similarities and differences but also serves as a foundational reference for \nunderstanding the thematic relationships explored in detail below.",
+      "content": "5.1. \nComparative Analysis of Topic Models \nThe comparative analysis highlights both similarities and differences in the thematic structures \nidentified by BERTopic, STM, and LDA, shedding light on each model's strengths and \nweaknesses. Figure 3 presents the t-SNE visualization of the topics identified by these models. In \nthe plot, clustered points represent semantically similar topics, regardless of their originating \nmodel, while more isolated points indicate distinct thematic spaces. This visualization not only \nconfirms quantitative similarities and differences but also serves as a foundational reference for \nunderstanding the thematic relationships explored in detail below.",
+      "chunk_length": 689,
       "page": 12
     },
     {
-      "chunk_index": 26,
+      "chunk_index": 35,
+      "section_type": "semantic_section",
+      "section_title": "Figure 3. t-SNE plot of topics identified by BERTopic, STM, and LDA. Each point represents a \ntopic, and clusters indicate semantic similarity.",
+      "content": "Figure 3. t-SNE plot of topics identified by BERTopic, STM, and LDA. Each point represents a \ntopic, and clusters indicate semantic similarity.\n\nThe clear groupings in the plot correspond to the triple alignments, where BERTopic, STM, \nand LDA often cluster together. For example, B0, S10, and L5 are grouped near the top-left, \nrepresenting “Environmental Science & Industrial Processes”, while B1, S2, and L10 are clustered \nin the lower-right for “Computer Science & Artificial Intelligence”. Conversely, the dispersion of",
+      "chunk_length": 525,
+      "page": 12
+    },
+    {
+      "chunk_index": 36,
       "section_type": "semantic_section",
       "section_title": "Untitled Section",
       "content": "unique topics further from these clusters (e.g., B8, B10, B11, B12 at the periphery) visually \nindicates their distinct semantic spaces and highlights BERTopic's tendency to identify more niche \nand specialized themes. In this section, we delve deeper into these topic structures, providing a \ndetailed exploration of the thematic alignments and distinctions that characterize each model's \noutputs.",
@@ -219,15 +299,15 @@
       "page": 13
     },
     {
-      "chunk_index": 27,
+      "chunk_index": 37,
       "section_type": "semantic_section",
-      "section_title": "5.1.1. Unique Topics",
-      "content": "5.1.1. Unique Topics\n\nTable 1 presents a detailed comparison of unique topics identified by each model, highlighting \nthemes predominantly discerned by a single model. These unique topics are visually corroborated \nby Figure 3, where they often appear as more isolated points, signifying their semantic distinction \nfrom the main clusters. Notably, BERTopic stands out with its ability to generate a greater number \nof specific and unique topics, illustrating its strength in providing a richer semantic understanding \nof the corpus.",
-      "chunk_length": 533,
+      "section_title": "Table 1 presents a detailed comparison of unique topics identified by each model, highlighting \nthemes predominantly discerned by a single model. These unique topics are visually corroborated \nby Figure 3, where they often appear as more isolated points, signifying their semantic distinction \nfrom the main clusters. Notably, BERTopic stands out with its ability to generate a greater number \nof specific and unique topics, illustrating its strength in providing a richer semantic understanding \nof the corpus.",
+      "content": "Table 1 presents a detailed comparison of unique topics identified by each model, highlighting \nthemes predominantly discerned by a single model. These unique topics are visually corroborated \nby Figure 3, where they often appear as more isolated points, signifying their semantic distinction \nfrom the main clusters. Notably, BERTopic stands out with its ability to generate a greater number \nof specific and unique topics, illustrating its strength in providing a richer semantic understanding \nof the corpus.",
+      "chunk_length": 511,
       "page": 13
     },
     {
-      "chunk_index": 28,
+      "chunk_index": 38,
       "section_type": "semantic_section",
       "section_title": "Table 1. Comparison of unique topics across models.",
       "content": "Table 1. Comparison of unique topics across models.\n\nLabel \nBERTopic \nSTM \nLDA\n\nMusculoskeletal Biomechanics \n(6) bone, injury, joint, knee, tissue \n--- \n---\n\nDental & Oral Bio-materials \n(7) dental, implant, tooth, bone, \nenamel\n\nPublic Health & Vaccine \nCommunication\n\n(8) vaccine, vaccine confidence, \neducation, mental health, kmaw\n\nFood Science & Agricultural \nProducts\n\n(10) flaxseed, food, fatty acid, \nmustard, ingredient\n\nAdvanced Energy Storage & \nElectronics\n\n(11) battery, energy storage, ion \nbattery, solar cell, transistor\n\nOrgan Transplantation & \nBiofabrication\n\n(12) organ, kidney, transplant, donor, \nblood\n\nPlant Pathology & Crop Genetics \n--- \n(3) disease, plant, dna, \ngene, bacterium\n\nTheoretical & Computational \nSciences\n\n--- \n(9) theory, flow, \ndynamic, simulation, \ncomputational\n\nNote: Numbers in parentheses represent the topic index.\n\nBERTopic's distinctive strength is exemplified by its unique topic “Public Health & Vaccine \nCommunication” (B8) topic. The top keywords—such as {vaccine, vaccine confidence, education, \nmental health, kmaw, mi kmaw, covid, 19, covid 19, social medium, indigenous}— illustrate \nBERTopic's capacity to capture a highly specific and timely theme. This theme encompasses not \nonly medical terms but also socio-political dimensions, such as “vaccine confidence” and \nculturally specific references (“kmaw”, “indigenous”). This level of fine-grained resolution is \nachieved through BERTopic's advanced contextual embeddings, which are adept at identifying \nmulti-word expressions and emerging research areas that other models might overlook due to their \nreliance on less context-aware word representations.\n\nSimilarly, BERTopic's identification of the “Organ Transplantation & Biofabrication” (B12) \ntopic, with keywords such as {organ, kidney, transplant, transplantation, donor}, and other key",
@@ -235,7 +315,7 @@
       "page": 13
     },
     {
-      "chunk_index": 29,
+      "chunk_index": 39,
       "section_type": "semantic_section",
       "section_title": "Untitled Section",
       "content": "terms such as “bioink” and “bioprinting”, underscores its ability to isolate specialized subfields \nwithin medicine. This capability to delve into niche scientific domains highlights BERTopic’s \nenhanced sensitivity to context and specificity. In contrast, STM also generated meaningful unique \ntopics, such as “Plant Pathology & Crop Genetics” (S3), characterized by keywords such as \n{disease, plant, crop, dna, gene, bacterium}. However, these topics often exhibited a broader scope \ncompared to BERTopic's highly specialized themes. This may suggest that while STM is effective \nat identifying significant research areas, it may not capture the same level of detail in emerging or \nspecialized topics as BERTopic. LDA did not produce any unique topics. All LDA topics had at \nleast a semi-match, i.e., partial thematic alignment, with those from BERTopic or STM. This \npattern suggests that LDA's reliance on word co-occurrence may lead to the identification of more \ngeneralized topics, often blending distinct concepts rather than distinguishing them. Consequently, \nLDA provides a less detailed thematic landscape compared to the more context-aware capabilities \nof BERTopic.",
@@ -243,7 +323,7 @@
       "page": 14
     },
     {
-      "chunk_index": 30,
+      "chunk_index": 40,
       "section_type": "semantic_section",
       "section_title": "5.1.2. Triple Alignement",
       "content": "5.1.2. Triple Alignement\n\nFive topics were consistently identified by all three topic models—BERTopic, STM, and \nLDA—demonstrating a robust alignment among these different models (see Table 2). This \nconsensus, underscored by an average cosine similarity of 0.935, validates the inherent prominence \nof these research themes within the dataset, irrespective of the model used. While the models \nagreed on the core subjects, an in-depth analysis of their top keywords uncovers subtle differences \nin emphasis and granularity, highlighting the distinct interpretive lens each model applies.",
@@ -251,7 +331,7 @@
       "page": 14
     },
     {
-      "chunk_index": 31,
+      "chunk_index": 41,
       "section_type": "semantic_section",
       "section_title": "Table 2. Consensus topics across BERTopic, STM, and LDA.",
       "content": "Table 2. Consensus topics across BERTopic, STM, and LDA.\n\nLabel \nBERTopic \nSTM \nLDA \nAvg. Sim.\n\nEnvironmental Science & \nIndustrial Processes\n\n(0) water, energy, \nclimate, gas, soil\n\n(10) water, \nproduction, oil, \ntreatment, gas\n\n(5) chemical, \nreaction, gas, \norganic, \ncompound\n\nComputer Science & \nArtificial Intelligence\n\n(1) network, \nalgorithm, \nsoftware, \ncommunication, \nwireless\n\n(2) network, \nsoftware, \ntechnology, \nalgorithm, \ncommunication\n\n(10) network, \ncomputer, \nsoftware, theory, \nalgorithm\n\nNeuroscience & Cognitive \nScience\n\n(4) brain, memory, \nneuron, neural, \nmechanism\n\n(6) learn, brain, \nmemory, neural, \nvisual\n\n(4) cell, tissue, \nbrain, signal, \nmemory\n\nMolecular Biology & \nBiotechnology\n\n(2) protein, gene, \nplant, \ngenetic, \ndisease\n\n(0) cell, protein, \nmechanism, \nmolecular, role\n\n(6) protein, \nmolecular, \nmechanism, \nmolecule, \nbiological\n\nMaterials Science & \nApplied Physics (Imaging \n& Photonics)\n\n(3) polymer, \nimaging, laser, \noptical, molecular\n\n(7) quantum, \nmaterial, light, \noptical, particle\n\n(2) image, optical, \nsensor, \nmeasurement, \nlight\n\nNote: Numbers in parentheses represent the topic index.",
@@ -259,7 +339,7 @@
       "page": 14
     },
     {
-      "chunk_index": 32,
+      "chunk_index": 42,
       "section_type": "semantic_section",
       "section_title": "Untitled Section",
       "content": "For the “Environmental Science & Industrial Processes” domain, all three models delineated \na coherent topic centred on natural resources, energy, and industrial operations. BERTopic's B0 \ntopic connected industrial activities with broader environmental concerns, using keywords such as \n{water, energy, climate, gas, soil, technology, industry, carbon, oil, production}. In contrast, \nLDA's L5 topic focused more on chemical processes, with keywords such as {chemical, reaction, \ngas, production, organic, compound, metal, water, fuel, produce}, offering a detailed view of the \nindustry's material aspects. STM's S10, with keywords such as {water, production, oil, treatment, \ncompany, gas, quality, chemical, industry, environmental}, provided a balanced perspective, \nintegrating industrial operations and resource management, highlighting  “treatment” and \n“quality”.\n\nIn the “Computer Science & Artificial Intelligence” theme, BERTopic's B1 swiftly captured \nfoundational computing terms, also indicating AI paradigms with keywords such as “machine” \nand “learning”. This suggests a more contemporary focus. LDA's L10, however, remained centred \non core elements of computer science without immediate AI cues. STM's S2 presented a solid \napplied perspective, focusing on practical applications and industry challenges. The “Molecular \nBiology & Biotechnology” topic showed remarkable semantic overlap across models. BERTopic's \nB2, STM's S0, and LDA's L7 all yielded highly coherent and relevant terms defining this scientific \ndomain. This alignment indicates a robust thematic signal for well-established scientific fields, \ndemonstrating the models' ability to capture widely recognized domains effectively.\n\nThe quantitative evaluation of topic quality, summarized in Table 3, further highlights the \ncomparative performance of the models. BERTopic demonstrated the highest average coherence \n(CV) at 0.638, outperforming STM (0.604) and LDA (0.569). This suggests BERTopic's \nembedding approach more effectively groups semantically similar words, resulting in more \ninterpretable and cohesive topics. All models showed high average topic uniqueness, with \nBERTopic slightly leading at 0.963, indicating distinct topic definitions due to minimal word \nrepetition across topics. While LDA and STM excelled in topic diversity (0.960 and 0.959, \nrespectively), BERTopic had slightly lower diversity (0.953), reflecting its focus on generating \nmore unique, specialized topics rather than using a broad vocabulary across common themes.",
@@ -267,15 +347,15 @@
       "page": 15
     },
     {
-      "chunk_index": 33,
+      "chunk_index": 43,
       "section_type": "semantic_section",
-      "section_title": "Table 3. Quantitative evaluation of topic quality.",
-      "content": "Table 3. Quantitative evaluation of topic quality.\n\nModel \nAverage Coherence (CV ) Average Uniqueness \nAverage Diversity\n\nLDA \n0.569 \n0.960 \n0.960 \n5.1.3. Partial Alignement\n\nThe six partially aligned topics (see Table 4) highlight instances where two models identified \nsimilar themes, while the third either did not resolve a comparable topic or subsumed its \ncomponent words into a broader theme. Interestingly, all observed partial alignments occurred \nbetween STM and LDA, or BERTopic and LDA, with no strong pairings between BERTopic and \nSTM reaching the defined similarity threshold. This pattern may indicate that while BERTopic \nshares some thematic boundaries with LDA, and STM with LDA, the direct semantic alignment",
-      "chunk_length": 728,
+      "section_title": "Model \nAverage Coherence (CV ) Average Uniqueness \nAverage Diversity",
+      "content": "Model \nAverage Coherence (CV ) Average Uniqueness \nAverage Diversity\n\nLDA \n0.569 \n0.960 \n0.960 \n5.1.3. Partial Alignement\n\nThe six partially aligned topics (see Table 4) highlight instances where two models identified \nsimilar themes, while the third either did not resolve a comparable topic or subsumed its \ncomponent words into a broader theme. Interestingly, all observed partial alignments occurred \nbetween STM and LDA, or BERTopic and LDA, with no strong pairings between BERTopic and \nSTM reaching the defined similarity threshold. This pattern may indicate that while BERTopic \nshares some thematic boundaries with LDA, and STM with LDA, the direct semantic alignment",
+      "chunk_length": 676,
       "page": 15
     },
     {
-      "chunk_index": 34,
+      "chunk_index": 44,
       "section_type": "semantic_section",
       "section_title": "Untitled Section",
       "content": "between BERTopic and STM's specific topic groupings is less pronounced. This divergence likely \nstems from their distinct algorithmic approaches to word and document representation.",
@@ -283,7 +363,7 @@
       "page": 16
     },
     {
-      "chunk_index": 35,
+      "chunk_index": 45,
       "section_type": "semantic_section",
       "section_title": "Table 4. Partially aligned topics across BERTopic, STM, and LDA.",
       "content": "Table 4. Partially aligned topics across BERTopic, STM, and LDA.\n\nLabel \nBERTopic \nSTM \nLDA \nAvg. Sim.\n\nClimate & Aquatic Ecology --- \n(1) climate, water, \nforest, ecosystem, soil\n\n(9) water, climate, \nsoil, fish, ecosystem\n\nImaging & Sensing \nApplications\n\n--- \n(5) image, sensor, \ndetection, patient, \nmedical\n\n(7) environment, \nflow, rate, \nmeasurement, region\n\nEnergy &Advanced \nMaterials\n\n--- \n(4) energy, material, \nfuel, polymer, heat\n\n(0) material, energy, \nindustry, polymer, \noperation\n\nPopulation & Evolutionary \nBiology\n\n--- \n(8) species, population, \nplant, evolution, fish\n\n(3) gene, population, \nevolution, specie, \ngene expression\n\nMechanical Eng. & Sports \nTechnology\n\n(9) bike, \ncomposite, sport, \nsuspension, ride\n\n--- \n(1) mechanical, \nstructural, vibration, \nweight, force\n\nQuantum & Nuclear Physics (5) quantum, star,\n\ngalaxy, matter, \nphysics\n\n--- \n(8) nuclear, chip, \nmicrofluidic, \nradiation, \nspectroscopy\n\nNote: Numbers in parentheses represent the topic index. \nFor example, the strong alignment between LDA's L9 and STM's S1 topics on “Climate & \nAquatic Ecology” demonstrated a shared understanding of environmental and ecosystem \nassessment, with both models providing relevant terms such as {water, carbon, forest, climate, \necosystem}. In another instance, BERTopic's B9 and LDA's L1 topics showed significant \nagreement on “Mechanical Engineering & Sports Technology”, with BERTopic's keywords such \nas {design, system, control, structure, vehicle, model, sensor, movement, frame} closely matching \nLDA's focus on {system, control, design, vehicle, structure, model, data, engineering, movement}.\n\nThese observed differences between models can be attributed to their underlying algorithms:\n\n• BERTopic: Leverages pre-trained transformer models to generate context-aware\n\nword embeddings. This approach allows BERTopic to capture nuanced semantic \nrelationships and identify more granular, specific, and often novel topics, as evidenced \nby its higher number of highly specialized, unique topics. Its high coherence suggests \nits ability to form semantically tightly-knit and interpretable clusters of words. This \nmakes BERTopic particularly insightful for uncovering fine-grained thematic \nstructures and emerging areas within a dataset.  \n• STM: A statistical topic model that can incorporate metadata, STM's topics often\n\nrepresent coherent semantic units and demonstrate good overlap with both BERTopic \nand LDA for broad themes. STM's unique topics are also interpretable, showing a \nrobust capability to identify distinct themes, though generally at a slightly broader \nlevel of granularity than BERTopic's most specialized topics.",
@@ -291,15 +371,23 @@
       "page": 16
     },
     {
-      "chunk_index": 36,
+      "chunk_index": 46,
       "section_type": "semantic_section",
       "section_title": "Untitled Section",
-      "content": "• LDA: As a generative probabilistic model, LDA assumes topics are distributions over\n\nwords, and documents are distributions over topics. LDA excels at identifying \ncommon themes through word co-occurrence patterns, often producing broader, more \ngeneralized topics. In this analysis, all LDA topics had at least partially aligned topics \nwith other models, demonstrating strong topic diversity for these broader themes. \nHowever, LDA's main comparative weakness lies in its tendency to produce more \ngeneralized topics and its inability to resolve the highly specific or novel topics that \nBERTopic consistently uncovers. This often results in less granular and potentially \nless actionable insights for specialized research.\n\n5.2. \nCovariate Effect Estimation \nIn addition to the comparative analysis, a key contribution of this work is the development of \nthe COFFEE algorithm, which allows for robust statistical analysis and effect estimation from \nBERTopic's non-probabilistic outputs. By systematically comparing the insights derived from \nBERTopic, processed via COFFEE (see Tables 12 and 14 in Appendix A) against those obtained \nfrom Structural Topic Model (STM) (see Tables 13 and 15 in Appendix A, for more details), we \nhighlight BERTopic's ability to corroborate established patterns while revealing unique, granular \nthemes that traditional models such as STM may overlook.",
-      "chunk_length": 1389,
+      "content": "• LDA: As a generative probabilistic model, LDA assumes topics are distributions over\n\nwords, and documents are distributions over topics. LDA excels at identifying \ncommon themes through word co-occurrence patterns, often producing broader, more \ngeneralized topics. In this analysis, all LDA topics had at least partially aligned topics \nwith other models, demonstrating strong topic diversity for these broader themes. \nHowever, LDA's main comparative weakness lies in its tendency to produce more \ngeneralized topics and its inability to resolve the highly specific or novel topics that \nBERTopic consistently uncovers. This often results in less granular and potentially \nless actionable insights for specialized research.",
+      "chunk_length": 727,
       "page": 17
     },
     {
-      "chunk_index": 37,
+      "chunk_index": 47,
+      "section_type": "semantic_section",
+      "section_title": "5.2. \nCovariate Effect Estimation \nIn addition to the comparative analysis, a key contribution of this work is the development of \nthe COFFEE algorithm, which allows for robust statistical analysis and effect estimation from \nBERTopic's non-probabilistic outputs. By systematically comparing the insights derived from \nBERTopic, processed via COFFEE (see Tables 12 and 14 in Appendix A) against those obtained \nfrom Structural Topic Model (STM) (see Tables 13 and 15 in Appendix A, for more details), we \nhighlight BERTopic's ability to corroborate established patterns while revealing unique, granular \nthemes that traditional models such as STM may overlook.",
+      "content": "5.2. \nCovariate Effect Estimation \nIn addition to the comparative analysis, a key contribution of this work is the development of \nthe COFFEE algorithm, which allows for robust statistical analysis and effect estimation from \nBERTopic's non-probabilistic outputs. By systematically comparing the insights derived from \nBERTopic, processed via COFFEE (see Tables 12 and 14 in Appendix A) against those obtained \nfrom Structural Topic Model (STM) (see Tables 13 and 15 in Appendix A, for more details), we \nhighlight BERTopic's ability to corroborate established patterns while revealing unique, granular \nthemes that traditional models such as STM may overlook.",
+      "chunk_length": 660,
+      "page": 17
+    },
+    {
+      "chunk_index": 48,
       "section_type": "semantic_section",
       "section_title": "5.2.1. Geographical Location",
       "content": "5.2.1. Geographical Location\n\nBERTopic's analysis reveals distinct regional research specializations, offering insights into \nthe contributions of different Canadian provinces. For the topic of “Environmental Science & \nIndustrial Processes” (Table 5), BERTopic highlights a significant positive effect in Alberta \n(Estimate: 0.0229, p < 0.0001). This finding is strongly corroborated by STM's corresponding \n“Environmental Science & Industrial Processes” topic (Estimate: 0.0202, p < 0.0001), aligning \nwith Alberta’s well-established prominence in energy and environmental research (Dubé et al. \n2022). Moreover, BERTopic also identifies a statistically significant positive effect for this topic \nin Newfoundland and Labrador (Estimate: 0.0128, p = 0.0224), attributed to its unique industrial \nand environmental context (Gray 2005). STM, however, does not detect a significant effect in this \nprovince (Estimate: 0.0070, p = 0.1952).",
@@ -307,7 +395,7 @@
       "page": 17
     },
     {
-      "chunk_index": 38,
+      "chunk_index": 49,
       "section_type": "semantic_section",
       "section_title": "Table 5. BERTopic provincial effects, environmental science and industrial processes topic.",
       "content": "Table 5. BERTopic provincial effects, environmental science and industrial processes topic.\n\nProvince \nEstimate Std. Error \nt-value \np-value\n\nBritish Columbia \n0.0062 \n0.0022 \n2.8072 \n0.0050\n\nNewfoundland and Labrador 0.0128 \n0.0056 \n2.2831 \n0.0224",
@@ -315,7 +403,7 @@
       "page": 17
     },
     {
-      "chunk_index": 39,
+      "chunk_index": 50,
       "section_type": "semantic_section",
       "section_title": "Untitled Section",
       "content": "In the domain of “Computer Science & Artificial Intelligence” (Table 6), both BERTopic and \nSTM confirm strong positive effects in Ontario (BERTopic: 0.0295, p < 0.0001; STM: 0.0239, p \n< 0.0001) and British Columbia (BERTopic: 0.0051, p = 0.0256; STM: 0.0120, p < 0.0001), \nreflecting these provinces' role as major technology and AI research hubs (Arnaout et al. 2024; \nAttard-Frost, Brandusescu, and Lyons 2024). However, BERTopic detects a significant negative \neffect in Nova Scotia (Estimate: -0.0103, p = 0.0024), a nuance missed by STM (Estimate: -0.0074, \np = 0.0807). This might indicate BERTopic's enhanced sensitivity to regional variations and its \nability to capture lower concentrations of high-impact research in less tech-centric areas.",
@@ -323,55 +411,79 @@
       "page": 18
     },
     {
-      "chunk_index": 40,
+      "chunk_index": 51,
       "section_type": "semantic_section",
       "section_title": "Table 6. BERTopic provincial effects, computer science and artificial intelligence topic.",
-      "content": "Table 6. BERTopic provincial effects, computer science and artificial intelligence topic.\n\nProvince \nEstimate Std. Error \nt-value p-value\n\nBritish Columbia \n0.0051 \n0.0023 \n2.2319 \n0.0256\n\nNewfoundland and Labrador \n0.0017 \n0.0051 \n0.3329 \n0.7392\n\nQuebec \n−0.0046 \n0.0015 \n−3.1233 0.0018 \nFor “Molecular Biology & Biotechnology” (Table 7), both models highlight Manitoba's \nprominence (BERTopic: 0.0206, p < 0.0001; STM: 0.0230, p < 0.0001), affirming its significant \nresearch contributions in life sciences and biotechnology.",
-      "chunk_length": 527,
+      "content": "Table 6. BERTopic provincial effects, computer science and artificial intelligence topic.\n\nProvince \nEstimate Std. Error \nt-value p-value\n\nBritish Columbia \n0.0051 \n0.0023 \n2.2319 \n0.0256\n\nNewfoundland and Labrador \n0.0017 \n0.0051 \n0.3329 \n0.7392",
+      "chunk_length": 246,
       "page": 18
     },
     {
-      "chunk_index": 41,
+      "chunk_index": 52,
+      "section_type": "semantic_section",
+      "section_title": "Quebec \n−0.0046 \n0.0015 \n−3.1233 0.0018 \nFor “Molecular Biology & Biotechnology” (Table 7), both models highlight Manitoba's \nprominence (BERTopic: 0.0206, p < 0.0001; STM: 0.0230, p < 0.0001), affirming its significant \nresearch contributions in life sciences and biotechnology.",
+      "content": "Quebec \n−0.0046 \n0.0015 \n−3.1233 0.0018 \nFor “Molecular Biology & Biotechnology” (Table 7), both models highlight Manitoba's \nprominence (BERTopic: 0.0206, p < 0.0001; STM: 0.0230, p < 0.0001), affirming its significant \nresearch contributions in life sciences and biotechnology.",
+      "chunk_length": 279,
+      "page": 18
+    },
+    {
+      "chunk_index": 53,
       "section_type": "semantic_section",
       "section_title": "Table 7. BERTopic provincial effects, molecular biology and biotechnology topic.",
-      "content": "Table 7. BERTopic provincial effects, molecular biology and biotechnology topic.\n\nProvince \nEstimate \nStd. Error t-value p-value\n\nBritish Columbia \n−0.0019 \n0.0024 \n−0.7730 0.4395\n\nNewfoundland and Labrador −0.0056 \n0.0048 \n−1.1761 0.2396",
-      "chunk_length": 238,
+      "content": "Table 7. BERTopic provincial effects, molecular biology and biotechnology topic.\n\nProvince \nEstimate \nStd. Error t-value p-value",
+      "chunk_length": 128,
       "page": 18
     },
     {
-      "chunk_index": 42,
+      "chunk_index": 54,
       "section_type": "semantic_section",
-      "section_title": "Untitled Section",
+      "section_title": "In “Materials Science & Applied Physics” (Table 8), BERTopic uniquely identifies a \nsignificant positive effect in New Brunswick (Estimate: 0.0181, p < 0.0001). STM’s closest \nequivalent, “Quantum Physics”, does not capture this effect (Estimate: -0.0021, p = 0.6952).",
       "content": "In “Materials Science & Applied Physics” (Table 8), BERTopic uniquely identifies a \nsignificant positive effect in New Brunswick (Estimate: 0.0181, p < 0.0001). STM’s closest \nequivalent, “Quantum Physics”, does not capture this effect (Estimate: -0.0021, p = 0.6952).",
       "chunk_length": 268,
       "page": 19
     },
     {
-      "chunk_index": 43,
+      "chunk_index": 55,
       "section_type": "semantic_section",
       "section_title": "Table 8. BERTopic provincial effects, materials science and applied physics topic.",
-      "content": "Table 8. BERTopic provincial effects, materials science and applied physics topic.\n\nProvince \nEstimate Std. Error t-value p-value\n\nBritish Columbia \n0.0015 \n0.0015 \n0.9940 \n0.3202\n\nNewfoundland and Labrador 0.0017 \n0.0042 \n0.3983 \n0.6904\n\nQuebec \n−0.0009 \n0.0013 \n−0.7276 0.4668 \nFinally, in “Public Health & Vaccine Communication” (Table 9), BERTopic identifies \nsignificant positive effects in Alberta (Estimate: 0.0042, p = 0.0022), and Ontario (Estimate: \n0.0047, p < 0.0001), which are supported by the literature (e.g.,  (Burney, Donelle, and Kothari \n2025; Lang et al. 2021)). STM lacks a direct equivalent topic.",
-      "chunk_length": 620,
+      "content": "Table 8. BERTopic provincial effects, materials science and applied physics topic.\n\nProvince \nEstimate Std. Error t-value p-value",
+      "chunk_length": 129,
       "page": 19
     },
     {
-      "chunk_index": 44,
+      "chunk_index": 56,
+      "section_type": "semantic_section",
+      "section_title": "Newfoundland and Labrador 0.0017 \n0.0042 \n0.3983 \n0.6904",
+      "content": "Newfoundland and Labrador 0.0017 \n0.0042 \n0.3983 \n0.6904\n\nQuebec \n−0.0009 \n0.0013 \n−0.7276 0.4668 \nFinally, in “Public Health & Vaccine Communication” (Table 9), BERTopic identifies \nsignificant positive effects in Alberta (Estimate: 0.0042, p = 0.0022), and Ontario (Estimate: \n0.0047, p < 0.0001), which are supported by the literature (e.g.,  (Burney, Donelle, and Kothari \n2025; Lang et al. 2021)). STM lacks a direct equivalent topic.",
+      "chunk_length": 439,
+      "page": 19
+    },
+    {
+      "chunk_index": 57,
       "section_type": "semantic_section",
       "section_title": "Table 9. BERTopic provincial effects, public health and vaccine communication topic.",
-      "content": "Table 9. BERTopic provincial effects, public health and vaccine communication topic.\n\nProvince \nEstimate Std. Error \nt-value p-value\n\nBritish Columbia \n0.0015 \n0.0014 \n1.0831 \n0.2788\n\nNewfoundland and Labrador −0.0125 \n0.0013 \n−9.4260 <0.0001\n\nQuebec \n−0.0021 \n0.0010 \n−2.1242 0.0337 \nOverall, these findings showcase BERTopic's capability, enhanced by the COFFEE algorithm, \nto capture nuanced regional research patterns with a level of detail and specificity that surpasses",
-      "chunk_length": 475,
+      "content": "Table 9. BERTopic provincial effects, public health and vaccine communication topic.\n\nProvince \nEstimate Std. Error \nt-value p-value",
+      "chunk_length": 132,
       "page": 19
     },
     {
-      "chunk_index": 45,
+      "chunk_index": 58,
       "section_type": "semantic_section",
-      "section_title": "Untitled Section",
+      "section_title": "Quebec \n−0.0021 \n0.0010 \n−2.1242 0.0337 \nOverall, these findings showcase BERTopic's capability, enhanced by the COFFEE algorithm, \nto capture nuanced regional research patterns with a level of detail and specificity that surpasses",
+      "content": "Quebec \n−0.0021 \n0.0010 \n−2.1242 0.0337 \nOverall, these findings showcase BERTopic's capability, enhanced by the COFFEE algorithm, \nto capture nuanced regional research patterns with a level of detail and specificity that surpasses",
+      "chunk_length": 231,
+      "page": 19
+    },
+    {
+      "chunk_index": 59,
+      "section_type": "semantic_section",
+      "section_title": "traditional methods. This results in a more comprehensive understanding of geographical \ninfluences on research themes across Canada.",
       "content": "traditional methods. This results in a more comprehensive understanding of geographical \ninfluences on research themes across Canada.",
       "chunk_length": 133,
       "page": 20
     },
     {
-      "chunk_index": 46,
+      "chunk_index": 60,
       "section_type": "semantic_section",
       "section_title": "5.2.2. Gender",
       "content": "5.2.2. Gender\n\nBERTopic’s fine-grained topic resolution, uncovers significant gender-based patterns in \nresearch topics. In “Computer Science & Artificial Intelligence” (Table 10), both BERTopic \n(Estimate: -0.0034, p < 0.0001) and STM (Estimate: -0.0165, p < 0.0001) consistently indicate a \nstronger association with male researchers. This robust agreement across models aligns with \nwidely documented gender disparities and the underrepresentation of women in STEM fields, \nparticularly in computing and AI \\citep{Hango2013GenderDifferences}. The negative estimates \nfor females highlight a gender gap, calling for targeted initiatives to encourage female participation \nin these critical areas of technological advancement.",
@@ -379,7 +491,7 @@
       "page": 20
     },
     {
-      "chunk_index": 47,
+      "chunk_index": 61,
       "section_type": "semantic_section",
       "section_title": "Table 10. BERTopic gender effects, computer science and artificial intelligence topic.",
       "content": "Table 10. BERTopic gender effects, computer science and artificial intelligence topic.\n\nGender Estimate Std. Error \nt-value p-value\n\nFemale \n−0.0034 \n0.0008 \n−4.2460 <0.0001 \nSimilarly, for “Public Health & Vaccine Communication” (Table 11), BERTopic uniquely \nidentifies a significant positive effect for female researchers (Estimate: 0.0029, p < 0.0001). This \nfinding, not captured by STM due to the absence of a direct equivalent topic, underscores the \nCOFFEE algorithm's ability to better detect gender-specific contributions. The positive estimate \nfor females reflects the prominent role of women in public health professions, nursing, and health \ncommunication (Canadian Nurses Association 2023).",
@@ -387,7 +499,7 @@
       "page": 20
     },
     {
-      "chunk_index": 48,
+      "chunk_index": 62,
       "section_type": "semantic_section",
       "section_title": "Table 11. BERTopic gender effects, public health and vaccine communication topic.",
       "content": "Table 11. BERTopic gender effects, public health and vaccine communication topic.\n\nGender Estimate Std. Error \nt-value p-value\n\nFemale \n0.0029 \n0.0006 \n5.0659 \n<0.0001 \nOverall, these findings illustrate COFFEE-powered BERTopic's nuanced capability to reveal \ngender-based research trends, offering a deeper understanding of how gender influences thematic \ncontributions in various fields. By highlighting both disparities and areas where women are making \nsignificant impacts, this analysis can provide valuable insights that can inform policy decisions \nand initiatives aimed at promoting gender equity in research.",
@@ -395,7 +507,7 @@
       "page": 20
     },
     {
-      "chunk_index": 49,
+      "chunk_index": 63,
       "section_type": "semantic_section",
       "section_title": "6. Conclusion",
       "content": "6. Conclusion\n\nThis study presents a comprehensive comparative analysis of BERTopic, STM, and LDA, \nhighlighting their distinct capabilities in uncovering thematic structures from a large corpus of \nCanadian NSERC-funded research proposals within the period of 2005-2023. Our findings \ndemonstrate that while all models effectively identify prominent scientific domains, their thematic \nresolution capabilities offer unique characteristics crucial for informed methodological selection.",
@@ -403,7 +515,7 @@
       "page": 20
     },
     {
-      "chunk_index": 50,
+      "chunk_index": 64,
       "section_type": "semantic_section",
       "section_title": "Untitled Section",
       "content": "BERTopic consistently exhibited a superior ability to decompose broad subjects into multiple, \nhighly specialized, and semantically rich topics. This enhanced granularity allows for a detailed \nand nuanced understanding of a domain, as it resolves distinct facets that other models might blend \ninto broader categories. The contextual nature of its embeddings enables BERTopic to grasp subtle \nsemantic relationships, resulting in more insightful and coherent topic definitions and providing \nuniquely nuanced semantic discovery. STM generally provided a good balance between \nidentifying broad, well-established themes and reasonably distinct sub-topics. Its unique topics are \ncoherent and well-defined, indicating a solid capability to identify meaningful clusters. It serves \nas a robust option when a moderate level of thematic granularity is desired. Conversely, LDA, \nwhile effective at identifying main thematic currents and demonstrating good topic diversity, \nconsistently produced more generalized topics. Its probabilistic nature, relying on word co-\noccurrence, often results in less specific or insightful topics for dissecting niche research areas, \nmaking it less effective for very fine-grained thematic analysis. Collectively, this research offers \nmethodological guidance for selecting appropriate topic modelling approaches based on desired \nanalytical granularity. While all models robustly identify prominent scientific domains, BERTopic \nexcels in uncovering more granular, highly specific, and often novel themes.\n\nAnother key contribution of this work is the development and application of the COFFEE \nalgorithm. This novel bootstrap-based pipeline addresses the inferential limitations of non-\nprobabilistic topic models, enabling robust statistical analysis of covariate effects. By pairing \nCOFFEE with BERTopic and comparing the results to STM's established estimateEffect function, \nwe validated our approach by corroborating known research specializations. For instance, both \nframeworks identified Alberta's leadership in “Environmental Science & Industrial Processes” and \nthe prominence of “Computer Science & Artificial Intelligence” in Ontario and British Columbia. \nOur findings highlighted the superior analytical resolution of the COFFEE-powered BERTopic \neffect estimate approach. It uncovered unique, statistically significant regional niches that were \ninvisible to STM. For example, BERTopic uniquely detected a significant research focus on \n“Environmental Science” in Newfoundland and Labrador and on “Materials Science & Applied \nPhysics” in New Brunswick. The analysis of gender effects was equally revealing. While both \nmodels confirmed the well-documented underrepresentation of women in “Computer Science & \nAI”, COFFEE uniquely identified “Public Health & Vaccine Communication” as a field with a \nsignificant positive association with female researchers. This finding is particularly potent, as STM \ncould not even test this relationship, having failed to identify the topic in the first place.\n\nThese findings have significant implications for science policy. By providing a more granular \nand sensitive analytical tool, the COFFEE-powered BERTopic framework allows funding \nagencies such as NSERC to move beyond high-level summaries toward a more nuanced \nunderstanding of the research landscape. Such precision is vital for developing targeted, evidence-\nbased strategies that support regional research ecosystems and promote the goals of Equity, \nDiversity, and Inclusion (EDI).",
@@ -411,7 +523,7 @@
       "page": 21
     },
     {
-      "chunk_index": 51,
+      "chunk_index": 65,
       "section_type": "semantic_section",
       "section_title": "7. Limitations and Future Work",
       "content": "7. Limitations and Future Work\n\nWhile this study provides valuable insights into funded research trends and the performance \nof various topic models, several limitations should be acknowledged. First, the quality of topic \nmodelling outputs is significantly influenced by the preprocessing step involved. Although we \nensured consistency across all models for direct comparison, variations in tokenization,",
@@ -419,48 +531,240 @@
       "page": 21
     },
     {
-      "chunk_index": 52,
+      "chunk_index": 66,
       "section_type": "semantic_section",
       "section_title": "Untitled Section",
-      "content": "lemmatization, and stop-word removal could affect the result. Future studies could explore the \nimpact of different preprocessing techniques to assess their influence on model outcomes. Second, \nthe choice of the 0.82 cosine similarity threshold for defining topic similarity between models is a \nhyperparameter. This threshold was determined through an iterative qualitative assessment to \noptimize meaningful thematic correspondences. However, selecting a different threshold could \nalter the categorization of topics. Further research could examine the effects of varying this \nparameter and develop methods for dynamically adjusting it based on dataset characteristics. \nThird, the interpretation and labelling of topics, initially generated using the GPT-4o model and \nrefined through human review, are inherently subjective. Despite efforts to mitigate bias, different \nhuman interpretations and potential biases in large language models should be considered. \nDeveloping more objective and automated methods for topic interpretation could enhance \nreliability. Methodologically, further investigation into robust, model-integrated covariate effect \nestimation techniques for embedding-based topic models is warranted to reduce reliance on post-\nhoc bootstrapping. Such advancements would improve the precision and reliability of effect \nestimation in embedding-based models, e.g., BERTopic. Substantively, future work could expand \nthe dataset to include research proposals funded by other organizations, such as Canadian Tri-\nAgencies (Canadian Institutes of Health Research (CIHR), Social Sciences and Humanities \nResearch Council of Canada (SSHRC)). This would provide a more comprehensive view of the \nnational research ecosystem. Additionally, a deeper exploration of the underlying factors driving \nprovincial and gender-based specializations, potentially integrating additional demographic \nvariables or historical policy analyses, would offer valuable context. Finally, exploring the \ntemporal evolution of these patterns in greater detail and investigating the relationship between \ntopic prevalence and actual funding outcomes (e.g., success rates, award amounts) could yield \ncritical insights for optimizing science policy and fostering a more inclusive and innovative \nscientific community.\n\nReferences \nAbramo, Giovanni, Ciriaco Andrea D’Angelo, and Flavia Di Costa. 2019. “A Gender Analysis\n\nof Top Scientists’ Collaboration Behavior: Evidence from Italy.” Scientometrics \n120(2):405–18. doi:10.1007/s11192-019-03136-6. \nvan Arensbergen, Pleun, Inge van der Weijden, and Peter van den Besselaar. 2014. “Gender\n\nDifferences in Scientific Productivity: A Persisting Phenomenon?” Scientometrics \n101(1):349–73. \nArnaout, Angel, Prabjot Gill, Alice Virani, Alexandra Flatt, Natasha Prodan-Balla, David Byres,\n\nMegan Stowe, Alireza Saremi, Michael Coss, Michael Tatto, May Tuason, Shannon \nMalovec, and Sean Virani. 2024. “Shaping the Future of Healthcare in British Columbia: \nEstablishing Provincial Clinical Governance for Responsible Deployment of Artificial \nIntelligence Tools.” Healthcare Management Forum 37(5):320–28. \ndoi:10.1177/08404704241264819. \nAttard-Frost, Blair, Ana Brandusescu, and Kelly Lyons. 2024. “Public Engagement and AI: A\n\nValues Analysis of National Strategies.” Government Information Quarterly \n41(X):101929. doi:10.1016/j.giq.2024.101929. \nvan den Besselaar, Peter, and Charlie Mom. 2021. “Gender Differences in Research Grant\n\nAllocation–a Mixed Picture.” Scientometrics 126(4):3191–3215. \nBianchi, Federico, Silvia Terragni, and Dirk Hovy. 2021. “Pre‑training Is a Hot Topic:\n\nContextualized Document Embeddings Improve Topic Coherence.” Pp. 643–50 in",
-      "chunk_length": 3702,
+      "content": "lemmatization, and stop-word removal could affect the result. Future studies could explore the \nimpact of different preprocessing techniques to assess their influence on model outcomes. Second, \nthe choice of the 0.82 cosine similarity threshold for defining topic similarity between models is a \nhyperparameter. This threshold was determined through an iterative qualitative assessment to \noptimize meaningful thematic correspondences. However, selecting a different threshold could \nalter the categorization of topics. Further research could examine the effects of varying this \nparameter and develop methods for dynamically adjusting it based on dataset characteristics. \nThird, the interpretation and labelling of topics, initially generated using the GPT-4o model and \nrefined through human review, are inherently subjective. Despite efforts to mitigate bias, different \nhuman interpretations and potential biases in large language models should be considered. \nDeveloping more objective and automated methods for topic interpretation could enhance \nreliability. Methodologically, further investigation into robust, model-integrated covariate effect \nestimation techniques for embedding-based topic models is warranted to reduce reliance on post-\nhoc bootstrapping. Such advancements would improve the precision and reliability of effect \nestimation in embedding-based models, e.g., BERTopic. Substantively, future work could expand \nthe dataset to include research proposals funded by other organizations, such as Canadian Tri-\nAgencies (Canadian Institutes of Health Research (CIHR), Social Sciences and Humanities \nResearch Council of Canada (SSHRC)). This would provide a more comprehensive view of the \nnational research ecosystem. Additionally, a deeper exploration of the underlying factors driving \nprovincial and gender-based specializations, potentially integrating additional demographic \nvariables or historical policy analyses, would offer valuable context. Finally, exploring the \ntemporal evolution of these patterns in greater detail and investigating the relationship between \ntopic prevalence and actual funding outcomes (e.g., success rates, award amounts) could yield \ncritical insights for optimizing science policy and fostering a more inclusive and innovative \nscientific community.\n\nReferences \nAbramo, Giovanni, Ciriaco Andrea D’Angelo, and Flavia Di Costa. 2019. “A Gender Analysis",
+      "chunk_length": 2412,
       "page": 22
     },
     {
-      "chunk_index": 53,
+      "chunk_index": 67,
       "section_type": "semantic_section",
-      "section_title": "Untitled Section",
+      "section_title": "of Top Scientists’ Collaboration Behavior: Evidence from Italy.” Scientometrics \n120(2):405–18. doi:10.1007/s11192-019-03136-6. \nvan Arensbergen, Pleun, Inge van der Weijden, and Peter van den Besselaar. 2014. “Gender",
+      "content": "of Top Scientists’ Collaboration Behavior: Evidence from Italy.” Scientometrics \n120(2):405–18. doi:10.1007/s11192-019-03136-6. \nvan Arensbergen, Pleun, Inge van der Weijden, and Peter van den Besselaar. 2014. “Gender",
+      "chunk_length": 217,
+      "page": 22
+    },
+    {
+      "chunk_index": 68,
+      "section_type": "semantic_section",
+      "section_title": "Differences in Scientific Productivity: A Persisting Phenomenon?” Scientometrics \n101(1):349–73. \nArnaout, Angel, Prabjot Gill, Alice Virani, Alexandra Flatt, Natasha Prodan-Balla, David Byres,",
+      "content": "Differences in Scientific Productivity: A Persisting Phenomenon?” Scientometrics \n101(1):349–73. \nArnaout, Angel, Prabjot Gill, Alice Virani, Alexandra Flatt, Natasha Prodan-Balla, David Byres,\n\nMegan Stowe, Alireza Saremi, Michael Coss, Michael Tatto, May Tuason, Shannon \nMalovec, and Sean Virani. 2024. “Shaping the Future of Healthcare in British Columbia: \nEstablishing Provincial Clinical Governance for Responsible Deployment of Artificial \nIntelligence Tools.” Healthcare Management Forum 37(5):320–28. \ndoi:10.1177/08404704241264819. \nAttard-Frost, Blair, Ana Brandusescu, and Kelly Lyons. 2024. “Public Engagement and AI: A",
+      "chunk_length": 633,
+      "page": 22
+    },
+    {
+      "chunk_index": 69,
+      "section_type": "semantic_section",
+      "section_title": "Values Analysis of National Strategies.” Government Information Quarterly \n41(X):101929. doi:10.1016/j.giq.2024.101929. \nvan den Besselaar, Peter, and Charlie Mom. 2021. “Gender Differences in Research Grant",
+      "content": "Values Analysis of National Strategies.” Government Information Quarterly \n41(X):101929. doi:10.1016/j.giq.2024.101929. \nvan den Besselaar, Peter, and Charlie Mom. 2021. “Gender Differences in Research Grant",
+      "chunk_length": 207,
+      "page": 22
+    },
+    {
+      "chunk_index": 70,
+      "section_type": "semantic_section",
+      "section_title": "Allocation–a Mixed Picture.” Scientometrics 126(4):3191–3215. \nBianchi, Federico, Silvia Terragni, and Dirk Hovy. 2021. “Pre‑training Is a Hot Topic:",
+      "content": "Allocation–a Mixed Picture.” Scientometrics 126(4):3191–3215. \nBianchi, Federico, Silvia Terragni, and Dirk Hovy. 2021. “Pre‑training Is a Hot Topic:\n\nContextualized Document Embeddings Improve Topic Coherence.” Pp. 643–50 in",
+      "chunk_length": 225,
+      "page": 22
+    },
+    {
+      "chunk_index": 71,
+      "section_type": "semantic_section",
+      "section_title": "Proceedings of the 59th Annual Meeting of the Association for Computational Linguistics \n(Short Papers). \nBlei, David M. 2003. “Latent Dirichlet Allocation.” Journal of Machine Learning Research 993–",
       "content": "Proceedings of the 59th Annual Meeting of the Association for Computational Linguistics \n(Short Papers). \nBlei, David M. 2003. “Latent Dirichlet Allocation.” Journal of Machine Learning Research 993–",
       "chunk_length": 199,
       "page": 23
     },
     {
-      "chunk_index": 54,
+      "chunk_index": 72,
       "section_type": "semantic_section",
-      "section_title": "1022. \nBlei, David M., and John D. Lafferty. 2006. “Dynamic Topic Models.” Pp. 113–20 in",
-      "content": "1022. \nBlei, David M., and John D. Lafferty. 2006. “Dynamic Topic Models.” Pp. 113–20 in\n\nProceedings of the 23rd international conference on Machine learning - ICML ’06. ACM \nPress. \nBloch, Carter, and Mads P. Sørensen. 2014. “Funding Disparities across Regions.” Research\n\nPolicy 43(10):1803–17. doi:10.1016/j.respol.2014.06.003. \nBornmann, Lutz, Rüdiger Mutz, and Hans-Dieter Daniel. 2007. “Gender Differences in Grant\n\nPeer Review: A Meta-Analysis.” Royal Society Open Science 8(3):201468. \nBoyack, Kevin W., and Richard Klavans. 2011. “Comparison of Methods for Document\n\nClustering.” Journal of Informetrics 5(4):621–39. \nBreschi, Stefano, and Francesco Lissoni. 2010. “The Geography of Knowledge Spillovers: The\n\nRole of Inventors’ Mobility Across Firms and Space.” Journal of Economic Geography \n10(1):105–26. doi:10.1093/jeg/lbp049. \nBurney, Sheraza, Lorie Donelle, and Anita Kothari. 2025. “Exploring the Public Health Agency\n\nof Canada’s and the Ontario Government’s Vaccine-Related Crisis Communication on X \nduring the COVID-19 Pandemic.” FACETS 10:1–16. doi:10.1139/facets-2022-0186. \nCanadian Nurses Association. 2023. “Nursing Statistics.” \nDevlin, Jacob, Ming-Wei Chang, Kenton Lee, and Kristina Toutanova. 2019. “BERT: Pre-\n\nTraining of Deep Bidirectional Transformers for Language Understanding.” Pp. 4171–86 \nin Proceedings of the 2019 Conference of the North American Chapter of the Association \nfor Computational Linguistics: Human Language Technologies, Volume 1 (Long and \nShort Papers), edited by J. Burstein, C. Doran, and T. Solorio. Minneapolis, Minnesota: \nAssociation for Computational Linguistics. \nDubé, Monique G., Jenna M. Dunlop, Carla Davidson, Danielle L. Beausoleil, Roderick R. O.\n\nHazewinkel, and Faye Wyatt. 2022. “History, Overview, and Governance of \nEnvironmental Monitoring in the Oil Sands Region of Alberta, Canada.” Integrated \nEnvironmental Assessment and Management 18(2):319–32. doi:10.1002/ieam.4490. \nEbadi, Ashkan, and Andrea Schiffauerova. 2016. “How to Boost Scientific Production? A\n\nStatistical Analysis of Research Funding and Other Influencing Factors.” Scientometrics \n106(3):1093–1116. doi:10.1007/s11192-015-1825-x. \nEbadi, Ashkan, Stéphane Tremblay, Cyril Goutte, and Andrea Schiffauerova. 2020. “Application\n\nof Machine Learning Techniques to Assess the Trends and Alignment of the Funded \nResearch Output.” Journal of Informetrics 14(2):101018. doi:10.1016/j.joi.2020.101018. \nEfron, Bradley, and R. J. Tibshirani. 1994. An Introduction to the Bootstrap. Chapman and\n\nHall/CRC. \nEgger, R., and J. Yu. 2023. “Comparing Topic Models: A Systematic Analysis of LDA, STM,\n\nand BERTopic.” Journal of Computational Social Science 6(1):112–35. \ndoi:10.1007/s42001-023-00212-z. \nElse, Paul, Paula Rochon, R. Goldfarb, C. A. Klinger, and S. E. Straus. 2020. “Identifying\n\nFactors Associated with Grant Success: A Case Study from the Canadian Institutes of \nHealth Research.” BMJ Open 10(11):e040439. doi:10.1136/bmjopen-2020-040439. \nGoldin, D., and M. Urquhart-Cronish. 2019. “Study Finds Gender Differences in Success Rates\n\nfor Canadian Scientific Research Grants.” University Affairs.",
-      "chunk_length": 3144,
+      "section_title": "Proceedings of the 23rd international conference on Machine learning - ICML ’06. ACM \nPress. \nBloch, Carter, and Mads P. Sørensen. 2014. “Funding Disparities across Regions.” Research",
+      "content": "Proceedings of the 23rd international conference on Machine learning - ICML ’06. ACM \nPress. \nBloch, Carter, and Mads P. Sørensen. 2014. “Funding Disparities across Regions.” Research",
+      "chunk_length": 183,
       "page": 23
     },
     {
-      "chunk_index": 55,
+      "chunk_index": 73,
       "section_type": "semantic_section",
-      "section_title": "Untitled Section",
-      "content": "Gray, Tim S., ed. 2005. Participation in Fisheries Governance. Vol. 4. Reviews: Methods and\n\nTechnologies in Fish Biology and Fisheries. Dordrecht, The Netherlands: Springer. \nGrillitsch, Marcus, Rune Dahl Fitjar, and Lasse S. Stambøl. 2019. “Policy Challenges for\n\nRegional Innovation: The Role of Regional Structures.” Environment and Planning C: \nPolitics and Space 37(2):243–61. doi:10.1177/2399654418764023. \nGrootendorst, Maarten. 2020. “KeyBERT: Minimal Keyword Extraction with BERT.” Zenodo.\n\ndoi:https://doi.org/10.5281/zenodo.4461265. \nGrootendorst, Maarten. 2022. “BERTopic: Neural Topic Modeling with a Class-Based TF-IDF\n\nProcedure.” \nHajibabaei, Anahita, Andrea Schiffauerova, and Ashkan Ebadi. 2022. “Gender-Specific Patterns\n\nin the Artificial Intelligence Scientific Ecosystem.” Journal of Informetrics \n16(2):101275. doi:10.1016/j.joi.2022.101275. \nHajibabaei, Anahita, Andrea Schiffauerova, and Ashkan Ebadi. 2023. “Women and Key\n\nPositions in Scientific Collaboration Networks: Analyzing Central Scientists’ Profiles in \nthe Artificial Intelligence Ecosystem through a Gender Lens.” Scientometrics \n128(2):1219–40. doi:10.1007/s11192-022-04601-5. \nHealy, John, and Leland McInnes. 2024. “Uniform Manifold Approximation and Projection.”\n\nNature Reviews Methods Primers 4(1):82. doi:10.1038/s43586-024-00363-x. \nJacob, Brian A., and Lars Lefgren. 2011. “The Impact of Research Grant Funding on Scientific\n\nProductivity.” Journal of Public Economics 95(9–10):1168–77. \nLang, Raynell, Jamie L. Benham, Omid Atabati, Aidan Hollis, Trevor Tombe, Blake Shaffer,\n\nKatharina Kovacs Burns, Gail MacKean, Tova Léveillé, Brandi McCormack, Hasan \nSheikh, Madison M. Fullerton, Theresa Tang, Jean-Christophe Boucher, Cora \nConstantinescu, Mehdi Mourali, Braden J. Manns, Deborah A. Marshall, Jia Hu, and \nRobert J. Oxoby. 2021. “Attitudes, Behaviours and Barriers to Public Health Measures \nfor COVID-19: A Survey to Inform Public Health Messaging.” BMC Public Health \n21(765). doi:10.1186/s12889-021-10790-0. \nLarivière, Vincent, Chaoqun Ni, Yves Gingras, Blaise Cronin, and Cassidy R. Sugimoto. 2013.\n\n“Global Gender Disparities in Science.” Nature 504(7479):211–13. \nvan der Maaten, Laurens, and Geoffrey Hinton. 2008. “Visualizing Data Using T-SNE.” Journal\n\nof Machine Learning Research 9:2579–2605. \nMcInnes, Leland, John Healy, and Steve Astels. 2017. “Hdbscan: Hierarchical Density Based\n\nClustering.” The Journal of Open Source Software 2(11):205. doi:10.21105/joss.00205. \nMerton, Robert K. 1968. “The Matthew Effect in Science.” Science 159(3810):56–63.\n\ndoi:10.1126/science.159.3810.56. \nMimno, David, Hanna Wallach, Edmund Talley, Miriam Leenders, and Andrew McCallum.\n\n2011. “Optimizing Semantic Coherence in Topic Models.” Proceedings of the 2011 \nConference on Empirical Methods in Natural Language Processing 262–72. \nMooney, Christopher Z. 1996. “Bootstrap Statistical Inference: Examples and Evaluations for\n\nPolitical Science.” American Journal of Political Science 40(2):570–602. \nNSERC. 2021. “Tri-Agency Equity, Diversity, and Inclusion Action Plan.” \nOpenAI Team, Josh Achiam, Steven Adler, and others. 2024. “GPT-4 Technical Report.” \nReimers, Nils, and Iryna Gurevych. 2019. “Sentence-BERT: Sentence Embeddings Using\n\nSiamese BERT-Networks.”",
-      "chunk_length": 3273,
+      "section_title": "Policy 43(10):1803–17. doi:10.1016/j.respol.2014.06.003. \nBornmann, Lutz, Rüdiger Mutz, and Hans-Dieter Daniel. 2007. “Gender Differences in Grant",
+      "content": "Policy 43(10):1803–17. doi:10.1016/j.respol.2014.06.003. \nBornmann, Lutz, Rüdiger Mutz, and Hans-Dieter Daniel. 2007. “Gender Differences in Grant",
+      "chunk_length": 146,
+      "page": 23
+    },
+    {
+      "chunk_index": 74,
+      "section_type": "semantic_section",
+      "section_title": "Peer Review: A Meta-Analysis.” Royal Society Open Science 8(3):201468. \nBoyack, Kevin W., and Richard Klavans. 2011. “Comparison of Methods for Document",
+      "content": "Peer Review: A Meta-Analysis.” Royal Society Open Science 8(3):201468. \nBoyack, Kevin W., and Richard Klavans. 2011. “Comparison of Methods for Document",
+      "chunk_length": 152,
+      "page": 23
+    },
+    {
+      "chunk_index": 75,
+      "section_type": "semantic_section",
+      "section_title": "Clustering.” Journal of Informetrics 5(4):621–39. \nBreschi, Stefano, and Francesco Lissoni. 2010. “The Geography of Knowledge Spillovers: The",
+      "content": "Clustering.” Journal of Informetrics 5(4):621–39. \nBreschi, Stefano, and Francesco Lissoni. 2010. “The Geography of Knowledge Spillovers: The",
+      "chunk_length": 141,
+      "page": 23
+    },
+    {
+      "chunk_index": 76,
+      "section_type": "semantic_section",
+      "section_title": "Role of Inventors’ Mobility Across Firms and Space.” Journal of Economic Geography \n10(1):105–26. doi:10.1093/jeg/lbp049. \nBurney, Sheraza, Lorie Donelle, and Anita Kothari. 2025. “Exploring the Public Health Agency",
+      "content": "Role of Inventors’ Mobility Across Firms and Space.” Journal of Economic Geography \n10(1):105–26. doi:10.1093/jeg/lbp049. \nBurney, Sheraza, Lorie Donelle, and Anita Kothari. 2025. “Exploring the Public Health Agency\n\nof Canada’s and the Ontario Government’s Vaccine-Related Crisis Communication on X \nduring the COVID-19 Pandemic.” FACETS 10:1–16. doi:10.1139/facets-2022-0186. \nCanadian Nurses Association. 2023. “Nursing Statistics.” \nDevlin, Jacob, Ming-Wei Chang, Kenton Lee, and Kristina Toutanova. 2019. “BERT: Pre-\n\nTraining of Deep Bidirectional Transformers for Language Understanding.” Pp. 4171–86 \nin Proceedings of the 2019 Conference of the North American Chapter of the Association \nfor Computational Linguistics: Human Language Technologies, Volume 1 (Long and \nShort Papers), edited by J. Burstein, C. Doran, and T. Solorio. Minneapolis, Minnesota: \nAssociation for Computational Linguistics. \nDubé, Monique G., Jenna M. Dunlop, Carla Davidson, Danielle L. Beausoleil, Roderick R. O.\n\nHazewinkel, and Faye Wyatt. 2022. “History, Overview, and Governance of \nEnvironmental Monitoring in the Oil Sands Region of Alberta, Canada.” Integrated \nEnvironmental Assessment and Management 18(2):319–32. doi:10.1002/ieam.4490. \nEbadi, Ashkan, and Andrea Schiffauerova. 2016. “How to Boost Scientific Production? A",
+      "chunk_length": 1319,
+      "page": 23
+    },
+    {
+      "chunk_index": 77,
+      "section_type": "semantic_section",
+      "section_title": "Statistical Analysis of Research Funding and Other Influencing Factors.” Scientometrics \n106(3):1093–1116. doi:10.1007/s11192-015-1825-x. \nEbadi, Ashkan, Stéphane Tremblay, Cyril Goutte, and Andrea Schiffauerova. 2020. “Application",
+      "content": "Statistical Analysis of Research Funding and Other Influencing Factors.” Scientometrics \n106(3):1093–1116. doi:10.1007/s11192-015-1825-x. \nEbadi, Ashkan, Stéphane Tremblay, Cyril Goutte, and Andrea Schiffauerova. 2020. “Application",
+      "chunk_length": 231,
+      "page": 23
+    },
+    {
+      "chunk_index": 78,
+      "section_type": "semantic_section",
+      "section_title": "of Machine Learning Techniques to Assess the Trends and Alignment of the Funded \nResearch Output.” Journal of Informetrics 14(2):101018. doi:10.1016/j.joi.2020.101018. \nEfron, Bradley, and R. J. Tibshirani. 1994. An Introduction to the Bootstrap. Chapman and",
+      "content": "of Machine Learning Techniques to Assess the Trends and Alignment of the Funded \nResearch Output.” Journal of Informetrics 14(2):101018. doi:10.1016/j.joi.2020.101018. \nEfron, Bradley, and R. J. Tibshirani. 1994. An Introduction to the Bootstrap. Chapman and\n\nHall/CRC. \nEgger, R., and J. Yu. 2023. “Comparing Topic Models: A Systematic Analysis of LDA, STM,",
+      "chunk_length": 358,
+      "page": 23
+    },
+    {
+      "chunk_index": 79,
+      "section_type": "semantic_section",
+      "section_title": "and BERTopic.” Journal of Computational Social Science 6(1):112–35. \ndoi:10.1007/s42001-023-00212-z. \nElse, Paul, Paula Rochon, R. Goldfarb, C. A. Klinger, and S. E. Straus. 2020. “Identifying",
+      "content": "and BERTopic.” Journal of Computational Social Science 6(1):112–35. \ndoi:10.1007/s42001-023-00212-z. \nElse, Paul, Paula Rochon, R. Goldfarb, C. A. Klinger, and S. E. Straus. 2020. “Identifying",
+      "chunk_length": 192,
+      "page": 23
+    },
+    {
+      "chunk_index": 80,
+      "section_type": "semantic_section",
+      "section_title": "Factors Associated with Grant Success: A Case Study from the Canadian Institutes of \nHealth Research.” BMJ Open 10(11):e040439. doi:10.1136/bmjopen-2020-040439. \nGoldin, D., and M. Urquhart-Cronish. 2019. “Study Finds Gender Differences in Success Rates",
+      "content": "Factors Associated with Grant Success: A Case Study from the Canadian Institutes of \nHealth Research.” BMJ Open 10(11):e040439. doi:10.1136/bmjopen-2020-040439. \nGoldin, D., and M. Urquhart-Cronish. 2019. “Study Finds Gender Differences in Success Rates",
+      "chunk_length": 253,
+      "page": 23
+    },
+    {
+      "chunk_index": 81,
+      "section_type": "semantic_section",
+      "section_title": "Gray, Tim S., ed. 2005. Participation in Fisheries Governance. Vol. 4. Reviews: Methods and",
+      "content": "Gray, Tim S., ed. 2005. Participation in Fisheries Governance. Vol. 4. Reviews: Methods and\n\nTechnologies in Fish Biology and Fisheries. Dordrecht, The Netherlands: Springer. \nGrillitsch, Marcus, Rune Dahl Fitjar, and Lasse S. Stambøl. 2019. “Policy Challenges for",
+      "chunk_length": 264,
       "page": 24
     },
     {
-      "chunk_index": 56,
+      "chunk_index": 82,
       "section_type": "semantic_section",
-      "section_title": "Untitled Section",
-      "content": "Roberts, Margaret E., Brandon M. Stewart, and Dustin Tingley. 2019. “Stm: An R Package for\n\nStructural Topic Models.” Journal of Statistical Software 91:1–40. \ndoi:10.18637/jss.v091.i02. \nRoberts, Margaret, Brandon Stewart, Dustin Tingley, and Edoardo Airoldi. 2013. “The Structural\n\nTopic Model and Applied Social Science.” Advances in Neural Information Processing \nSystems Workshop on Topic Models: Computation, Application, and Evaluation. \nRöder, Michael, Andreas Both, and Alexander Hinneburg. 2015. “Exploring the Space of Topic\n\nCoherence Measures.” Pp. 399–408 in Proceedings of the Eighth ACM International \nConference on Web Search and Data Mining - WSDM ’15. ACM Press. \nRodriguez-Pose, Andrés, Michael Storper, Sandra Bachtrögler, Gilles Duranton, and Philip\n\nMcCann. 2019. “The Great Divide: Rural Areas in Europe and the Policies to Foster \nTheir Development.” Journal of Rural Studies 66:186–207. \ndoi:10.1016/j.jrurstud.2018.11.006. \nRosen-Zvi, Michal, Thomas L. Griffiths, Michael I. Jordan, and Padhraic Smyth. 2004. “The\n\nAuthor-Topic Model for Author Representation and Document Generation.” Pp. 487–94 \nin Proceedings of the 20th Conference on Uncertainty in Artificial Intelligence (UAI). \nStephan, Paula E. 2012. How Economics Shapes Science. Harvard University Press. \nUrquhart‑Cronish, Mackenzie, Sarah P. Otto, and Lesley Evans Ogden. 2019. “Study Finds\n\nGender Differences in Success Rates for Canadian Scientific Research Grants.” \nUniversity Affairs. https://archives.universityaffairs.ca/news/news-article/study-finds-\ngender-differences-for-canadian-scientific-research-grants/. \nWennerås, Christine, and Agnes Wold. 1997. “Nepotism and Sexism in Peer Review.” Nature\n\n387(6631):341–43. \nWitteman, H. O., M. Hendricks, S. Straus, and C. Tannenbaum. 2019. “Gender Differences in\n\nResearch Grant Applications and Awards by Academic Health Scientists.” JAMA \n322(22):2116–24. doi:10.1001/jama.2019.19302.",
-      "chunk_length": 1933,
+      "section_title": "Regional Innovation: The Role of Regional Structures.” Environment and Planning C: \nPolitics and Space 37(2):243–61. doi:10.1177/2399654418764023. \nGrootendorst, Maarten. 2020. “KeyBERT: Minimal Keyword Extraction with BERT.” Zenodo.",
+      "content": "Regional Innovation: The Role of Regional Structures.” Environment and Planning C: \nPolitics and Space 37(2):243–61. doi:10.1177/2399654418764023. \nGrootendorst, Maarten. 2020. “KeyBERT: Minimal Keyword Extraction with BERT.” Zenodo.\n\ndoi:https://doi.org/10.5281/zenodo.4461265. \nGrootendorst, Maarten. 2022. “BERTopic: Neural Topic Modeling with a Class-Based TF-IDF\n\nProcedure.” \nHajibabaei, Anahita, Andrea Schiffauerova, and Ashkan Ebadi. 2022. “Gender-Specific Patterns",
+      "chunk_length": 474,
+      "page": 24
+    },
+    {
+      "chunk_index": 83,
+      "section_type": "semantic_section",
+      "section_title": "in the Artificial Intelligence Scientific Ecosystem.” Journal of Informetrics \n16(2):101275. doi:10.1016/j.joi.2022.101275. \nHajibabaei, Anahita, Andrea Schiffauerova, and Ashkan Ebadi. 2023. “Women and Key",
+      "content": "in the Artificial Intelligence Scientific Ecosystem.” Journal of Informetrics \n16(2):101275. doi:10.1016/j.joi.2022.101275. \nHajibabaei, Anahita, Andrea Schiffauerova, and Ashkan Ebadi. 2023. “Women and Key\n\nPositions in Scientific Collaboration Networks: Analyzing Central Scientists’ Profiles in \nthe Artificial Intelligence Ecosystem through a Gender Lens.” Scientometrics \n128(2):1219–40. doi:10.1007/s11192-022-04601-5. \nHealy, John, and Leland McInnes. 2024. “Uniform Manifold Approximation and Projection.”",
+      "chunk_length": 513,
+      "page": 24
+    },
+    {
+      "chunk_index": 84,
+      "section_type": "semantic_section",
+      "section_title": "Nature Reviews Methods Primers 4(1):82. doi:10.1038/s43586-024-00363-x. \nJacob, Brian A., and Lars Lefgren. 2011. “The Impact of Research Grant Funding on Scientific",
+      "content": "Nature Reviews Methods Primers 4(1):82. doi:10.1038/s43586-024-00363-x. \nJacob, Brian A., and Lars Lefgren. 2011. “The Impact of Research Grant Funding on Scientific",
+      "chunk_length": 165,
+      "page": 24
+    },
+    {
+      "chunk_index": 85,
+      "section_type": "semantic_section",
+      "section_title": "Productivity.” Journal of Public Economics 95(9–10):1168–77. \nLang, Raynell, Jamie L. Benham, Omid Atabati, Aidan Hollis, Trevor Tombe, Blake Shaffer,",
+      "content": "Productivity.” Journal of Public Economics 95(9–10):1168–77. \nLang, Raynell, Jamie L. Benham, Omid Atabati, Aidan Hollis, Trevor Tombe, Blake Shaffer,\n\nKatharina Kovacs Burns, Gail MacKean, Tova Léveillé, Brandi McCormack, Hasan \nSheikh, Madison M. Fullerton, Theresa Tang, Jean-Christophe Boucher, Cora \nConstantinescu, Mehdi Mourali, Braden J. Manns, Deborah A. Marshall, Jia Hu, and \nRobert J. Oxoby. 2021. “Attitudes, Behaviours and Barriers to Public Health Measures \nfor COVID-19: A Survey to Inform Public Health Messaging.” BMC Public Health \n21(765). doi:10.1186/s12889-021-10790-0. \nLarivière, Vincent, Chaoqun Ni, Yves Gingras, Blaise Cronin, and Cassidy R. Sugimoto. 2013.",
+      "chunk_length": 684,
+      "page": 24
+    },
+    {
+      "chunk_index": 86,
+      "section_type": "semantic_section",
+      "section_title": "“Global Gender Disparities in Science.” Nature 504(7479):211–13. \nvan der Maaten, Laurens, and Geoffrey Hinton. 2008. “Visualizing Data Using T-SNE.” Journal",
+      "content": "“Global Gender Disparities in Science.” Nature 504(7479):211–13. \nvan der Maaten, Laurens, and Geoffrey Hinton. 2008. “Visualizing Data Using T-SNE.” Journal",
+      "chunk_length": 157,
+      "page": 24
+    },
+    {
+      "chunk_index": 87,
+      "section_type": "semantic_section",
+      "section_title": "of Machine Learning Research 9:2579–2605. \nMcInnes, Leland, John Healy, and Steve Astels. 2017. “Hdbscan: Hierarchical Density Based",
+      "content": "of Machine Learning Research 9:2579–2605. \nMcInnes, Leland, John Healy, and Steve Astels. 2017. “Hdbscan: Hierarchical Density Based",
+      "chunk_length": 132,
+      "page": 24
+    },
+    {
+      "chunk_index": 88,
+      "section_type": "semantic_section",
+      "section_title": "Clustering.” The Journal of Open Source Software 2(11):205. doi:10.21105/joss.00205. \nMerton, Robert K. 1968. “The Matthew Effect in Science.” Science 159(3810):56–63.",
+      "content": "Clustering.” The Journal of Open Source Software 2(11):205. doi:10.21105/joss.00205. \nMerton, Robert K. 1968. “The Matthew Effect in Science.” Science 159(3810):56–63.\n\ndoi:10.1126/science.159.3810.56. \nMimno, David, Hanna Wallach, Edmund Talley, Miriam Leenders, and Andrew McCallum.",
+      "chunk_length": 284,
+      "page": 24
+    },
+    {
+      "chunk_index": 89,
+      "section_type": "semantic_section",
+      "section_title": "2011. “Optimizing Semantic Coherence in Topic Models.” Proceedings of the 2011 \nConference on Empirical Methods in Natural Language Processing 262–72. \nMooney, Christopher Z. 1996. “Bootstrap Statistical Inference: Examples and Evaluations for",
+      "content": "2011. “Optimizing Semantic Coherence in Topic Models.” Proceedings of the 2011 \nConference on Empirical Methods in Natural Language Processing 262–72. \nMooney, Christopher Z. 1996. “Bootstrap Statistical Inference: Examples and Evaluations for\n\nPolitical Science.” American Journal of Political Science 40(2):570–602. \nNSERC. 2021. “Tri-Agency Equity, Diversity, and Inclusion Action Plan.” \nOpenAI Team, Josh Achiam, Steven Adler, and others. 2024. “GPT-4 Technical Report.” \nReimers, Nils, and Iryna Gurevych. 2019. “Sentence-BERT: Sentence Embeddings Using\n\nSiamese BERT-Networks.”",
+      "chunk_length": 584,
+      "page": 24
+    },
+    {
+      "chunk_index": 90,
+      "section_type": "semantic_section",
+      "section_title": "Structural Topic Models.” Journal of Statistical Software 91:1–40. \ndoi:10.18637/jss.v091.i02. \nRoberts, Margaret, Brandon Stewart, Dustin Tingley, and Edoardo Airoldi. 2013. “The Structural",
+      "content": "Structural Topic Models.” Journal of Statistical Software 91:1–40. \ndoi:10.18637/jss.v091.i02. \nRoberts, Margaret, Brandon Stewart, Dustin Tingley, and Edoardo Airoldi. 2013. “The Structural",
+      "chunk_length": 190,
+      "page": 25
+    },
+    {
+      "chunk_index": 91,
+      "section_type": "semantic_section",
+      "section_title": "Topic Model and Applied Social Science.” Advances in Neural Information Processing \nSystems Workshop on Topic Models: Computation, Application, and Evaluation. \nRöder, Michael, Andreas Both, and Alexander Hinneburg. 2015. “Exploring the Space of Topic",
+      "content": "Topic Model and Applied Social Science.” Advances in Neural Information Processing \nSystems Workshop on Topic Models: Computation, Application, and Evaluation. \nRöder, Michael, Andreas Both, and Alexander Hinneburg. 2015. “Exploring the Space of Topic",
+      "chunk_length": 251,
+      "page": 25
+    },
+    {
+      "chunk_index": 92,
+      "section_type": "semantic_section",
+      "section_title": "Coherence Measures.” Pp. 399–408 in Proceedings of the Eighth ACM International \nConference on Web Search and Data Mining - WSDM ’15. ACM Press. \nRodriguez-Pose, Andrés, Michael Storper, Sandra Bachtrögler, Gilles Duranton, and Philip",
+      "content": "Coherence Measures.” Pp. 399–408 in Proceedings of the Eighth ACM International \nConference on Web Search and Data Mining - WSDM ’15. ACM Press. \nRodriguez-Pose, Andrés, Michael Storper, Sandra Bachtrögler, Gilles Duranton, and Philip",
+      "chunk_length": 234,
+      "page": 25
+    },
+    {
+      "chunk_index": 93,
+      "section_type": "semantic_section",
+      "section_title": "McCann. 2019. “The Great Divide: Rural Areas in Europe and the Policies to Foster \nTheir Development.” Journal of Rural Studies 66:186–207. \ndoi:10.1016/j.jrurstud.2018.11.006. \nRosen-Zvi, Michal, Thomas L. Griffiths, Michael I. Jordan, and Padhraic Smyth. 2004. “The",
+      "content": "McCann. 2019. “The Great Divide: Rural Areas in Europe and the Policies to Foster \nTheir Development.” Journal of Rural Studies 66:186–207. \ndoi:10.1016/j.jrurstud.2018.11.006. \nRosen-Zvi, Michal, Thomas L. Griffiths, Michael I. Jordan, and Padhraic Smyth. 2004. “The\n\nAuthor-Topic Model for Author Representation and Document Generation.” Pp. 487–94 \nin Proceedings of the 20th Conference on Uncertainty in Artificial Intelligence (UAI). \nStephan, Paula E. 2012. How Economics Shapes Science. Harvard University Press. \nUrquhart‑Cronish, Mackenzie, Sarah P. Otto, and Lesley Evans Ogden. 2019. “Study Finds\n\nGender Differences in Success Rates for Canadian Scientific Research Grants.” \nUniversity Affairs. https://archives.universityaffairs.ca/news/news-article/study-finds-\ngender-differences-for-canadian-scientific-research-grants/. \nWennerås, Christine, and Agnes Wold. 1997. “Nepotism and Sexism in Peer Review.” Nature\n\n387(6631):341–43. \nWitteman, H. O., M. Hendricks, S. Straus, and C. Tannenbaum. 2019. “Gender Differences in",
+      "chunk_length": 1036,
+      "page": 25
+    },
+    {
+      "chunk_index": 94,
+      "section_type": "semantic_section",
+      "section_title": "Research Grant Applications and Awards by Academic Health Scientists.” JAMA \n322(22):2116–24. doi:10.1001/jama.2019.19302.",
+      "content": "Research Grant Applications and Awards by Academic Health Scientists.” JAMA \n322(22):2116–24. doi:10.1001/jama.2019.19302.",
+      "chunk_length": 122,
       "page": 25
     }
   ],
   "section_distribution": {
-    "semantic_section": 57
+    "semantic_section": 95
   },
-  "timestamp": "2025-10-22T12:27:41.651426"
+  "timestamp": "2025-10-22T13:07:34.628864"
 }

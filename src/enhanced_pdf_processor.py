@@ -3,6 +3,7 @@ Enhanced PDF processing module using PyMuPDF.
 Provides better text extraction with structural information.
 """
 import fitz  # PyMuPDF
+import re
 from pathlib import Path
 from typing import List, Dict, Optional
 from langchain_core.documents import Document
@@ -55,6 +56,21 @@ class EnhancedPDFProcessor:
                 # Get text blocks with formatting information
                 blocks = page.get_text("dict")["blocks"]
                 
+                # First pass: collect all font sizes to calculate median
+                all_page_sizes = []
+                for block in blocks:
+                    if "lines" in block:
+                        for line in block["lines"]:
+                            for span in line["spans"]:
+                                all_page_sizes.append(span["size"])
+                
+                # Calculate page median font size
+                page_median_size = None
+                if all_page_sizes:
+                    all_page_sizes.sort()
+                    page_median_size = all_page_sizes[len(all_page_sizes) // 2]
+                
+                # Second pass: extract blocks and detect titles
                 for block in blocks:
                     if "lines" in block:
                         block_text = ""
@@ -82,12 +98,12 @@ class EnhancedPDFProcessor:
                         
                         if block_text.strip():
                             # Determine if this block is likely a title
-                            is_title = self._is_likely_title(block_fonts)
+                            text_for_judge = block_text.strip()
+                            is_title = self._is_likely_title(text_for_judge, block_fonts, page_median_size)
                             
                             structured_blocks.append({
                                 'text': block_text.strip(),
                                 'is_title': is_title,
-                                'font_info': block_fonts,
                                 'page': page_num + 1
                             })
                             
@@ -141,78 +157,33 @@ class EnhancedPDFProcessor:
                 block['is_document_title'] = True
                 break
     
-    def _is_likely_title(self, font_info: List[Dict]) -> bool:
-        """
-        Determine if a text block is likely a title based on font information.
-        Uses stricter criteria to avoid over-detection.
-        
-        Args:
-            font_info: List of font information dictionaries
-            
-        Returns:
-            True if likely a title
-        """
-        if not font_info:
+    def _is_likely_title(self, text: str, font_info: List[Dict], page_median_size: Optional[float]=None) -> bool:
+
+        t = ' '.join(text.split())
+        if len(t) <= 3 or t.replace('.', '').replace('-', '').isdigit():
             return False
-        
-        # Calculate average font size
-        avg_font_size = sum(span['size'] for span in font_info) / len(font_info)
-        
-        # Count bold text
-        bold_count = sum(1 for span in font_info if span['flags'] & 2**4)
-        
-        # Get text content
-        total_text = ''.join(span['text'] for span in font_info)
-        text = total_text.strip()
-        text_length = len(text)
-        
-        # Skip very short text (likely page numbers or noise)
-        if text_length <= 3:
-            return False
-        
-        # Skip pure numbers
-        if text.replace('.', '').replace('-', '').isdigit():
-            return False
-        
-        # Check for numbered section patterns (required for title)
-        numbered_section_patterns = [
-            r'^\d+\.?\s+[A-Z]',              # "1. Introduction" or "1 Introduction"
-            r'^\d+\.\d+\.?\s+',              # "1.1. Subsection"
-            r'^\d+\.\d+\.\d+\.?\s+',         # "1.1.1. Subsubsection"
-            r'^\d+\.\d+\.\d+\.\d+\.?\s+',    # "1.1.1.1. Level 4"
-            r'^\d+\.\s*\n',                  # "1.\n" followed by text
-            r'^\d+\.\d+\.\s*\n',             # "2.1.\n" followed by text
-            r'^\d+\.\d+\.\d+\.\s*\n',        # "2.1.3.\n" followed by text
-        ]
-        
-        is_numbered_section = any(
-            __import__('re').search(pattern, text)
-            for pattern in numbered_section_patterns
-        )
-        
-        # Additional patterns (figures, tables, etc.)
-        special_patterns = [
-            r'^Figure\s+\d+',
-            r'^Table\s+\d+',
-            r'^Algorithm\s+\d+',
-        ]
-        
-        is_special_header = any(
-            __import__('re').search(pattern, text, __import__('re').IGNORECASE)
-            for pattern in special_patterns
-        )
-        
-        # Criteria for being a title
-        is_large_font = avg_font_size > 11.5
-        is_bold = bold_count > len(font_info) * 0.5
-        is_reasonable_length = 5 < text_length < 200
-        
-        # MUST have numbered section pattern OR special header pattern
-        if is_numbered_section or is_special_header:
-            # Additional check: should have reasonable formatting
-            return is_reasonable_length and (is_large_font or is_bold)
-        
+
+        # 1) Common section name
+        if re.match(r'^(abstract|introduction|related work|background|methods?|materials? and methods?|experiments?|results?|discussion|conclusion|conclusions?|references|acknowledg(e)?ments?)$', t.lower()):
+            return True
+
+        # 2) Numbering style
+        if re.match(r'^\s*\d+(?:\.\d+)*\s*[\.\)]?\s+[A-Z]', t):
+            return True
+
+        # 3) Special Header
+        if re.match(r'^(figure|table|algorithm)\s+\d+', t, re.I):
+            return True
+
+        #4) Layout Inspiration
+        sizes = [s.get('size', 0) for s in font_info] or [0]
+        max_size = max(sizes)
+        is_bold = any((s.get('flags', 0) & 2) != 0 for s in font_info)
+        if page_median_size and (max_size >= 1.2 * page_median_size or is_bold):
+            return 5 < len(t) < 300
+
         return False
+
     
     def split_documents(self, documents: List[Document]) -> List[Document]:
         """

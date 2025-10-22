@@ -45,7 +45,8 @@ class Summarizer:
     def _select_key_chunks(self, chunks: List[Document]) -> List[Document]:
         """
         Select key chunks for summarization:
-        - First chunk (abstract/opening) - FULL CONTENT
+        - First chunk (title + abstract/opening) - FULL CONTENT
+        - Abstract section - FULL CONTENT
         - Introduction section - FULL CONTENT
         - All section titles - TITLE ONLY
         - Conclusion section - FULL CONTENT
@@ -62,16 +63,21 @@ class Summarizer:
         for i, chunk in enumerate(chunks):
             section_title = chunk.metadata.get('section_title', '')
             section_title_lower = section_title.lower()
+            content_lower = chunk.page_content.lower()
             
             # First chunk: always include full content (title + abstract)
             if i == 0:
+                key_chunks.append(chunk)
+            
+            # Abstract: include full content (check both title and content)
+            elif 'abstract' in section_title_lower or content_lower.startswith('abstract'):
                 key_chunks.append(chunk)
             
             # Introduction: include full content
             elif 'introduction' in section_title_lower:
                 key_chunks.append(chunk)
             
-            # Conclusion/Future Work: include full content
+            # Conclusion/Future Work/Limitations: include full content
             elif 'conclusion' in section_title_lower or 'future work' in section_title_lower or 'limitation' in section_title_lower:
                 key_chunks.append(chunk)
             

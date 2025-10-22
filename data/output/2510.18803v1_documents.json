@@ -122,13 +122,13 @@
         },
         {
           "text": "2.1. \nResearch Funding and Its Impact \nInvesting in research and development is a critical driver of innovation and economic \nsustainability (Ebadi et al. 2020; Stephan 2012). Understanding the downstream impact of grant \nfunding on scientific productivity is crucial for optimizing resource allocation and maximizing \nsocietal benefits (Ebadi and Schiffauerova 2016a; Jacob and Lefgren 2011). This necessitates a \ncomprehensive understanding of evolving research trends for effective and equitable allocation of \nresources. Recent analyses of global R&D expenditure highlight the increasing prioritization of \nscience and technology as tools for addressing societal challenges, though disparities in funding \ndistribution persist across regions and demographics (Bloch and Sørensen 2014; Ebadi et al. 2020). \nIn Canada, initiatives such as the Tri-Agency Equity, Diversity, and Inclusion (EDI) Action Plan \n(NSERC 2021) reflect a growing recognition of systemic inequities in research ecosystems, \nunderscoring the need for data-driven assessments of funding patterns.",
-          "is_title": false,
+          "is_title": true,
           "page": 3,
           "text_length": 1069
         },
         {
           "text": "2.2. \nGender Disparities in Scientific Research \nThe role of demographic factors, such as gender, in shaping research priorities remains \nrelatively less explored. Studies have consistently demonstrated gender disparities within scientific \nresearch (Abramo, D’Angelo, and Di Costa 2019; van den Besselaar and Mom 2021). For instance, \nLarivière et al. (Larivière et al. 2013) highlighted global gender disparities, indicating that women \nare often underrepresented in scientific authorship. Similarly, van Arensbergen et al. (van \nArensbergen, van der Weijden, and van den Besselaar 2014) found that gender differences in \nscientific productivity and funding success persist across various disciplines, emphasizing the \ncontinued need for more inclusive approaches to funding allocation. In Canada, Else et al. (Else et \nal. 2020) found that factors predicting research grant success vary, suggesting the potential \ninfluence of gender. Moreover, persistent gender gaps in Canadian STEM funding, particularly in \nengineering and physical sciences, have been documented, showing, for instance, higher rejection \nrates for early-career women scientists and slightly less funding for successful female applicants \n(Goldin and Urquhart-Cronish 2019). Hajibabaei et al. (Hajibabaei, Schiffauerova, and Ebadi \n2022, 2023) found that in AI research networks. At the same time, scientific performance is key",
-          "is_title": false,
+          "is_title": true,
           "page": 3,
           "text_length": 1400
         }
@@ -140,7 +140,7 @@
       "content": "4 \n\nfor both genders to achieve central roles. Women face subtle disadvantages in possessing core \npositions, which further highlights ongoing gender disparities (Hajibabaei et al. 2023). These \ndisparities are potentially exacerbated by biases in evaluation processes, as evidenced by studies \nsuggesting that grant applications led by women may be evaluated less favorably than those led \nby men, even when scientific quality is comparable (Bornmann et al. 2007; Wennerås and Wold \n1997; Witteman et al. 2019). \n\n2.3. \nGeographical Disparities in Research Funding \nGeographical disparities in research funding allocation remain a persistent challenge, \nmirroring demographic inequities. Breschi and Lissoni (Breschi and Lissoni 2010) illustrate how \nregional proximity and inventor mobility drive knowledge spillovers, emphasizing the role of \ngeography in shaping innovation. The concentration of funding in metropolitan hubs can \nmarginalize researchers in peripheral regions, limiting access to resources and collaboration \nopportunities (Grillitsch et al. 2019; Rodriguez-Pose et al. 2019). This spatial inequity aligns with \nthe “Matthew Effect” in science described by Merton (Merton 1968), where established centers \nattract disproportionate resources, exacerbating regional imbalance. Broader studies on regional \ninnovation systems (Grillitsch et al. 2019) and the socio-economic impacts of regional inequality \n(Rodriguez-Pose et al. 2019) highlight the importance of considering geographical factors in \nscience policy. \n\n2.4. \nTopic Modelling \nTopic modelling has emerged as a crucial tool for analyzing large text datasets to identify \npatterns and recurring themes. The foundation for modern topic modelling was established by Blei \net al. (Blei 2003), who introduced Latent Dirichlet Allocation (LDA). LDA, a generative \nprobabilistic model, has since become a fundamental method for text analysis. Building upon \nLDA, Structural Topic Models (STM) (Roberts et al. 2013) enable researchers to incorporate \nmetadata (e.g., authorship demographics, temporal trends) directly into topic discovery, a feature \ncritical for analyzing the interplay between research content and contextual factors (Roberts et al. \n2019). The emergence of transformer-based architectures, such as BERT (Devlin et al. 2019), has \nrecently revolutionized natural language processing by enabling models to capture intricate \ncontextual relationships within text. Building upon this, transformer-based topic models, e.g., \nBERTopic (Grootendorst 2020), leverage advanced contextual embeddings to capture semantic \nrelationships in text, showing strong performance for analyzing complex documents (Bianchi et \nal. 2021). Comparative studies of LDA, STM, and BERTopic emphasize trade-offs between \nprobabilistic interpretability and contextual nuance (Egger and Yu 2023), a methodological tension \ncentral to our study. Evaluating topic models involves assessing topic coherence, which quantifies \nthe interpretability of topics (Mimno et al. 2011; Röder, Both, and Hinneburg 2015), particularly \nrelevant for models such as BERTopic. The underlying dimensionality reduction techniques used \nin some models, e.g., BERTopic, often rely on algorithms such as Uniform Manifold \nApproximation and Projection (UMAP) (Healy and McInnes 2024), while clustering is performed \nwith methods like HDBSCAN (McInnes, Healy, and Astels 2017), highlighting the mixed nature \nof these approaches. \n\n2.5. \nMethodological Approaches to Effect Estimation \nThe application of regression techniques to topic model outputs for effect estimation builds \nupon a growing body of work in computational social science and text analysis. For instance, \nstudies have utilized models that link author characteristics to topics discussed in scientific \nliterature (Rosen-Zvi et al. 2004) and used regression to understand how temporal trends affect",
       "content_length": 3904,
       "source_file": "2510.18803v1.pdf",
-      "has_titles": false,
+      "has_titles": true,
       "structured_blocks": [
         {
           "text": "4",
@@ -156,19 +156,19 @@
         },
         {
           "text": "2.3. \nGeographical Disparities in Research Funding \nGeographical disparities in research funding allocation remain a persistent challenge, \nmirroring demographic inequities. Breschi and Lissoni (Breschi and Lissoni 2010) illustrate how \nregional proximity and inventor mobility drive knowledge spillovers, emphasizing the role of \ngeography in shaping innovation. The concentration of funding in metropolitan hubs can \nmarginalize researchers in peripheral regions, limiting access to resources and collaboration \nopportunities (Grillitsch et al. 2019; Rodriguez-Pose et al. 2019). This spatial inequity aligns with \nthe “Matthew Effect” in science described by Merton (Merton 1968), where established centers \nattract disproportionate resources, exacerbating regional imbalance. Broader studies on regional \ninnovation systems (Grillitsch et al. 2019) and the socio-economic impacts of regional inequality \n(Rodriguez-Pose et al. 2019) highlight the importance of considering geographical factors in \nscience policy.",
-          "is_title": false,
+          "is_title": true,
           "page": 4,
           "text_length": 1017
         },
         {
           "text": "2.4. \nTopic Modelling \nTopic modelling has emerged as a crucial tool for analyzing large text datasets to identify \npatterns and recurring themes. The foundation for modern topic modelling was established by Blei \net al. (Blei 2003), who introduced Latent Dirichlet Allocation (LDA). LDA, a generative \nprobabilistic model, has since become a fundamental method for text analysis. Building upon \nLDA, Structural Topic Models (STM) (Roberts et al. 2013) enable researchers to incorporate \nmetadata (e.g., authorship demographics, temporal trends) directly into topic discovery, a feature \ncritical for analyzing the interplay between research content and contextual factors (Roberts et al. \n2019). The emergence of transformer-based architectures, such as BERT (Devlin et al. 2019), has \nrecently revolutionized natural language processing by enabling models to capture intricate \ncontextual relationships within text. Building upon this, transformer-based topic models, e.g., \nBERTopic (Grootendorst 2020), leverage advanced contextual embeddings to capture semantic \nrelationships in text, showing strong performance for analyzing complex documents (Bianchi et \nal. 2021). Comparative studies of LDA, STM, and BERTopic emphasize trade-offs between \nprobabilistic interpretability and contextual nuance (Egger and Yu 2023), a methodological tension \ncentral to our study. Evaluating topic models involves assessing topic coherence, which quantifies \nthe interpretability of topics (Mimno et al. 2011; Röder, Both, and Hinneburg 2015), particularly \nrelevant for models such as BERTopic. The underlying dimensionality reduction techniques used \nin some models, e.g., BERTopic, often rely on algorithms such as Uniform Manifold \nApproximation and Projection (UMAP) (Healy and McInnes 2024), while clustering is performed \nwith methods like HDBSCAN (McInnes, Healy, and Astels 2017), highlighting the mixed nature \nof these approaches.",
-          "is_title": false,
+          "is_title": true,
           "page": 4,
           "text_length": 1932
         },
         {
           "text": "2.5. \nMethodological Approaches to Effect Estimation \nThe application of regression techniques to topic model outputs for effect estimation builds \nupon a growing body of work in computational social science and text analysis. For instance, \nstudies have utilized models that link author characteristics to topics discussed in scientific \nliterature (Rosen-Zvi et al. 2004) and used regression to understand how temporal trends affect",
-          "is_title": false,
+          "is_title": true,
           "page": 4,
           "text_length": 434
         }
@@ -294,7 +294,7 @@
         },
         {
           "text": "3. Translation of non-English content: Non-English content, such as French and Italian, \nwas translated into English using the deep_translator package in Python. To verify the \naccuracy of the translations, a random sample of 5% of the translated content was manually \nreviewed, confirming its suitability for subsequent analysis.",
-          "is_title": false,
+          "is_title": true,
           "page": 7,
           "text_length": 330
         },
@@ -342,7 +342,7 @@
         },
         {
           "text": "4.2. \nTopic Modelling \nIn this study, we employed and compared three topic modelling techniques to extract themes \nfrom our corpus. Each model is described below. \n4.2.1. Latent Dirichlet Allocation (LDA)",
-          "is_title": false,
+          "is_title": true,
           "page": 7,
           "text_length": 204
         },
@@ -354,7 +354,7 @@
         },
         {
           "text": "STM (Roberts et al. 2013) enhances the traditional topic modelling framework by integrating \ndocument-level metadata, allowing for a nuanced analysis of topic prevalence and content. The \nSTM model was implemented using the stm package in R. To determine the optimal number of",
-          "is_title": false,
+          "is_title": true,
           "page": 7,
           "text_length": 276
         }
@@ -376,7 +376,7 @@
         },
         {
           "text": "topics, we employed the searchK() function from the same package, conducting a grid search over \n2 to 20 topics. This method also identified 11 as the optimal number of topics (K). \n4.2.3. BERTopic",
-          "is_title": false,
+          "is_title": true,
           "page": 8,
           "text_length": 197
         },
@@ -388,7 +388,7 @@
         },
         {
           "text": "4.3. \nComparative Analysis of Topic Models \nTo conduct a robust comparison of the topics generated by the three models—LDA, STM, \nand BERTopic—we adopted a systematic approach combining cross-model topic alignment, \nsemantic interpretability assessment, and quantitative evaluation metrics.",
-          "is_title": false,
+          "is_title": true,
           "page": 8,
           "text_length": 290
         },
@@ -578,7 +578,7 @@
       "content": "10 \n\n    where Wall is the multiset of all top words from the triplet topics for the model, and count(w, \nWall) denotes the number of occurrences of word w in Wall. The model’s uniqueness score is the \naverage of Uniqueness(T) across all its matched topics. \n4.3.2.3. Topic Diversity \n\nThis metric represents the vocabulary range across the evaluated topics for a given model. It \nis calculated as the proportion of unique words among all top words from the triplet topics. \nFormally: \n\n𝐷𝑖𝑣𝑒𝑟𝑠𝑖𝑡𝑦= | ⋃\n𝑊𝑇\n𝑇∈𝑀\n|\n∑\n|𝑊𝑇|\n𝑇∈𝑀\n\n             (4) \n\nwhere M is the set of matched triplet topics for the model, and ∑\n|𝑊𝑇|\n𝑇∈𝑀\n is the total number \nof words (with duplicates) across all topics. Higher scores indicate a broader range of distinct terms \nacross topics. \n\n4.4. \nCovariate Effect Estimation \nAfter extracting topics, we aimed to estimate the effects of geographic location and gender on \nresearch themes. To address the uneven distribution of scientific publications across provinces, we \npreprocessed the geographic location variable. Provinces with fewer than 1000 publications were \ncombined into a single ``Other'' group. This step enhances the statistical stability of the regression \nestimates for the larger, more frequently sampled provinces while still accounting for the \ncontributions from smaller regions.  \n\nWe estimated the effect of province and gender on the prevalence of each topic identified by \nthe STM and BERTopic model.  Topic prevalence, defined as the proportion of a document d \nassigned to a given topic k (𝜃𝑑,𝑘), was treated as the dependent variable in a regression model, \nwith province and gender as key predictors separately. The resulting categorical variables were \nhandled using sum contrasts. Sum contrasts compare the mean of each category to the overall mean \nof the dependent variable across all observations. In this context, the intercept of the regression \nrepresents the estimated overall mean topic proportion across all publications, and the coefficient \nfor each province or gender category represents the estimated difference between that category’s \nmean topic proportion and this overall mean. The general form of the regression model for topic k \nis \n\n𝜃𝑑,𝑘= 𝛽0,𝑘+ ∑𝛽𝑗,𝑘𝐶𝑑,𝑗+ 𝜀𝑑,𝑘\n\n𝑃−1\n\n𝑗=1\n\n           (5) \n\nwhere 𝜃𝑑,𝑘 is the proportion of document d in topic k, 𝛽0,𝑘 is the intercept (overall mean), 𝛽𝑗,𝑘 \nis the coefficient for the j-th category (representing the difference from the overall mean), 𝐶𝑑,𝑗 is \nthe sum contrast variables for the P categories of the relevant covariate (e.g., gender or geographic \nlocation), and 𝜀𝑑,𝑘 is the error term.",
       "content_length": 2604,
       "source_file": "2510.18803v1.pdf",
-      "has_titles": false,
+      "has_titles": true,
       "structured_blocks": [
         {
           "text": "10",
@@ -618,7 +618,7 @@
         },
         {
           "text": "4.4. \nCovariate Effect Estimation \nAfter extracting topics, we aimed to estimate the effects of geographic location and gender on \nresearch themes. To address the uneven distribution of scientific publications across provinces, we \npreprocessed the geographic location variable. Provinces with fewer than 1000 publications were \ncombined into a single ``Other'' group. This step enhances the statistical stability of the regression \nestimates for the larger, more frequently sampled provinces while still accounting for the \ncontributions from smaller regions.",
-          "is_title": false,
+          "is_title": true,
           "page": 10,
           "text_length": 560
         },
@@ -716,13 +716,13 @@
         },
         {
           "text": "5.1. \nComparative Analysis of Topic Models \nThe comparative analysis highlights both similarities and differences in the thematic structures \nidentified by BERTopic, STM, and LDA, shedding light on each model's strengths and \nweaknesses. Figure 3 presents the t-SNE visualization of the topics identified by these models. In \nthe plot, clustered points represent semantically similar topics, regardless of their originating \nmodel, while more isolated points indicate distinct thematic spaces. This visualization not only \nconfirms quantitative similarities and differences but also serves as a foundational reference for \nunderstanding the thematic relationships explored in detail below.",
-          "is_title": false,
+          "is_title": true,
           "page": 12,
           "text_length": 689
         },
         {
           "text": "Figure 3. t-SNE plot of topics identified by BERTopic, STM, and LDA. Each point represents a \ntopic, and clusters indicate semantic similarity.",
-          "is_title": false,
+          "is_title": true,
           "page": 12,
           "text_length": 143
         },
@@ -762,7 +762,7 @@
         },
         {
           "text": "Table 1 presents a detailed comparison of unique topics identified by each model, highlighting \nthemes predominantly discerned by a single model. These unique topics are visually corroborated \nby Figure 3, where they often appear as more isolated points, signifying their semantic distinction \nfrom the main clusters. Notably, BERTopic stands out with its ability to generate a greater number \nof specific and unique topics, illustrating its strength in providing a richer semantic understanding \nof the corpus.",
-          "is_title": false,
+          "is_title": true,
           "page": 13,
           "text_length": 511
         },
@@ -1160,7 +1160,7 @@
         },
         {
           "text": "Model \nAverage Coherence (CV ) Average Uniqueness \nAverage Diversity",
-          "is_title": false,
+          "is_title": true,
           "page": 15,
           "text_length": 68
         },
@@ -1420,7 +1420,7 @@
         },
         {
           "text": "5.2. \nCovariate Effect Estimation \nIn addition to the comparative analysis, a key contribution of this work is the development of \nthe COFFEE algorithm, which allows for robust statistical analysis and effect estimation from \nBERTopic's non-probabilistic outputs. By systematically comparing the insights derived from \nBERTopic, processed via COFFEE (see Tables 12 and 14 in Appendix A) against those obtained \nfrom Structural Topic Model (STM) (see Tables 13 and 15 in Appendix A, for more details), we \nhighlight BERTopic's ability to corroborate established patterns while revealing unique, granular \nthemes that traditional models such as STM may overlook.",
-          "is_title": false,
+          "is_title": true,
           "page": 17,
           "text_length": 660
         },
@@ -1450,13 +1450,13 @@
         },
         {
           "text": "Intercept \n0.0568 \n0.0014 \n39.6711 \n<0.0001",
-          "is_title": false,
+          "is_title": true,
           "page": 17,
           "text_length": 43
         },
         {
           "text": "Alberta \n0.0229 \n0.0028 \n8.1083 \n<0.0001",
-          "is_title": false,
+          "is_title": true,
           "page": 17,
           "text_length": 40
         },
@@ -1498,7 +1498,7 @@
         },
         {
           "text": "Other \n−0.0477 \n0.0021 \n−22.7762 <0.0001",
-          "is_title": false,
+          "is_title": true,
           "page": 17,
           "text_length": 40
         },
@@ -1544,7 +1544,7 @@
         },
         {
           "text": "Intercept \n0.0449 \n0.0015 \n30.8181 <0.0001",
-          "is_title": false,
+          "is_title": true,
           "page": 18,
           "text_length": 42
         },
@@ -1586,19 +1586,19 @@
         },
         {
           "text": "Ontario \n0.0295 \n0.0018 \n5.1528 \n<0.0001",
-          "is_title": false,
+          "is_title": true,
           "page": 18,
           "text_length": 40
         },
         {
           "text": "Other \n−0.0151 \n0.0030 \n−5.0668 <0.0001",
-          "is_title": false,
+          "is_title": true,
           "page": 18,
           "text_length": 39
         },
         {
           "text": "Quebec \n−0.0046 \n0.0015 \n−3.1233 0.0018 \nFor “Molecular Biology & Biotechnology” (Table 7), both models highlight Manitoba's \nprominence (BERTopic: 0.0206, p < 0.0001; STM: 0.0230, p < 0.0001), affirming its significant \nresearch contributions in life sciences and biotechnology.",
-          "is_title": false,
+          "is_title": true,
           "page": 18,
           "text_length": 279
         },
@@ -1616,61 +1616,61 @@
         },
         {
           "text": "Intercept \n0.0586 \n0.0010 \n56.2270 \n<0.0001",
-          "is_title": false,
+          "is_title": true,
           "page": 18,
           "text_length": 43
         },
         {
           "text": "Alberta \n−0.0063 \n0.0018 \n−3.4805 0.0005",
-          "is_title": false,
+          "is_title": true,
           "page": 18,
           "text_length": 40
         },
         {
           "text": "British Columbia \n−0.0019 \n0.0024 \n−0.7730 0.4395",
-          "is_title": false,
+          "is_title": true,
           "page": 18,
           "text_length": 49
         },
         {
           "text": "Manitoba \n0.0206 \n0.0042 \n4.8793 \n<0.0001",
-          "is_title": false,
+          "is_title": true,
           "page": 18,
           "text_length": 41
         },
         {
           "text": "New Brunswick \n0.0140 \n0.0062 \n2.2621 \n0.0237",
-          "is_title": false,
+          "is_title": true,
           "page": 18,
           "text_length": 45
         },
         {
           "text": "Newfoundland and Labrador −0.0056 \n0.0048 \n−1.1761 0.2396",
-          "is_title": false,
+          "is_title": true,
           "page": 18,
           "text_length": 57
         },
         {
           "text": "Nova Scotia \n0.0069 \n0.0031 \n2.2466 \n0.0247",
-          "is_title": false,
+          "is_title": true,
           "page": 18,
           "text_length": 43
         },
         {
           "text": "Ontario \n−0.0083 \n0.0015 \n−5.3439 <0.0001",
-          "is_title": false,
+          "is_title": true,
           "page": 18,
           "text_length": 41
         },
         {
           "text": "Other \n−0.0343 \n0.0034 \n−10.0927 <0.0001",
-          "is_title": false,
+          "is_title": true,
           "page": 18,
           "text_length": 40
         },
         {
           "text": "Quebec \n−0.0097 \n0.0015 \n−6.2402 <0.0001",
-          "is_title": false,
+          "is_title": true,
           "page": 18,
           "text_length": 40
         }
@@ -1692,7 +1692,7 @@
         },
         {
           "text": "In “Materials Science & Applied Physics” (Table 8), BERTopic uniquely identifies a \nsignificant positive effect in New Brunswick (Estimate: 0.0181, p < 0.0001). STM’s closest \nequivalent, “Quantum Physics”, does not capture this effect (Estimate: -0.0021, p = 0.6952).",
-          "is_title": false,
+          "is_title": true,
           "page": 19,
           "text_length": 268
         },
@@ -1710,55 +1710,55 @@
         },
         {
           "text": "Intercept \n0.0292 \n0.0007 \n40.5076 \n<0.0001",
-          "is_title": false,
+          "is_title": true,
           "page": 19,
           "text_length": 43
         },
         {
           "text": "Alberta \n−0.0007 \n0.0017 \n−0.3927 0.6945",
-          "is_title": false,
+          "is_title": true,
           "page": 19,
           "text_length": 40
         },
         {
           "text": "British Columbia \n0.0015 \n0.0015 \n0.9940 \n0.3202",
-          "is_title": false,
+          "is_title": true,
           "page": 19,
           "text_length": 48
         },
         {
           "text": "Manitoba \n0.0042 \n0.0040 \n1.0559 \n0.2910",
-          "is_title": false,
+          "is_title": true,
           "page": 19,
           "text_length": 40
         },
         {
           "text": "New Brunswick \n0.0181 \n0.0035 \n5.1810 \n<0.0001",
-          "is_title": false,
+          "is_title": true,
           "page": 19,
           "text_length": 46
         },
         {
           "text": "Newfoundland and Labrador 0.0017 \n0.0042 \n0.3983 \n0.6904",
-          "is_title": false,
+          "is_title": true,
           "page": 19,
           "text_length": 56
         },
         {
           "text": "Nova Scotia \n−0.0005 \n0.0026 \n−0.1872 0.8515",
-          "is_title": false,
+          "is_title": true,
           "page": 19,
           "text_length": 44
         },
         {
           "text": "Ontario \n0.0008 \n0.0012 \n0.6583 \n0.5103",
-          "is_title": false,
+          "is_title": true,
           "page": 19,
           "text_length": 39
         },
         {
           "text": "Other \n−0.0208 \n0.0015 \n−13.7424 <0.0001",
-          "is_title": false,
+          "is_title": true,
           "page": 19,
           "text_length": 40
         },
@@ -1782,61 +1782,61 @@
         },
         {
           "text": "Intercept \n0.0154 \n0.0007 \n22.1753 <0.0001",
-          "is_title": false,
+          "is_title": true,
           "page": 19,
           "text_length": 42
         },
         {
           "text": "Alberta \n0.0042 \n0.0014 \n3.0594 \n0.0022",
-          "is_title": false,
+          "is_title": true,
           "page": 19,
           "text_length": 39
         },
         {
           "text": "British Columbia \n0.0015 \n0.0014 \n1.0831 \n0.2788",
-          "is_title": false,
+          "is_title": true,
           "page": 19,
           "text_length": 48
         },
         {
           "text": "Manitoba \n0.0018 \n0.0022 \n0.7915 \n0.4286",
-          "is_title": false,
+          "is_title": true,
           "page": 19,
           "text_length": 40
         },
         {
           "text": "New Brunswick \n−0.0053 \n0.0024 \n−2.1951 0.0282",
-          "is_title": false,
+          "is_title": true,
           "page": 19,
           "text_length": 46
         },
         {
           "text": "Newfoundland and Labrador −0.0125 \n0.0013 \n−9.4260 <0.0001",
-          "is_title": false,
+          "is_title": true,
           "page": 19,
           "text_length": 58
         },
         {
           "text": "Nova Scotia \n0.0026 \n0.0018 \n1.4691 \n0.1418",
-          "is_title": false,
+          "is_title": true,
           "page": 19,
           "text_length": 43
         },
         {
           "text": "Ontario \n0.0047 \n0.0010 \n4.6628 \n<0.0001",
-          "is_title": false,
+          "is_title": true,
           "page": 19,
           "text_length": 40
         },
         {
           "text": "Other \n−0.0061 \n0.0022 \n−2.7444 0.0061",
-          "is_title": false,
+          "is_title": true,
           "page": 19,
           "text_length": 38
         },
         {
           "text": "Quebec \n−0.0021 \n0.0010 \n−2.1242 0.0337 \nOverall, these findings showcase BERTopic's capability, enhanced by the COFFEE algorithm, \nto capture nuanced regional research patterns with a level of detail and specificity that surpasses",
-          "is_title": false,
+          "is_title": true,
           "page": 19,
           "text_length": 231
         }
@@ -1858,7 +1858,7 @@
         },
         {
           "text": "traditional methods. This results in a more comprehensive understanding of geographical \ninfluences on research themes across Canada.",
-          "is_title": false,
+          "is_title": true,
           "page": 20,
           "text_length": 133
         },
@@ -1888,7 +1888,7 @@
         },
         {
           "text": "Intercept \n0.0461 \n0.0008 \n58.0180 <0.0001",
-          "is_title": false,
+          "is_title": true,
           "page": 20,
           "text_length": 42
         },
@@ -1912,7 +1912,7 @@
         },
         {
           "text": "Intercept \n0.0186 \n0.0005 \n35.2883 <0.0001",
-          "is_title": false,
+          "is_title": true,
           "page": 20,
           "text_length": 42
         },
@@ -1988,7 +1988,7 @@
       "content": "22 \n\nlemmatization, and stop-word removal could affect the result. Future studies could explore the \nimpact of different preprocessing techniques to assess their influence on model outcomes. Second, \nthe choice of the 0.82 cosine similarity threshold for defining topic similarity between models is a \nhyperparameter. This threshold was determined through an iterative qualitative assessment to \noptimize meaningful thematic correspondences. However, selecting a different threshold could \nalter the categorization of topics. Further research could examine the effects of varying this \nparameter and develop methods for dynamically adjusting it based on dataset characteristics. \nThird, the interpretation and labelling of topics, initially generated using the GPT-4o model and \nrefined through human review, are inherently subjective. Despite efforts to mitigate bias, different \nhuman interpretations and potential biases in large language models should be considered. \nDeveloping more objective and automated methods for topic interpretation could enhance \nreliability. Methodologically, further investigation into robust, model-integrated covariate effect \nestimation techniques for embedding-based topic models is warranted to reduce reliance on post-\nhoc bootstrapping. Such advancements would improve the precision and reliability of effect \nestimation in embedding-based models, e.g., BERTopic. Substantively, future work could expand \nthe dataset to include research proposals funded by other organizations, such as Canadian Tri-\nAgencies (Canadian Institutes of Health Research (CIHR), Social Sciences and Humanities \nResearch Council of Canada (SSHRC)). This would provide a more comprehensive view of the \nnational research ecosystem. Additionally, a deeper exploration of the underlying factors driving \nprovincial and gender-based specializations, potentially integrating additional demographic \nvariables or historical policy analyses, would offer valuable context. Finally, exploring the \ntemporal evolution of these patterns in greater detail and investigating the relationship between \ntopic prevalence and actual funding outcomes (e.g., success rates, award amounts) could yield \ncritical insights for optimizing science policy and fostering a more inclusive and innovative \nscientific community. \n\nReferences \nAbramo, Giovanni, Ciriaco Andrea D’Angelo, and Flavia Di Costa. 2019. “A Gender Analysis \n\nof Top Scientists’ Collaboration Behavior: Evidence from Italy.” Scientometrics \n120(2):405–18. doi:10.1007/s11192-019-03136-6. \nvan Arensbergen, Pleun, Inge van der Weijden, and Peter van den Besselaar. 2014. “Gender \n\nDifferences in Scientific Productivity: A Persisting Phenomenon?” Scientometrics \n101(1):349–73. \nArnaout, Angel, Prabjot Gill, Alice Virani, Alexandra Flatt, Natasha Prodan-Balla, David Byres, \n\nMegan Stowe, Alireza Saremi, Michael Coss, Michael Tatto, May Tuason, Shannon \nMalovec, and Sean Virani. 2024. “Shaping the Future of Healthcare in British Columbia: \nEstablishing Provincial Clinical Governance for Responsible Deployment of Artificial \nIntelligence Tools.” Healthcare Management Forum 37(5):320–28. \ndoi:10.1177/08404704241264819. \nAttard-Frost, Blair, Ana Brandusescu, and Kelly Lyons. 2024. “Public Engagement and AI: A \n\nValues Analysis of National Strategies.” Government Information Quarterly \n41(X):101929. doi:10.1016/j.giq.2024.101929. \nvan den Besselaar, Peter, and Charlie Mom. 2021. “Gender Differences in Research Grant \n\nAllocation–a Mixed Picture.” Scientometrics 126(4):3191–3215. \nBianchi, Federico, Silvia Terragni, and Dirk Hovy. 2021. “Pre‑training Is a Hot Topic: \n\nContextualized Document Embeddings Improve Topic Coherence.” Pp. 643–50 in",
       "content_length": 3714,
       "source_file": "2510.18803v1.pdf",
-      "has_titles": false,
+      "has_titles": true,
       "structured_blocks": [
         {
           "text": "22",
@@ -2010,13 +2010,13 @@
         },
         {
           "text": "of Top Scientists’ Collaboration Behavior: Evidence from Italy.” Scientometrics \n120(2):405–18. doi:10.1007/s11192-019-03136-6. \nvan Arensbergen, Pleun, Inge van der Weijden, and Peter van den Besselaar. 2014. “Gender",
-          "is_title": false,
+          "is_title": true,
           "page": 22,
           "text_length": 217
         },
         {
           "text": "Differences in Scientific Productivity: A Persisting Phenomenon?” Scientometrics \n101(1):349–73. \nArnaout, Angel, Prabjot Gill, Alice Virani, Alexandra Flatt, Natasha Prodan-Balla, David Byres,",
-          "is_title": false,
+          "is_title": true,
           "page": 22,
           "text_length": 193
         },
@@ -2028,13 +2028,13 @@
         },
         {
           "text": "Values Analysis of National Strategies.” Government Information Quarterly \n41(X):101929. doi:10.1016/j.giq.2024.101929. \nvan den Besselaar, Peter, and Charlie Mom. 2021. “Gender Differences in Research Grant",
-          "is_title": false,
+          "is_title": true,
           "page": 22,
           "text_length": 207
         },
         {
           "text": "Allocation–a Mixed Picture.” Scientometrics 126(4):3191–3215. \nBianchi, Federico, Silvia Terragni, and Dirk Hovy. 2021. “Pre‑training Is a Hot Topic:",
-          "is_title": false,
+          "is_title": true,
           "page": 22,
           "text_length": 149
         },
@@ -2062,7 +2062,7 @@
         },
         {
           "text": "Proceedings of the 59th Annual Meeting of the Association for Computational Linguistics \n(Short Papers). \nBlei, David M. 2003. “Latent Dirichlet Allocation.” Journal of Machine Learning Research 993–",
-          "is_title": false,
+          "is_title": true,
           "page": 23,
           "text_length": 199
         },
@@ -2074,31 +2074,31 @@
         },
         {
           "text": "Proceedings of the 23rd international conference on Machine learning - ICML ’06. ACM \nPress. \nBloch, Carter, and Mads P. Sørensen. 2014. “Funding Disparities across Regions.” Research",
-          "is_title": false,
+          "is_title": true,
           "page": 23,
           "text_length": 183
         },
         {
           "text": "Policy 43(10):1803–17. doi:10.1016/j.respol.2014.06.003. \nBornmann, Lutz, Rüdiger Mutz, and Hans-Dieter Daniel. 2007. “Gender Differences in Grant",
-          "is_title": false,
+          "is_title": true,
           "page": 23,
           "text_length": 146
         },
         {
           "text": "Peer Review: A Meta-Analysis.” Royal Society Open Science 8(3):201468. \nBoyack, Kevin W., and Richard Klavans. 2011. “Comparison of Methods for Document",
-          "is_title": false,
+          "is_title": true,
           "page": 23,
           "text_length": 152
         },
         {
           "text": "Clustering.” Journal of Informetrics 5(4):621–39. \nBreschi, Stefano, and Francesco Lissoni. 2010. “The Geography of Knowledge Spillovers: The",
-          "is_title": false,
+          "is_title": true,
           "page": 23,
           "text_length": 141
         },
         {
           "text": "Role of Inventors’ Mobility Across Firms and Space.” Journal of Economic Geography \n10(1):105–26. doi:10.1093/jeg/lbp049. \nBurney, Sheraza, Lorie Donelle, and Anita Kothari. 2025. “Exploring the Public Health Agency",
-          "is_title": false,
+          "is_title": true,
           "page": 23,
           "text_length": 215
         },
@@ -2122,13 +2122,13 @@
         },
         {
           "text": "Statistical Analysis of Research Funding and Other Influencing Factors.” Scientometrics \n106(3):1093–1116. doi:10.1007/s11192-015-1825-x. \nEbadi, Ashkan, Stéphane Tremblay, Cyril Goutte, and Andrea Schiffauerova. 2020. “Application",
-          "is_title": false,
+          "is_title": true,
           "page": 23,
           "text_length": 231
         },
         {
           "text": "of Machine Learning Techniques to Assess the Trends and Alignment of the Funded \nResearch Output.” Journal of Informetrics 14(2):101018. doi:10.1016/j.joi.2020.101018. \nEfron, Bradley, and R. J. Tibshirani. 1994. An Introduction to the Bootstrap. Chapman and",
-          "is_title": false,
+          "is_title": true,
           "page": 23,
           "text_length": 258
         },
@@ -2140,19 +2140,19 @@
         },
         {
           "text": "and BERTopic.” Journal of Computational Social Science 6(1):112–35. \ndoi:10.1007/s42001-023-00212-z. \nElse, Paul, Paula Rochon, R. Goldfarb, C. A. Klinger, and S. E. Straus. 2020. “Identifying",
-          "is_title": false,
+          "is_title": true,
           "page": 23,
           "text_length": 192
         },
         {
           "text": "Factors Associated with Grant Success: A Case Study from the Canadian Institutes of \nHealth Research.” BMJ Open 10(11):e040439. doi:10.1136/bmjopen-2020-040439. \nGoldin, D., and M. Urquhart-Cronish. 2019. “Study Finds Gender Differences in Success Rates",
-          "is_title": false,
+          "is_title": true,
           "page": 23,
           "text_length": 253
         },
         {
           "text": "for Canadian Scientific Research Grants.” University Affairs.",
-          "is_title": false,
+          "is_title": true,
           "page": 23,
           "text_length": 61
         }
@@ -2164,7 +2164,7 @@
       "content": "24 \n\nGray, Tim S., ed. 2005. Participation in Fisheries Governance. Vol. 4. Reviews: Methods and \n\nTechnologies in Fish Biology and Fisheries. Dordrecht, The Netherlands: Springer. \nGrillitsch, Marcus, Rune Dahl Fitjar, and Lasse S. Stambøl. 2019. “Policy Challenges for \n\nRegional Innovation: The Role of Regional Structures.” Environment and Planning C: \nPolitics and Space 37(2):243–61. doi:10.1177/2399654418764023. \nGrootendorst, Maarten. 2020. “KeyBERT: Minimal Keyword Extraction with BERT.” Zenodo. \n\ndoi:https://doi.org/10.5281/zenodo.4461265. \nGrootendorst, Maarten. 2022. “BERTopic: Neural Topic Modeling with a Class-Based TF-IDF \n\nProcedure.” \nHajibabaei, Anahita, Andrea Schiffauerova, and Ashkan Ebadi. 2022. “Gender-Specific Patterns \n\nin the Artificial Intelligence Scientific Ecosystem.” Journal of Informetrics \n16(2):101275. doi:10.1016/j.joi.2022.101275. \nHajibabaei, Anahita, Andrea Schiffauerova, and Ashkan Ebadi. 2023. “Women and Key \n\nPositions in Scientific Collaboration Networks: Analyzing Central Scientists’ Profiles in \nthe Artificial Intelligence Ecosystem through a Gender Lens.” Scientometrics \n128(2):1219–40. doi:10.1007/s11192-022-04601-5. \nHealy, John, and Leland McInnes. 2024. “Uniform Manifold Approximation and Projection.” \n\nNature Reviews Methods Primers 4(1):82. doi:10.1038/s43586-024-00363-x. \nJacob, Brian A., and Lars Lefgren. 2011. “The Impact of Research Grant Funding on Scientific \n\nProductivity.” Journal of Public Economics 95(9–10):1168–77. \nLang, Raynell, Jamie L. Benham, Omid Atabati, Aidan Hollis, Trevor Tombe, Blake Shaffer, \n\nKatharina Kovacs Burns, Gail MacKean, Tova Léveillé, Brandi McCormack, Hasan \nSheikh, Madison M. Fullerton, Theresa Tang, Jean-Christophe Boucher, Cora \nConstantinescu, Mehdi Mourali, Braden J. Manns, Deborah A. Marshall, Jia Hu, and \nRobert J. Oxoby. 2021. “Attitudes, Behaviours and Barriers to Public Health Measures \nfor COVID-19: A Survey to Inform Public Health Messaging.” BMC Public Health \n21(765). doi:10.1186/s12889-021-10790-0. \nLarivière, Vincent, Chaoqun Ni, Yves Gingras, Blaise Cronin, and Cassidy R. Sugimoto. 2013. \n\n“Global Gender Disparities in Science.” Nature 504(7479):211–13. \nvan der Maaten, Laurens, and Geoffrey Hinton. 2008. “Visualizing Data Using T-SNE.” Journal \n\nof Machine Learning Research 9:2579–2605. \nMcInnes, Leland, John Healy, and Steve Astels. 2017. “Hdbscan: Hierarchical Density Based \n\nClustering.” The Journal of Open Source Software 2(11):205. doi:10.21105/joss.00205. \nMerton, Robert K. 1968. “The Matthew Effect in Science.” Science 159(3810):56–63. \n\ndoi:10.1126/science.159.3810.56. \nMimno, David, Hanna Wallach, Edmund Talley, Miriam Leenders, and Andrew McCallum. \n\n2011. “Optimizing Semantic Coherence in Topic Models.” Proceedings of the 2011 \nConference on Empirical Methods in Natural Language Processing 262–72. \nMooney, Christopher Z. 1996. “Bootstrap Statistical Inference: Examples and Evaluations for \n\nPolitical Science.” American Journal of Political Science 40(2):570–602. \nNSERC. 2021. “Tri-Agency Equity, Diversity, and Inclusion Action Plan.” \nOpenAI Team, Josh Achiam, Steven Adler, and others. 2024. “GPT-4 Technical Report.” \nReimers, Nils, and Iryna Gurevych. 2019. “Sentence-BERT: Sentence Embeddings Using \n\nSiamese BERT-Networks.”",
       "content_length": 3294,
       "source_file": "2510.18803v1.pdf",
-      "has_titles": false,
+      "has_titles": true,
       "structured_blocks": [
         {
           "text": "24",
@@ -2174,7 +2174,7 @@
         },
         {
           "text": "Gray, Tim S., ed. 2005. Participation in Fisheries Governance. Vol. 4. Reviews: Methods and",
-          "is_title": false,
+          "is_title": true,
           "page": 24,
           "text_length": 91
         },
@@ -2186,7 +2186,7 @@
         },
         {
           "text": "Regional Innovation: The Role of Regional Structures.” Environment and Planning C: \nPolitics and Space 37(2):243–61. doi:10.1177/2399654418764023. \nGrootendorst, Maarten. 2020. “KeyBERT: Minimal Keyword Extraction with BERT.” Zenodo.",
-          "is_title": false,
+          "is_title": true,
           "page": 24,
           "text_length": 233
         },
@@ -2204,7 +2204,7 @@
         },
         {
           "text": "in the Artificial Intelligence Scientific Ecosystem.” Journal of Informetrics \n16(2):101275. doi:10.1016/j.joi.2022.101275. \nHajibabaei, Anahita, Andrea Schiffauerova, and Ashkan Ebadi. 2023. “Women and Key",
-          "is_title": false,
+          "is_title": true,
           "page": 24,
           "text_length": 206
         },
@@ -2216,13 +2216,13 @@
         },
         {
           "text": "Nature Reviews Methods Primers 4(1):82. doi:10.1038/s43586-024-00363-x. \nJacob, Brian A., and Lars Lefgren. 2011. “The Impact of Research Grant Funding on Scientific",
-          "is_title": false,
+          "is_title": true,
           "page": 24,
           "text_length": 165
         },
         {
           "text": "Productivity.” Journal of Public Economics 95(9–10):1168–77. \nLang, Raynell, Jamie L. Benham, Omid Atabati, Aidan Hollis, Trevor Tombe, Blake Shaffer,",
-          "is_title": false,
+          "is_title": true,
           "page": 24,
           "text_length": 150
         },
@@ -2234,19 +2234,19 @@
         },
         {
           "text": "“Global Gender Disparities in Science.” Nature 504(7479):211–13. \nvan der Maaten, Laurens, and Geoffrey Hinton. 2008. “Visualizing Data Using T-SNE.” Journal",
-          "is_title": false,
+          "is_title": true,
           "page": 24,
           "text_length": 157
         },
         {
           "text": "of Machine Learning Research 9:2579–2605. \nMcInnes, Leland, John Healy, and Steve Astels. 2017. “Hdbscan: Hierarchical Density Based",
-          "is_title": false,
+          "is_title": true,
           "page": 24,
           "text_length": 132
         },
         {
           "text": "Clustering.” The Journal of Open Source Software 2(11):205. doi:10.21105/joss.00205. \nMerton, Robert K. 1968. “The Matthew Effect in Science.” Science 159(3810):56–63.",
-          "is_title": false,
+          "is_title": true,
           "page": 24,
           "text_length": 167
         },
@@ -2258,7 +2258,7 @@
         },
         {
           "text": "2011. “Optimizing Semantic Coherence in Topic Models.” Proceedings of the 2011 \nConference on Empirical Methods in Natural Language Processing 262–72. \nMooney, Christopher Z. 1996. “Bootstrap Statistical Inference: Examples and Evaluations for",
-          "is_title": false,
+          "is_title": true,
           "page": 24,
           "text_length": 243
         },
@@ -2282,7 +2282,7 @@
       "content": "25 \n\nRoberts, Margaret E., Brandon M. Stewart, and Dustin Tingley. 2019. “Stm: An R Package for \n\nStructural Topic Models.” Journal of Statistical Software 91:1–40. \ndoi:10.18637/jss.v091.i02. \nRoberts, Margaret, Brandon Stewart, Dustin Tingley, and Edoardo Airoldi. 2013. “The Structural \n\nTopic Model and Applied Social Science.” Advances in Neural Information Processing \nSystems Workshop on Topic Models: Computation, Application, and Evaluation. \nRöder, Michael, Andreas Both, and Alexander Hinneburg. 2015. “Exploring the Space of Topic \n\nCoherence Measures.” Pp. 399–408 in Proceedings of the Eighth ACM International \nConference on Web Search and Data Mining - WSDM ’15. ACM Press. \nRodriguez-Pose, Andrés, Michael Storper, Sandra Bachtrögler, Gilles Duranton, and Philip \n\nMcCann. 2019. “The Great Divide: Rural Areas in Europe and the Policies to Foster \nTheir Development.” Journal of Rural Studies 66:186–207. \ndoi:10.1016/j.jrurstud.2018.11.006. \nRosen-Zvi, Michal, Thomas L. Griffiths, Michael I. Jordan, and Padhraic Smyth. 2004. “The \n\nAuthor-Topic Model for Author Representation and Document Generation.” Pp. 487–94 \nin Proceedings of the 20th Conference on Uncertainty in Artificial Intelligence (UAI). \nStephan, Paula E. 2012. How Economics Shapes Science. Harvard University Press. \nUrquhart‑Cronish, Mackenzie, Sarah P. Otto, and Lesley Evans Ogden. 2019. “Study Finds \n\nGender Differences in Success Rates for Canadian Scientific Research Grants.” \nUniversity Affairs. https://archives.universityaffairs.ca/news/news-article/study-finds-\ngender-differences-for-canadian-scientific-research-grants/. \nWennerås, Christine, and Agnes Wold. 1997. “Nepotism and Sexism in Peer Review.” Nature \n\n387(6631):341–43. \nWitteman, H. O., M. Hendricks, S. Straus, and C. Tannenbaum. 2019. “Gender Differences in \n\nResearch Grant Applications and Awards by Academic Health Scientists.” JAMA \n322(22):2116–24. doi:10.1001/jama.2019.19302.",
       "content_length": 1946,
       "source_file": "2510.18803v1.pdf",
-      "has_titles": false,
+      "has_titles": true,
       "structured_blocks": [
         {
           "text": "25",
@@ -2298,25 +2298,25 @@
         },
         {
           "text": "Structural Topic Models.” Journal of Statistical Software 91:1–40. \ndoi:10.18637/jss.v091.i02. \nRoberts, Margaret, Brandon Stewart, Dustin Tingley, and Edoardo Airoldi. 2013. “The Structural",
-          "is_title": false,
+          "is_title": true,
           "page": 25,
           "text_length": 190
         },
         {
           "text": "Topic Model and Applied Social Science.” Advances in Neural Information Processing \nSystems Workshop on Topic Models: Computation, Application, and Evaluation. \nRöder, Michael, Andreas Both, and Alexander Hinneburg. 2015. “Exploring the Space of Topic",
-          "is_title": false,
+          "is_title": true,
           "page": 25,
           "text_length": 251
         },
         {
           "text": "Coherence Measures.” Pp. 399–408 in Proceedings of the Eighth ACM International \nConference on Web Search and Data Mining - WSDM ’15. ACM Press. \nRodriguez-Pose, Andrés, Michael Storper, Sandra Bachtrögler, Gilles Duranton, and Philip",
-          "is_title": false,
+          "is_title": true,
           "page": 25,
           "text_length": 234
         },
         {
           "text": "McCann. 2019. “The Great Divide: Rural Areas in Europe and the Policies to Foster \nTheir Development.” Journal of Rural Studies 66:186–207. \ndoi:10.1016/j.jrurstud.2018.11.006. \nRosen-Zvi, Michal, Thomas L. Griffiths, Michael I. Jordan, and Padhraic Smyth. 2004. “The",
-          "is_title": false,
+          "is_title": true,
           "page": 25,
           "text_length": 267
         },
@@ -2340,7 +2340,7 @@
         },
         {
           "text": "Research Grant Applications and Awards by Academic Health Scientists.” JAMA \n322(22):2116–24. doi:10.1001/jama.2019.19302.",
-          "is_title": false,
+          "is_title": true,
           "page": 25,
           "text_length": 122
         }
@@ -2519,5 +2519,5 @@
       ]
     }
   ],
-  "timestamp": "2025-10-22T12:27:41.651426"
+  "timestamp": "2025-10-22T13:07:34.628864"
 }
