@@ -9,25 +9,8 @@ services:
       - ./data/output:/app/data/output
     env_file:
       - .env
-    depends_on:
-      - chromadb
     networks:
       - pdf_network
-
-  chromadb:
-    image: chromadb/chroma:latest
-    container_name: chromadb
-    volumes:
-      - chroma_data:/chroma/data
-    environment:
-      - ANONYMIZED_TELEMETRY=False
-    ports:
-      - "8000:8000"
-    networks:
-      - pdf_network
-
-volumes:
-  chroma_data:
 
 networks:
   pdf_network:

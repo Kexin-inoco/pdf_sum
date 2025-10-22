@@ -158,31 +158,97 @@ class EnhancedPDFProcessor:
                 break
     
     def _is_likely_title(self, text: str, font_info: List[Dict], page_median_size: Optional[float]=None) -> bool:
-
+        """
+        Determine if text is likely a section title based on strict criteria.
+        
+        Args:
+            text: Text content to analyze
+            font_info: Font information for the text
+            page_median_size: Median font size for the page
+            
+        Returns:
+            True if text is likely a title, False otherwise
+        """
         t = ' '.join(text.split())
+        
+        # Basic filters
         if len(t) <= 3 or t.replace('.', '').replace('-', '').isdigit():
             return False
-
-        # 1) Common section name
-        if re.match(r'^(abstract|introduction|related work|background|methods?|materials? and methods?|experiments?|results?|discussion|conclusion|conclusions?|references|acknowledg(e)?ments?)$', t.lower()):
-            return True
-
-        # 2) Numbering style
-        if re.match(r'^\s*\d+(?:\.\d+)*\s*[\.\)]?\s+[A-Z]', t):
-            return True
-
-        # 3) Special Header
-        if re.match(r'^(figure|table|algorithm)\s+\d+', t, re.I):
-            return True
-
-        #4) Layout Inspiration
+        
+        # Filter out common non-title patterns
+        non_title_patterns = [
+            r'^(example|proof|definition|proposition|theorem|lemma|corollary)\s*\d*',  # Mathematical terms
+            r'^(fig\.|figure|table|algorithm)\s+\d+',  # Figure/Table captions
+            r'^[a-z]',  # Starts with lowercase
+            r'^\d+$',  # Pure numbers
+            r'^[A-Za-z]\s*[=<>]',  # Mathematical expressions
+            r'^[A-Za-z]\s*[+\-*/]',  # Mathematical operations
+            r'^\w+\s*[=<>]\s*\w+',  # Equations
+            r'^[A-Za-z]\s*\(',  # Function calls
+            r'^\w+\s*:',  # Labels
+            r'^[A-Za-z]\s*[0-9]',  # Mixed alphanumeric without proper structure
+        ]
+        
+        for pattern in non_title_patterns:
+            if re.match(pattern, t, re.I):
+                return False
+        
+        # 1) Numbered sections (strict pattern)
+        numbered_patterns = [
+            r'^\d+\s+[A-Z]',  # "1 Introduction"
+            r'^\d+\.\d+\s+[A-Z]',  # "1.1 Methods"
+            r'^\d+\.\d+\.\d+\s+[A-Z]',  # "1.1.1 Details"
+            r'^\d+\.\d+\.\d+\.\d+\s+[A-Z]',  # "1.1.1.1 Specifics"
+            r'^\d+\n[A-Z]',  # "1\nIntroduction" (with line break)
+            r'^\d+\.\d+\n[A-Z]',  # "1.1\nMethods" (with line break)
+            r'^\d+\.\d+\.\d+\n[A-Z]',  # "1.1.1\nDetails" (with line break)
+        ]
+        
+        for pattern in numbered_patterns:
+            if re.match(pattern, t):
+                return True
+        
+        # 2) Special headers (Figure, Table, Algorithm)
+        special_headers = [
+            r'^Figure\s+\d+',
+            r'^Table\s+\d+',
+            r'^Algorithm\s+\d+',
+        ]
+        
+        for pattern in special_headers:
+            if re.match(pattern, t, re.I):
+                return False
+        
+        # 3) Common section names (only if they appear alone)
+        section_names = [
+            r'^Abstract$',
+            r'^Introduction$',
+            r'^Related Work$',
+            r'^Background$',
+            r'^Methods?$',
+            r'^Materials? and Methods?$',
+            r'^Experiments?$',
+            r'^Results?$',
+            r'^Discussion$',
+            r'^Conclusion$',
+            r'^Conclusions?$',
+            r'^References$',
+            r'^Acknowledgments?$',
+            r'^Acknowledgements?$',
+        ]
+        
+        for pattern in section_names:
+            if re.match(pattern, t, re.I):
+                return True
+        
+        # 4) Font-based analysis (only for very strong title signals)
         sizes = [s.get('size', 0) for s in font_info] or [0]
-        max_size = max(sizes)
-        is_bold = any((s.get('flags', 0) & 2) != 0 for s in font_info)
-        if page_median_size and (max_size >= 1.2 * page_median_size or is_bold):
-            return 5 < len(t) < 300
-
-        return False
+        is_large_font = any(s > page_median_size * 1.2 for s in sizes) if page_median_size else False
+        is_bold = any(s.get('flags', 0) & 16 for s in font_info)  # Bold flag
+        is_reasonable_length = 5 <= len(t) <= 100
+        
+        # Only use font analysis for very strong title signals
+        return (is_large_font or is_bold) and is_reasonable_length
 
     
     def split_documents(self, documents: List[Document]) -> List[Document]:
