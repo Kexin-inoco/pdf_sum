@@ -1,0 +1,1375 @@
+{
+  "source_file": "2510.18628v1.pdf",
+  "total_documents": 24,
+  "documents": [
+    {
+      "document_index": 0,
+      "page": 1,
+      "content": "Leveraging Association Rules for Better Predictions\nand Better Explanations\n\nGilles Audemard1[0000−0003−2604−9657], Sylvie\nCoste-Marquis1[0000−0003−4742−4858], Pierre Marquis1,2[0000−0002−7979−6608], Mehdi\nSabiri1[0009−0003−8642−9755], and Nicolas Szczepanski1[0000−0001−7553−5657]\n\n1 Univ. Artois, CNRS, CRIL\nname@cril.fr\nhttp://www.cril.fr\n2 Institut Universitaire de France\n\nAbstract. We present a new approach to classification that combines data and\nknowledge. In this approach, data mining is used to derive association rules (pos-\nsibly with negations) from data. Those rules are leveraged to increase the predic-\ntive performance of tree-based models (decision trees and random forests) used\nfor a classification task. They are also used to improve the corresponding explana-\ntion task through the generation of abductive explanations that are more general\nthan those derivable without taking such rules into account. Experiments show\nthat for the two tree-based models under consideration, benefits can be offered\nby the approach in terms of predictive performance and in terms of explanation\nsizes.\n\n1\nIntroduction\n\nHybrid AI is concerned with the design of more efficient AI systems based on both data\nand knowledge. Hybridizing data-driven techniques and knowledge-driven techniques\ncan be achieved in many distinct ways and for a large number of purposes. Thus, beyond\naugmenting the predictive performance of the ML-based AI system one starts with,\nthe use of symbolic information can be beneficial for better explaining the predictions\nthat are made. Such an interpretability issue (see e.g., [27,2]) is relevant to an XAI\nperspective that is crucial when dealing with critical applications [15].\nIn this paper, we present a new approach to classification where data and knowledge\nare combined. Our objective is to determine to which extent the performance of a tree-\nbased model (a decision tree or a random forest) used for a classification task can be\nenhanced as to inference and explanation by taking advantage of symbolic information\nunder the form of association rules mined from the available data. To achieve this goal,\nour approach exploits recent results concerning the correction of tree-based models\n[9,10] and the efficient computation of abductive explanations for such models [4].\nOur approach basically consists of the following steps. Given a random forest F\n(possibly reduced to a single decision tree) that has been learned from a dataset D,\none first translates the instances from D into instances over the Boolean conditions X\nencountered in F, giving rise to a binarized dataset DF\nb . In general, the elements of X\ndo not represent independent conditions because they come from the same numerical or\n\narXiv:2510.18628v1  [cs.AI]  21 Oct 2025",
+      "content_length": 2780,
+      "source_file": "2510.18628v1.pdf",
+      "has_titles": true,
+      "structured_blocks": [
+        {
+          "text": "Leveraging Association Rules for Better Predictions\nand Better Explanations",
+          "is_title": true,
+          "page": 1,
+          "text_length": 75
+        },
+        {
+          "text": "Gilles Audemard1[0000−0003−2604−9657], Sylvie\nCoste-Marquis1[0000−0003−4742−4858], Pierre Marquis1,2[0000−0002−7979−6608], Mehdi\nSabiri1[0009−0003−8642−9755], and Nicolas Szczepanski1[0000−0001−7553−5657]",
+          "is_title": false,
+          "page": 1,
+          "text_length": 204
+        },
+        {
+          "text": "1 Univ. Artois, CNRS, CRIL\nname@cril.fr\nhttp://www.cril.fr\n2 Institut Universitaire de France",
+          "is_title": true,
+          "page": 1,
+          "text_length": 93
+        },
+        {
+          "text": "Abstract. We present a new approach to classification that combines data and\nknowledge. In this approach, data mining is used to derive association rules (pos-\nsibly with negations) from data. Those rules are leveraged to increase the predic-\ntive performance of tree-based models (decision trees and random forests) used\nfor a classification task. They are also used to improve the corresponding explana-\ntion task through the generation of abductive explanations that are more general\nthan those derivable without taking such rules into account. Experiments show\nthat for the two tree-based models under consideration, benefits can be offered\nby the approach in terms of predictive performance and in terms of explanation\nsizes.",
+          "is_title": false,
+          "page": 1,
+          "text_length": 730
+        },
+        {
+          "text": "1\nIntroduction",
+          "is_title": true,
+          "page": 1,
+          "text_length": 14
+        },
+        {
+          "text": "Hybrid AI is concerned with the design of more efficient AI systems based on both data\nand knowledge. Hybridizing data-driven techniques and knowledge-driven techniques\ncan be achieved in many distinct ways and for a large number of purposes. Thus, beyond\naugmenting the predictive performance of the ML-based AI system one starts with,\nthe use of symbolic information can be beneficial for better explaining the predictions\nthat are made. Such an interpretability issue (see e.g., [27,2]) is relevant to an XAI\nperspective that is crucial when dealing with critical applications [15].\nIn this paper, we present a new approach to classification where data and knowledge\nare combined. Our objective is to determine to which extent the performance of a tree-\nbased model (a decision tree or a random forest) used for a classification task can be\nenhanced as to inference and explanation by taking advantage of symbolic information\nunder the form of association rules mined from the available data. To achieve this goal,\nour approach exploits recent results concerning the correction of tree-based models\n[9,10] and the efficient computation of abductive explanations for such models [4].\nOur approach basically consists of the following steps. Given a random forest F\n(possibly reduced to a single decision tree) that has been learned from a dataset D,\none first translates the instances from D into instances over the Boolean conditions X\nencountered in F, giving rise to a binarized dataset DF\nb . In general, the elements of X\ndo not represent independent conditions because they come from the same numerical or",
+          "is_title": false,
+          "page": 1,
+          "text_length": 1612
+        },
+        {
+          "text": "arXiv:2510.18628v1  [cs.AI]  21 Oct 2025",
+          "is_title": false,
+          "page": 1,
+          "text_length": 40
+        }
+      ]
+    },
+    {
+      "document_index": 1,
+      "page": 2,
+      "content": "2\nG. Audemard et al.\n\ncategorical attributes used to describe the instances considered at start (those of D). As\na consequence, a domain theory Th, represented as a Boolean formula on X, must be\nconsidered as well so as to make precise how the Boolean conditions in X are logically\nconnected (the pair (F, Th) is a constrained decision-function in the sense of [14]).\nThen, a data mining algorithm is used to derive a (conjunctively-interpreted) set A of\nassociation rules (possibly with negations) from DF\nb . Only rules with 100% confidence\nand a non-null support are targeted. Among those rules, classification rules (alias class\nassociation rules - CAR, i.e., those rules from A concluding about the membership to a\nclass) forming a subset Ac of A are used to modify F in such a way that the updated\nforest complies with the rules. Accordingly, primacy is given to the predictions that can\nbe obtained using the classification rules over those coming from the random forest.\nThe rectification operation from [9,10] is used to update the forest. Algorithm 1 gives a\npseudo-code of the operations that are achieved.\n\nAlgorithm 1 Computing a tree-based model rectified by a set of classification rules and\na domain theory extended by association rules that are mined as well.\nRequire: a tabular dataset D.\nEnsure: a tree-based model F Ac complying with the classification rules from Ac and an ex-\ntended domain theory The.\n\n(F, Th) ←learn(D)\nDF\nb ←binarize(D, F)\nA ←mine(DF\nb )\nAc ←select −CAR(A)\nF Ac ←rectify(F, Ac)\nThe ←Th ∧(A \\ Ac))\nreturn ((F Ac, The))\n\nOne is also interested in deriving (local) abductive explanations for the predictions\nmade. Thus, given an instance x and the corresponding classification F(x) to be ex-\nplained, one looks for a subset t of the characteristics over X used to represent x such\nthat every instance x′ that is covered by t (i.e., such that t is a subset of the character-\nistics of x′) and that satisfies The = Th ∧(A \\ Ac) is classified by the rectified forest\nin the same way as x. By considering instances that satisfies the extended domain the-\nory The (and not only Th), it is known that, in theory, more general explanations can\nbe obtained [14,31]. Since the explanations that are considered are based on Boolean\nconditions on X, minimum-size abductive explanations for an instance are among its\nmost general explanations. Thus, the explanations computed using the extended do-\nmain theory are in general shorter than those obtained when the initial domain theory\nis considered, and as a consequence, the extension of Th achieved by considering in\naddition the rules from A \\ Ac leads to abductive explanations that are typically easier\nto understand.\nThe contributions of the paper are as follows. We first show that it is possible to take\nadvantage of the change operation for tree-based models, called rectification [9,10], in",
+      "content_length": 2876,
+      "source_file": "2510.18628v1.pdf",
+      "has_titles": true,
+      "structured_blocks": [
+        {
+          "text": "2\nG. Audemard et al.",
+          "is_title": true,
+          "page": 2,
+          "text_length": 20
+        },
+        {
+          "text": "categorical attributes used to describe the instances considered at start (those of D). As\na consequence, a domain theory Th, represented as a Boolean formula on X, must be\nconsidered as well so as to make precise how the Boolean conditions in X are logically\nconnected (the pair (F, Th) is a constrained decision-function in the sense of [14]).\nThen, a data mining algorithm is used to derive a (conjunctively-interpreted) set A of\nassociation rules (possibly with negations) from DF\nb . Only rules with 100% confidence\nand a non-null support are targeted. Among those rules, classification rules (alias class\nassociation rules - CAR, i.e., those rules from A concluding about the membership to a\nclass) forming a subset Ac of A are used to modify F in such a way that the updated\nforest complies with the rules. Accordingly, primacy is given to the predictions that can\nbe obtained using the classification rules over those coming from the random forest.\nThe rectification operation from [9,10] is used to update the forest. Algorithm 1 gives a\npseudo-code of the operations that are achieved.",
+          "is_title": false,
+          "page": 2,
+          "text_length": 1095
+        },
+        {
+          "text": "Algorithm 1 Computing a tree-based model rectified by a set of classification rules and\na domain theory extended by association rules that are mined as well.\nRequire: a tabular dataset D.\nEnsure: a tree-based model F Ac complying with the classification rules from Ac and an ex-\ntended domain theory The.",
+          "is_title": false,
+          "page": 2,
+          "text_length": 304
+        },
+        {
+          "text": "(F, Th) ←learn(D)\nDF\nb ←binarize(D, F)\nA ←mine(DF\nb )\nAc ←select −CAR(A)\nF Ac ←rectify(F, Ac)\nThe ←Th ∧(A \\ Ac))\nreturn ((F Ac, The))",
+          "is_title": false,
+          "page": 2,
+          "text_length": 133
+        },
+        {
+          "text": "One is also interested in deriving (local) abductive explanations for the predictions\nmade. Thus, given an instance x and the corresponding classification F(x) to be ex-\nplained, one looks for a subset t of the characteristics over X used to represent x such\nthat every instance x′ that is covered by t (i.e., such that t is a subset of the character-\nistics of x′) and that satisfies The = Th ∧(A \\ Ac) is classified by the rectified forest\nin the same way as x. By considering instances that satisfies the extended domain the-\nory The (and not only Th), it is known that, in theory, more general explanations can\nbe obtained [14,31]. Since the explanations that are considered are based on Boolean\nconditions on X, minimum-size abductive explanations for an instance are among its\nmost general explanations. Thus, the explanations computed using the extended do-\nmain theory are in general shorter than those obtained when the initial domain theory\nis considered, and as a consequence, the extension of Th achieved by considering in\naddition the rules from A \\ Ac leads to abductive explanations that are typically easier\nto understand.\nThe contributions of the paper are as follows. We first show that it is possible to take\nadvantage of the change operation for tree-based models, called rectification [9,10], in",
+          "is_title": false,
+          "page": 2,
+          "text_length": 1316
+        }
+      ]
+    },
+    {
+      "document_index": 2,
+      "page": 3,
+      "content": "Leveraging Association Rules for Better Predictions and Better Explanations\n3\n\norder to incorporate the classification rules from Ac into F. The rectification operation\nensures that F, once rectified, classifies every instance on X classified by a classifi-\ncation rule R of Ac in the way the rule R asks for, while every other instance on X\nis classified as required by F before the rectification takes place. Especially, we show\nthat the rectification of F by Ac an be achieved in an iterative way (i.e., on a rule-\nper-rule basis) provided that Ac is non-conflicting (meaning that one cannot find in Ac\ntwo classification rules with compatible premises but contradictory conclusions). In our\napproach, the conflict-freeness of Ac is ensured by the process used for generating it.\nIn order to derive valuable abductive explanations suited to tree-based models, a\ncomplexity challenge must be dealt with. Indeed, the generation of non-trivial abductive\nexplanations for random forests is known to be computationally hard in general, even\nin the case when no domain theory is considered [21]. It is also known as hard for\nrandom forests with a single decision tree when a domain theory is taken into account\n[8]. To tackle this issue, we show how to generalize the concept of majoritary reasons\nintroduced in [4] to decision trees and random forests based on Boolean conditions X\nthat are not independent but are connected through a domain theory on X; to ensure\nthat the tractability of the computation of such abductive explanations, the inference\nrelation used to reason from the domain theory is not full logical entailment but unit\npropagation.\nA last contribution of the paper consists of an empirical evaluation of the approach\nin order to assess the benefits it offers. Interestingly, the experiments made show that the\nobjectives of improving the predictive performance of the classifiers and of diminishing\nthe size of the explanations can be met. In a nutshell, for 12 out of 13 datasets used in\nthe experiments, rectifying the random forest used by the classification rules that have\nbeen mined leads to slightly increase its predictive performance. The increase is small\nin general but it can exceed 10%. As to the size of the abductive explanations that have\nbeen generated, the reduction achieved can be huge (more than 96%) and effective for\na large proportion of instances (up to 100%), depending on the number of association\nrules that have been extracted. Depending on the dataset, the improvement observed is\nhigher when the classifier used is a random forest or when it is a decision tree.\nAdditional empirical results and the code used in our experiments are available\nonline at [7].\n\n2\nFormal Preliminaries\n\n2.1\nDecision tree, random forests, and classifiers\n\nWe consider a dataset D consisting of classified instances from a binary classification\nproblem and represented as tabular data. A finite set A of p attributes (aka features)\n(where each attribute Ai ∈A takes a value (called a characteristic) in a domain Domi).\nEach attribute Ai is numerical, categorical, or Boolean. An instance over A is a tuple\nfrom Dom1 × . . . × Domp. The class of an instance in D is made precise by the\nBoolean value of a specific column y of D (the instance is positive when y takes value\n1 and negative when it takes value 0). Thus, a classified instance is a tuple from Dom1×\n. . . × Domp × {0, 1}.",
+      "content_length": 3409,
+      "source_file": "2510.18628v1.pdf",
+      "has_titles": true,
+      "structured_blocks": [
+        {
+          "text": "Leveraging Association Rules for Better Predictions and Better Explanations\n3",
+          "is_title": false,
+          "page": 3,
+          "text_length": 77
+        },
+        {
+          "text": "order to incorporate the classification rules from Ac into F. The rectification operation\nensures that F, once rectified, classifies every instance on X classified by a classifi-\ncation rule R of Ac in the way the rule R asks for, while every other instance on X\nis classified as required by F before the rectification takes place. Especially, we show\nthat the rectification of F by Ac an be achieved in an iterative way (i.e., on a rule-\nper-rule basis) provided that Ac is non-conflicting (meaning that one cannot find in Ac\ntwo classification rules with compatible premises but contradictory conclusions). In our\napproach, the conflict-freeness of Ac is ensured by the process used for generating it.\nIn order to derive valuable abductive explanations suited to tree-based models, a\ncomplexity challenge must be dealt with. Indeed, the generation of non-trivial abductive\nexplanations for random forests is known to be computationally hard in general, even\nin the case when no domain theory is considered [21]. It is also known as hard for\nrandom forests with a single decision tree when a domain theory is taken into account\n[8]. To tackle this issue, we show how to generalize the concept of majoritary reasons\nintroduced in [4] to decision trees and random forests based on Boolean conditions X\nthat are not independent but are connected through a domain theory on X; to ensure\nthat the tractability of the computation of such abductive explanations, the inference\nrelation used to reason from the domain theory is not full logical entailment but unit\npropagation.\nA last contribution of the paper consists of an empirical evaluation of the approach\nin order to assess the benefits it offers. Interestingly, the experiments made show that the\nobjectives of improving the predictive performance of the classifiers and of diminishing\nthe size of the explanations can be met. In a nutshell, for 12 out of 13 datasets used in\nthe experiments, rectifying the random forest used by the classification rules that have\nbeen mined leads to slightly increase its predictive performance. The increase is small\nin general but it can exceed 10%. As to the size of the abductive explanations that have\nbeen generated, the reduction achieved can be huge (more than 96%) and effective for\na large proportion of instances (up to 100%), depending on the number of association\nrules that have been extracted. Depending on the dataset, the improvement observed is\nhigher when the classifier used is a random forest or when it is a decision tree.\nAdditional empirical results and the code used in our experiments are available\nonline at [7].",
+          "is_title": false,
+          "page": 3,
+          "text_length": 2626
+        },
+        {
+          "text": "2\nFormal Preliminaries",
+          "is_title": true,
+          "page": 3,
+          "text_length": 22
+        },
+        {
+          "text": "2.1\nDecision tree, random forests, and classifiers",
+          "is_title": true,
+          "page": 3,
+          "text_length": 50
+        },
+        {
+          "text": "We consider a dataset D consisting of classified instances from a binary classification\nproblem and represented as tabular data. A finite set A of p attributes (aka features)\n(where each attribute Ai ∈A takes a value (called a characteristic) in a domain Domi).\nEach attribute Ai is numerical, categorical, or Boolean. An instance over A is a tuple\nfrom Dom1 × . . . × Domp. The class of an instance in D is made precise by the\nBoolean value of a specific column y of D (the instance is positive when y takes value\n1 and negative when it takes value 0). Thus, a classified instance is a tuple from Dom1×\n. . . × Domp × {0, 1}.",
+          "is_title": false,
+          "page": 3,
+          "text_length": 626
+        }
+      ]
+    },
+    {
+      "document_index": 3,
+      "page": 4,
+      "content": "4\nG. Audemard et al.\n\nWhen dealing with a binary classification problem, a decision tree over A is a binary\ntree T, each of whose internal nodes (aka decision nodes) is labeled with a Boolean\ncondition over Ai ∈A, and each leaf is labeled by a Boolean value denoting a class\n(positive or negative). The value T(x) of T on an input instance x is given by the label\nof the leaf reached from the root, which is either a 1-leaf (i.e., a leaf labelled by 1) or a\n0-leaf (i.e., a leaf labelled by 0). The unique root-to-leaf path p characterizing the leaf\nthat is met is defined as follows: at each decision node go to the left (resp. right) child\nif the Boolean condition labelling the node is evaluated to 0 (resp. 1) for x. leaf (p)\ndenotes the leaf of p.\nA random forest over A is an ensemble F = {T1, · · · , Tm}, where each Ti (i ∈\n[m]) is a decision tree over A. The value F(x) of F on an input instance x is given by\n\nF(x) =\n\n(\n1\nif 1\n\nm\nPm\ni=1 Ti(x) > 1\n\n2\n0\notherwise.\n\nThe size of F is given by |F| = Pm\ni=1 |Ti|, where |Ti| is the number of nodes\noccurring in Ti. Clearly enough, any decision tree T over A is equivalent to the random\nforest F = {T} in the sense that T(x) = F(x) for every instance x over A. Therefore,\nin the rest of the paper, decision trees will also be viewed (wlog) as random forests with\na single tree.\nX = {x1, . . . , xn} denotes the set of Boolean conditions labelling decision nodes\nin F. A term (resp. a clause) on X is a conjunction (resp. disjunction) of literals on X,\ni.e., of elements from X, possibly negated. A positive literal is an element x ∈X, and\na negative literal is the negation x of an element x ∈X. When ℓis a literal on X, its\ncomplementary literal, noted ∼ℓ, is given by x when ℓ= x is a positive literal, and\nx when ℓ= x is a negative literal. A formula in disjunctive (resp. conjunctive) normal\nform is a disjunction of terms (resp. a conjunction of clauses).\nEvery root-to-leaf path p of a decision tree Ti is associated with a term (noted p as\nwell to avoid heavy notations). For each decision node in p labelled by x ∈X, x is\na literal of p when the condition x is evaluated to 1 and x is a literal of p otherwise.\nIt is well-known (see e.g., [4]) that any decision tree Ti on X can be turned in linear\ntime into an equivalent disjunction of consistent terms over X, noted DNF(Ti) and into\nan equivalent conjunction of non-valid clauses over X, noted CNF(Ti). Each term in\nDNF(Ti) corresponds to a 1-path of Ti and each clause in CNF(Ti) is the negation of a\nterm describing a 0-path of Ti.\nFinally, Th denotes a domain theory, i.e., a Boolean formula on X that indicates\nhow the Boolean conditions in X are logically connected. Every instance x over A can\nbe rewritten into a (usually more general) instance over X [6] that is classified by F in\nthe same way as x so that each Ti in F can be viewed as a decision tree over X, and F\ncan be viewed as a random forest over X. Each Ti and F itself can thus be considered\nas Boolean formulas on X. In the following, X denotes the set of all instances over X.\n\nExample 1. As a matter of illustration, consider the following loan allocation prob-\nlem. The goal is to determine whether a loan of $100k must be granted to an appli-\ncant, described using three attributes from A = {A, I, S}: his/her age A (a numerical\nattribute), his/her annual income I (in $k, a numerical attribute), and his/her profes-\nsional status S (a categorical attribute). In the available dataset D, three values for S",
+      "content_length": 3495,
+      "source_file": "2510.18628v1.pdf",
+      "has_titles": true,
+      "structured_blocks": [
+        {
+          "text": "4\nG. Audemard et al.",
+          "is_title": true,
+          "page": 4,
+          "text_length": 20
+        },
+        {
+          "text": "When dealing with a binary classification problem, a decision tree over A is a binary\ntree T, each of whose internal nodes (aka decision nodes) is labeled with a Boolean\ncondition over Ai ∈A, and each leaf is labeled by a Boolean value denoting a class\n(positive or negative). The value T(x) of T on an input instance x is given by the label\nof the leaf reached from the root, which is either a 1-leaf (i.e., a leaf labelled by 1) or a\n0-leaf (i.e., a leaf labelled by 0). The unique root-to-leaf path p characterizing the leaf\nthat is met is defined as follows: at each decision node go to the left (resp. right) child\nif the Boolean condition labelling the node is evaluated to 0 (resp. 1) for x. leaf (p)\ndenotes the leaf of p.\nA random forest over A is an ensemble F = {T1, · · · , Tm}, where each Ti (i ∈\n[m]) is a decision tree over A. The value F(x) of F on an input instance x is given by",
+          "is_title": false,
+          "page": 4,
+          "text_length": 896
+        },
+        {
+          "text": "F(x) =",
+          "is_title": false,
+          "page": 4,
+          "text_length": 6
+        },
+        {
+          "text": "(\n1\nif 1",
+          "is_title": false,
+          "page": 4,
+          "text_length": 8
+        },
+        {
+          "text": "m\nPm\ni=1 Ti(x) > 1",
+          "is_title": false,
+          "page": 4,
+          "text_length": 18
+        },
+        {
+          "text": "2\n0\notherwise.",
+          "is_title": false,
+          "page": 4,
+          "text_length": 14
+        },
+        {
+          "text": "The size of F is given by |F| = Pm\ni=1 |Ti|, where |Ti| is the number of nodes\noccurring in Ti. Clearly enough, any decision tree T over A is equivalent to the random\nforest F = {T} in the sense that T(x) = F(x) for every instance x over A. Therefore,\nin the rest of the paper, decision trees will also be viewed (wlog) as random forests with\na single tree.\nX = {x1, . . . , xn} denotes the set of Boolean conditions labelling decision nodes\nin F. A term (resp. a clause) on X is a conjunction (resp. disjunction) of literals on X,\ni.e., of elements from X, possibly negated. A positive literal is an element x ∈X, and\na negative literal is the negation x of an element x ∈X. When ℓis a literal on X, its\ncomplementary literal, noted ∼ℓ, is given by x when ℓ= x is a positive literal, and\nx when ℓ= x is a negative literal. A formula in disjunctive (resp. conjunctive) normal\nform is a disjunction of terms (resp. a conjunction of clauses).\nEvery root-to-leaf path p of a decision tree Ti is associated with a term (noted p as\nwell to avoid heavy notations). For each decision node in p labelled by x ∈X, x is\na literal of p when the condition x is evaluated to 1 and x is a literal of p otherwise.\nIt is well-known (see e.g., [4]) that any decision tree Ti on X can be turned in linear\ntime into an equivalent disjunction of consistent terms over X, noted DNF(Ti) and into\nan equivalent conjunction of non-valid clauses over X, noted CNF(Ti). Each term in\nDNF(Ti) corresponds to a 1-path of Ti and each clause in CNF(Ti) is the negation of a\nterm describing a 0-path of Ti.\nFinally, Th denotes a domain theory, i.e., a Boolean formula on X that indicates\nhow the Boolean conditions in X are logically connected. Every instance x over A can\nbe rewritten into a (usually more general) instance over X [6] that is classified by F in\nthe same way as x so that each Ti in F can be viewed as a decision tree over X, and F\ncan be viewed as a random forest over X. Each Ti and F itself can thus be considered\nas Boolean formulas on X. In the following, X denotes the set of all instances over X.",
+          "is_title": false,
+          "page": 4,
+          "text_length": 2088
+        },
+        {
+          "text": "Example 1. As a matter of illustration, consider the following loan allocation prob-\nlem. The goal is to determine whether a loan of $100k must be granted to an appli-\ncant, described using three attributes from A = {A, I, S}: his/her age A (a numerical\nattribute), his/her annual income I (in $k, a numerical attribute), and his/her profes-\nsional status S (a categorical attribute). In the available dataset D, three values for S",
+          "is_title": false,
+          "page": 4,
+          "text_length": 431
+        }
+      ]
+    },
+    {
+      "document_index": 4,
+      "page": 5,
+      "content": "Leveraging Association Rules for Better Predictions and Better Explanations\n5\n\nx1\nT1\n\n0\nx2\n\nx3\nx7\n\n0\n1\n0\n1\n\nx5\nT2\n\nx4\n0\n\n0\nx6\n\n0\n1\n\nx7\nT3\n\nx4\nx1\n\n0\n1\n0\n1\n\nFig. 1. A random forest for a loan allocation problem. The left (resp. right) child of any decision\nnode labelled by xi corresponds to the assignment of xi to 0 (resp. 1).\n\nare encountered (“unemployed (U)”, “temporary position (TP)”, or “permanent posi-\ntion”). The random forest F = {T1, T2, T3} given at Figure 1 has been learned from\nD. F is based on 7 Boolean conditions: X = {x1, . . . , x7}, where x1 = (A > 25),\nx2 = (A > 60), x3 = (I > 30), x4 = (I > 50), x5 = (S = U), x6 = (S = TP),\nand x7 = (S = PP). Those conditions are logically connected as given by the domain\ntheory Th = (x2 ⇒x1) ∧(x4 ⇒x3) ∧(x5 ⇒x6) ∧(x5 ⇒x7) ∧(x6 ⇒x7). The\nimplications x2 ⇒x1 and x4 ⇒x3 simply reflect that 60 > 25 and 50 > 30 (respec-\ntively). The remaining implications state that S cannot take two distinct values in its\ndomain at the same time. Here, the domain of the categorical attribute S is considered\nopen (i.e., we do not not assume that the only possible values for S are U, TP, and\nPP).\nThe instance (33, 52, PP) over A representing an applicant aged 32, having $52k\nannual income, and a permanent position, corresponds to the instance x = (1, 0, 1, 1, 0,\n0, 1) of X. x = (1, 0, 1, 1, 0, 0, 1) is more general than the instance (33, 52, PP) one\nstarted with, in the sense that other instances over A (e.g., (48, 60, PP)) also corre-\nsponds to x. We can easily check that the instance x is such that F(x) = 1 (indeed, we\nhave T1(x) = 1, T2(x) = 0, and T3(x) = 1).\n\nEach instance x of X can be considered as an interpretation on X that satisfies Th.\nThis interpretation can be represented by a (canonical) term tx on X, formed by the set\n(interpreted as a conjunction) of the positive literals xi (i ∈[n]), such that xi = 1 and\nby the negative literals xi (i ∈[n]) such that xi = 0. ⊤is the Boolean constant always\ntrue that evaluates to the Boolean value 1 and ⊥is the Boolean constant always false\nthat evaluates to the Boolean value 0. In the following, |= denotes logical entailment\nand ≡logical equivalence.\n\nDefinition 1. A binary classifier on X is a mapping C from X to the set of Boolean\nvalues {0, 1}. x ∈X is a positive instance if C(x) = 1 and a negative one if C(x) = 0.\n\nEvery ML model that is based on Boolean conditions (such as a decision tree or a\nrandom forest) and targets two classes only can be represented by a Boolean formula of\nthe form ΣX ⇔y where ΣX is a formula on X and y ̸∈X is a propositional variable\nthat denotes the class of positive instances. Indeed, it is sufficient to consider any ΣX\nsuch that x is a model of ΣX if and only if ∀x ∈X, C(x) = 1.\nAccordingly, any binary classifier can be represented by a classification circuit in\nthe sense of [9]:",
+      "content_length": 2839,
+      "source_file": "2510.18628v1.pdf",
+      "has_titles": false,
+      "structured_blocks": [
+        {
+          "text": "Leveraging Association Rules for Better Predictions and Better Explanations\n5",
+          "is_title": false,
+          "page": 5,
+          "text_length": 77
+        },
+        {
+          "text": "x1\nT1",
+          "is_title": false,
+          "page": 5,
+          "text_length": 5
+        },
+        {
+          "text": "0\nx2",
+          "is_title": false,
+          "page": 5,
+          "text_length": 4
+        },
+        {
+          "text": "x3\nx7",
+          "is_title": false,
+          "page": 5,
+          "text_length": 5
+        },
+        {
+          "text": "0\n1\n0\n1",
+          "is_title": false,
+          "page": 5,
+          "text_length": 7
+        },
+        {
+          "text": "x5\nT2",
+          "is_title": false,
+          "page": 5,
+          "text_length": 5
+        },
+        {
+          "text": "x4\n0",
+          "is_title": false,
+          "page": 5,
+          "text_length": 4
+        },
+        {
+          "text": "0\nx6",
+          "is_title": false,
+          "page": 5,
+          "text_length": 4
+        },
+        {
+          "text": "0\n1",
+          "is_title": false,
+          "page": 5,
+          "text_length": 3
+        },
+        {
+          "text": "x7\nT3",
+          "is_title": false,
+          "page": 5,
+          "text_length": 5
+        },
+        {
+          "text": "x4\nx1",
+          "is_title": false,
+          "page": 5,
+          "text_length": 5
+        },
+        {
+          "text": "0\n1\n0\n1",
+          "is_title": false,
+          "page": 5,
+          "text_length": 7
+        },
+        {
+          "text": "Fig. 1. A random forest for a loan allocation problem. The left (resp. right) child of any decision\nnode labelled by xi corresponds to the assignment of xi to 0 (resp. 1).",
+          "is_title": false,
+          "page": 5,
+          "text_length": 171
+        },
+        {
+          "text": "are encountered (“unemployed (U)”, “temporary position (TP)”, or “permanent posi-\ntion”). The random forest F = {T1, T2, T3} given at Figure 1 has been learned from\nD. F is based on 7 Boolean conditions: X = {x1, . . . , x7}, where x1 = (A > 25),\nx2 = (A > 60), x3 = (I > 30), x4 = (I > 50), x5 = (S = U), x6 = (S = TP),\nand x7 = (S = PP). Those conditions are logically connected as given by the domain\ntheory Th = (x2 ⇒x1) ∧(x4 ⇒x3) ∧(x5 ⇒x6) ∧(x5 ⇒x7) ∧(x6 ⇒x7). The\nimplications x2 ⇒x1 and x4 ⇒x3 simply reflect that 60 > 25 and 50 > 30 (respec-\ntively). The remaining implications state that S cannot take two distinct values in its\ndomain at the same time. Here, the domain of the categorical attribute S is considered\nopen (i.e., we do not not assume that the only possible values for S are U, TP, and\nPP).\nThe instance (33, 52, PP) over A representing an applicant aged 32, having $52k\nannual income, and a permanent position, corresponds to the instance x = (1, 0, 1, 1, 0,\n0, 1) of X. x = (1, 0, 1, 1, 0, 0, 1) is more general than the instance (33, 52, PP) one\nstarted with, in the sense that other instances over A (e.g., (48, 60, PP)) also corre-\nsponds to x. We can easily check that the instance x is such that F(x) = 1 (indeed, we\nhave T1(x) = 1, T2(x) = 0, and T3(x) = 1).",
+          "is_title": false,
+          "page": 5,
+          "text_length": 1289
+        },
+        {
+          "text": "Each instance x of X can be considered as an interpretation on X that satisfies Th.\nThis interpretation can be represented by a (canonical) term tx on X, formed by the set\n(interpreted as a conjunction) of the positive literals xi (i ∈[n]), such that xi = 1 and\nby the negative literals xi (i ∈[n]) such that xi = 0. ⊤is the Boolean constant always\ntrue that evaluates to the Boolean value 1 and ⊥is the Boolean constant always false\nthat evaluates to the Boolean value 0. In the following, |= denotes logical entailment\nand ≡logical equivalence.",
+          "is_title": false,
+          "page": 5,
+          "text_length": 546
+        },
+        {
+          "text": "Definition 1. A binary classifier on X is a mapping C from X to the set of Boolean\nvalues {0, 1}. x ∈X is a positive instance if C(x) = 1 and a negative one if C(x) = 0.",
+          "is_title": false,
+          "page": 5,
+          "text_length": 169
+        },
+        {
+          "text": "Every ML model that is based on Boolean conditions (such as a decision tree or a\nrandom forest) and targets two classes only can be represented by a Boolean formula of\nthe form ΣX ⇔y where ΣX is a formula on X and y ̸∈X is a propositional variable\nthat denotes the class of positive instances. Indeed, it is sufficient to consider any ΣX\nsuch that x is a model of ΣX if and only if ∀x ∈X, C(x) = 1.\nAccordingly, any binary classifier can be represented by a classification circuit in\nthe sense of [9]:",
+          "is_title": false,
+          "page": 5,
+          "text_length": 501
+        }
+      ]
+    },
+    {
+      "document_index": 5,
+      "page": 6,
+      "content": "6\nG. Audemard et al.\n\nDefinition 2. A classification circuit Σ on X ∪{y} is a circuit equivalent to a formula\nof the form ΣX ⇔y where ΣX is a Boolean formula on X.\n\nIn the following, when Φ is a Boolean circuit or a formula on X ∪{y} and z is any\nvariable from X ∪{y}, Φ(z) (resp. Φ(z)) denotes the conditioning of Φ by z (resp.\nby z). Φ(z) (resp. Φ(z)) is the circuit (or the formula) obtained by replacing in Φ any\noccurrence of z by the Boolean constant ⊤(resp. ⊥). When Σ = ΣX ⇔y is a classi-\nfication circuit on X ∪{y}, the set of models of Σ(y) consists precisely of the models\nof ΣX and the set of models of Σ(y) consists precisely of the counter-models of ΣX.\nFinally, when x ∈X is an instance, Φ(x) denotes the iterative conditioning of Φ by\neach literal of tx. Thus, x ∈X is classified positively (resp. negatively) by Σ when\nΣ(x) is equivalent to y (resp. y).\n\n2.2\nImplicants and abductive explanations\n\nGiven two formulas Φ and Th on X, a term t on X is an implicant of Φ modulo Th\niff Φ is a logical consequence of t ∧Th. A term t is an implicant of Φ iff Φ is a logical\nconsequence of t. Thus, a term t is an implicant of a formula Φ iff t is an implicant of\nΦ modulo a valid formula Φ.\nBased on these notion of implicants, we can now make precise the notion of ab-\nductive explanation for an instance given a constrained decision-function based on a\nrandom forest [14]:\n\nDefinition 3. Let (F, Th) be a constrained decision-function where F is a random\nforest on X and Th a Boolean formula on X. Let x be an instance from X that satisfies\nTh and is s.t. F(x) = 1 (resp. F(x) = 0).\n\n– An abductive explanation for x given (F, Th) is a (conjunctively-interpreted) set\nt ⊆tx such that t is an implicant of F modulo Th (resp. t is an implicant of F\nmodulo Th).\n– A subset-minimal abductive explanation for x given (F, Th) is an abductive ex-\nplanation t for x given (F, Th) such that no proper subset of t is an abductive\nexplanation for x given (F, Th).\n\nAbductive explanations t provide subsets of characteristics of the instance x (thus,\nliterals over X) that explain why x is classified by F in the way it has been classified\n(possibly, taking Th into account).3 Subset-minimal abductive explanations are also\ncalled sufficient reasons [12] and prime-implicant explanations [30].\n\nExample 2 (Example 1, cont’ed). A subset-minimal abductive explanation for x =\n(1, 0, 1, 1, 0, 0, 1) given (F, Th) is given by t = x1 ∧x2 ∧x4. This means that any\napplicant with age between 26 and 60 and annual income greater than $50k will be\nclassified by F in the same way as x (i.e., as a positive instance), but if one of the\nthree conditions (being older than 25, at least 60 years old, and having more than $50k\nincome) is relaxed, the same conclusion about the loan granted cannot be guaranteed.\n\n3 As in [19] and unlike [18], in this paper, abductive explanations are not required to be minimal\nw.r.t. set inclusion. The notion of abductive explanations considered here corresponds to so-\ncalled weak abductive explanations in [16].",
+      "content_length": 3036,
+      "source_file": "2510.18628v1.pdf",
+      "has_titles": true,
+      "structured_blocks": [
+        {
+          "text": "6\nG. Audemard et al.",
+          "is_title": true,
+          "page": 6,
+          "text_length": 20
+        },
+        {
+          "text": "Definition 2. A classification circuit Σ on X ∪{y} is a circuit equivalent to a formula\nof the form ΣX ⇔y where ΣX is a Boolean formula on X.",
+          "is_title": false,
+          "page": 6,
+          "text_length": 141
+        },
+        {
+          "text": "In the following, when Φ is a Boolean circuit or a formula on X ∪{y} and z is any\nvariable from X ∪{y}, Φ(z) (resp. Φ(z)) denotes the conditioning of Φ by z (resp.\nby z). Φ(z) (resp. Φ(z)) is the circuit (or the formula) obtained by replacing in Φ any\noccurrence of z by the Boolean constant ⊤(resp. ⊥). When Σ = ΣX ⇔y is a classi-\nfication circuit on X ∪{y}, the set of models of Σ(y) consists precisely of the models\nof ΣX and the set of models of Σ(y) consists precisely of the counter-models of ΣX.\nFinally, when x ∈X is an instance, Φ(x) denotes the iterative conditioning of Φ by\neach literal of tx. Thus, x ∈X is classified positively (resp. negatively) by Σ when\nΣ(x) is equivalent to y (resp. y).",
+          "is_title": false,
+          "page": 6,
+          "text_length": 705
+        },
+        {
+          "text": "2.2\nImplicants and abductive explanations",
+          "is_title": true,
+          "page": 6,
+          "text_length": 41
+        },
+        {
+          "text": "Given two formulas Φ and Th on X, a term t on X is an implicant of Φ modulo Th\niff Φ is a logical consequence of t ∧Th. A term t is an implicant of Φ iff Φ is a logical\nconsequence of t. Thus, a term t is an implicant of a formula Φ iff t is an implicant of\nΦ modulo a valid formula Φ.\nBased on these notion of implicants, we can now make precise the notion of ab-\nductive explanation for an instance given a constrained decision-function based on a\nrandom forest [14]:",
+          "is_title": false,
+          "page": 6,
+          "text_length": 469
+        },
+        {
+          "text": "Definition 3. Let (F, Th) be a constrained decision-function where F is a random\nforest on X and Th a Boolean formula on X. Let x be an instance from X that satisfies\nTh and is s.t. F(x) = 1 (resp. F(x) = 0).",
+          "is_title": false,
+          "page": 6,
+          "text_length": 208
+        },
+        {
+          "text": "– An abductive explanation for x given (F, Th) is a (conjunctively-interpreted) set\nt ⊆tx such that t is an implicant of F modulo Th (resp. t is an implicant of F\nmodulo Th).\n– A subset-minimal abductive explanation for x given (F, Th) is an abductive ex-\nplanation t for x given (F, Th) such that no proper subset of t is an abductive\nexplanation for x given (F, Th).",
+          "is_title": false,
+          "page": 6,
+          "text_length": 368
+        },
+        {
+          "text": "Abductive explanations t provide subsets of characteristics of the instance x (thus,\nliterals over X) that explain why x is classified by F in the way it has been classified\n(possibly, taking Th into account).3 Subset-minimal abductive explanations are also\ncalled sufficient reasons [12] and prime-implicant explanations [30].",
+          "is_title": false,
+          "page": 6,
+          "text_length": 327
+        },
+        {
+          "text": "Example 2 (Example 1, cont’ed). A subset-minimal abductive explanation for x =\n(1, 0, 1, 1, 0, 0, 1) given (F, Th) is given by t = x1 ∧x2 ∧x4. This means that any\napplicant with age between 26 and 60 and annual income greater than $50k will be\nclassified by F in the same way as x (i.e., as a positive instance), but if one of the\nthree conditions (being older than 25, at least 60 years old, and having more than $50k\nincome) is relaxed, the same conclusion about the loan granted cannot be guaranteed.",
+          "is_title": false,
+          "page": 6,
+          "text_length": 503
+        },
+        {
+          "text": "3 As in [19] and unlike [18], in this paper, abductive explanations are not required to be minimal\nw.r.t. set inclusion. The notion of abductive explanations considered here corresponds to so-\ncalled weak abductive explanations in [16].",
+          "is_title": true,
+          "page": 6,
+          "text_length": 236
+        }
+      ]
+    },
+    {
+      "document_index": 6,
+      "page": 7,
+      "content": "Leveraging Association Rules for Better Predictions and Better Explanations\n7\n\n2.3\nAssociation rules\n\nIn the following, we also need the notion of association rule:\n\nDefinition 4. An association rule R = b ⇒h is a clause over X ∪{y}, where y ̸∈X\ndenotes the class of positive instances. The body (aka premises) b of such a rule always\nis a conjunction of literals over X and the head (aka conclusion) h of R is a literal over\nX ∪{y}. When h is a literal over y, the association rule R = b ⇒h is a classification\nrule (aka a class association rule - CAR).\n\nExample 3 (Example 1, cont’ed). (x4 ∧x7) ⇒y and x2 ⇒x7 are two association\nrules. (x4 ∧x7) ⇒y is a classification rule.\n\nThe rules we consider may contain negations in their bodies and in their heads.\nObviously, any (conjunctively-interpreted) set A of association rules can also be viewed\nas a Boolean formula (in conjunctive normal form) on X ∪{y}.\nClearly enough, when it holds, a classification rule R = b ⇒y (resp. R = b ⇒y)\nindicates that each instance x ∈X satisfying b has to be positively (resp. negatively)\nclassified. Indeed, R(x) ≡y (resp. R(x) ≡y) is true.\nAssociation rules can be generated using data mining techniques, including the sem-\ninal Apriori algorithm [1]. To do so, the classified instances over A from D are first\nrewritten into classified instances over X (the Boolean conditions used in F), giving\nrise to the binarized dataset DF\nb . In this dataset, each Boolean condition x ∈X is used\nto give rise to two columns, one related to x, the other one to x. This is useful to extract\na set A of association rules with negations from DF\nb using standard data mining algo-\nrithms. Two key scores are typically used to assess the quality of an association rule.\nThe support of an association rule R = b ⇒h given a dataset DF\nb is the number of\ninstances (“transactions”) in DF\nb satisfying b ∧h divided by the number of instances in\nDF\nb . The confidence of a rule R = b ⇒h given a dataset DF\nb is the number of instances\nin DF\nb satisfying b ∧h divided by the number of instances satisfying b.\nIn general, the subset Ac of A consisting of classification rules derived from DF\nb\nusing a data mining algorithm corresponds to an incomplete classifier since instances\nmay exist that are not covered by the body of any rule from Ac. Furthermore, in the\ngeneral case, Ac can be conflicting given the domain theory Th on X. This means that\none can find in Ac two rules R1 = b1 ⇒h1 and R2 = b2 ⇒h2 such that b1 ∧b2 ∧Th\nis consistent and h1 ≡h2. When Ac contains conflicting rules R1 = b1 ⇒h1 and\nR2 = b2 ⇒h2, one does not know how to classify instances x satisfying b1 ∧b2 ∧Th\nsince the two rules give contradictory conclusions about the class of x.\n\n3\nRectifying Decision Trees and Random Forests\n\nTo take advantage of the classification rules of Ac (or, at least, those the user is suffi-\nciently confident to them) to improve the predictive performance of F, the rectification\noperation [9,10] can be used. To this purpose, class labels (reduced to y or y here) are\nrequired to be explicit. Notably, rectification is not specific to tree-based models but it",
+      "content_length": 3132,
+      "source_file": "2510.18628v1.pdf",
+      "has_titles": true,
+      "structured_blocks": [
+        {
+          "text": "Leveraging Association Rules for Better Predictions and Better Explanations\n7",
+          "is_title": false,
+          "page": 7,
+          "text_length": 77
+        },
+        {
+          "text": "2.3\nAssociation rules",
+          "is_title": true,
+          "page": 7,
+          "text_length": 21
+        },
+        {
+          "text": "In the following, we also need the notion of association rule:",
+          "is_title": false,
+          "page": 7,
+          "text_length": 62
+        },
+        {
+          "text": "Definition 4. An association rule R = b ⇒h is a clause over X ∪{y}, where y ̸∈X\ndenotes the class of positive instances. The body (aka premises) b of such a rule always\nis a conjunction of literals over X and the head (aka conclusion) h of R is a literal over\nX ∪{y}. When h is a literal over y, the association rule R = b ⇒h is a classification\nrule (aka a class association rule - CAR).",
+          "is_title": false,
+          "page": 7,
+          "text_length": 388
+        },
+        {
+          "text": "Example 3 (Example 1, cont’ed). (x4 ∧x7) ⇒y and x2 ⇒x7 are two association\nrules. (x4 ∧x7) ⇒y is a classification rule.",
+          "is_title": false,
+          "page": 7,
+          "text_length": 119
+        },
+        {
+          "text": "The rules we consider may contain negations in their bodies and in their heads.\nObviously, any (conjunctively-interpreted) set A of association rules can also be viewed\nas a Boolean formula (in conjunctive normal form) on X ∪{y}.\nClearly enough, when it holds, a classification rule R = b ⇒y (resp. R = b ⇒y)\nindicates that each instance x ∈X satisfying b has to be positively (resp. negatively)\nclassified. Indeed, R(x) ≡y (resp. R(x) ≡y) is true.\nAssociation rules can be generated using data mining techniques, including the sem-\ninal Apriori algorithm [1]. To do so, the classified instances over A from D are first\nrewritten into classified instances over X (the Boolean conditions used in F), giving\nrise to the binarized dataset DF\nb . In this dataset, each Boolean condition x ∈X is used\nto give rise to two columns, one related to x, the other one to x. This is useful to extract\na set A of association rules with negations from DF\nb using standard data mining algo-\nrithms. Two key scores are typically used to assess the quality of an association rule.\nThe support of an association rule R = b ⇒h given a dataset DF\nb is the number of\ninstances (“transactions”) in DF\nb satisfying b ∧h divided by the number of instances in\nDF\nb . The confidence of a rule R = b ⇒h given a dataset DF\nb is the number of instances\nin DF\nb satisfying b ∧h divided by the number of instances satisfying b.\nIn general, the subset Ac of A consisting of classification rules derived from DF\nb\nusing a data mining algorithm corresponds to an incomplete classifier since instances\nmay exist that are not covered by the body of any rule from Ac. Furthermore, in the\ngeneral case, Ac can be conflicting given the domain theory Th on X. This means that\none can find in Ac two rules R1 = b1 ⇒h1 and R2 = b2 ⇒h2 such that b1 ∧b2 ∧Th\nis consistent and h1 ≡h2. When Ac contains conflicting rules R1 = b1 ⇒h1 and\nR2 = b2 ⇒h2, one does not know how to classify instances x satisfying b1 ∧b2 ∧Th\nsince the two rules give contradictory conclusions about the class of x.",
+          "is_title": false,
+          "page": 7,
+          "text_length": 2044
+        },
+        {
+          "text": "3\nRectifying Decision Trees and Random Forests",
+          "is_title": true,
+          "page": 7,
+          "text_length": 46
+        },
+        {
+          "text": "To take advantage of the classification rules of Ac (or, at least, those the user is suffi-\nciently confident to them) to improve the predictive performance of F, the rectification\noperation [9,10] can be used. To this purpose, class labels (reduced to y or y here) are\nrequired to be explicit. Notably, rectification is not specific to tree-based models but it",
+          "is_title": false,
+          "page": 7,
+          "text_length": 361
+        }
+      ]
+    },
+    {
+      "document_index": 7,
+      "page": 8,
+      "content": "8\nG. Audemard et al.\n\napplies to classification circuits Σ on X ∪{y}. This is not an issue since when view-\ning a random forest F as a Boolean formula over X, the formula F ⇔y is such a\nclassification circuit Σ.\nRectifying F ⇔y by Ac then amounts to generate a classification circuit noted\n(F ⇔y)⋆Ac such that for every instance x ∈X, if Ac classifies x, then (F ⇔y)⋆Ac\nclassifies x in the same way as Ac, else (F ⇔y) ⋆Ac classifies x in the same way\nas F. The rectified circuit (F ⇔y) ⋆Ac of F ⇔y by Ac [10] is characterized (up to\nlogical equivalence) by (F ⇔y) ⋆Ac ≡F Ac ⇔y where\n\nF Ac ≡(F ∧¬(Ac(y) ∧¬Ac(y))) ∨(Ac(y) ∧¬Ac(y)).\n\nAs explained in [10], the rationale of this characterization is as follows. For an\ninstance x to be classified as positive by the rectified classification circuit, it must be\nthe case that either Ac consistently asks for it (this corresponds to the disjunct Ac(y) ∧\n¬Ac(y)), or that the classification circuit considered at start classifies x as positive,\nprovided that T does not consistently ask x to be classified as negative (this corresponds\nto the disjunct F ∧¬(Ac(y) ∧¬Ac(y))). When Ac is conflict-free, every instance that\ncan be classified using rules from Ac is consistently classified by Ac.\nIn our approach, the rules in A that are generated by the data mining algorithm mine\nused in Algorithm 1 can be filtered by the user if needed (only those rules in which\nthe user has sufficient trust must be used). A 100% confidence score and a non-null\nsupport score is considered so that each rule put forward by the data mining algorithm\nmeets these conditions (the goal is generate only rules that are not contradicted by\nany piece of available evidence in DF\nb since we want to use them as if they were true\npieces of knowledge). The set A of association rules is expected to be conflict-free but\nconsidering rules with a 100% confidence score and a non-null support score is not\nenough to ensure it. In our approach, the lack of conflicts is ensured by the way the\nprocedure mine works: rules are generated one by one, by decreasing support, and a\ngenerated rule R is put into A whenever it does not conflict with any of the rule R′ that\nprecedes R in the enumeration (provided that R′ has been kept so far and put into A).\nThe absence of conflicts makes it possible to rectify F by Ac in an iterative way, rule\nby rule (the order with which the classification rules of Ac are taken into account does\nnot matter when Ac is conflict-free).\nFurthermore, in order to use XAI techniques developed so far for decision trees\nand random forests (especially, the computation of abductive explanations as presented\nin Section 4), we would like the resulting classification circuit (F ⇔y) ⋆Ac to be\nrepresented as a decision tree when F is a decision tree and as a random forest when F is\na random forest. It is possible to ensure this property without requiring additional heavy\ncomputational costs. Indeed, in order to rectify a random forest F by a classification rule\nR, it is enough to rectify every tree Ti ∈F by R. Furthermore, rectifying a decision\ntree Ti by a classification rule R = b ⇒h amounts to rectify every branch of Ti by\nR, leading to a tree. Thus, all the branches of the trees in F can be rectified by R in\nparallel.\nMore precisely, rectifying Ti by R = b ⇒h amounts to update only those root-to-\nleaf paths p of Ti such that p ∧b ∧Th is consistent and the leaf of p conflicts with the\nconclusion h of the rule (i.e., when h = y and the leaf of p is a 0-leaf and when h = y",
+      "content_length": 3524,
+      "source_file": "2510.18628v1.pdf",
+      "has_titles": true,
+      "structured_blocks": [
+        {
+          "text": "8\nG. Audemard et al.",
+          "is_title": true,
+          "page": 8,
+          "text_length": 20
+        },
+        {
+          "text": "applies to classification circuits Σ on X ∪{y}. This is not an issue since when view-\ning a random forest F as a Boolean formula over X, the formula F ⇔y is such a\nclassification circuit Σ.\nRectifying F ⇔y by Ac then amounts to generate a classification circuit noted\n(F ⇔y)⋆Ac such that for every instance x ∈X, if Ac classifies x, then (F ⇔y)⋆Ac\nclassifies x in the same way as Ac, else (F ⇔y) ⋆Ac classifies x in the same way\nas F. The rectified circuit (F ⇔y) ⋆Ac of F ⇔y by Ac [10] is characterized (up to\nlogical equivalence) by (F ⇔y) ⋆Ac ≡F Ac ⇔y where",
+          "is_title": false,
+          "page": 8,
+          "text_length": 560
+        },
+        {
+          "text": "F Ac ≡(F ∧¬(Ac(y) ∧¬Ac(y))) ∨(Ac(y) ∧¬Ac(y)).",
+          "is_title": false,
+          "page": 8,
+          "text_length": 45
+        },
+        {
+          "text": "As explained in [10], the rationale of this characterization is as follows. For an\ninstance x to be classified as positive by the rectified classification circuit, it must be\nthe case that either Ac consistently asks for it (this corresponds to the disjunct Ac(y) ∧\n¬Ac(y)), or that the classification circuit considered at start classifies x as positive,\nprovided that T does not consistently ask x to be classified as negative (this corresponds\nto the disjunct F ∧¬(Ac(y) ∧¬Ac(y))). When Ac is conflict-free, every instance that\ncan be classified using rules from Ac is consistently classified by Ac.\nIn our approach, the rules in A that are generated by the data mining algorithm mine\nused in Algorithm 1 can be filtered by the user if needed (only those rules in which\nthe user has sufficient trust must be used). A 100% confidence score and a non-null\nsupport score is considered so that each rule put forward by the data mining algorithm\nmeets these conditions (the goal is generate only rules that are not contradicted by\nany piece of available evidence in DF\nb since we want to use them as if they were true\npieces of knowledge). The set A of association rules is expected to be conflict-free but\nconsidering rules with a 100% confidence score and a non-null support score is not\nenough to ensure it. In our approach, the lack of conflicts is ensured by the way the\nprocedure mine works: rules are generated one by one, by decreasing support, and a\ngenerated rule R is put into A whenever it does not conflict with any of the rule R′ that\nprecedes R in the enumeration (provided that R′ has been kept so far and put into A).\nThe absence of conflicts makes it possible to rectify F by Ac in an iterative way, rule\nby rule (the order with which the classification rules of Ac are taken into account does\nnot matter when Ac is conflict-free).\nFurthermore, in order to use XAI techniques developed so far for decision trees\nand random forests (especially, the computation of abductive explanations as presented\nin Section 4), we would like the resulting classification circuit (F ⇔y) ⋆Ac to be\nrepresented as a decision tree when F is a decision tree and as a random forest when F is\na random forest. It is possible to ensure this property without requiring additional heavy\ncomputational costs. Indeed, in order to rectify a random forest F by a classification rule\nR, it is enough to rectify every tree Ti ∈F by R. Furthermore, rectifying a decision\ntree Ti by a classification rule R = b ⇒h amounts to rectify every branch of Ti by\nR, leading to a tree. Thus, all the branches of the trees in F can be rectified by R in\nparallel.\nMore precisely, rectifying Ti by R = b ⇒h amounts to update only those root-to-\nleaf paths p of Ti such that p ∧b ∧Th is consistent and the leaf of p conflicts with the\nconclusion h of the rule (i.e., when h = y and the leaf of p is a 0-leaf and when h = y",
+          "is_title": false,
+          "page": 8,
+          "text_length": 2893
+        }
+      ]
+    },
+    {
+      "document_index": 8,
+      "page": 9,
+      "content": "Leveraging Association Rules for Better Predictions and Better Explanations\n9\n\nF\n\nx1\nT1\n\n0\nx2\n\nx3\nx7\n\n0\n1\n0\n1\n\nx5\nT2\n\nx4\n0\n\n0\nx6\n\n0\n1\n\nx7\nT3\n\nx4\nx1\n\n0\n1\n0\n1\n\nF Ac\n\nx1\nT Ac\n1\n\nx4\n\n0\nx7\n\n0\n1\n\nx2\n\nx3\nx7\n\n0\n1\n0\n1\n\nx5\nT Ac\n2\n\nx4\n0\n\n0\nx6\n\nx7\n\n0\n1\n\n1\n\nx7\nT Ac\n3\n\nx4\nx1\n\n0\n1\nx4\n\n0\n1\n\n1\n\nFig. 2. The random forest F Ac obtained by rectifying F by Ac = {(x4 ∧x7) ⇒y}. The\nmodifications achieved w.r.t. F are printed in red.\n\nand the leaf of p is a 1-leaf). Let patch(p, R) the comb-shaped tree with its main branch\nlabelled by conditions from b \\ p leading to a 0-leaf if h = y and to a 1-leaf if h = y,\nwhile every other branch of the comb-shaped tree is labelled by leaf (p). A rectification\nof p by R can be obtained by replacing the leaf node of p by patch(p, R).\n\nExample 4 (Example 1, cont’ed). Suppose that the data mining algorithm has produced\na unique classification rule with confidence 100% and a non-null support, namely R =\n(x4∧x7) ⇒y. This rule is not a logical consequence of the classification circuit F ⇔y.\nIndeed, the instance x = (0, 0, 1, 1, 0, 0, 1) is such that F(x) = 0 while x is classified\nas a positive instance by R. If R is considered reliable enough by the user, F ⇔y can\nbe rectified by Ac = {R}. The resulting random forest F Ac is given at Figure 2. In\ndetail, with b = x4 ∧x7 and h = y:\n\n– The unique branch of T1 that needs to be rectified is the one corresponding to x1\nsince it ends with a 0-leaf while h = y. The two other branches of T1 ending with\na 0-leaf are associated with terms p (namely, x1 ∧x2 ∧x3 and x1 ∧x2 ∧x7) such\nthat p ∧b ∧Th is inconsistent (keep in mind that x4 ⇒x3 is part of Th). Thus,\nthe 0-leaf node corresponding to the path x1 in T1 is replaced by the comb-shaped\ntree patch(x1, R) in T Ac\n1 . This comb-shaped tree simply ensures that a 1-leaf is\nreached when x4 ∧x7 holds, while a 0-leaf (i.e., leaf (x1)) is reached otherwise.\n– The unique branch of T2 that needs to be rectified is the one corresponding to\n\nx5 ∧x4 ∧x6 since it ends with a 0-leaf while h = y. The two other branches of\nT2 ending with a 0-leaf are associated with terms p (namely, x5 ∧x4 and x5) such\nthat p ∧b ∧Th is inconsistent (keep in mind that x5 ⇒x7 is part of Th). Thus, the\n0-leaf node corresponding to the path x5 ∧x4 ∧x6 in T2 is replaced by the comb-\nshaped tree patch(x5 ∧x4 ∧x6, R) in T Ac\n2 . This comb-shaped tree simply ensures",
+      "content_length": 2366,
+      "source_file": "2510.18628v1.pdf",
+      "has_titles": false,
+      "structured_blocks": [
+        {
+          "text": "Leveraging Association Rules for Better Predictions and Better Explanations\n9",
+          "is_title": false,
+          "page": 9,
+          "text_length": 77
+        },
+        {
+          "text": "F",
+          "is_title": false,
+          "page": 9,
+          "text_length": 1
+        },
+        {
+          "text": "x1\nT1",
+          "is_title": false,
+          "page": 9,
+          "text_length": 5
+        },
+        {
+          "text": "0\nx2",
+          "is_title": false,
+          "page": 9,
+          "text_length": 4
+        },
+        {
+          "text": "x3\nx7",
+          "is_title": false,
+          "page": 9,
+          "text_length": 5
+        },
+        {
+          "text": "0\n1\n0\n1",
+          "is_title": false,
+          "page": 9,
+          "text_length": 7
+        },
+        {
+          "text": "x5\nT2",
+          "is_title": false,
+          "page": 9,
+          "text_length": 5
+        },
+        {
+          "text": "x4\n0",
+          "is_title": false,
+          "page": 9,
+          "text_length": 4
+        },
+        {
+          "text": "0\nx6",
+          "is_title": false,
+          "page": 9,
+          "text_length": 4
+        },
+        {
+          "text": "0\n1",
+          "is_title": false,
+          "page": 9,
+          "text_length": 3
+        },
+        {
+          "text": "x7\nT3",
+          "is_title": false,
+          "page": 9,
+          "text_length": 5
+        },
+        {
+          "text": "x4\nx1",
+          "is_title": false,
+          "page": 9,
+          "text_length": 5
+        },
+        {
+          "text": "0\n1\n0\n1",
+          "is_title": false,
+          "page": 9,
+          "text_length": 7
+        },
+        {
+          "text": "F Ac",
+          "is_title": false,
+          "page": 9,
+          "text_length": 4
+        },
+        {
+          "text": "x1\nT Ac\n1",
+          "is_title": false,
+          "page": 9,
+          "text_length": 9
+        },
+        {
+          "text": "x4",
+          "is_title": false,
+          "page": 9,
+          "text_length": 2
+        },
+        {
+          "text": "0\nx7",
+          "is_title": false,
+          "page": 9,
+          "text_length": 4
+        },
+        {
+          "text": "0\n1",
+          "is_title": false,
+          "page": 9,
+          "text_length": 3
+        },
+        {
+          "text": "x2",
+          "is_title": false,
+          "page": 9,
+          "text_length": 2
+        },
+        {
+          "text": "x3\nx7",
+          "is_title": false,
+          "page": 9,
+          "text_length": 5
+        },
+        {
+          "text": "0\n1\n0\n1",
+          "is_title": false,
+          "page": 9,
+          "text_length": 7
+        },
+        {
+          "text": "x5\nT Ac\n2",
+          "is_title": false,
+          "page": 9,
+          "text_length": 9
+        },
+        {
+          "text": "x4\n0",
+          "is_title": false,
+          "page": 9,
+          "text_length": 4
+        },
+        {
+          "text": "0\nx6",
+          "is_title": false,
+          "page": 9,
+          "text_length": 4
+        },
+        {
+          "text": "x7",
+          "is_title": false,
+          "page": 9,
+          "text_length": 2
+        },
+        {
+          "text": "0\n1",
+          "is_title": false,
+          "page": 9,
+          "text_length": 3
+        },
+        {
+          "text": "1",
+          "is_title": false,
+          "page": 9,
+          "text_length": 1
+        },
+        {
+          "text": "x7\nT Ac\n3",
+          "is_title": false,
+          "page": 9,
+          "text_length": 9
+        },
+        {
+          "text": "x4\nx1",
+          "is_title": false,
+          "page": 9,
+          "text_length": 5
+        },
+        {
+          "text": "0\n1\nx4",
+          "is_title": false,
+          "page": 9,
+          "text_length": 6
+        },
+        {
+          "text": "0\n1",
+          "is_title": false,
+          "page": 9,
+          "text_length": 3
+        },
+        {
+          "text": "1",
+          "is_title": false,
+          "page": 9,
+          "text_length": 1
+        },
+        {
+          "text": "Fig. 2. The random forest F Ac obtained by rectifying F by Ac = {(x4 ∧x7) ⇒y}. The\nmodifications achieved w.r.t. F are printed in red.",
+          "is_title": false,
+          "page": 9,
+          "text_length": 134
+        },
+        {
+          "text": "and the leaf of p is a 1-leaf). Let patch(p, R) the comb-shaped tree with its main branch\nlabelled by conditions from b \\ p leading to a 0-leaf if h = y and to a 1-leaf if h = y,\nwhile every other branch of the comb-shaped tree is labelled by leaf (p). A rectification\nof p by R can be obtained by replacing the leaf node of p by patch(p, R).",
+          "is_title": false,
+          "page": 9,
+          "text_length": 342
+        },
+        {
+          "text": "Example 4 (Example 1, cont’ed). Suppose that the data mining algorithm has produced\na unique classification rule with confidence 100% and a non-null support, namely R =\n(x4∧x7) ⇒y. This rule is not a logical consequence of the classification circuit F ⇔y.\nIndeed, the instance x = (0, 0, 1, 1, 0, 0, 1) is such that F(x) = 0 while x is classified\nas a positive instance by R. If R is considered reliable enough by the user, F ⇔y can\nbe rectified by Ac = {R}. The resulting random forest F Ac is given at Figure 2. In\ndetail, with b = x4 ∧x7 and h = y:",
+          "is_title": false,
+          "page": 9,
+          "text_length": 551
+        },
+        {
+          "text": "– The unique branch of T1 that needs to be rectified is the one corresponding to x1\nsince it ends with a 0-leaf while h = y. The two other branches of T1 ending with\na 0-leaf are associated with terms p (namely, x1 ∧x2 ∧x3 and x1 ∧x2 ∧x7) such\nthat p ∧b ∧Th is inconsistent (keep in mind that x4 ⇒x3 is part of Th). Thus,\nthe 0-leaf node corresponding to the path x1 in T1 is replaced by the comb-shaped\ntree patch(x1, R) in T Ac\n1 . This comb-shaped tree simply ensures that a 1-leaf is\nreached when x4 ∧x7 holds, while a 0-leaf (i.e., leaf (x1)) is reached otherwise.\n– The unique branch of T2 that needs to be rectified is the one corresponding to",
+          "is_title": false,
+          "page": 9,
+          "text_length": 650
+        },
+        {
+          "text": "x5 ∧x4 ∧x6 since it ends with a 0-leaf while h = y. The two other branches of\nT2 ending with a 0-leaf are associated with terms p (namely, x5 ∧x4 and x5) such\nthat p ∧b ∧Th is inconsistent (keep in mind that x5 ⇒x7 is part of Th). Thus, the\n0-leaf node corresponding to the path x5 ∧x4 ∧x6 in T2 is replaced by the comb-\nshaped tree patch(x5 ∧x4 ∧x6, R) in T Ac\n2 . This comb-shaped tree simply ensures",
+          "is_title": false,
+          "page": 9,
+          "text_length": 402
+        }
+      ]
+    },
+    {
+      "document_index": 9,
+      "page": 10,
+      "content": "10\nG. Audemard et al.\n\nthat a 1-leaf is reached when x4 ∧x7 holds, while a 0-leaf (i.e., leaf (x5 ∧x4 ∧x6))\nis reached otherwise. In the comb-shaped tree patch(x5 ∧x4 ∧x6, R), there is no\nneed to repeat the condition x4 since it belongs to the path x5 ∧x4 ∧x6.\n– Finally, the unique branch of T3 that needs to be rectified is the one corresponding to\nx7 ∧x1 since it ends with a 0-leaf while h = y. The other branch of T3 ending with\na 0-leaf is associated with the term p = x7 ∧x4 such that p∧b∧Th is inconsistent.\nThus, the 0-leaf node corresponding to the path x7 ∧x1 in T3 is replaced by the\ncomb-shaped tree patch(x7∧x1, R) in T Ac\n3 . This comb-shaped tree simply ensures\nthat a 1-leaf is reached when x4 ∧x7 holds, while a 0-leaf (i.e., leaf (x7 ∧x1)) is\nreached otherwise. In the comb-shaped tree patch(x7 ∧x1, R), there is no need to\nrepeat the condition x7 since it belongs to the path x7 ∧x1.\n\nThe rectification of F by R can be achieved in time O(|F|·|R|), leading to a model\nF Ac of size upper bounded by O(|F|·|R|). Notably, the branches of each resulting tree\nT Ac\ni\nin F Ac can be simplified using Th: from bottom to top, starting from the leaf of\na branch p up to the root of the tree Ti, an arc of p can be removed when the literal ℓ\nlabelling it is a logical consequence of (p \\ {ℓ}) ∧Th. In addition, any internal node of\nT Ac\ni\nhaving a left subtree identical to its right subtree can be replaced by one of its two\nsubtrees. Though such a simplification process would let unchanged the rectified model\nF Ac considered in the running example, in the general case it may have a significant\neffect on the size of the resulting model, leading sometimes to a model that is smaller\nthan the one F we started with. To illustrate this point, consider the running example\nagain: it is easy to verify that rectifying T3 by (x7 ∧x4) ⇒y and simplifying the\nresulting tree would lead to a tree smaller than T3 itself (we would get a tree with 5\nnodes instead of 7 nodes for T3).\n\n4\nDeriving Abductive Explanations\n\nLet us turn now to the second problem tackled, i.e., computing better explanations by\nleveraging association rules. A first important remark is that, though no consensus exists\nabout what a “good” explanation should be [26,27], many criteria for evaluating expla-\nnations (and/or the XAI methods used to produce them) have been pointed out [28].\nSome of those criteria are antagonistic, so trade-offs must be considered. Among other\ncriteria, correctness indicates to which extent explanations capture the actual behaviour\nof the AI system (and not the one of a surrogate model). Compactness concerns the size\nof the explanations (shorter explanations are usually easier to interpret). When dealing\nwith (local) abductive explanations based on Boolean conditions (as it is the case in\nthis paper), the size of the explanations is also related to their generality, i.e., the set\nof instances covered by the explanation. Indeed, in this case, minimum-size abductive\nexplanations are among the subset-minimal abductive explanations, i.e., those that are\nas general as possible. Coherence is about whether explanations comply with the do-\nmain knowledge, while controllability refers to the possibility for a user to influence the\nexplanations that are provided.\nUnlike other notions of explanations based on feature attribution techniques (espe-\ncially Shapley values [25,17]), abductive explanations t for an instance x given (C, Th),",
+      "content_length": 3455,
+      "source_file": "2510.18628v1.pdf",
+      "has_titles": true,
+      "structured_blocks": [
+        {
+          "text": "10\nG. Audemard et al.",
+          "is_title": true,
+          "page": 10,
+          "text_length": 21
+        },
+        {
+          "text": "that a 1-leaf is reached when x4 ∧x7 holds, while a 0-leaf (i.e., leaf (x5 ∧x4 ∧x6))\nis reached otherwise. In the comb-shaped tree patch(x5 ∧x4 ∧x6, R), there is no\nneed to repeat the condition x4 since it belongs to the path x5 ∧x4 ∧x6.\n– Finally, the unique branch of T3 that needs to be rectified is the one corresponding to\nx7 ∧x1 since it ends with a 0-leaf while h = y. The other branch of T3 ending with\na 0-leaf is associated with the term p = x7 ∧x4 such that p∧b∧Th is inconsistent.\nThus, the 0-leaf node corresponding to the path x7 ∧x1 in T3 is replaced by the\ncomb-shaped tree patch(x7∧x1, R) in T Ac\n3 . This comb-shaped tree simply ensures\nthat a 1-leaf is reached when x4 ∧x7 holds, while a 0-leaf (i.e., leaf (x7 ∧x1)) is\nreached otherwise. In the comb-shaped tree patch(x7 ∧x1, R), there is no need to\nrepeat the condition x7 since it belongs to the path x7 ∧x1.",
+          "is_title": false,
+          "page": 10,
+          "text_length": 880
+        },
+        {
+          "text": "The rectification of F by R can be achieved in time O(|F|·|R|), leading to a model\nF Ac of size upper bounded by O(|F|·|R|). Notably, the branches of each resulting tree\nT Ac\ni\nin F Ac can be simplified using Th: from bottom to top, starting from the leaf of\na branch p up to the root of the tree Ti, an arc of p can be removed when the literal ℓ\nlabelling it is a logical consequence of (p \\ {ℓ}) ∧Th. In addition, any internal node of\nT Ac\ni\nhaving a left subtree identical to its right subtree can be replaced by one of its two\nsubtrees. Though such a simplification process would let unchanged the rectified model\nF Ac considered in the running example, in the general case it may have a significant\neffect on the size of the resulting model, leading sometimes to a model that is smaller\nthan the one F we started with. To illustrate this point, consider the running example\nagain: it is easy to verify that rectifying T3 by (x7 ∧x4) ⇒y and simplifying the\nresulting tree would lead to a tree smaller than T3 itself (we would get a tree with 5\nnodes instead of 7 nodes for T3).",
+          "is_title": false,
+          "page": 10,
+          "text_length": 1081
+        },
+        {
+          "text": "4\nDeriving Abductive Explanations",
+          "is_title": true,
+          "page": 10,
+          "text_length": 33
+        },
+        {
+          "text": "Let us turn now to the second problem tackled, i.e., computing better explanations by\nleveraging association rules. A first important remark is that, though no consensus exists\nabout what a “good” explanation should be [26,27], many criteria for evaluating expla-\nnations (and/or the XAI methods used to produce them) have been pointed out [28].\nSome of those criteria are antagonistic, so trade-offs must be considered. Among other\ncriteria, correctness indicates to which extent explanations capture the actual behaviour\nof the AI system (and not the one of a surrogate model). Compactness concerns the size\nof the explanations (shorter explanations are usually easier to interpret). When dealing\nwith (local) abductive explanations based on Boolean conditions (as it is the case in\nthis paper), the size of the explanations is also related to their generality, i.e., the set\nof instances covered by the explanation. Indeed, in this case, minimum-size abductive\nexplanations are among the subset-minimal abductive explanations, i.e., those that are\nas general as possible. Coherence is about whether explanations comply with the do-\nmain knowledge, while controllability refers to the possibility for a user to influence the\nexplanations that are provided.\nUnlike other notions of explanations based on feature attribution techniques (espe-\ncially Shapley values [25,17]), abductive explanations t for an instance x given (C, Th),",
+          "is_title": false,
+          "page": 10,
+          "text_length": 1432
+        }
+      ]
+    },
+    {
+      "document_index": 10,
+      "page": 11,
+      "content": "Leveraging Association Rules for Better Predictions and Better Explanations\n11\n\nare formal explanations that are correct by design: it is ensured that for any feasible in-\nstance x′ (i.e., an instance that satisfies Th), if x′ is covered by t, then C(x′) = C(x).\nStated otherwise, t being true is enough to explain the way x has been classified by C.\nThe coherence criterion is also met given that pieces of domain knowledge (given as a\ndomain theory) are exploited in the computation of explanations.\nComputing an abductive explanation for x ∈X given (C, Th) is an easy task when\nno requirement are imposed about the generality of the explanation that is generated.\nIndeed, tx is a (trivial) abductive explanation for x ∈X given (C, Th). The direct rea-\nson for x, i.e., the set of characteristics of tx that can be found in the unique path of C\ncompatible with tx when C is a decision tree, and the union of all those characteristics\nover the trees of C when C is a random forest, is an alternative abductive explanation\nfor x ∈X given (C, Th). However, such a direct reason (aka the path-restricted ex-\nplanation for x when C is a decision tree) may contain many redundant conditions that\nare not present in subset-minimal abductive explanations [22].\nThe difficulty is to thus to find more general explanations, especially subset-minimal\nabductive explanations or even minimum-size abductive explanations. Going a step fur-\nther in this direction requires to address a complexity issue because generating subset-\nminimal abductive explanations or minimum-size abductive explanations is computa-\ntionally difficult. The presence of a domain theory makes (in general) the problem\nharder. Thus, while the generation of a subset-minimal abductive explanation for an\ninstance given a decision tree can be achieved in polynomial time when no domain\ntheory is considered, the problem becomes (in general) NP-hard when a domain the-\nory must be taken into account [8]. On the other hand, the problem of generating a\nsubset-minimal abductive explanation for x given a random forest is intractable (DP-\nhard) [21], even when no domain theory is taken into account. Of course, generating\nminimum-size abductive explanations is at least as hard as generating subset-minimal\nabductive explanations since every minimum-size abductive explanation necessarily is\na subset-minimal abductive explanation.\nTo deal with such a complexity issue, the concept of majoritary reason [4] has been\npointed out as a valuable trade-off in terms of tractability of the computation and gen-\nerality. Majoritary reasons are abductive explanations (thus satisfying the correctness\ncriterion above) that can be computed in polynomial time in the case of random forests\nand that coincides with subset-minimal abductive explanations in the case of decision\ntrees (i.e., random forests with a single tree). Furthermore, even if majoritary reasons\nmay contain irrelevant characteristics in general, in practice one can often derive majori-\ntary reasons that are shorter than subset-minimal abductive explanations [4]. Formally,\nmajoritary reasons have been defined as follows [4]:\n\nDefinition 5. Let F = {T1, . . . , Tm} be a random forest over X and x ∈X. A ma-\njoritary reason for x given F is a term t covering x (i.e., t a subset of tx), such that\nt is an implicant of at least ⌊m\n\n2 ⌋+ 1 decision trees Ti (resp. ¬Ti) if F(x) = 1 (resp.\nF(x) = 0), and for every ℓ∈t, t \\ {ℓ} does not satisfy this last condition.\n\nIn the following, we show how the concept of majoritary reason for random forests\nF presented in [4] can be extended to the case when a domain theory The is consid-\nered. The extended domain theory used here includes constraints that encode the logical",
+      "content_length": 3737,
+      "source_file": "2510.18628v1.pdf",
+      "has_titles": false,
+      "structured_blocks": [
+        {
+          "text": "Leveraging Association Rules for Better Predictions and Better Explanations\n11",
+          "is_title": false,
+          "page": 11,
+          "text_length": 78
+        },
+        {
+          "text": "are formal explanations that are correct by design: it is ensured that for any feasible in-\nstance x′ (i.e., an instance that satisfies Th), if x′ is covered by t, then C(x′) = C(x).\nStated otherwise, t being true is enough to explain the way x has been classified by C.\nThe coherence criterion is also met given that pieces of domain knowledge (given as a\ndomain theory) are exploited in the computation of explanations.\nComputing an abductive explanation for x ∈X given (C, Th) is an easy task when\nno requirement are imposed about the generality of the explanation that is generated.\nIndeed, tx is a (trivial) abductive explanation for x ∈X given (C, Th). The direct rea-\nson for x, i.e., the set of characteristics of tx that can be found in the unique path of C\ncompatible with tx when C is a decision tree, and the union of all those characteristics\nover the trees of C when C is a random forest, is an alternative abductive explanation\nfor x ∈X given (C, Th). However, such a direct reason (aka the path-restricted ex-\nplanation for x when C is a decision tree) may contain many redundant conditions that\nare not present in subset-minimal abductive explanations [22].\nThe difficulty is to thus to find more general explanations, especially subset-minimal\nabductive explanations or even minimum-size abductive explanations. Going a step fur-\nther in this direction requires to address a complexity issue because generating subset-\nminimal abductive explanations or minimum-size abductive explanations is computa-\ntionally difficult. The presence of a domain theory makes (in general) the problem\nharder. Thus, while the generation of a subset-minimal abductive explanation for an\ninstance given a decision tree can be achieved in polynomial time when no domain\ntheory is considered, the problem becomes (in general) NP-hard when a domain the-\nory must be taken into account [8]. On the other hand, the problem of generating a\nsubset-minimal abductive explanation for x given a random forest is intractable (DP-\nhard) [21], even when no domain theory is taken into account. Of course, generating\nminimum-size abductive explanations is at least as hard as generating subset-minimal\nabductive explanations since every minimum-size abductive explanation necessarily is\na subset-minimal abductive explanation.\nTo deal with such a complexity issue, the concept of majoritary reason [4] has been\npointed out as a valuable trade-off in terms of tractability of the computation and gen-\nerality. Majoritary reasons are abductive explanations (thus satisfying the correctness\ncriterion above) that can be computed in polynomial time in the case of random forests\nand that coincides with subset-minimal abductive explanations in the case of decision\ntrees (i.e., random forests with a single tree). Furthermore, even if majoritary reasons\nmay contain irrelevant characteristics in general, in practice one can often derive majori-\ntary reasons that are shorter than subset-minimal abductive explanations [4]. Formally,\nmajoritary reasons have been defined as follows [4]:",
+          "is_title": false,
+          "page": 11,
+          "text_length": 3066
+        },
+        {
+          "text": "Definition 5. Let F = {T1, . . . , Tm} be a random forest over X and x ∈X. A ma-\njoritary reason for x given F is a term t covering x (i.e., t a subset of tx), such that\nt is an implicant of at least ⌊m",
+          "is_title": false,
+          "page": 11,
+          "text_length": 202
+        },
+        {
+          "text": "2 ⌋+ 1 decision trees Ti (resp. ¬Ti) if F(x) = 1 (resp.\nF(x) = 0), and for every ℓ∈t, t \\ {ℓ} does not satisfy this last condition.",
+          "is_title": false,
+          "page": 11,
+          "text_length": 131
+        },
+        {
+          "text": "In the following, we show how the concept of majoritary reason for random forests\nF presented in [4] can be extended to the case when a domain theory The is consid-\nered. The extended domain theory used here includes constraints that encode the logical",
+          "is_title": false,
+          "page": 11,
+          "text_length": 252
+        }
+      ]
+    },
+    {
+      "document_index": 11,
+      "page": 12,
+      "content": "12\nG. Audemard et al.\n\nconnections between Boolean conditions used in F, possibly completed by association\nrules that have been derived from DF\nb .\n\nDefinition 6. Let F = {T1, . . . , Tm} be a random forest over X, The a domain theory\non X, and x ∈X. A majoritary reason for x given (F, The) is a term t covering x (i.e.,\nt a subset of tx), such that t is an implicant modulo The of at least ⌊m\n\n2 ⌋+ 1 decision\ntrees Ti (resp. ¬Ti) if F(x) = 1 (resp. F(x) = 0), and for every ℓ∈t, t \\ {ℓ} does not\nsatisfy this last condition.\n\nThe problem with this definition is that it leads to a concept of reason that cannot be\ncomputed in polynomial time (unless P = NP). Indeed, in the general case, no constraint\nbears on the association rules that can be generated, so they can be any clauses. As a\nconsequence, testing whether t is an implicant modulo Th of a tree Ti is a coNP-\ncomplete problem, which precludes the existence of polynomial-time algorithms for\ngenerating majority reasons.\nTo deal with this problem while taking into account within the extended domain\ntheory The the set of all the association rules produced by the data mining algorithm\nused, the approach we followed consists in weakening the inference relation used to\nreason. Let us remind that unit resolution is an inference rule allowing to derive a clause\nδ on X from a literal ℓon X (called a unit clause) and a clause ∼ℓ∨δ on X. A literal\nℓis derivable by unit propagation from a domain theory The in conjunctive normal\nformal (CNF), noted The ⊢1 ℓiff there exists a finite sequence of clauses δ1, . . . , δk\non X such that δk = ℓand every clause δi (i ∈[k]) in the sequence is a clause of\nThe or can be obtained by applying the unit resolution rule to two clauses δa, δb of the\nsequence such that a < i and b < i. The set of all the literals on X that are derivable by\nunit propagation (UP) from The can be computed in time linear in the size of The (see\ne.g., [11,32]). Every literal from this set is a logical consequence of Th (in symbols, if\nTh ⊢1 ℓthen Th |= ℓ), but the converse does not hold in general.\nLet Φ be a formula on X in CNF that does not contain any valid clause. When t is\na consistent term, t is an implicant of Φ iff every clause δ of Φ contains a literal ℓof t.\nGiven a domain theory Th in conjunctive normal term, let us say that a term t on X is a\nUP-implicant of Φ iff for every clause δ of Φ, δ contains a literal ℓthat belongs the set of\nliterals derivable by unit propagation from t∧Th. Clearly enough, if t is a UP-implicant\nof Φ given Th, then t is an implicant of Φ modulo Th, but the converse does not hold\nin general. For instance, b is a logical consequence of t ∧Th, with t = ⊤(the empty\nterm) and Th = (a∨b)∧(a∨b) but b is not derivable by unit propagation from t∧Th.\nBased on this notion of UP-implicant, a corresponding notion of majoritary reason can\nbe defined as well:\n\nDefinition 7. Let F = {T1, . . . , Tm} be a random forest over X, The a domain theory\non X, and x ∈X. A UP-majoritary reason for x given (F, The) is a term t covering\nx, such that t is a UP-implicant given The of at least ⌊m\n\n2 ⌋+ 1 decision trees Ti (resp.\n¬Ti) if F(x) = 1 (resp. F(x) = 0), and for every ℓ∈t, t \\ {ℓ} does not satisfy this\nlast condition.\n\nThe tractability of generating UP-majoritary reasons lies in the fact that they can be\ncomputed using a simple greedy algorithm equipped with unit propagation instead of\nfull logical entailment.",
+      "content_length": 3436,
+      "source_file": "2510.18628v1.pdf",
+      "has_titles": true,
+      "structured_blocks": [
+        {
+          "text": "12\nG. Audemard et al.",
+          "is_title": true,
+          "page": 12,
+          "text_length": 21
+        },
+        {
+          "text": "connections between Boolean conditions used in F, possibly completed by association\nrules that have been derived from DF\nb .",
+          "is_title": false,
+          "page": 12,
+          "text_length": 124
+        },
+        {
+          "text": "Definition 6. Let F = {T1, . . . , Tm} be a random forest over X, The a domain theory\non X, and x ∈X. A majoritary reason for x given (F, The) is a term t covering x (i.e.,\nt a subset of tx), such that t is an implicant modulo The of at least ⌊m",
+          "is_title": false,
+          "page": 12,
+          "text_length": 245
+        },
+        {
+          "text": "2 ⌋+ 1 decision\ntrees Ti (resp. ¬Ti) if F(x) = 1 (resp. F(x) = 0), and for every ℓ∈t, t \\ {ℓ} does not\nsatisfy this last condition.",
+          "is_title": false,
+          "page": 12,
+          "text_length": 131
+        },
+        {
+          "text": "The problem with this definition is that it leads to a concept of reason that cannot be\ncomputed in polynomial time (unless P = NP). Indeed, in the general case, no constraint\nbears on the association rules that can be generated, so they can be any clauses. As a\nconsequence, testing whether t is an implicant modulo Th of a tree Ti is a coNP-\ncomplete problem, which precludes the existence of polynomial-time algorithms for\ngenerating majority reasons.\nTo deal with this problem while taking into account within the extended domain\ntheory The the set of all the association rules produced by the data mining algorithm\nused, the approach we followed consists in weakening the inference relation used to\nreason. Let us remind that unit resolution is an inference rule allowing to derive a clause\nδ on X from a literal ℓon X (called a unit clause) and a clause ∼ℓ∨δ on X. A literal\nℓis derivable by unit propagation from a domain theory The in conjunctive normal\nformal (CNF), noted The ⊢1 ℓiff there exists a finite sequence of clauses δ1, . . . , δk\non X such that δk = ℓand every clause δi (i ∈[k]) in the sequence is a clause of\nThe or can be obtained by applying the unit resolution rule to two clauses δa, δb of the\nsequence such that a < i and b < i. The set of all the literals on X that are derivable by\nunit propagation (UP) from The can be computed in time linear in the size of The (see\ne.g., [11,32]). Every literal from this set is a logical consequence of Th (in symbols, if\nTh ⊢1 ℓthen Th |= ℓ), but the converse does not hold in general.\nLet Φ be a formula on X in CNF that does not contain any valid clause. When t is\na consistent term, t is an implicant of Φ iff every clause δ of Φ contains a literal ℓof t.\nGiven a domain theory Th in conjunctive normal term, let us say that a term t on X is a\nUP-implicant of Φ iff for every clause δ of Φ, δ contains a literal ℓthat belongs the set of\nliterals derivable by unit propagation from t∧Th. Clearly enough, if t is a UP-implicant\nof Φ given Th, then t is an implicant of Φ modulo Th, but the converse does not hold\nin general. For instance, b is a logical consequence of t ∧Th, with t = ⊤(the empty\nterm) and Th = (a∨b)∧(a∨b) but b is not derivable by unit propagation from t∧Th.\nBased on this notion of UP-implicant, a corresponding notion of majoritary reason can\nbe defined as well:",
+          "is_title": false,
+          "page": 12,
+          "text_length": 2352
+        },
+        {
+          "text": "Definition 7. Let F = {T1, . . . , Tm} be a random forest over X, The a domain theory\non X, and x ∈X. A UP-majoritary reason for x given (F, The) is a term t covering\nx, such that t is a UP-implicant given The of at least ⌊m",
+          "is_title": false,
+          "page": 12,
+          "text_length": 224
+        },
+        {
+          "text": "2 ⌋+ 1 decision trees Ti (resp.\n¬Ti) if F(x) = 1 (resp. F(x) = 0), and for every ℓ∈t, t \\ {ℓ} does not satisfy this\nlast condition.",
+          "is_title": false,
+          "page": 12,
+          "text_length": 131
+        },
+        {
+          "text": "The tractability of generating UP-majoritary reasons lies in the fact that they can be\ncomputed using a simple greedy algorithm equipped with unit propagation instead of\nfull logical entailment.",
+          "is_title": false,
+          "page": 12,
+          "text_length": 194
+        }
+      ]
+    },
+    {
+      "document_index": 12,
+      "page": 13,
+      "content": "Leveraging Association Rules for Better Predictions and Better Explanations\n13\n\nProposition 1. Given a random forest F over a set of Boolean conditions X, a do-\nmain theory Th over X in conjunctive normal form, and an instance x ∈X, a UP-\nmajoritary reason for x given (F, Th) can be computed in time polynomial in the size\nof the input.\n\nConsidering distinct orderings over the literals of t = tx within the greedy al-\ngorithm may easily lead it to generate distinct majoritary reasons. Since the greedy\nalgorithm is efficient, several orderings can be tested and finally, for taking the com-\npactness criterion into account, one of the shortest majoritary reasons among those that\nhave been produced can be retained. Furthermore, the fact that the greedy algorithm is\norder-driven can be exploited to focus the search for majoritary reasons to explanations\nthat preferentially contain (or not contain) some characteristics (to do so, it is enough\nto order the literals of tx from the least preferred to the most preferred). The ordering\nused thus reflects some user preferences (this is a first way to meet the controllability\ncriterion).\n\nIn our approach, association rules that are not classification rules are added to the\ninitial domain theory Th composed of clauses that encode the logical connections be-\ntween Boolean conditions used in F. This leads to an extended domain theory The in\nconjunctive normal form. As it was the case for the classification rules considered in\nSection 3, only rules having a 100% confidence score and a non-null support are ex-\ntracted by the data mining algorithm (again, the goal is generate only rules that are not\ncontradicted by any piece of available evidence in DF\nb since we want to use them as if\nthey were true pieces of knowledge). Among them, only those rules in which the user\nis trustful enough can be kept (this is another way to meet the controllability criterion).\n\nInterestingly, extending Th to The may lead to the generation of more general ex-\nplanations. Indeed, whenever a domain The is at least as strong as another domain\ntheory Th from a logical point of view (here, because Th has been completed by asso-\nciation rules to get The), the formula The ⇒F is a logical consequence of the formula\nTh ⇒F (and similarly for F instead of F). As a consequence, for every implicant t of\nF modulo Th, there exists an implicant t′ of F modulo The such that t′ is implied by t.\nSimilarly, for every UP-implicant t of F given Th, since the set of literals derivable by\nunit propagation from Th is a subset of the set of literals derivable by unit propagation\nfrom The when Th ⊆The, there exists an implicant t′ of F given The such that t′ is\na logical consequence of t. In both cases, t′ is at least as general as t.\n\nExample 5 (Example 1, cont’ed). Consider the rectified random forest F Ac at Figure 2\nand x = (1, 0, 1, 1, 0, 0, 1). We have F Ac(x) = 1. We can check that t = x1 ∧x2 ∧x4\nis a UP-majoritary reason for x given (F Ac, Th), and even a subset-minimal abductive\nexplanation for x given (F Ac, Th). Suppose that a unique association rule R = (x1 ∧\nx2) ⇒x4 with a 100% confidence score and a non-null support has been extracted and\nthat the user is confident that this rule is correct. Then R can be added to Th, to give the\nextended domain theory The. t is not a UP-majoritary reason for x given (F Ac, The)\nbut the more general term t′ = x1 ∧x2 is such a reason.",
+      "content_length": 3426,
+      "source_file": "2510.18628v1.pdf",
+      "has_titles": false,
+      "structured_blocks": [
+        {
+          "text": "Leveraging Association Rules for Better Predictions and Better Explanations\n13",
+          "is_title": false,
+          "page": 13,
+          "text_length": 78
+        },
+        {
+          "text": "Proposition 1. Given a random forest F over a set of Boolean conditions X, a do-\nmain theory Th over X in conjunctive normal form, and an instance x ∈X, a UP-\nmajoritary reason for x given (F, Th) can be computed in time polynomial in the size\nof the input.",
+          "is_title": false,
+          "page": 13,
+          "text_length": 257
+        },
+        {
+          "text": "Considering distinct orderings over the literals of t = tx within the greedy al-\ngorithm may easily lead it to generate distinct majoritary reasons. Since the greedy\nalgorithm is efficient, several orderings can be tested and finally, for taking the com-\npactness criterion into account, one of the shortest majoritary reasons among those that\nhave been produced can be retained. Furthermore, the fact that the greedy algorithm is\norder-driven can be exploited to focus the search for majoritary reasons to explanations\nthat preferentially contain (or not contain) some characteristics (to do so, it is enough\nto order the literals of tx from the least preferred to the most preferred). The ordering\nused thus reflects some user preferences (this is a first way to meet the controllability\ncriterion).",
+          "is_title": false,
+          "page": 13,
+          "text_length": 801
+        },
+        {
+          "text": "In our approach, association rules that are not classification rules are added to the\ninitial domain theory Th composed of clauses that encode the logical connections be-\ntween Boolean conditions used in F. This leads to an extended domain theory The in\nconjunctive normal form. As it was the case for the classification rules considered in\nSection 3, only rules having a 100% confidence score and a non-null support are ex-\ntracted by the data mining algorithm (again, the goal is generate only rules that are not\ncontradicted by any piece of available evidence in DF\nb since we want to use them as if\nthey were true pieces of knowledge). Among them, only those rules in which the user\nis trustful enough can be kept (this is another way to meet the controllability criterion).",
+          "is_title": false,
+          "page": 13,
+          "text_length": 778
+        },
+        {
+          "text": "Interestingly, extending Th to The may lead to the generation of more general ex-\nplanations. Indeed, whenever a domain The is at least as strong as another domain\ntheory Th from a logical point of view (here, because Th has been completed by asso-\nciation rules to get The), the formula The ⇒F is a logical consequence of the formula\nTh ⇒F (and similarly for F instead of F). As a consequence, for every implicant t of\nF modulo Th, there exists an implicant t′ of F modulo The such that t′ is implied by t.\nSimilarly, for every UP-implicant t of F given Th, since the set of literals derivable by\nunit propagation from Th is a subset of the set of literals derivable by unit propagation\nfrom The when Th ⊆The, there exists an implicant t′ of F given The such that t′ is\na logical consequence of t. In both cases, t′ is at least as general as t.",
+          "is_title": false,
+          "page": 13,
+          "text_length": 845
+        },
+        {
+          "text": "Example 5 (Example 1, cont’ed). Consider the rectified random forest F Ac at Figure 2\nand x = (1, 0, 1, 1, 0, 0, 1). We have F Ac(x) = 1. We can check that t = x1 ∧x2 ∧x4\nis a UP-majoritary reason for x given (F Ac, Th), and even a subset-minimal abductive\nexplanation for x given (F Ac, Th). Suppose that a unique association rule R = (x1 ∧\nx2) ⇒x4 with a 100% confidence score and a non-null support has been extracted and\nthat the user is confident that this rule is correct. Then R can be added to Th, to give the\nextended domain theory The. t is not a UP-majoritary reason for x given (F Ac, The)\nbut the more general term t′ = x1 ∧x2 is such a reason.",
+          "is_title": false,
+          "page": 13,
+          "text_length": 657
+        }
+      ]
+    },
+    {
+      "document_index": 13,
+      "page": 14,
+      "content": "14\nG. Audemard et al.\n\nTable 1. Description of the empirical setting.\n\nDataset\n|D| |A|\nXRF XDT RRF RDT Repository\n\narrowhead 0 vs 1\n146 249\n611.5\n6.8 100.0\n16.6\nUCR\narrowhead 0 vs 2\n146 249\n341.4\n5.4 100.0\n6.8\nUCR\narrowhead 1 vs 2\n130 249\n593.0\n6.7 100.0\n10.8\nUCR\naustralian\n690\n38 1299.8 47.5 100.0\n99.2\nopenML\nbalance\n576\n4\n28.0 19.4\n30.3\n18.8\nUCI\nbiodegradation\n1055\n41 4320.4 76.6 100.0 100.0\nopenML\nbreast-tumor\n286\n37\n112.1 38.8 100.0 100.0\nopenML\ncleveland\n303\n22\n551.0 27.3 100.0\n40.7\nopenML\ncnae\n1080 856\n75.8 45.8\n99.6\n14.5\nUCI\ncompas\n6172\n11\n68.0 49.1\n97.9\n70.6\nopenML\ncontraceptive\n1473\n21\n108.6 75.3 100.0 100.0\nUCI\ndivorce\n170\n54\n83.3\n1.7 100.0\n2.8\nUCI\ngerman\n1000\n58\n406.5 34.4 100.0\n100\nUCI\n\n5\nExperiments\n\n5.1\nEmpirical protocol\n\nTable 1 shows the description of the 13 datasets D used in our experiments and indicates\nthe repositories where they can be found: UCR,4 UCI,5 and openML.6\n\nCategorical features have been treated as nominal variables and encoded as arbitrary\nnumbers. As to numerical features, no explicit preprocessing was performed: these fea-\ntures were binarized on-the-fly by the decision tree and/or random forest algorithms\nused for learning (we used the latest version of the Scikit-Learn library [29]). All\nhyperparameters of the learning algorithms were set to their default values (no preset\ndepth for the trees and 100 trees in the random forests).\nFor every dataset D, a repeated random sub-sampling cross validation process has\nbeen achieved. D has been split 10 times into two subsets: a training set gathering 70%\nof the available instances from D (chosen at random) and a test set composed of the\nremaining 30% of instances from D. For each partition, a decision tree (resp. a random\nforest) F has been learned from the corresponding training set of the partition and the\nperformance of the classifier has been evaluated on the corresponding test set. This\nperformance scores (as well as the sizes of the classifiers and other characteristics of\nthem) are averaged over the 10 models F that have been learned.\nThen, for each dataset D and classifier F, an associated binarized dataset DF\nb was\ngenerated using the Boolean conditions occurring in F. A set A of association rules\nR with negations was derived from DF\nb using the ad-hoc data mining algorithm mine.\nOnly rules R having a confidence of 100%, a non-null support and that are not falsified\n\n4 www.timeseriesclassification.com\n5 https://archive.ics.uci.edu/ml/index.php\n6 https://www.openml.org/",
+      "content_length": 2501,
+      "source_file": "2510.18628v1.pdf",
+      "has_titles": true,
+      "structured_blocks": [
+        {
+          "text": "14\nG. Audemard et al.",
+          "is_title": true,
+          "page": 14,
+          "text_length": 21
+        },
+        {
+          "text": "Table 1. Description of the empirical setting.",
+          "is_title": false,
+          "page": 14,
+          "text_length": 46
+        },
+        {
+          "text": "Dataset\n|D| |A|\nXRF XDT RRF RDT Repository",
+          "is_title": false,
+          "page": 14,
+          "text_length": 42
+        },
+        {
+          "text": "arrowhead 0 vs 1\n146 249\n611.5\n6.8 100.0\n16.6\nUCR\narrowhead 0 vs 2\n146 249\n341.4\n5.4 100.0\n6.8\nUCR\narrowhead 1 vs 2\n130 249\n593.0\n6.7 100.0\n10.8\nUCR\naustralian\n690\n38 1299.8 47.5 100.0\n99.2\nopenML\nbalance\n576\n4\n28.0 19.4\n30.3\n18.8\nUCI\nbiodegradation\n1055\n41 4320.4 76.6 100.0 100.0\nopenML\nbreast-tumor\n286\n37\n112.1 38.8 100.0 100.0\nopenML\ncleveland\n303\n22\n551.0 27.3 100.0\n40.7\nopenML\ncnae\n1080 856\n75.8 45.8\n99.6\n14.5\nUCI\ncompas\n6172\n11\n68.0 49.1\n97.9\n70.6\nopenML\ncontraceptive\n1473\n21\n108.6 75.3 100.0 100.0\nUCI\ndivorce\n170\n54\n83.3\n1.7 100.0\n2.8\nUCI\ngerman\n1000\n58\n406.5 34.4 100.0\n100\nUCI",
+          "is_title": false,
+          "page": 14,
+          "text_length": 591
+        },
+        {
+          "text": "5\nExperiments",
+          "is_title": true,
+          "page": 14,
+          "text_length": 13
+        },
+        {
+          "text": "5.1\nEmpirical protocol",
+          "is_title": true,
+          "page": 14,
+          "text_length": 22
+        },
+        {
+          "text": "Table 1 shows the description of the 13 datasets D used in our experiments and indicates\nthe repositories where they can be found: UCR,4 UCI,5 and openML.6",
+          "is_title": false,
+          "page": 14,
+          "text_length": 155
+        },
+        {
+          "text": "Categorical features have been treated as nominal variables and encoded as arbitrary\nnumbers. As to numerical features, no explicit preprocessing was performed: these fea-\ntures were binarized on-the-fly by the decision tree and/or random forest algorithms\nused for learning (we used the latest version of the Scikit-Learn library [29]). All\nhyperparameters of the learning algorithms were set to their default values (no preset\ndepth for the trees and 100 trees in the random forests).\nFor every dataset D, a repeated random sub-sampling cross validation process has\nbeen achieved. D has been split 10 times into two subsets: a training set gathering 70%\nof the available instances from D (chosen at random) and a test set composed of the\nremaining 30% of instances from D. For each partition, a decision tree (resp. a random\nforest) F has been learned from the corresponding training set of the partition and the\nperformance of the classifier has been evaluated on the corresponding test set. This\nperformance scores (as well as the sizes of the classifiers and other characteristics of\nthem) are averaged over the 10 models F that have been learned.\nThen, for each dataset D and classifier F, an associated binarized dataset DF\nb was\ngenerated using the Boolean conditions occurring in F. A set A of association rules\nR with negations was derived from DF\nb using the ad-hoc data mining algorithm mine.\nOnly rules R having a confidence of 100%, a non-null support and that are not falsified",
+          "is_title": false,
+          "page": 14,
+          "text_length": 1492
+        },
+        {
+          "text": "4 www.timeseriesclassification.com\n5 https://archive.ics.uci.edu/ml/index.php\n6 https://www.openml.org/",
+          "is_title": false,
+          "page": 14,
+          "text_length": 103
+        }
+      ]
+    },
+    {
+      "document_index": 14,
+      "page": 15,
+      "content": "Leveraging Association Rules for Better Predictions and Better Explanations\n15\n\nby any element (x, ℓ) of DF\nb have been extracted from the training set of DF\nb . This\nmeans that whenever the body b of R is satisfied by x, the head h of R agrees with the\nlabel ℓof x. Those conditions are considered to limit the risk that the association rules\nthat are mined do not hold. No specific properties (e.g., closed itemset) were targeted\nfor the antecedent of the classification rules. Finally, the rules R of A were generated\nby decreasing support7, and, once generated, a rule was kept if and only if it does not\nconflict with a rule that has been generated and kept before. A timeout of 3600 seconds\nwas considered for the generation of classification rules of Ac, with a limit of 100 rules\nto maintain the size of the trees in F Ac “small enough”. A timeout of 3600 seconds was\nconsidered as well for the generation of other association rules, i.e., those from A \\ Ac,\nwith various limits in the number of rules (100 to 100 000) in order to evaluate the\nimpact of the logical strength of The on the size of the explanations. Only association\nrules of size 2 and 3 have been mined by mine (indeed, most general rules are the most\ninteresting ones).\n\nSince some of the datasets used in the experiments are unbalanced, the classifica-\ntion performance of each model on a dataset was measured using the average F-score,\naverage G-mean, and average AUC score of the corresponding classifiers over the 10\ntest sets before any rectification, and once the classifiers have been rectified by the cor-\nresponding set Ac of classification rules.\n\nIn order to measure the impact of using the association rules from A \\ Ac on the\nsize of explanations, 100 instances have been selected from each test set and those vio-\nlating any association rule from A \\ Ac have been discarded. Then for every remaining\ninstance x, UP-majoritary reasons for x given (F, Th) were generated using a greedy\nalgorithm that starts with tx and exploits an (elimination) ordering over the features of\ntx. 100 orderings per x have been selected at random, leading possibly to 100 distinct\nreasons for x. A shortest reason among those generated has been retained, and the mean\nsize of those shortest reasons over the set of instances has been computed. The mean\nnumber of instances (out of 100) for which a size decrease has been observed has also\nbeen computed. Finally, the same task has been achieved but considering this time the\nextended domain theory The = Th ∧(A \\ Ac) instead of Th.\n\nIn addition to the specification of the repositories where the datasets used come\nfrom, Table 1 provides different statistics. Column |D| represents the number of in-\nstances in dataset D. |A| represents the number of primitive features used to describe\nthe instances of D, XRF (resp. XDT ) represents the average number of features in\nthe 10 binarized datasets DF\nb , obtained from D by using the Boolean conditions in the\n10 random forests (resp. in the 10 decision trees) that have been generated. RRF and\nRDT represents the average number of classification rules extracted from the 10 bina-\nrized datasets DF\nb . For more details, we refer the reader to the supplementary material\navailable from [7].\n\n7 Note that generating the rules by decreasing lift would not be discriminant enough. Indeed, the\nlift of a rule can be computed by dividing its confidence by the unconditional probability of\nits head, so when dealing with rules having a confidence of 100%, all the rules with the same\nhead have the same lift.",
+      "content_length": 3569,
+      "source_file": "2510.18628v1.pdf",
+      "has_titles": true,
+      "structured_blocks": [
+        {
+          "text": "Leveraging Association Rules for Better Predictions and Better Explanations\n15",
+          "is_title": false,
+          "page": 15,
+          "text_length": 78
+        },
+        {
+          "text": "by any element (x, ℓ) of DF\nb have been extracted from the training set of DF\nb . This\nmeans that whenever the body b of R is satisfied by x, the head h of R agrees with the\nlabel ℓof x. Those conditions are considered to limit the risk that the association rules\nthat are mined do not hold. No specific properties (e.g., closed itemset) were targeted\nfor the antecedent of the classification rules. Finally, the rules R of A were generated\nby decreasing support7, and, once generated, a rule was kept if and only if it does not\nconflict with a rule that has been generated and kept before. A timeout of 3600 seconds\nwas considered for the generation of classification rules of Ac, with a limit of 100 rules\nto maintain the size of the trees in F Ac “small enough”. A timeout of 3600 seconds was\nconsidered as well for the generation of other association rules, i.e., those from A \\ Ac,\nwith various limits in the number of rules (100 to 100 000) in order to evaluate the\nimpact of the logical strength of The on the size of the explanations. Only association\nrules of size 2 and 3 have been mined by mine (indeed, most general rules are the most\ninteresting ones).",
+          "is_title": false,
+          "page": 15,
+          "text_length": 1165
+        },
+        {
+          "text": "Since some of the datasets used in the experiments are unbalanced, the classifica-\ntion performance of each model on a dataset was measured using the average F-score,\naverage G-mean, and average AUC score of the corresponding classifiers over the 10\ntest sets before any rectification, and once the classifiers have been rectified by the cor-\nresponding set Ac of classification rules.",
+          "is_title": false,
+          "page": 15,
+          "text_length": 385
+        },
+        {
+          "text": "In order to measure the impact of using the association rules from A \\ Ac on the\nsize of explanations, 100 instances have been selected from each test set and those vio-\nlating any association rule from A \\ Ac have been discarded. Then for every remaining\ninstance x, UP-majoritary reasons for x given (F, Th) were generated using a greedy\nalgorithm that starts with tx and exploits an (elimination) ordering over the features of\ntx. 100 orderings per x have been selected at random, leading possibly to 100 distinct\nreasons for x. A shortest reason among those generated has been retained, and the mean\nsize of those shortest reasons over the set of instances has been computed. The mean\nnumber of instances (out of 100) for which a size decrease has been observed has also\nbeen computed. Finally, the same task has been achieved but considering this time the\nextended domain theory The = Th ∧(A \\ Ac) instead of Th.",
+          "is_title": false,
+          "page": 15,
+          "text_length": 917
+        },
+        {
+          "text": "In addition to the specification of the repositories where the datasets used come\nfrom, Table 1 provides different statistics. Column |D| represents the number of in-\nstances in dataset D. |A| represents the number of primitive features used to describe\nthe instances of D, XRF (resp. XDT ) represents the average number of features in\nthe 10 binarized datasets DF\nb , obtained from D by using the Boolean conditions in the\n10 random forests (resp. in the 10 decision trees) that have been generated. RRF and\nRDT represents the average number of classification rules extracted from the 10 bina-\nrized datasets DF\nb . For more details, we refer the reader to the supplementary material\navailable from [7].",
+          "is_title": false,
+          "page": 15,
+          "text_length": 704
+        },
+        {
+          "text": "7 Note that generating the rules by decreasing lift would not be discriminant enough. Indeed, the\nlift of a rule can be computed by dividing its confidence by the unconditional probability of\nits head, so when dealing with rules having a confidence of 100%, all the rules with the same\nhead have the same lift.",
+          "is_title": true,
+          "page": 15,
+          "text_length": 310
+        }
+      ]
+    },
+    {
+      "document_index": 15,
+      "page": 16,
+      "content": "16\nG. Audemard et al.\n\nTable 2. The impact of rectifying a random forest by classification rules, in terms of F-score,\nG-mean, AUC score, size, and computation time.\n\nDataset\nIF FF\nIG FG IA FA\nIN\nFN ID FD\nT R NR\n\narrowhead 0 vs 1 0.88 0.90 0.85 0.87 0.85 0.87\n980.2\n44693.6\n6.7 12.4 1.22e-01\n2.2\narrowhead 0 vs 2 0.89 0.91 0.85 0.88 0.86 0.89\n658.4\n19252.8\n5.3 13.4 2.78e-01\n10.3\narrowhead 1 vs 2 0.78 0.87 0.79 0.85 0.80 0.86\n1037.4\n25144.4\n6.7\n14 3.40e-01\n7.0\naustralian\n0.73 0.74 0.76 0.78 0.77 0.78 11104.2\n18725.2 16.3 18.4 5.30e+01\n62.2\nbalance\n0.93 0.95 0.93 0.95 0.93 0.95\n8857\n15349.6 12.1\n14 4.76e+00\n21.4\nbiodegradation\n0.77 0.78 0.84 0.85 0.84 0.85 12611.8 398474.8 16.4 27.3 5.17e+02\n90.0\nbreast-tumor\n0.43 0.47 0.51 0.54 0.54 0.57\n9513.8\n24956.4 19.2 20.9 1.00e+01\n15.4\ncleveland\n0.70 0.75 0.72 0.75 0.72 0.76\n2518\n11923.2 10.6 15.3 4.52e-01\n19.5\ncnae\n0.86 0.94 0.88 0.96 0.88 0.96\n2100\n39332.2 23.7 28.8 4.46e-01\n12.8\ncompas\n0.57 0.58 0.62 0.63 0.63 0.64\n77957\n81260.4 19.7 20.9 2.86e+01\n69.7\ncontraceptive\n0.58 0.60 0.64 0.65 0.65 0.66 18479.8\n39696.6 21.5 23.5 8.49e+00\n53.0\ndivorce\n0.95 0.96 0.95 0.96 0.95 0.96\n442.6\n7875.8\n3.7 14.9 2.73e+00\n19.3\ngerman\n0.98 0.98 0.02 0.02 0.49 0.50\n5457\n56676 15.1 24.9 5.15e+01 100.0\n\n5.2\nEmpirical results\n\nTables 2 and 3 give, respectively for the random forest model and the decision tree\nmodel, the initial and final (i.e., after rectification) average F-scores, G-mean scores,\nand AUC scores (IF, FF)(IG,FG) (IA, FA), the initial and final average numbers of\nnodes (IN, FN), and the initial and final average depths (ID, FD). T R represents the\naverage cumulative time (in seconds) required to perform all rectifications. NR denotes\nthe percentage of rectifications that led to change F. We observe that, for the majority\nof the datasets used in the experiments, rectifying both random forests and decision\ntrees with the mined classification rules leads to an increase in predictive performance,\nranging from 1% to more than 10%. For the three metrics used, namely F-score, G-mean\nand AUC, an improvement is typically achieved. This improvement is small most of the\ntime, but it can be very significant in some cases (see e.g., the arrowhead 1 vs 2\nand the cnae datasets when a random forest is used).\nThe average computation times required to achieved the full rectification of F by Ac\nwere reasonable (less than 517 seconds for the random forests and less than 5 seconds\nfor the decision trees).\nThe numbers of nodes and the depths increased for both classifiers, which is not\na surprise given the way the rectification algorithm works. This increase can be sig-\nnificant and it may question the readability by humans of the rectified trees for some\ndatasets. However, assuming that a tree-based model is “human comprehensible” when\nit contains at most 50 nodes, only 4 models out of the 26 models considered in our\nexperiments were already “small enough” at start to be viewed as “human comprehen-\nsible” (IN ≤50 for 4 decision trees, only). And all of them of them remained “small\nenough” after the rectification step (FN ≤50 for 3 decision trees). The limit of 50\nnodes was systematically exceeded by the random forests that have been learned. Fur-",
+      "content_length": 3214,
+      "source_file": "2510.18628v1.pdf",
+      "has_titles": true,
+      "structured_blocks": [
+        {
+          "text": "16\nG. Audemard et al.",
+          "is_title": true,
+          "page": 16,
+          "text_length": 21
+        },
+        {
+          "text": "Table 2. The impact of rectifying a random forest by classification rules, in terms of F-score,\nG-mean, AUC score, size, and computation time.",
+          "is_title": false,
+          "page": 16,
+          "text_length": 142
+        },
+        {
+          "text": "Dataset\nIF FF\nIG FG IA FA\nIN\nFN ID FD\nT R NR",
+          "is_title": false,
+          "page": 16,
+          "text_length": 44
+        },
+        {
+          "text": "arrowhead 0 vs 1 0.88 0.90 0.85 0.87 0.85 0.87\n980.2\n44693.6\n6.7 12.4 1.22e-01\n2.2\narrowhead 0 vs 2 0.89 0.91 0.85 0.88 0.86 0.89\n658.4\n19252.8\n5.3 13.4 2.78e-01\n10.3\narrowhead 1 vs 2 0.78 0.87 0.79 0.85 0.80 0.86\n1037.4\n25144.4\n6.7\n14 3.40e-01\n7.0\naustralian\n0.73 0.74 0.76 0.78 0.77 0.78 11104.2\n18725.2 16.3 18.4 5.30e+01\n62.2\nbalance\n0.93 0.95 0.93 0.95 0.93 0.95\n8857\n15349.6 12.1\n14 4.76e+00\n21.4\nbiodegradation\n0.77 0.78 0.84 0.85 0.84 0.85 12611.8 398474.8 16.4 27.3 5.17e+02\n90.0\nbreast-tumor\n0.43 0.47 0.51 0.54 0.54 0.57\n9513.8\n24956.4 19.2 20.9 1.00e+01\n15.4\ncleveland\n0.70 0.75 0.72 0.75 0.72 0.76\n2518\n11923.2 10.6 15.3 4.52e-01\n19.5\ncnae\n0.86 0.94 0.88 0.96 0.88 0.96\n2100\n39332.2 23.7 28.8 4.46e-01\n12.8\ncompas\n0.57 0.58 0.62 0.63 0.63 0.64\n77957\n81260.4 19.7 20.9 2.86e+01\n69.7\ncontraceptive\n0.58 0.60 0.64 0.65 0.65 0.66 18479.8\n39696.6 21.5 23.5 8.49e+00\n53.0\ndivorce\n0.95 0.96 0.95 0.96 0.95 0.96\n442.6\n7875.8\n3.7 14.9 2.73e+00\n19.3\ngerman\n0.98 0.98 0.02 0.02 0.49 0.50\n5457\n56676 15.1 24.9 5.15e+01 100.0",
+          "is_title": false,
+          "page": 16,
+          "text_length": 1025
+        },
+        {
+          "text": "5.2\nEmpirical results",
+          "is_title": true,
+          "page": 16,
+          "text_length": 21
+        },
+        {
+          "text": "Tables 2 and 3 give, respectively for the random forest model and the decision tree\nmodel, the initial and final (i.e., after rectification) average F-scores, G-mean scores,\nand AUC scores (IF, FF)(IG,FG) (IA, FA), the initial and final average numbers of\nnodes (IN, FN), and the initial and final average depths (ID, FD). T R represents the\naverage cumulative time (in seconds) required to perform all rectifications. NR denotes\nthe percentage of rectifications that led to change F. We observe that, for the majority\nof the datasets used in the experiments, rectifying both random forests and decision\ntrees with the mined classification rules leads to an increase in predictive performance,\nranging from 1% to more than 10%. For the three metrics used, namely F-score, G-mean\nand AUC, an improvement is typically achieved. This improvement is small most of the\ntime, but it can be very significant in some cases (see e.g., the arrowhead 1 vs 2\nand the cnae datasets when a random forest is used).\nThe average computation times required to achieved the full rectification of F by Ac\nwere reasonable (less than 517 seconds for the random forests and less than 5 seconds\nfor the decision trees).\nThe numbers of nodes and the depths increased for both classifiers, which is not\na surprise given the way the rectification algorithm works. This increase can be sig-\nnificant and it may question the readability by humans of the rectified trees for some\ndatasets. However, assuming that a tree-based model is “human comprehensible” when\nit contains at most 50 nodes, only 4 models out of the 26 models considered in our\nexperiments were already “small enough” at start to be viewed as “human comprehen-\nsible” (IN ≤50 for 4 decision trees, only). And all of them of them remained “small\nenough” after the rectification step (FN ≤50 for 3 decision trees). The limit of 50\nnodes was systematically exceeded by the random forests that have been learned. Fur-",
+          "is_title": false,
+          "page": 16,
+          "text_length": 1951
+        }
+      ]
+    },
+    {
+      "document_index": 16,
+      "page": 17,
+      "content": "Leveraging Association Rules for Better Predictions and Better Explanations\n17\n\nTable 3. The impact of rectifying a decision tree by classification rules, in terms of F-score,\nG-mean, AUC score, size, and computation time.\n\nDataset\nIF FF\nIG FG IA FA\nIN\nFN ID FD\nT R NR\n\narrowhead 0 vs 1 0.82 0.86 0.80 0.85 0.81 0.85\n20.4\n39\n5.4\n6.3 1.06e-03\n5.6\narrowhead 0 vs 2 0.83 0.86 0.80 0.84 0.81 0.84\n12.8\n20.2\n4.2\n5 1.38e-03\n4.6\narrowhead 1 vs 2 0.74 0.78 0.74 0.77 0.74 0.78\n19.2\n33.2\n5.3\n6 7.24e-04\n4.8\naustralian\n0.70 0.74 0.73 0.77 0.73 0.77 141.4\n5325.2 12.5 24.2 2.06e-01 28.0\nbalance\n0.87 0.90 0.87 0.89 0.87 0.89\n97\n144.4\n10 10.7 8.41e-03 15.9\nbiodegradation\n0.62 0.69 0.73 0.77 0.73 0.78\n189 97609.2 14.3 33.7 5.91e+00 74.3\nbreast-tumor\n0.37 0.44 0.46 0.51 0.50 0.54\n85.2\n854.4 11.1 15.3 3.15e-02 12.8\ncleveland\n0.70 0.74 0.72 0.75 0.73 0.76\n58.6\n596\n9 13.3 1.46e-02 12.9\ncnae\n0.90 0.95 0.95 0.98 0.95 0.98\n54.4\n3530.6 20.3 33.4 2.05e-01 34.9\ncompas\n0.55 0.57 0.61 0.62 0.62 0.63 772.2\n810 15.2 16.1 1.25e-01 49.5\ncontraceptive\n0.57 0.60 0.62 0.64 0.62 0.65 448.8\n689 17.6 17.6 9.15e-02 40.2\ndivorce\n0.92 0.92 0.93 0.93 0.93 0.93\n4\n4.4\n1.5\n1.7 2.01e-04\n2.3\ngerman\n0.96 0.98 0.27 0.29 0.54 0.56\n64\n1197.4 10.4 19.4 1.05e-01 48.9\n\nthermore, preserving human interpretability was not an objective of our approach: what\nwas expected instead (and actually achieved) was to keep the computational intelligi-\nbility of the model [5], i.e., the ability to support efficiently a number of XAI queries.\nEspecially, our experiments have shown that the ability to compute in an efficient way\nabductive explanations from tree-based models has been preserved after the rectification\nstep.8\n\nThe time required by the data mining algorithm to compute Ac depends on the\ndataset and varies between 0.15 and 1656.46 seconds for the random forests. For deci-\nsion trees, it ranges from 0.01 to 0.46 seconds.\nTables 4 and 5 give statistics about the evolution of the size of the smallest abductive\nexplanations that have been found for the tree-based models F considered at start, de-\npending on the number of association rules that have been generated (up to 100, 1000,\n10000, and 100000) and added to the initial domain theory Th to get the extended do-\nmain theory The. Such statistics are reported both for the random forests (Table 4) and\nfor the decision trees (Table 5). In these tables, Red represents the reduction achieved,\ni.e., on average over 100 instances x, the ratio between the size of the smallest UP-\nmajoritary reason found for x using Th minus the size of the smallest UP-majoritary\nreason found for x using The, divided by the size of the smallest UP-majoritary reason\nfound for x using Th. Ins represents on average over 100 instances, the number of in-\nstances x for which the size of the smallest abductive explanation found has decreased\nwhen switching from Th to The.\n\n8 It must also be kept in mind that if decision trees with a limited depth are more “human com-\nprehensible”, they are also less robust. Indeed, changing a few characteristics (no more than\nthe depth of the tree) in an input instance (whatever it is) is enough to change the prediction\nmade for this instance. See Proposition 5 in [3] for details.",
+      "content_length": 3224,
+      "source_file": "2510.18628v1.pdf",
+      "has_titles": true,
+      "structured_blocks": [
+        {
+          "text": "Leveraging Association Rules for Better Predictions and Better Explanations\n17",
+          "is_title": false,
+          "page": 17,
+          "text_length": 78
+        },
+        {
+          "text": "Table 3. The impact of rectifying a decision tree by classification rules, in terms of F-score,\nG-mean, AUC score, size, and computation time.",
+          "is_title": false,
+          "page": 17,
+          "text_length": 142
+        },
+        {
+          "text": "Dataset\nIF FF\nIG FG IA FA\nIN\nFN ID FD\nT R NR",
+          "is_title": false,
+          "page": 17,
+          "text_length": 44
+        },
+        {
+          "text": "arrowhead 0 vs 1 0.82 0.86 0.80 0.85 0.81 0.85\n20.4\n39\n5.4\n6.3 1.06e-03\n5.6\narrowhead 0 vs 2 0.83 0.86 0.80 0.84 0.81 0.84\n12.8\n20.2\n4.2\n5 1.38e-03\n4.6\narrowhead 1 vs 2 0.74 0.78 0.74 0.77 0.74 0.78\n19.2\n33.2\n5.3\n6 7.24e-04\n4.8\naustralian\n0.70 0.74 0.73 0.77 0.73 0.77 141.4\n5325.2 12.5 24.2 2.06e-01 28.0\nbalance\n0.87 0.90 0.87 0.89 0.87 0.89\n97\n144.4\n10 10.7 8.41e-03 15.9\nbiodegradation\n0.62 0.69 0.73 0.77 0.73 0.78\n189 97609.2 14.3 33.7 5.91e+00 74.3\nbreast-tumor\n0.37 0.44 0.46 0.51 0.50 0.54\n85.2\n854.4 11.1 15.3 3.15e-02 12.8\ncleveland\n0.70 0.74 0.72 0.75 0.73 0.76\n58.6\n596\n9 13.3 1.46e-02 12.9\ncnae\n0.90 0.95 0.95 0.98 0.95 0.98\n54.4\n3530.6 20.3 33.4 2.05e-01 34.9\ncompas\n0.55 0.57 0.61 0.62 0.62 0.63 772.2\n810 15.2 16.1 1.25e-01 49.5\ncontraceptive\n0.57 0.60 0.62 0.64 0.62 0.65 448.8\n689 17.6 17.6 9.15e-02 40.2\ndivorce\n0.92 0.92 0.93 0.93 0.93 0.93\n4\n4.4\n1.5\n1.7 2.01e-04\n2.3\ngerman\n0.96 0.98 0.27 0.29 0.54 0.56\n64\n1197.4 10.4 19.4 1.05e-01 48.9",
+          "is_title": false,
+          "page": 17,
+          "text_length": 959
+        },
+        {
+          "text": "thermore, preserving human interpretability was not an objective of our approach: what\nwas expected instead (and actually achieved) was to keep the computational intelligi-\nbility of the model [5], i.e., the ability to support efficiently a number of XAI queries.\nEspecially, our experiments have shown that the ability to compute in an efficient way\nabductive explanations from tree-based models has been preserved after the rectification\nstep.8",
+          "is_title": false,
+          "page": 17,
+          "text_length": 446
+        },
+        {
+          "text": "The time required by the data mining algorithm to compute Ac depends on the\ndataset and varies between 0.15 and 1656.46 seconds for the random forests. For deci-\nsion trees, it ranges from 0.01 to 0.46 seconds.\nTables 4 and 5 give statistics about the evolution of the size of the smallest abductive\nexplanations that have been found for the tree-based models F considered at start, de-\npending on the number of association rules that have been generated (up to 100, 1000,\n10000, and 100000) and added to the initial domain theory Th to get the extended do-\nmain theory The. Such statistics are reported both for the random forests (Table 4) and\nfor the decision trees (Table 5). In these tables, Red represents the reduction achieved,\ni.e., on average over 100 instances x, the ratio between the size of the smallest UP-\nmajoritary reason found for x using Th minus the size of the smallest UP-majoritary\nreason found for x using The, divided by the size of the smallest UP-majoritary reason\nfound for x using Th. Ins represents on average over 100 instances, the number of in-\nstances x for which the size of the smallest abductive explanation found has decreased\nwhen switching from Th to The.",
+          "is_title": false,
+          "page": 17,
+          "text_length": 1196
+        },
+        {
+          "text": "8 It must also be kept in mind that if decision trees with a limited depth are more “human com-\nprehensible”, they are also less robust. Indeed, changing a few characteristics (no more than\nthe depth of the tree) in an input instance (whatever it is) is enough to change the prediction\nmade for this instance. See Proposition 5 in [3] for details.",
+          "is_title": true,
+          "page": 17,
+          "text_length": 347
+        }
+      ]
+    },
+    {
+      "document_index": 17,
+      "page": 18,
+      "content": "18\nG. Audemard et al.\n\nTable 4. The impact of taking association rules into account on the size of abductive explanations\ngiven a random forest.\n\nDataset\n100000\n10000\n1000\n100\nRed\nIns\nRed\nIns\nRed\nIns\nRed\nIns\n\narrowhead 0 vs 1 29.83 100.00 10.52 97.01\n5.18\n96.12\n2.29 80.62\narrowhead 0 vs 2 72.84 100.00 25.62 100.00 14.23 73.98\n5.31 55.56\narrowhead 1 vs 2 55.73 100.00 16.11 98.08\n4.84\n92.59\n2.36 64.96\naustralian\n3.68\n43.90\n1.70\n23.57\n0.66\n10.62\n0.11\n1.92\nbalance\n0.00\n0.00\n0.00\n0.00\n0.00\n0.00\n0.00\n0.00\nbiodegradation\n37.38 99.60\n5.36\n90.30\n1.48\n46.90\n0.13\n9.70\nbreastTumor\n19.62 91.96\n0.55\n6.32\n0.00\n0.00\n0.00\n0.00\ncleveland\n0.59\n19.09\n0.27\n8.43\n0.22\n4.33\n0.17\n2.65\ncnae\n96.73 100.00 41.74 98.85\n21.42 95.05\n16.75 92.30\ncompas\n7.37\n37.40\n0.00\n0.00\n0.00\n0.00\n0.00\n0.00\ncontraceptive\n1.59\n22.50\n0.15\n0.80\n0.00\n0.00\n0.00\n0.00\ndivorce\n82.63 100.00 82.88 100.00 43.09 100.00\n9.53 58.94\ngerman\n0.78\n28.30\n0.4\n9.50\n0.12\n9.31\n0.09\n0.60\n\nThe results obtained show that for the two tree-based models considered in the ex-\nperiments (decision trees and random forests), the reduction of the size of abductive\nexplanations obtained by considering association rules heavily varies with the dataset\nand with the number of association rules that are considered. Indeed, Red is null or very\nsmall for some configurations and quite high for others. Of course, it increases with the\nnumber of association rules that are generated (since the logical strength of the the-\nory cannot decrease when a rule is added to it). Similarly, the number Ins of instances\nconcerned by such a reduction heavily varies with the dataset and with the number of\nassociation rules that have been generated. It is null or very small for some configura-\ntions but reaches 100% for other configurations when random forests are considered.\nAgain, Ins cannot decrease when the theory used is strengthened.\nThe time required by the data mining algorithm to compute the association rules that\nare not classification rules (i.e., those rules from A \\ Ac) also depends on the dataset;\nit varies between 0.33 and 3600 seconds for the random forests and between 0.1 and\n39.54 seconds for the decision trees. When deriving abductive explanations while taking\nadvantage of association rules as a domain theory, experiments have not shown any\nhuge extra computational cost, i.e., UP-majoritary reasons can be derived efficiently in\npractice (with computation times that are usually close to those required by majoritary\nreasons). More in detail, the computation time required to derive one UP-majoritary\nreason was on average less than 1s, whatever the dataset used and even when the domain\ntheory has been completed with 100 000 rules). This lack of extra cost can be explained\nby the efficiency with which unit propagation can be achieved in practice.\nTables 2 and 3 have shown that after rectification, the number of nodes in the mod-\nels F can increase significantly. Thus, it was important to assess whether this increase\nmay have a significant impact on the time needed to compute abductive explanations for\ninstances given F. From such a perspective, Tables 6 and 7 report for the datasets con-",
+      "content_length": 3152,
+      "source_file": "2510.18628v1.pdf",
+      "has_titles": true,
+      "structured_blocks": [
+        {
+          "text": "18\nG. Audemard et al.",
+          "is_title": true,
+          "page": 18,
+          "text_length": 21
+        },
+        {
+          "text": "Table 4. The impact of taking association rules into account on the size of abductive explanations\ngiven a random forest.",
+          "is_title": false,
+          "page": 18,
+          "text_length": 121
+        },
+        {
+          "text": "Dataset\n100000\n10000\n1000\n100\nRed\nIns\nRed\nIns\nRed\nIns\nRed\nIns",
+          "is_title": false,
+          "page": 18,
+          "text_length": 61
+        },
+        {
+          "text": "arrowhead 0 vs 1 29.83 100.00 10.52 97.01\n5.18\n96.12\n2.29 80.62\narrowhead 0 vs 2 72.84 100.00 25.62 100.00 14.23 73.98\n5.31 55.56\narrowhead 1 vs 2 55.73 100.00 16.11 98.08\n4.84\n92.59\n2.36 64.96\naustralian\n3.68\n43.90\n1.70\n23.57\n0.66\n10.62\n0.11\n1.92\nbalance\n0.00\n0.00\n0.00\n0.00\n0.00\n0.00\n0.00\n0.00\nbiodegradation\n37.38 99.60\n5.36\n90.30\n1.48\n46.90\n0.13\n9.70\nbreastTumor\n19.62 91.96\n0.55\n6.32\n0.00\n0.00\n0.00\n0.00\ncleveland\n0.59\n19.09\n0.27\n8.43\n0.22\n4.33\n0.17\n2.65\ncnae\n96.73 100.00 41.74 98.85\n21.42 95.05\n16.75 92.30\ncompas\n7.37\n37.40\n0.00\n0.00\n0.00\n0.00\n0.00\n0.00\ncontraceptive\n1.59\n22.50\n0.15\n0.80\n0.00\n0.00\n0.00\n0.00\ndivorce\n82.63 100.00 82.88 100.00 43.09 100.00\n9.53 58.94\ngerman\n0.78\n28.30\n0.4\n9.50\n0.12\n9.31\n0.09\n0.60",
+          "is_title": false,
+          "page": 18,
+          "text_length": 721
+        },
+        {
+          "text": "The results obtained show that for the two tree-based models considered in the ex-\nperiments (decision trees and random forests), the reduction of the size of abductive\nexplanations obtained by considering association rules heavily varies with the dataset\nand with the number of association rules that are considered. Indeed, Red is null or very\nsmall for some configurations and quite high for others. Of course, it increases with the\nnumber of association rules that are generated (since the logical strength of the the-\nory cannot decrease when a rule is added to it). Similarly, the number Ins of instances\nconcerned by such a reduction heavily varies with the dataset and with the number of\nassociation rules that have been generated. It is null or very small for some configura-\ntions but reaches 100% for other configurations when random forests are considered.\nAgain, Ins cannot decrease when the theory used is strengthened.\nThe time required by the data mining algorithm to compute the association rules that\nare not classification rules (i.e., those rules from A \\ Ac) also depends on the dataset;\nit varies between 0.33 and 3600 seconds for the random forests and between 0.1 and\n39.54 seconds for the decision trees. When deriving abductive explanations while taking\nadvantage of association rules as a domain theory, experiments have not shown any\nhuge extra computational cost, i.e., UP-majoritary reasons can be derived efficiently in\npractice (with computation times that are usually close to those required by majoritary\nreasons). More in detail, the computation time required to derive one UP-majoritary\nreason was on average less than 1s, whatever the dataset used and even when the domain\ntheory has been completed with 100 000 rules). This lack of extra cost can be explained\nby the efficiency with which unit propagation can be achieved in practice.\nTables 2 and 3 have shown that after rectification, the number of nodes in the mod-\nels F can increase significantly. Thus, it was important to assess whether this increase\nmay have a significant impact on the time needed to compute abductive explanations for\ninstances given F. From such a perspective, Tables 6 and 7 report for the datasets con-",
+          "is_title": false,
+          "page": 18,
+          "text_length": 2220
+        }
+      ]
+    },
+    {
+      "document_index": 18,
+      "page": 19,
+      "content": "Leveraging Association Rules for Better Predictions and Better Explanations\n19\n\nTable 5. The impact of taking association rules into account on the size of abductive explanations\ngiven a decision tree.\n\nDataset\n100000\n10000\n1000\n100\nRed\nIns\nRed\nIns\nRed\nIns\nRed\nIns\n\narrowhead 0 vs 1 17.62 43.18 17.62 43.18 17.62 43.18 17.06 41.67\narrowhead 0 vs 2 11.12 26.76 11.12 26.76 11.12 26.76 11.12 26.76\narrowhead 1 vs 2 13.26 28.69 13.26 28.69 13.26 28.69 13.26 28.69\naustralian\n21.15 72.91\n5.96 26.49\n1.82 10.95\n0.25\n2.04\nbalance\n0.00\n0.00\n0.00\n0.00\n0.00\n0.00\n0.00\n0.00\nbiodegradation\n38.68 85.51 19.93 68.52\n3.20 17.72\n0.55\n3.70\nbreastTumor\n17.09 65.29 11.59 54.03\n3.42 19.78\n0.39\n1.77\ncleveland\n4.29 24.73\n4.29 24.73\n0.48\n2.88\n0.17\n0.66\ncnae\n71.06 95.43 71.06 95.43 41.40 78.26\n3.48 28.90\ncompas\n3.76 19.10\n0.00\n0.00\n0.00\n0.00\n0.00\n0.00\ncontraceptive\n4.90 27.70\n0.3\n1.30\n0.00\n0.00\n0.00\n0.00\ndivorce\n19.54 33.33 19.54 33.33 19.54 33.33 19.54 33.33\ngerman\n5.38 20.63\n5.38 20.63\n2.19\n7.63\n0.00\n0.00\n\nsidered in our experiments average computation times (in seconds, over 100 instances)\nto generate one sufficient reason for an instance given a decision tree and one majoritary\nreason for an instance given a random forest. Tbef denotes the time needed to compute\na sufficient reason before the rectification of the model F, and Taft the average time\nneeded to compute a sufficient reason after the rectification of the model F by Ac. The\ndomain theory considered here is the initial one Th. From these tables, we can ob-\nserve that while the time required to compute explanations increases after rectification,\nit remains very reasonable (in the worst case, less than 1s) whatever the model F.\n\n6\nOther Related Work\n\nThough the issue of rule learning in a classification perspective has been considered for\ndecades, our work departs significantly from previous approaches by the fact that it is\nalso guided by the explanation issue. Instead, the goal pursued by most of the previous\napproaches was to generate rule-based classifiers using classification rule mining. Fur-\nthermore, most of the time, in such previous approaches, tree-based models were not\ninvolved in addition to rule mining.\nAn exception concerns the CBA system [23] based on Apriori algorithm [1]. In the\nCBA system, classification rules R are generated by decreasing confidence, then de-\ncreasing support unless preset minimal values are reached (in the reported experiments,\n50% for confidence minconf , and 1% for the support minsup). A default class is con-\nsidered as well so as to get a complete classifier whatever the number of rules generated.\nThe accuracy of the classifier is evaluated. The set of rules is pruned to get a minimal\nnumber of rules that cover the training data and achieve satisfying accuracy. In partic-\nular, every rule that does not enhance the accuracy of the classifier is removed. [24]",
+      "content_length": 2879,
+      "source_file": "2510.18628v1.pdf",
+      "has_titles": true,
+      "structured_blocks": [
+        {
+          "text": "Leveraging Association Rules for Better Predictions and Better Explanations\n19",
+          "is_title": false,
+          "page": 19,
+          "text_length": 78
+        },
+        {
+          "text": "Table 5. The impact of taking association rules into account on the size of abductive explanations\ngiven a decision tree.",
+          "is_title": false,
+          "page": 19,
+          "text_length": 121
+        },
+        {
+          "text": "Dataset\n100000\n10000\n1000\n100\nRed\nIns\nRed\nIns\nRed\nIns\nRed\nIns",
+          "is_title": false,
+          "page": 19,
+          "text_length": 61
+        },
+        {
+          "text": "arrowhead 0 vs 1 17.62 43.18 17.62 43.18 17.62 43.18 17.06 41.67\narrowhead 0 vs 2 11.12 26.76 11.12 26.76 11.12 26.76 11.12 26.76\narrowhead 1 vs 2 13.26 28.69 13.26 28.69 13.26 28.69 13.26 28.69\naustralian\n21.15 72.91\n5.96 26.49\n1.82 10.95\n0.25\n2.04\nbalance\n0.00\n0.00\n0.00\n0.00\n0.00\n0.00\n0.00\n0.00\nbiodegradation\n38.68 85.51 19.93 68.52\n3.20 17.72\n0.55\n3.70\nbreastTumor\n17.09 65.29 11.59 54.03\n3.42 19.78\n0.39\n1.77\ncleveland\n4.29 24.73\n4.29 24.73\n0.48\n2.88\n0.17\n0.66\ncnae\n71.06 95.43 71.06 95.43 41.40 78.26\n3.48 28.90\ncompas\n3.76 19.10\n0.00\n0.00\n0.00\n0.00\n0.00\n0.00\ncontraceptive\n4.90 27.70\n0.3\n1.30\n0.00\n0.00\n0.00\n0.00\ndivorce\n19.54 33.33 19.54 33.33 19.54 33.33 19.54 33.33\ngerman\n5.38 20.63\n5.38 20.63\n2.19\n7.63\n0.00\n0.00",
+          "is_title": false,
+          "page": 19,
+          "text_length": 725
+        },
+        {
+          "text": "sidered in our experiments average computation times (in seconds, over 100 instances)\nto generate one sufficient reason for an instance given a decision tree and one majoritary\nreason for an instance given a random forest. Tbef denotes the time needed to compute\na sufficient reason before the rectification of the model F, and Taft the average time\nneeded to compute a sufficient reason after the rectification of the model F by Ac. The\ndomain theory considered here is the initial one Th. From these tables, we can ob-\nserve that while the time required to compute explanations increases after rectification,\nit remains very reasonable (in the worst case, less than 1s) whatever the model F.",
+          "is_title": false,
+          "page": 19,
+          "text_length": 693
+        },
+        {
+          "text": "6\nOther Related Work",
+          "is_title": true,
+          "page": 19,
+          "text_length": 20
+        },
+        {
+          "text": "Though the issue of rule learning in a classification perspective has been considered for\ndecades, our work departs significantly from previous approaches by the fact that it is\nalso guided by the explanation issue. Instead, the goal pursued by most of the previous\napproaches was to generate rule-based classifiers using classification rule mining. Fur-\nthermore, most of the time, in such previous approaches, tree-based models were not\ninvolved in addition to rule mining.\nAn exception concerns the CBA system [23] based on Apriori algorithm [1]. In the\nCBA system, classification rules R are generated by decreasing confidence, then de-\ncreasing support unless preset minimal values are reached (in the reported experiments,\n50% for confidence minconf , and 1% for the support minsup). A default class is con-\nsidered as well so as to get a complete classifier whatever the number of rules generated.\nThe accuracy of the classifier is evaluated. The set of rules is pruned to get a minimal\nnumber of rules that cover the training data and achieve satisfying accuracy. In partic-\nular, every rule that does not enhance the accuracy of the classifier is removed. [24]",
+          "is_title": false,
+          "page": 19,
+          "text_length": 1169
+        }
+      ]
+    },
+    {
+      "document_index": 19,
+      "page": 20,
+      "content": "20\nG. Audemard et al.\n\nTable 6. Average computation time (in seconds, over 100 instances) for extracting a sufficient\nreason for an instance given a decision tree\n\nDataset\nTbef\nTaft\n\narrowhead 0 vs 1 0.00037 ± 0.00028 0.00042 ± 0.00024\narrowhead 0 vs 2 0.00030 ± 5.21e-05 0.00054 ± 0.00032\narrowhead 1 vs 2 0.00040 ± 0.00024 0.00045 ± 0.00028\naustralian\n0.00056 ± 0.00015 0.00157 ± 0.00095\nbalance\n0.00089 ± 0.00101 0.00061 ± 0.00017\nbiodegradation\n0.00045 ± 0.00025 0.00401 ± 0.00515\nbreast-tumor 0\n0.00060 ± 8.15e-05 0.00136 ± 0.00112\ncleveland\n0.00053 ± 9.90e-05 0.00112 ± 0.00107\ncnae 0\n0.00037 ± 0.00012 0.00139 ± 0.00098\ncompas\n0.00051 ± 0.00027 0.00041 ± 0.00020\ncontraceptive 0\n0.00079 ± 0.00012 0.00116 ± 0.00099\ndivorce\n0.00028 ± 0.00014 0.00031 ± 0.00016\ngerman\n0.00043 ± 5.56e-05 0.00066 ± 0.00025\n\nimproves the previous CBA approach in two directions. First, by considering minimal\nvalues minsup that depend on the targeted class (this is important to get accurate rules\nwhen dealing with imbalanced datasets). Second, by making a competition of several\nclassifiers on different segments of the training data. Each rule R that is generated is\nthus used to select a subset of training instances, those covered by the body of the rule.\nThen several models are learned from the resulting set of instances and evaluated: R is\nreplaced by the model that minimizes the number of classification errors (provided that\nthis number is lower than the number of errors coming from R). As remarked in [24],\nconsidering decision trees as one of the competitors is valuable since it makes it possi-\nble to generate deep trees (i.e., with paths corresponding to rules with many conditions)\nwhich can be necessary to get an accurate classification but can hardly be achieved by\nthe rules generated by the CBA algorithm for combinatorial reasons. Thus, decision\ntrees are used in this approach to improve a rule-based classifier, while in some sense a\nconverse path is followed in our work.\nIn contrast to such works, rule mining is leveraged in our approach to improve a\ntree-based classifier as to inference and explanation. Unlike the previous approaches\nfocused solely on the inference issue, only rules with 100% confidence and non-null\nsupport are looked for. In our approach, for the inference task, primacy is given to\nclassification rules over the tree-based classifier. A rectification algorithm is used to\nupdate the tree-based classifier with each classification rule that is generated. Finally,\nnot only classification rules are extracted but other association rules are generated as\nwell and exploited to improve the explanation task by strengthening the domain theory\nassociated with the tree-based model.\nAs far as we know, the use of mined rules for generating more general abductive ex-\nplanations has hardly been considered previously. As a notable exception, let us mention\n[31], which shows that taking into account mined rules is useful to diminish the size of\nsufficient reasons for decision lists (boosted trees and binarized neural networks are also",
+      "content_length": 3069,
+      "source_file": "2510.18628v1.pdf",
+      "has_titles": true,
+      "structured_blocks": [
+        {
+          "text": "20\nG. Audemard et al.",
+          "is_title": true,
+          "page": 20,
+          "text_length": 21
+        },
+        {
+          "text": "Table 6. Average computation time (in seconds, over 100 instances) for extracting a sufficient\nreason for an instance given a decision tree",
+          "is_title": false,
+          "page": 20,
+          "text_length": 139
+        },
+        {
+          "text": "Dataset\nTbef\nTaft",
+          "is_title": false,
+          "page": 20,
+          "text_length": 17
+        },
+        {
+          "text": "arrowhead 0 vs 1 0.00037 ± 0.00028 0.00042 ± 0.00024\narrowhead 0 vs 2 0.00030 ± 5.21e-05 0.00054 ± 0.00032\narrowhead 1 vs 2 0.00040 ± 0.00024 0.00045 ± 0.00028\naustralian\n0.00056 ± 0.00015 0.00157 ± 0.00095\nbalance\n0.00089 ± 0.00101 0.00061 ± 0.00017\nbiodegradation\n0.00045 ± 0.00025 0.00401 ± 0.00515\nbreast-tumor 0\n0.00060 ± 8.15e-05 0.00136 ± 0.00112\ncleveland\n0.00053 ± 9.90e-05 0.00112 ± 0.00107\ncnae 0\n0.00037 ± 0.00012 0.00139 ± 0.00098\ncompas\n0.00051 ± 0.00027 0.00041 ± 0.00020\ncontraceptive 0\n0.00079 ± 0.00012 0.00116 ± 0.00099\ndivorce\n0.00028 ± 0.00014 0.00031 ± 0.00016\ngerman\n0.00043 ± 5.56e-05 0.00066 ± 0.00025",
+          "is_title": false,
+          "page": 20,
+          "text_length": 626
+        },
+        {
+          "text": "improves the previous CBA approach in two directions. First, by considering minimal\nvalues minsup that depend on the targeted class (this is important to get accurate rules\nwhen dealing with imbalanced datasets). Second, by making a competition of several\nclassifiers on different segments of the training data. Each rule R that is generated is\nthus used to select a subset of training instances, those covered by the body of the rule.\nThen several models are learned from the resulting set of instances and evaluated: R is\nreplaced by the model that minimizes the number of classification errors (provided that\nthis number is lower than the number of errors coming from R). As remarked in [24],\nconsidering decision trees as one of the competitors is valuable since it makes it possi-\nble to generate deep trees (i.e., with paths corresponding to rules with many conditions)\nwhich can be necessary to get an accurate classification but can hardly be achieved by\nthe rules generated by the CBA algorithm for combinatorial reasons. Thus, decision\ntrees are used in this approach to improve a rule-based classifier, while in some sense a\nconverse path is followed in our work.\nIn contrast to such works, rule mining is leveraged in our approach to improve a\ntree-based classifier as to inference and explanation. Unlike the previous approaches\nfocused solely on the inference issue, only rules with 100% confidence and non-null\nsupport are looked for. In our approach, for the inference task, primacy is given to\nclassification rules over the tree-based classifier. A rectification algorithm is used to\nupdate the tree-based classifier with each classification rule that is generated. Finally,\nnot only classification rules are extracted but other association rules are generated as\nwell and exploited to improve the explanation task by strengthening the domain theory\nassociated with the tree-based model.\nAs far as we know, the use of mined rules for generating more general abductive ex-\nplanations has hardly been considered previously. As a notable exception, let us mention\n[31], which shows that taking into account mined rules is useful to diminish the size of\nsufficient reasons for decision lists (boosted trees and binarized neural networks are also",
+          "is_title": false,
+          "page": 20,
+          "text_length": 2258
+        }
+      ]
+    },
+    {
+      "document_index": 20,
+      "page": 21,
+      "content": "Leveraging Association Rules for Better Predictions and Better Explanations\n21\n\nTable 7. Average computation time (in seconds, over 100 instances) for extracting a majoritary\nreason for an instance given a random forest\n\nDataset\nTbef\nTaft\n\narrowhead 0 vs 1 0.00108 ± 9.61e-05 0.03399 ± 0.01488\narrowhead 0 vs 2 0.00105 ± 0.00051 0.00984 ± 0.00510\narrowhead 1 vs 2 0.01427 ± 0.00317 0.02419 ± 0.02181\naustralian\n0.06901 ± 0.02262 0.08253 ± 0.02014\nbalance\n0.00880 ± 0.00190 0.01038 ± 0.00276\nbiodegradation\n0.09015 ± 0.02015 1.05798 ± 1.01648\nbreast-tumor 0\n0.01202 ± 0.00430 0.04102 ± 0.01813\ncleveland\n0.02420 ± 0.00565 0.06865 ± 0.02992\ncnae 0\n0.00273 ± 0.00033 0.01250 ± 0.00358\ncompas\n0.00994 ± 0.00592 0.00803 ± 0.00317\ncontraceptive 0\n0.01224 ± 0.00394 0.01418 ± 0.00612\ndivorce\n0.00537 ± 0.00106 0.05882 ± 0.04120\ngerman\n0.02064 ± 0.00688 0.03661 ± 0.01331\n\nmentioned). In this approach, rule induction is achieved using a specific MaxSAT-based\nalgorithm to learn decision sets [20]. Unsurprisingly, the empirical results presented in\n[31] cohere with the ones pointed out in the previous section. The main differences\nbetween [31] and our own work are actually threefold. First of all, [31] also presents\nthe impact of mined rules on the size of (subset-minimal) contrastive explanations (in\ntheory, it is known that they can be lengthened) while only abductive explanations are\nconsidered in our work. Furthermore, in [31] the mined rules are not used for the infer-\nence purpose. Finally, the ML models considered in the two papers differ ([31] focuses\non decision list, boosted trees, and binarized neural networks, while we have considered\ndecision trees and random forests).\n\n7\nConclusion\n\nIn this paper, we have shown how to combine association rules derived using data min-\ning techniques with decision tree and random forest classifiers. Classification rules are\nexploited to tentatively enhance the predictive performance of the classifier at hand\nusing a rectification operation. Other association rules are leveraged to produce more\ngeneral abductive explanations. Computational guarantees about the tractable genera-\ntion of those explanations have been provided. An important feature of our approach is\nthat at each step the user can keep the control of the association rules from A he/she\nis ready to consider (he/she can simply select those rules in which he/she is confident\nenough and filters out the other ones). Experiments have been conducted showing that\nthe proposed approach is practical enough. Computation times remain reasonable, even\nfor large datasets (see e.g., the results for biodegradation and cnae in the tables)\nThe empirical results have shown that the objective of improving the predictive perfor-\nmance of the classifiers can be reached, even if they are often modest for the inference",
+      "content_length": 2830,
+      "source_file": "2510.18628v1.pdf",
+      "has_titles": true,
+      "structured_blocks": [
+        {
+          "text": "Leveraging Association Rules for Better Predictions and Better Explanations\n21",
+          "is_title": false,
+          "page": 21,
+          "text_length": 78
+        },
+        {
+          "text": "Table 7. Average computation time (in seconds, over 100 instances) for extracting a majoritary\nreason for an instance given a random forest",
+          "is_title": false,
+          "page": 21,
+          "text_length": 139
+        },
+        {
+          "text": "Dataset\nTbef\nTaft",
+          "is_title": false,
+          "page": 21,
+          "text_length": 17
+        },
+        {
+          "text": "arrowhead 0 vs 1 0.00108 ± 9.61e-05 0.03399 ± 0.01488\narrowhead 0 vs 2 0.00105 ± 0.00051 0.00984 ± 0.00510\narrowhead 1 vs 2 0.01427 ± 0.00317 0.02419 ± 0.02181\naustralian\n0.06901 ± 0.02262 0.08253 ± 0.02014\nbalance\n0.00880 ± 0.00190 0.01038 ± 0.00276\nbiodegradation\n0.09015 ± 0.02015 1.05798 ± 1.01648\nbreast-tumor 0\n0.01202 ± 0.00430 0.04102 ± 0.01813\ncleveland\n0.02420 ± 0.00565 0.06865 ± 0.02992\ncnae 0\n0.00273 ± 0.00033 0.01250 ± 0.00358\ncompas\n0.00994 ± 0.00592 0.00803 ± 0.00317\ncontraceptive 0\n0.01224 ± 0.00394 0.01418 ± 0.00612\ndivorce\n0.00537 ± 0.00106 0.05882 ± 0.04120\ngerman\n0.02064 ± 0.00688 0.03661 ± 0.01331",
+          "is_title": false,
+          "page": 21,
+          "text_length": 623
+        },
+        {
+          "text": "mentioned). In this approach, rule induction is achieved using a specific MaxSAT-based\nalgorithm to learn decision sets [20]. Unsurprisingly, the empirical results presented in\n[31] cohere with the ones pointed out in the previous section. The main differences\nbetween [31] and our own work are actually threefold. First of all, [31] also presents\nthe impact of mined rules on the size of (subset-minimal) contrastive explanations (in\ntheory, it is known that they can be lengthened) while only abductive explanations are\nconsidered in our work. Furthermore, in [31] the mined rules are not used for the infer-\nence purpose. Finally, the ML models considered in the two papers differ ([31] focuses\non decision list, boosted trees, and binarized neural networks, while we have considered\ndecision trees and random forests).",
+          "is_title": false,
+          "page": 21,
+          "text_length": 822
+        },
+        {
+          "text": "7\nConclusion",
+          "is_title": true,
+          "page": 21,
+          "text_length": 12
+        },
+        {
+          "text": "In this paper, we have shown how to combine association rules derived using data min-\ning techniques with decision tree and random forest classifiers. Classification rules are\nexploited to tentatively enhance the predictive performance of the classifier at hand\nusing a rectification operation. Other association rules are leveraged to produce more\ngeneral abductive explanations. Computational guarantees about the tractable genera-\ntion of those explanations have been provided. An important feature of our approach is\nthat at each step the user can keep the control of the association rules from A he/she\nis ready to consider (he/she can simply select those rules in which he/she is confident\nenough and filters out the other ones). Experiments have been conducted showing that\nthe proposed approach is practical enough. Computation times remain reasonable, even\nfor large datasets (see e.g., the results for biodegradation and cnae in the tables)\nThe empirical results have shown that the objective of improving the predictive perfor-\nmance of the classifiers can be reached, even if they are often modest for the inference",
+          "is_title": false,
+          "page": 21,
+          "text_length": 1127
+        }
+      ]
+    },
+    {
+      "document_index": 21,
+      "page": 22,
+      "content": "22\nG. Audemard et al.\n\ntask. On the contrary, they have also shown that the reduction of the size of abductive\nexplanations can be very significant.\nThis work calls for further research. A perspective is to compile The in order to\nmake it tractable for clausal entailment [13]. This would be an alternative to unit propa-\ngation as used in the proposed approach. Provided that the compiled forms remain small\nenough (which cannot be guaranteed in the general case), this could be a way to ben-\nefit from the full power of logical entailment, and as a consequence, to get even more\ngeneral explanations. Experiments will be run to determine whether this is actually the\ncase in practice.\n\nReferences\n\n1. Agrawal, R., Srikant, R.: Fast algorithms for mining association rules in large databases. In:\nProc. of VLDB’94. pp. 487–499 (1994)\n2. Arrieta, A.B., D´ıaz, N., Ser, J.D., Bennetot, A., Tabik, S., Barbado, A., Garc´ıa, S., Gil-Lopez,\nS., Molina, D., Benjamins, R., Chatila, R., Herrera, F.: Explainable artificial intelligence\n(XAI): concepts, taxonomies, opportunities and challenges toward responsible AI. Inf. Fu-\nsion 58, 82–115 (2020)\n3. Audemard, G., Bellart, S., Bounia, L., Koriche, F., Lagniez, J.M., Marquis, P.: On the ex-\nplanatory power of Boolean decision trees. Data Knowl. Eng. 142, 102088 (2022)\n4. Audemard, G., Bellart, S., Bounia, L., Koriche, F., Lagniez, J.M., Marquis, P.: Trading com-\nplexity for sparsity in random forest explanations. In: Proc. of AAAI’22. pp. 5461–5469\n(2022)\n5. Audemard, G., Bellart, S., Bounia, L., Koriche, F., Lagniez, J.M., Marquis, P.: On the com-\nputational intelligibility of Boolean classifiers. In: Proc. of KR’21. pp. 74–86 (2021)\n6. Audemard, G., Lagniez, J.M., Marquis, P., Szczepanski, N.: On contrastive explanations for\ntree-based classifiers. In: Proc. of ECAI’23 (2023), 117–124\n7. Audemard, G., Coste-Marquis, S., Marquis, P., Sabiri, M., Szczepanski, N.: Leveraging\nassociation rules for better predictions and better explanations (Oct 2025), https://archive.\nsoftwareheritage.org/swh:1:dir:30fd5c30f7d31a6a33c056a3b28c345b0556e7fe\n8. Audemard, G., Lagniez, J., Marquis, P., Szczepanski, N.: Deriving provably correct explana-\ntions for decision trees: The impact of domain theories. In: Proc. of IJCAI’24. pp. 3688–3696\n(2024)\n9. Coste-Marquis, S., Marquis, P.: On belief change for multi-label classifier encodings. In:\nProc. of IJCAI’21. pp. 1829–1836 (2021)\n10. Coste-Marquis, S., Marquis, P.: Rectifying binary classifiers. In: Proc. of ECAI’23. pp. 485–\n492 (2023)\n11. Dalal, M., Etherington, D.W.: A hierarchy of tractable satisfiability problems. Informa-\ntion Processing Letters 44(4), 173–180 (1992), ftp://ftp.cirl.uoregon.edu/pub/users/ether/\ntract-hier.ps.gz\n12. Darwiche, A., Hirth, A.: On the reasons behind decisions. In: Proc. of ECAI’20. pp. 712–720\n(2020)\n13. Darwiche, A., Marquis, P.: A knowledge compilation map. Journal of Artificial Intelligence\nResearch 17, 229–264 (2002)\n14. Gorji, N., Rubin, S.: Sufficient reasons for classifier decisions in the presence of domain\nconstraints. In: Proc. of AAAI’22. pp. 5660–5667 (2022)\n15. Gunning, D.: DARPA’s explainable artificial intelligence (XAI) program. In: Proc. of IUI’19\n(2019)",
+      "content_length": 3220,
+      "source_file": "2510.18628v1.pdf",
+      "has_titles": true,
+      "structured_blocks": [
+        {
+          "text": "22\nG. Audemard et al.",
+          "is_title": true,
+          "page": 22,
+          "text_length": 21
+        },
+        {
+          "text": "task. On the contrary, they have also shown that the reduction of the size of abductive\nexplanations can be very significant.\nThis work calls for further research. A perspective is to compile The in order to\nmake it tractable for clausal entailment [13]. This would be an alternative to unit propa-\ngation as used in the proposed approach. Provided that the compiled forms remain small\nenough (which cannot be guaranteed in the general case), this could be a way to ben-\nefit from the full power of logical entailment, and as a consequence, to get even more\ngeneral explanations. Experiments will be run to determine whether this is actually the\ncase in practice.",
+          "is_title": false,
+          "page": 22,
+          "text_length": 663
+        },
+        {
+          "text": "References",
+          "is_title": false,
+          "page": 22,
+          "text_length": 10
+        },
+        {
+          "text": "1. Agrawal, R., Srikant, R.: Fast algorithms for mining association rules in large databases. In:\nProc. of VLDB’94. pp. 487–499 (1994)\n2. Arrieta, A.B., D´ıaz, N., Ser, J.D., Bennetot, A., Tabik, S., Barbado, A., Garc´ıa, S., Gil-Lopez,\nS., Molina, D., Benjamins, R., Chatila, R., Herrera, F.: Explainable artificial intelligence\n(XAI): concepts, taxonomies, opportunities and challenges toward responsible AI. Inf. Fu-\nsion 58, 82–115 (2020)\n3. Audemard, G., Bellart, S., Bounia, L., Koriche, F., Lagniez, J.M., Marquis, P.: On the ex-\nplanatory power of Boolean decision trees. Data Knowl. Eng. 142, 102088 (2022)\n4. Audemard, G., Bellart, S., Bounia, L., Koriche, F., Lagniez, J.M., Marquis, P.: Trading com-\nplexity for sparsity in random forest explanations. In: Proc. of AAAI’22. pp. 5461–5469\n(2022)\n5. Audemard, G., Bellart, S., Bounia, L., Koriche, F., Lagniez, J.M., Marquis, P.: On the com-\nputational intelligibility of Boolean classifiers. In: Proc. of KR’21. pp. 74–86 (2021)\n6. Audemard, G., Lagniez, J.M., Marquis, P., Szczepanski, N.: On contrastive explanations for\ntree-based classifiers. In: Proc. of ECAI’23 (2023), 117–124\n7. Audemard, G., Coste-Marquis, S., Marquis, P., Sabiri, M., Szczepanski, N.: Leveraging\nassociation rules for better predictions and better explanations (Oct 2025), https://archive.\nsoftwareheritage.org/swh:1:dir:30fd5c30f7d31a6a33c056a3b28c345b0556e7fe\n8. Audemard, G., Lagniez, J., Marquis, P., Szczepanski, N.: Deriving provably correct explana-\ntions for decision trees: The impact of domain theories. In: Proc. of IJCAI’24. pp. 3688–3696\n(2024)\n9. Coste-Marquis, S., Marquis, P.: On belief change for multi-label classifier encodings. In:\nProc. of IJCAI’21. pp. 1829–1836 (2021)\n10. Coste-Marquis, S., Marquis, P.: Rectifying binary classifiers. In: Proc. of ECAI’23. pp. 485–\n492 (2023)\n11. Dalal, M., Etherington, D.W.: A hierarchy of tractable satisfiability problems. Informa-\ntion Processing Letters 44(4), 173–180 (1992), ftp://ftp.cirl.uoregon.edu/pub/users/ether/\ntract-hier.ps.gz\n12. Darwiche, A., Hirth, A.: On the reasons behind decisions. In: Proc. of ECAI’20. pp. 712–720\n(2020)\n13. Darwiche, A., Marquis, P.: A knowledge compilation map. Journal of Artificial Intelligence\nResearch 17, 229–264 (2002)\n14. Gorji, N., Rubin, S.: Sufficient reasons for classifier decisions in the presence of domain\nconstraints. In: Proc. of AAAI’22. pp. 5660–5667 (2022)\n15. Gunning, D.: DARPA’s explainable artificial intelligence (XAI) program. In: Proc. of IUI’19\n(2019)",
+          "is_title": false,
+          "page": 22,
+          "text_length": 2520
+        }
+      ]
+    },
+    {
+      "document_index": 22,
+      "page": 23,
+      "content": "Leveraging Association Rules for Better Predictions and Better Explanations\n23\n\n16. Huang, X., Izza, Y., Ignatiev, A., Cooper, M.C., Asher, N., Marques-Silva, J.: Efficient\nexplanations for knowledge compilation languages. CoRR abs/2107.01654 (2021), https:\n//arxiv.org/abs/2107.01654\n17. Huang, X., Marques-Silva, J.: On the failings of Shapley values for explainability. Int. J.\nApprox. Reason. 171, 109112 (2024)\n18. Ignatiev, A., Narodytska, N., Asher, N., Marques-Silva, J.: On relating ’why?’ and ’why\nnot?’ explanations. CoRR abs/2012.11067 (2020)\n19. Ignatiev, A., Narodytska, N., Marques-Silva, J.: Abduction-based explanations for machine\nlearning models. In: Proc. of AAAI’19. pp. 1511–1519 (2019)\n20. Ignatiev, A., Lam, E., Stuckey, P.J., Marques-Silva, J.: A scalable two stage approach to\ncomputing optimal decision sets. In: Proc. of AAAI’21. pp. 3806–3814 (2021)\n21. Izza, Y., Marques-Silva, J.: On explaining random forests with SAT. In: Proc. of IJCAI’21.\npp. 2584–2591 (2021)\n22. Izza, Y., Ignatiev, A., Marques-Silva, J.: On tackling explanation redundancy in decision\ntrees. J. Artif. Intell. Res. 75, 261–321 (2022)\n23. Liu, B., Hsu, W., Ma, Y.: Integrating classification and association rule mining. In: Proc. of\nKDD’98. pp. 80–86 (1998)\n24. Liu, Y., Jiang, Y., Liu, X., Yang, S.: CSMC: A combination strategy for multi-class classifi-\ncation based on multiple association rules. Knowl. Based Syst. 21(8), 786–793 (2008)\n25. Marques-Silva, J., Huang, X.: Explainability is Not a game. Commun. ACM 67(7), 66–75\n(2024)\n26. Miller, T.: Explanation in artificial intelligence: Insights from the social sciences. Artificial\nIntelligence 267, 1–38 (2019)\n27. Molnar, C.: Interpretable Machine Learning - A Guide for Making Black Box Models Ex-\nplainable. Leanpub (2019)\n28. Nauta, M., Trienes, J., Pathak, S., Nguyen, E., Peters, M., Schmitt, Y., Schl¨otterer, J., van\nKeulen, M., Seifert, C.: From anecdotal evidence to quantitative evaluation methods: A sys-\ntematic review on evaluating explainable AI. ACM Comput. Surv. 55(13s) (2023)\n29. Pedregosa, F., Varoquaux, G., Gramfort, A., Michel, V., Thirion, B., Grisel, O., Blondel, M.,\nPrettenhofer, P., Weiss, R., Dubourg, V., Vanderplas, J., Passos, A., Cournapeau, D., Brucher,\nM., Perrot, M., Duchesnay, E.: Scikit-learn: Machine learning in Python. Journal of Machine\nLearning Research 12, 2825–2830 (2011)\n30. Shih, A., Choi, A., Darwiche, A.: A symbolic approach to explaining Bayesian network\nclassifiers. In: Proc. of IJCAI’18. pp. 5103–5111 (2018)\n31. Yu, J., Ignatiev, A., Stuckey, P.J., Narodytska, N., Marques-Silva, J.: Eliminating the impos-\nsible, whatever remains must be true: On extracting and applying background knowledge in\nthe context of formal explanations. In: Proc. of AAAI’23. pp. 4123–4131 (2023)\n32. Zhang, H., Stickel, M.E.: Implementing the Davis-Putnam method. J. Autom. Reason.\n24(1/2), 277–296 (2000)",
+      "content_length": 2903,
+      "source_file": "2510.18628v1.pdf",
+      "has_titles": false,
+      "structured_blocks": [
+        {
+          "text": "Leveraging Association Rules for Better Predictions and Better Explanations\n23",
+          "is_title": false,
+          "page": 23,
+          "text_length": 78
+        },
+        {
+          "text": "16. Huang, X., Izza, Y., Ignatiev, A., Cooper, M.C., Asher, N., Marques-Silva, J.: Efficient\nexplanations for knowledge compilation languages. CoRR abs/2107.01654 (2021), https:\n//arxiv.org/abs/2107.01654\n17. Huang, X., Marques-Silva, J.: On the failings of Shapley values for explainability. Int. J.\nApprox. Reason. 171, 109112 (2024)\n18. Ignatiev, A., Narodytska, N., Asher, N., Marques-Silva, J.: On relating ’why?’ and ’why\nnot?’ explanations. CoRR abs/2012.11067 (2020)\n19. Ignatiev, A., Narodytska, N., Marques-Silva, J.: Abduction-based explanations for machine\nlearning models. In: Proc. of AAAI’19. pp. 1511–1519 (2019)\n20. Ignatiev, A., Lam, E., Stuckey, P.J., Marques-Silva, J.: A scalable two stage approach to\ncomputing optimal decision sets. In: Proc. of AAAI’21. pp. 3806–3814 (2021)\n21. Izza, Y., Marques-Silva, J.: On explaining random forests with SAT. In: Proc. of IJCAI’21.\npp. 2584–2591 (2021)\n22. Izza, Y., Ignatiev, A., Marques-Silva, J.: On tackling explanation redundancy in decision\ntrees. J. Artif. Intell. Res. 75, 261–321 (2022)\n23. Liu, B., Hsu, W., Ma, Y.: Integrating classification and association rule mining. In: Proc. of\nKDD’98. pp. 80–86 (1998)\n24. Liu, Y., Jiang, Y., Liu, X., Yang, S.: CSMC: A combination strategy for multi-class classifi-\ncation based on multiple association rules. Knowl. Based Syst. 21(8), 786–793 (2008)\n25. Marques-Silva, J., Huang, X.: Explainability is Not a game. Commun. ACM 67(7), 66–75\n(2024)\n26. Miller, T.: Explanation in artificial intelligence: Insights from the social sciences. Artificial\nIntelligence 267, 1–38 (2019)\n27. Molnar, C.: Interpretable Machine Learning - A Guide for Making Black Box Models Ex-\nplainable. Leanpub (2019)\n28. Nauta, M., Trienes, J., Pathak, S., Nguyen, E., Peters, M., Schmitt, Y., Schl¨otterer, J., van\nKeulen, M., Seifert, C.: From anecdotal evidence to quantitative evaluation methods: A sys-\ntematic review on evaluating explainable AI. ACM Comput. Surv. 55(13s) (2023)\n29. Pedregosa, F., Varoquaux, G., Gramfort, A., Michel, V., Thirion, B., Grisel, O., Blondel, M.,\nPrettenhofer, P., Weiss, R., Dubourg, V., Vanderplas, J., Passos, A., Cournapeau, D., Brucher,\nM., Perrot, M., Duchesnay, E.: Scikit-learn: Machine learning in Python. Journal of Machine\nLearning Research 12, 2825–2830 (2011)\n30. Shih, A., Choi, A., Darwiche, A.: A symbolic approach to explaining Bayesian network\nclassifiers. In: Proc. of IJCAI’18. pp. 5103–5111 (2018)\n31. Yu, J., Ignatiev, A., Stuckey, P.J., Narodytska, N., Marques-Silva, J.: Eliminating the impos-\nsible, whatever remains must be true: On extracting and applying background knowledge in\nthe context of formal explanations. In: Proc. of AAAI’23. pp. 4123–4131 (2023)\n32. Zhang, H., Stickel, M.E.: Implementing the Davis-Putnam method. J. Autom. Reason.\n24(1/2), 277–296 (2000)",
+          "is_title": false,
+          "page": 23,
+          "text_length": 2823
+        }
+      ]
+    },
+    {
+      "document_index": 23,
+      "page": 24,
+      "content": "24\nG. Audemard et al.\n\nAppendix: Proofs\n\nProof of Proposition 1\n\nProof. Our greedy algorithm is as follows. For the case when F(x) = 1, start with\nt = tx, and iterate over the literals ℓof t by checking whether t deprived of ℓis a UP-\nimplicant given Th of at least ⌊m\n\n2 ⌋+ 1 decision trees of F. If so, remove ℓfrom t and\nproceed to the next literal. Once all literals in tx have been examined, the final term t\nis by construction a UP-implicant given Th of a majority of decision trees in F, such\nthat removing any literal from it would lead to a term that is no longer a UP-implicant\ngiven Th of this majority. So, t is by construction a UP-majoritary reason. The case\nwhen F(x) = 0 is similar, by simply replacing each Ti by its negation (which can be\nobtained in linear time by replacing every 0-leaf in Ti by a 1-leaf and vice-versa). This\ngreedy algorithm runs in time polynomial in the size of the input tx, F and Th since on\neach iteration, checking whether t is a UP-implicant given Th of Ti (for each i ∈[m])\ncan be done in time polynomial in the size of t, Ti, and Th. Indeed, in order to decide\nwhether t is a UP-implicant given Th of a decision tree Ti of F, it is enough to test that\nfor every clause δ ∈CNF(Ti), δ contains a literal derivable by unit propagation from\nt∧Th. The fact that this set can be derived in time linear in the size of t∧Th completes\nthe proof.",
+      "content_length": 1384,
+      "source_file": "2510.18628v1.pdf",
+      "has_titles": true,
+      "structured_blocks": [
+        {
+          "text": "24\nG. Audemard et al.",
+          "is_title": true,
+          "page": 24,
+          "text_length": 21
+        },
+        {
+          "text": "Appendix: Proofs",
+          "is_title": false,
+          "page": 24,
+          "text_length": 16
+        },
+        {
+          "text": "Proof of Proposition 1",
+          "is_title": false,
+          "page": 24,
+          "text_length": 22
+        },
+        {
+          "text": "Proof. Our greedy algorithm is as follows. For the case when F(x) = 1, start with\nt = tx, and iterate over the literals ℓof t by checking whether t deprived of ℓis a UP-\nimplicant given Th of at least ⌊m",
+          "is_title": false,
+          "page": 24,
+          "text_length": 203
+        },
+        {
+          "text": "2 ⌋+ 1 decision trees of F. If so, remove ℓfrom t and\nproceed to the next literal. Once all literals in tx have been examined, the final term t\nis by construction a UP-implicant given Th of a majority of decision trees in F, such\nthat removing any literal from it would lead to a term that is no longer a UP-implicant\ngiven Th of this majority. So, t is by construction a UP-majoritary reason. The case\nwhen F(x) = 0 is similar, by simply replacing each Ti by its negation (which can be\nobtained in linear time by replacing every 0-leaf in Ti by a 1-leaf and vice-versa). This\ngreedy algorithm runs in time polynomial in the size of the input tx, F and Th since on\neach iteration, checking whether t is a UP-implicant given Th of Ti (for each i ∈[m])\ncan be done in time polynomial in the size of t, Ti, and Th. Indeed, in order to decide\nwhether t is a UP-implicant given Th of a decision tree Ti of F, it is enough to test that\nfor every clause δ ∈CNF(Ti), δ contains a literal derivable by unit propagation from\nt∧Th. The fact that this set can be derived in time linear in the size of t∧Th completes\nthe proof.",
+          "is_title": false,
+          "page": 24,
+          "text_length": 1114
+        }
+      ]
+    }
+  ],
+  "timestamp": "2025-10-22T13:22:38.196676"
+}

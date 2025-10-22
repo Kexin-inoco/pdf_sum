@@ -1,0 +1,28 @@
+{
+  "timestamp": "2025-10-22T13:23:09.513912",
+  "total_files": 4,
+  "successful": 4,
+  "failed": 0,
+  "results": [
+    {
+      "file": "2510.18628v1.pdf",
+      "status": "success",
+      "summary_length": 2403
+    },
+    {
+      "file": "2510.18659v1.pdf",
+      "status": "success",
+      "summary_length": 1960
+    },
+    {
+      "file": "2510.18751v1.pdf",
+      "status": "success",
+      "summary_length": 2018
+    },
+    {
+      "file": "2510.18803v1.pdf",
+      "status": "success",
+      "summary_length": 1659
+    }
+  ]
+}

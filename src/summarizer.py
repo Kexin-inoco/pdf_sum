@@ -123,9 +123,9 @@ class Summarizer:
         text_parts = [chunk.page_content for chunk in key_chunks]
         combined_text = "\n\n".join(text_parts)
         
-        # Limit to approximately 6000 characters
-        if len(combined_text) > 6000:
-            combined_text = combined_text[:6000] + "..."
+        # Limit to approximately 15000 characters (increased for academic papers)
+        if len(combined_text) > 15000:
+            combined_text = combined_text[:15000] + "..."
         
         # Create prompt
         prompt = f"""Please provide a concise summary (200-300 words) of the following research paper.
