@@ -1,0 +1,18 @@
+# Core LangChain dependencies (let pip resolve versions)
+langchain
+langchain-community
+langchain-openai
+langchain-text-splitters
+langchain-core
+
+# PDF processing
+PyMuPDF
+
+# Vector database
+chromadb
+
+# Utilities
+python-dotenv
+tiktoken
+tqdm
+
