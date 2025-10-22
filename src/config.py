@@ -55,27 +55,6 @@ class Config:
         """Get max tokens for LLM response."""
         return int(os.getenv("MAX_TOKENS", "500"))
     
-    @property
-    def output_formats(self) -> list:
-        """Get output formats (json, markdown, etc.)."""
-        formats = os.getenv("OUTPUT_FORMATS", "json,markdown")
-        return formats.split(",")
-    
-    @property
-    def chromadb_enabled(self) -> bool:
-        """Whether ChromaDB vector storage is enabled."""
-        return os.getenv("CHROMADB_ENABLED", "false").lower() == "true"
-    
-    @property
-    def chromadb_host(self) -> str:
-        """Get ChromaDB host."""
-        return os.getenv("CHROMADB_HOST", "chromadb")
-    
-    @property
-    def chromadb_port(self) -> int:
-        """Get ChromaDB port."""
-        return int(os.getenv("CHROMADB_PORT", "8000"))
-    
     def __repr__(self) -> str:
         """String representation of configuration."""
         return f"Config(model={self.llm_model}, strategy={self.summarization_strategy})"

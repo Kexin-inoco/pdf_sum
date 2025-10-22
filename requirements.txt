@@ -1,18 +1,10 @@
-# Core LangChain dependencies (let pip resolve versions)
-langchain
-langchain-community
-langchain-openai
-langchain-text-splitters
+# LangChain - only what we actually use
 langchain-core
+langchain-openai
 
 # PDF processing
 PyMuPDF
 
-# Vector database
-chromadb
-
 # Utilities
 python-dotenv
-tiktoken
-tqdm
 
