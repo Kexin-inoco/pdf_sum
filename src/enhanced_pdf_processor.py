@@ -3,11 +3,11 @@ Enhanced PDF processing module using PyMuPDF.
 Provides better text extraction with structural information.
 """
 import fitz  # PyMuPDF
+import re
 from pathlib import Path
-from typing import List, Dict, Tuple, Optional
+from typing import List, Dict, Optional
 from langchain_core.documents import Document
 
-from config import config
 from semantic_splitter import AcademicPaperSplitter
 
 
@@ -56,6 +56,21 @@ class EnhancedPDFProcessor:
                 # Get text blocks with formatting information
                 blocks = page.get_text("dict")["blocks"]
                 
+                # First pass: collect all font sizes to calculate median
+                all_page_sizes = []
+                for block in blocks:
+                    if "lines" in block:
+                        for line in block["lines"]:
+                            for span in line["spans"]:
+                                all_page_sizes.append(span["size"])
+                
+                # Calculate page median font size
+                page_median_size = None
+                if all_page_sizes:
+                    all_page_sizes.sort()
+                    page_median_size = all_page_sizes[len(all_page_sizes) // 2]
+                
+                # Second pass: extract blocks and detect titles
                 for block in blocks:
                     if "lines" in block:
                         block_text = ""
@@ -83,16 +98,20 @@ class EnhancedPDFProcessor:
                         
                         if block_text.strip():
                             # Determine if this block is likely a title
-                            is_title = self._is_likely_title(block_fonts)
+                            text_for_judge = block_text.strip()
+                            is_title = self._is_likely_title(text_for_judge, block_fonts, page_median_size)
                             
                             structured_blocks.append({
                                 'text': block_text.strip(),
                                 'is_title': is_title,
-                                'font_info': block_fonts,
                                 'page': page_num + 1
                             })
                             
                             page_text += block_text + "\n"
+                
+                # Special handling for first page: mark first substantial block as title
+                if page_num == 0 and structured_blocks:
+                    self._mark_first_page_title(structured_blocks)
                 
                 # Create document with structural metadata
                 if page_text.strip():
@@ -114,47 +133,57 @@ class EnhancedPDFProcessor:
         except Exception as e:
             raise IOError(f"Failed to load PDF {pdf_path}: {str(e)}")
     
-    def _is_likely_title(self, font_info: List[Dict]) -> bool:
+    def _mark_first_page_title(self, structured_blocks: List[Dict]) -> None:
         """
-        Determine if a text block is likely a title based on font information.
+        Mark the first substantial text block on first page as document title.
         
         Args:
-            font_info: List of font information dictionaries
-            
-        Returns:
-            True if likely a title
+            structured_blocks: List of structured blocks from first page
         """
-        if not font_info:
+        for block in structured_blocks:
+            text = block.get('text', '').strip()
+            
+            # Skip very short text or pure numbers
+            if len(text) <= 5:
+                continue
+            
+            # Skip page numbers
+            if text.replace('.', '').replace('-', '').isdigit():
+                continue
+            
+            # First substantial block is the document title
+            if len(text) > 10:
+                block['is_title'] = True
+                block['is_document_title'] = True
+                break
+    
+    def _is_likely_title(self, text: str, font_info: List[Dict], page_median_size: Optional[float]=None) -> bool:
+
+        t = ' '.join(text.split())
+        if len(t) <= 3 or t.replace('.', '').replace('-', '').isdigit():
             return False
-        
-        # Check font size (titles are usually larger)
-        avg_font_size = sum(span['size'] for span in font_info) / len(font_info)
-        
-        bold_count = sum(1 for span in font_info if span['flags'] & 2**4)  # Bold flag
-        
-        # Check text length (titles are usually shorter)
-        total_text = ''.join(span['text'] for span in font_info)
-        text_length = len(total_text.strip())
-        
-        # Title criteria
-        is_large_font = avg_font_size > 12
-        is_bold = bold_count > len(font_info) * 0.5
-        is_short = text_length < 200
-        is_short_line = text_length < 100
-        
-        # Check for common title patterns
-        title_patterns = [
-            r'^\d+\.?\s+[A-Z]',  # Numbered sections
-            r'^(abstract|introduction|methodology|results|conclusion)',
-            r'^[A-Z][A-Z\s]+$'  # All caps
-        ]
-        
-        has_title_pattern = any(
-            __import__('re').search(pattern, total_text, __import__('re').IGNORECASE)
-            for pattern in title_patterns
-        )
-        
-        return (is_large_font and (is_bold or is_short or has_title_pattern)) or is_short_line
+
+        # 1) Common section name
+        if re.match(r'^(abstract|introduction|related work|background|methods?|materials? and methods?|experiments?|results?|discussion|conclusion|conclusions?|references|acknowledg(e)?ments?)$', t.lower()):
+            return True
+
+        # 2) Numbering style
+        if re.match(r'^\s*\d+(?:\.\d+)*\s*[\.\)]?\s+[A-Z]', t):
+            return True
+
+        # 3) Special Header
+        if re.match(r'^(figure|table|algorithm)\s+\d+', t, re.I):
+            return True
+
+        #4) Layout Inspiration
+        sizes = [s.get('size', 0) for s in font_info] or [0]
+        max_size = max(sizes)
+        is_bold = any((s.get('flags', 0) & 2) != 0 for s in font_info)
+        if page_median_size and (max_size >= 1.2 * page_median_size or is_bold):
+            return 5 < len(t) < 300
+
+        return False
+
     
     def split_documents(self, documents: List[Document]) -> List[Document]:
         """

@@ -1,0 +1,11 @@
+{
+  "summary": "This study, conducted by Shirin Tavakoli Kafiabad, Andrea Schiffauerova, and Ashkan Ebadi, delves into the optimization of national scientific investment through an analysis of research proposals funded by the Natural Sciences and Engineering Research Council of Canada (NSERC) over an 18-year period (2005–2022). The main objective is to understand evolving research trends and the impact of demographic and geographical factors, with a focus on equity, diversity, and inclusion. To achieve this, the authors compare three topic modeling approaches: Latent Dirichlet Allocation (LDA), Structural Topic Modeling (STM), and BERTopic, and introduce a novel algorithm, COFFEE, to enable robust covariate effect estimation for BERTopic.\n\nThe study's methodology involves rigorous data preprocessing, including removal of incomplete entries, duplicates, and non-textual elements, normalization, and lemmatization, to ensure data compatibility with the modeling techniques. The comparative analysis of topic models and the implementation of COFFEE reveal that BERTopic outperforms LDA and STM in identifying more granular and coherent themes, such as the rapid expansion of artificial intelligence. The covariate analysis uncovers distinct provincial research specializations and consistent gender-based thematic patterns across scientific disciplines.\n\nThe key conclusion is that BERTopic, enhanced with COFFEE for covariate analysis, offers a more effective tool for uncovering thematic structures and the effects of gender and geographic location on research trends. These insights can help funding organizations develop more equitable and impactful funding strategies, contributing to a more effective scientific ecosystem. The study acknowledges limitations related to the preprocessing step and suggests future work to further refine topic modeling outputs and explore additional covariates.",
+  "metadata": {
+    "source_file": "2510.18803v1.pdf",
+    "total_pages": 25,
+    "chunks_processed": 95,
+    "model": "gpt-4-turbo-preview",
+    "temperature": 0.3,
+    "timestamp": "2025-10-22T13:07:34.628864"
+  }
+}

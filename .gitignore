@@ -34,9 +34,9 @@ wheels/
 .env
 .env.local
 
-# Output files
-data/output/*.json
-data/output/*.md
+# Output files (commented to allow example outputs for clients)
+# data/output/*.json
+# data/output/*.md
 data/output/*.log
 
 # Logs

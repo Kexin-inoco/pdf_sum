@@ -1,0 +1,274 @@
+{
+  "source_file": "2510.18751v1.pdf",
+  "total_chunks": 33,
+  "chunks": [
+    {
+      "chunk_index": 0,
+      "section_type": "semantic_section",
+      "section_title": "Patterson Hsieh1,∗\nJerry Yeh2,∗\nMao-Chi He2∗\nWen-Han Hsieh2,\nElvis Hsieh2,",
+      "content": "Patterson Hsieh1,∗\nJerry Yeh2,∗\nMao-Chi He2∗\nWen-Han Hsieh2,\nElvis Hsieh2,\n\nUC San Diego1, UC Berkeley2",
+      "chunk_length": 103,
+      "page": 1
+    },
+    {
+      "chunk_index": 1,
+      "section_type": "semantic_section",
+      "section_title": "Abstract",
+      "content": "Abstract\n\nClimate change is intensifying the occurrence of harmful algal bloom (HAB), partic-\nularly cyanobacteria, which threaten aquatic ecosystems and human health through\noxygen depletion, toxin release, and disruption of marine biodiversity. Traditional\nmonitoring approaches, such as manual water sampling, remain labor-intensive\nand limited in spatial and temporal coverage. Recent advances in vision-language\nmodels (VLMs) for remote sensing have shown potential for scalable AI-driven\nsolutions, yet challenges remain in reasoning over imagery and quantifying bloom\nseverity. In this work, we introduce ALGae Observation and Segmentation (AL-\nGOS), a segmentation-and-reasoning system for HAB monitoring that combines\nremote sensing image understanding with severity estimation. Our approach in-\ntegrates GeoSAM-assisted human evaluation for high-quality segmentation mask\ncuration and fine-tunes vision language model on severity prediction using the\nCyanobacteria Aggregated Manual Labels (CAML) from NASA. Experiments\ndemonstrate that ALGOS achieves robust performance on both segmentation and\nseverity-level estimation, paving the way toward practical and automated cyanobac-\nterial monitoring systems.",
+      "chunk_length": 1215,
+      "page": 1
+    },
+    {
+      "chunk_index": 2,
+      "section_type": "semantic_section",
+      "section_title": "1\nIntroduction",
+      "content": "1\nIntroduction\n\nHarmful algal blooms (HAB) are an escalating global concern driven by climate change.\nCyanobacteria-dominated HAB in particular present severe ecological, public health, and economic\nrisks. Numerous studies have shown that HAB create multiple harms. From an ecological perspective,\nAnderson et al. [1] highlight that HAB cause mass fish mortality and ecosystem disruption. In\naddition to ecology, public health risks are also severe [3]. Economically, HAB impose billions of\ndollars in losses annually, specifically the 2017–2018 Florida Red Tide, causing an estimated $2.7\nmillion in losses [13, 14]. These combined effects emphasize the idea that monitoring HAB dynamics\nis essential for mitigation and policy; however, existing methods, relying on sampling and manual\nmicroscopy, are costly, time-consuming, and geographically constrained.\n\nAdvances in computer vision and geospatial analysis provide new opportunities for scalable HAB\nmonitoring. However, prior work in AI-based HAB monitoring has only tackled either bloom severity\nprediction or spatial segmentation, limiting comprehensive monitoring capabilities. Vision-based\nsystems segment bloom patches in local camera imagery [2], yet they neither operate on wide-\narea remote-sensing data nor estimate severity, limiting the scalability. Dorne et al. [5] estimates\nseverity from Sentinel-2 and ancillary data but provides no explicit spatial delineation. Traditional\nremote-sensing methods using spectral indices can map blooms but depend on manual thresholds and\nsite-specific tuning [20]. This fragmentation prevents systems from answering queries requiring both\nspatial and severity reasoning essential for targeted management.",
+      "chunk_length": 1709,
+      "page": 1
+    },
+    {
+      "chunk_index": 3,
+      "section_type": "semantic_section",
+      "section_title": "Untitled Section",
+      "content": "Motivated by these insights, we introduce ALGOS, a unified vision-language framework that bridges\nreasoning segmentation with HAB severity assessment in satellite imagery. Following the prior work\n[15], we leverage the CAML dataset for severity-level reasoning with a novel HAB segmentation\ndataset curated through GeoSAM-assisted annotation with human evaluation [17]. Our framework\nextends to HAB-specific remote sensing data, enabling simultaneous spatial localization of bloom\nextent and severity-level classification through natural language reasoning. Our experimental results\ndemonstrate significant improvements over baseline segmentation models in spatial accuracy and\nbaseline VLM in severity prediction. We believe ALGOS explores a new path for automated HAB\nmonitoring that combines the precision of pixel-level segmentation and the contextual reasoning\ncapabilities necessary for ecological assessment and public health decision-making.",
+      "chunk_length": 949,
+      "page": 2
+    },
+    {
+      "chunk_index": 4,
+      "section_type": "semantic_section",
+      "section_title": "2.1\nCyanobacteria Detection and Segmentation",
+      "content": "2.1\nCyanobacteria Detection and Segmentation\n\nClassical remote-sensing methods rely on spectral indices and thresholds, which can break down in\noptically complex inland waters and often require site-specific tuning [20]. Early computer-vision\nsystems with hand-crafted color features were brittle to illumination and background changes [16].\nModern deep models infer algal presence or chlorophyll-a from multispectral imagery and often\noutperform traditional baselines, but generalization suffers when training data are region-limited [20].\n\nSegmentation efforts show promise but are typically scoped to localization. Barrientos-Espillco et al.\n[2] segment CyanoHAB patches using synthetic imagery to mitigate data scarcity, yet do not infer\nseverity. Conversely, multi-source fusion and ensemble models improve severity classification (e.g.,\nSentinel-2 + climate + terrain), but treat monitoring as point prediction without mapping spatial extent\n[12]. ALGae Observation and Segmentation addresses these gaps by jointly producing a segmentation\nmask and a severity estimate with language-driven reasoning to support timely monitoring.",
+      "chunk_length": 1135,
+      "page": 2
+    },
+    {
+      "chunk_index": 5,
+      "section_type": "semantic_section",
+      "section_title": "2.2\nGeospatial Foundation Models",
+      "content": "2.2\nGeospatial Foundation Models\n\nGeospatial foundation models extend vision–language models (VLMs) to remote sensing by pairing an\noverhead-image encoder with a language model so the system can describe scenes, answer questions,\nand follow instructions. Training the visual encoder on satellite or aerial imagery improves transfer.\nLiu et al. [10] aligns overhead images and text with CLIP-style contrastive learning. Instruction-tuned\nbackbones (e.g., Vicuna) add conversational, task-following ability, but most current VLMs remain\ntext-only, lacking spatial outputs such as maps or pixel-wise masks [4]. To obtain spatially explicit\nresults, recent work augments language models with lightweight segmentation branches so a query\ncan return a pixel-level mask, and adapts generic segmenters to overhead data. For instance, a\nlanguage-to-mask pathway has been explored in geospatial VLMs [15], while GeoSAM fine-tunes\nSegment Anything for large, low-contrast satellite imagery [17, 8]. Together, these directions move\ngeospatial AI from text answers toward actionable, per-pixel outputs that practitioners can use for\nmonitoring and geospatial decision.",
+      "chunk_length": 1155,
+      "page": 2
+    },
+    {
+      "chunk_index": 6,
+      "section_type": "semantic_section",
+      "section_title": "3.1\nHAB Segmentation Dataset Curation",
+      "content": "3.1\nHAB Segmentation Dataset Curation\n\nFollowing the prior work [15], we developed a comprehensive pipeline to generate high-quality pixel-\nlevel segmentation masks for HAB detection using the CAML dataset [6]. Our approach addresses\nthe unique challenges of HAB segmentation in Sentinel-2 imagery, where bloom boundaries are often\ndiffuse with subtle spectral signatures.\n\nWe extend GeoSAM [17] with an interactive mask generation with human evaluation stage. Unlike\nthe original GeoSAM, which primarily relies on automated point prompt generation, our framework\nintroduces a semi-supervised curation loop. Users provide positive points on bloom areas, negative\npoints on background regions, and a region-of-interest (ROI) box to guide the model’s attention.\nThe system then generates candidate masks, which are interactively refined through lightweight\nmorphological filtering and post-processing. This reduces ambiguity in diffuse bloom regions while\nretaining efficiency.",
+      "chunk_length": 975,
+      "page": 2
+    },
+    {
+      "chunk_index": 7,
+      "section_type": "semantic_section",
+      "section_title": "Figure 1: The pipeline of ALGOS. Given the input image and text query, the multimodal LLM\n(LISATPRE) generates text output. The last-layer embedding for the <SEG> token is then decoded\ninto the segmentation mask via the decoder. We adopt SAM [8] as our choice of vision backbone.",
+      "content": "Figure 1: The pipeline of ALGOS. Given the input image and text query, the multimodal LLM\n(LISATPRE) generates text output. The last-layer embedding for the <SEG> token is then decoded\ninto the segmentation mask via the decoder. We adopt SAM [8] as our choice of vision backbone.\n\nTo ensure the reliability of the resulting dataset, each generated mask undergoes human evaluation.\nAnnotators visually compare the candidate masks against the corresponding Sentinel-2 imagery,\nretaining only those masks that accurately delineate bloom regions. Masks that fail this validation are\ndiscarded or corrected through additional refinement. In this way, the semi-supervised feedback loop\nensures that the segmentation masks are consistently aligned with ecological reality. Therefore, the\nresulting dataset contains high-quality segmentation masks, robust to the heterogeneous quality of\nSentinel-2 imagery, from cloud-free high-resolution scenes to partially degraded scenes.",
+      "chunk_length": 968,
+      "page": 3
+    },
+    {
+      "chunk_index": 8,
+      "section_type": "semantic_section",
+      "section_title": "3.2\nHAB Reasoning Dataset Curation",
+      "content": "3.2\nHAB Reasoning Dataset Curation\n\nTo enable severity-level assessment through natural language reasoning, we adopt the synthetic query\ngeneration pipeline following Quenum et al. [15] to create HAB-reasoning queries.\n\nSeverity-Based Query Generation. We fine-grain the WHO recreational guidance thresholds [18]\ninto a five-level defined as follows: Level 1: x < 2 × 104, Level 2: 2 × 104 ≤x < 1 × 105, Level 3:\n1 × 105 ≤x < 1 × 106, Level 4: 1 × 106 ≤x < 1 × 107, Level 5: x ≥1 × 107 cells/mL. Based\non the scale, we curate natural language query templates that require the model to infer algal bloom\nseverity directly from satellite imagery. Each template prompts the model to classify severity on this\nordinal five-point scale, ensuring consistent outputs while retaining ecological interpretability across\nheterogeneous observational conditions.\n\nMulti-modal Alignment. Each reasoning query is paired with the corresponding satellite image\nand severity label defined above, creating a structured instruction–image–answer triplet (Appendix\nC). This triplet design enables the model to jointly learn the relationship between visual appearance,\necological context, and ordinal severity categories, thereby supporting robust estimation of harmful\nalgal blooms following [15, 9].",
+      "chunk_length": 1279,
+      "page": 3
+    },
+    {
+      "chunk_index": 9,
+      "section_type": "semantic_section",
+      "section_title": "3.3\nVision-Language Model Architecture for HAB Monitoring",
+      "content": "3.3\nVision-Language Model Architecture for HAB Monitoring\n\nOur framework adopts the embedding-as-mask paradigm for HAB-specific applications, integrating\ndomain-adapted visual encoders with language models fine-tuned on HAB-reasoning queries .\n\nMultimodal Integration. Following LISAT’s architecture [15], we employ a Vicuna-7B language\nmodel [4] as our base LLM, coupled with a Remote-CLIP ViT-L/14 encoder [10] optimized for\nsatellite imagery processing. The visual encoder processes Sentinel-2 multispectral bands, while a\nlearnable linear projection aligns visual features with the language model’s embedding space. We\nexpand the vocabulary with a specialized <SEG> token that, when generated, triggers segmentation\nmask prediction through a SAM decoder head [8].\n\nTraining Objectives.",
+      "chunk_length": 789,
+      "page": 3
+    },
+    {
+      "chunk_index": 10,
+      "section_type": "semantic_section",
+      "section_title": "Our model is optimized end-to-end with a joint objective that integrates both text generation and\nsegmentation. The overall training loss L is formulated as a weighted combination:\nL = ωtxt Ltxt + ωmask Lmask.\n(1)",
+      "content": "Our model is optimized end-to-end with a joint objective that integrates both text generation and\nsegmentation. The overall training loss L is formulated as a weighted combination:\nL = ωtxt Ltxt + ωmask Lmask.\n(1)",
+      "chunk_length": 213,
+      "page": 3
+    },
+    {
+      "chunk_index": 11,
+      "section_type": "semantic_section",
+      "section_title": "Table 1: Segmentation results comparing LISAT,\nLISA, and ALGOS. cIoU: per-image class-\nbalanced mean IoU; gIoU: dataset-level/global\nIoU.",
+      "content": "Table 1: Segmentation results comparing LISAT,\nLISA, and ALGOS. cIoU: per-image class-\nbalanced mean IoU; gIoU: dataset-level/global\nIoU.\n\nModel\ncIoU\ngIoU",
+      "chunk_length": 154,
+      "page": 4
+    },
+    {
+      "chunk_index": 12,
+      "section_type": "semantic_section",
+      "section_title": "LISAT\n0.1083±0.0124\n0.1052±0.0132\nLISA 7B\n0.1373±0.0182\n0.1274±0.0160\nALGOS\n0.6493±0.0301\n0.5969±0.0268",
+      "content": "LISAT\n0.1083±0.0124\n0.1052±0.0132\nLISA 7B\n0.1373±0.0182\n0.1274±0.0160\nALGOS\n0.6493±0.0301\n0.5969±0.0268",
+      "chunk_length": 103,
+      "page": 4
+    },
+    {
+      "chunk_index": 13,
+      "section_type": "semantic_section",
+      "section_title": "Here, the text generation objective Ltxt is defined as the standard autoregressive cross-entropy loss:\nLtxt = CE(ˆytxt, ytxt).\n(2)",
+      "content": "Here, the text generation objective Ltxt is defined as the standard autoregressive cross-entropy loss:\nLtxt = CE(ˆytxt, ytxt).\n(2)",
+      "chunk_length": 130,
+      "page": 4
+    },
+    {
+      "chunk_index": 14,
+      "section_type": "semantic_section",
+      "section_title": "The segmentation objective Lmask combines a per-pixel binary cross-entropy (BCE) term and a DICE\nloss, balanced by ωbce and ωdice:\nLmask = ωbce BCE( ˆM, M) + ωdice DICE( ˆM, M).\n(3)",
+      "content": "The segmentation objective Lmask combines a per-pixel binary cross-entropy (BCE) term and a DICE\nloss, balanced by ωbce and ωdice:\nLmask = ωbce BCE( ˆM, M) + ωdice DICE( ˆM, M).\n(3)\n\nImplementation Details. All experiments were conducted on eight NVIDIA DGX A100 GPUs\n(80GB each). For severity prediction, we fine-tuned LLaVA-7B with LoRA for 50 epochs on the\nHAB dataset. For segmentation, ALGOS was trained jointly on HAB, FP-Ref-COCO [19], and\nReasonSeg [9]. LoRA [7] was applied to the multimodal language model, while the SAM decoder\nwas fully fine-tuned. The learning rate was set to 3 × 10−4, with other configurations kept consistent\nwith standard practice. For the composite loss, we set the weighting coefficients to ωtxt = 1.0 and\nωmask = 1.0. Within the segmentation objective, the per-pixel binary cross-entropy and DICE terms\nare weighted as ωbce = 2.0 and ωdice = 0.5, respectively. Empirically, this configuration yielded the\nbest overall performance. Training required approximately 6 hours across eight DGX A100 GPUs.",
+      "chunk_length": 1035,
+      "page": 4
+    },
+    {
+      "chunk_index": 15,
+      "section_type": "semantic_section",
+      "section_title": "4.1\nSetup",
+      "content": "4.1\nSetup\n\nPerformance metrics. Following Lai et al. [9], Quenum et al. [15], we evaluate segmentation\nusing two IoU variants under a binary setting (algae vs. non-algae). The cIoU metric computes the\nper-image, class-balanced mean IoU; with only one foreground class, this reduces to the average\nIoU of algae masks across images (assigning a score of 1 when both prediction and ground truth are\nempty, and 0 otherwise). The gIoU metric instead aggregates intersections and unions across all test\nimages before computing the ratio. In the binary case, this measures agreement with the total algae\nextent over the full test set, making it more sensitive to prevalence and large contiguous blooms. For\nthe severity prediction task, we use mean squared error (MSE) as the primary metric, reflecting the\nordinal nature of severity levels.\n\nBaselines. Table 1 compares ALGOS with state-of-the-art reasoning segmentation models [9, 15],\nwhile Table 2 benchmarks ALGOS against LLaVA [11].",
+      "chunk_length": 981,
+      "page": 4
+    },
+    {
+      "chunk_index": 16,
+      "section_type": "semantic_section",
+      "section_title": "4.2\nResults and Observations",
+      "content": "4.2\nResults and Observations\n\nALGOS achieves strong performance across both segmentation and severity prediction tasks. For\nsegmentation, it reaches a cIoU of 0.65 and gIoU of 0.60, far surpassing LISAT (0.11 / 0.10) and\nLISA-7B (0.14 / 0.13), accurately capturing both per-image bloom regions and large contiguous\nextents across the dataset (Table 1). For severity prediction, ALGOS substantially reduces error, with\nmean squared error (MSE) dropping from 3.868 to 2.984, along with corresponding improvements in\nRMSE and MAE (Table 2). These results show that ALGOS is capable of addressing both spatial\nsegmentation and severity-level estimation, while outperforming baselines in each task.",
+      "chunk_length": 693,
+      "page": 4
+    },
+    {
+      "chunk_index": 17,
+      "section_type": "semantic_section",
+      "section_title": "5\nConclusion",
+      "content": "5\nConclusion\n\nWe introduced ALGae Observation and Segmentation, a framework that leverages multimodal\nlanguage models to reason over heterogeneous data and dynamically segment harmful algal bloom",
+      "chunk_length": 195,
+      "page": 4
+    },
+    {
+      "chunk_index": 18,
+      "section_type": "semantic_section",
+      "section_title": "Untitled Section",
+      "content": "(HAB) regions. Additionally, we proposed a semi-supervised segmentation pipeline that improves\ndelineation in images where automated methods struggle with unclear bloom boundaries. ALGOS\nsynthesizes spatial and contextual information through a structured reasoning process, ensuring that\nthe segmented regions align with bloom severity levels. Unlike prior work, which has only addressed\neither severity estimation or localized segmentation in isolation, our approach integrates geospatial\nfoundation models to jointly perform both tasks on wide-area remote sensing imagery. By advancing\nthe ability of geospatial models to reason and adaptively segment polluted areas, ALGOS provides a\nrobust tool for ecological monitoring and policy support, enabling scalable HAB monitoring.\n\nLimitations. Our framework has been evaluated on a limited geographic and seasonal scope based on\nthe CAML dataset, and its generalization to diverse aquatic environments requires larger-scale, cross-\nregion benchmarks. In addition, the reliance on curated datasets highlights the need for continuous\ndata integration that can adapt to evolving ecological conditions. In future work, we will address both\nlimitations by extending our evaluations and data pipelines to support scalable deployment.",
+      "chunk_length": 1276,
+      "page": 5
+    },
+    {
+      "chunk_index": 19,
+      "section_type": "semantic_section",
+      "section_title": "References",
+      "content": "References\n\n[1] Donald M. Anderson, Elie Fensin, Christopher J. Gobler, Ann E. Hoeglund, Katharine A.\nHubbard, David M. Kulis, Jan H. Landsberg, Kathleen A. Lefebvre, Pieter Provoost, Michael L.\nRichlen, Jennifer L. Smith, Andrew R. Solow, and Vera L. Trainer. Marine harmful algal blooms\n(habs) in the united states: History, current status and future trends. Harmful Algae, 102:101975,\n2021. doi: 10.1016/j.hal.2020.101975.\n\n[2] Fredy Barrientos-Espillco, Esther Gascó, Clara I. López-González, María José Gómez-Silva,\nand Gonzalo Pajares. Semantic segmentation based on deep learning for the detection of\ncyanobacterial harmful algal blooms (cyanohabs) using synthetic images. Applied Soft Comput-\ning, 141:110315, 2023. doi: 10.1016/j.asoc.2023.110315.\n\n[3] Centers for Disease Control and Prevention (CDC). Harmful algal bloom-associated illnesses,\n2024. URL https://www.cdc.gov/harmful-algal-blooms/signs-symptoms/index.\nhtml. Accessed: 2025-08-18.\n\n[4] Wei-Lin Chiang, Zhuohan Li, Zi Lin, Ying Sheng, Zhanghao Wu, Hao Zhang, Lianmin Zheng,\nSiyuan Zhuang, Yonghao Zhuang, Joseph E. Gonzalez, Ion Stoica, and Eric P. Xing. Vicuna:\nAn open-source chatbot impressing gpt-4 with 90%* chatgpt quality. March 2023. URL\nhttps://lmsys.org/blog/2023-03-30-vicuna/.",
+      "chunk_length": 1261,
+      "page": 5
+    },
+    {
+      "chunk_index": 20,
+      "section_type": "semantic_section",
+      "section_title": "[5] Emily Dorne, Katie Wetstone, Trista Brophy Cerquera, and Shobhana Gupta. Cyanobacteria\ndetection in small, inland water bodies with cyfi.\nIn Proceedings of the 23rd Python in\nScience Conference (SciPy 2024), SciPy Proceedings, Tacoma, Washington, July 2024. doi:\n10.25080/PDHK7238.",
+      "content": "[5] Emily Dorne, Katie Wetstone, Trista Brophy Cerquera, and Shobhana Gupta. Cyanobacteria\ndetection in small, inland water bodies with cyfi.\nIn Proceedings of the 23rd Python in\nScience Conference (SciPy 2024), SciPy Proceedings, Tacoma, Washington, July 2024. doi:\n10.25080/PDHK7238.\n\n[6] S. Gupta, E. Gelbart, R. Gupta, K. Wetstone, and E. Dorne. Cyanobacteria aggregated manual\nlabels dataset, 2024. URL http://dx.doi.org/10.5067/SeaBASS/CAML/DATA001.\n\n[7] Edward J. Hu, Yelong Shen, Phillip Wallis, Zeyuan Allen-Zhu, Yuanzhi Li, Shean Wang,\nLu Wang, and Weizhu Chen. Lora: Low-rank adaptation of large language models, 2021. URL\nhttps://arxiv.org/abs/2106.09685.",
+      "chunk_length": 667,
+      "page": 5
+    },
+    {
+      "chunk_index": 21,
+      "section_type": "semantic_section",
+      "section_title": "[8] Alexander Kirillov, Eric Mintun, Nikhila Ravi, Hanzi Mao, Chloe Rolland, Laura Gustafson,\nTete Xiao, Spencer Whitehead, Alexander C. Berg, Wan-Yen Lo, et al. Segment anything. In\nProceedings of the IEEE/CVF International Conference on Computer Vision, pages 4015–4026,\n2023.",
+      "content": "[8] Alexander Kirillov, Eric Mintun, Nikhila Ravi, Hanzi Mao, Chloe Rolland, Laura Gustafson,\nTete Xiao, Spencer Whitehead, Alexander C. Berg, Wan-Yen Lo, et al. Segment anything. In\nProceedings of the IEEE/CVF International Conference on Computer Vision, pages 4015–4026,\n2023.",
+      "chunk_length": 278,
+      "page": 5
+    },
+    {
+      "chunk_index": 22,
+      "section_type": "semantic_section",
+      "section_title": "[9] Xin Lai, Zhuotao Tian, Yukang Chen, Yanwei Li, Yuhui Yuan, Shu Liu, and Jiaya Jia. Lisa:\nReasoning segmentation via large language model. In Proceedings of the IEEE/CVF Conference\non Computer Vision and Pattern Recognition (CVPR), 2024.",
+      "content": "[9] Xin Lai, Zhuotao Tian, Yukang Chen, Yanwei Li, Yuhui Yuan, Shu Liu, and Jiaya Jia. Lisa:\nReasoning segmentation via large language model. In Proceedings of the IEEE/CVF Conference\non Computer Vision and Pattern Recognition (CVPR), 2024.",
+      "chunk_length": 240,
+      "page": 5
+    },
+    {
+      "chunk_index": 23,
+      "section_type": "semantic_section",
+      "section_title": "[10] Fan Liu, Delong Chen, Zhangqingyun Guan, Xiaocong Zhou, Jiale Zhu, Qiaolin Ye, Liyong Fu,\nand Junwei Zhou. Remoteclip: A vision language foundation model for remote sensing. IEEE\nTransactions on Geoscience and Remote Sensing, 62:1–13, 2024. doi: 10.1109/TGRS.2024.\n3374824.",
+      "content": "[10] Fan Liu, Delong Chen, Zhangqingyun Guan, Xiaocong Zhou, Jiale Zhu, Qiaolin Ye, Liyong Fu,\nand Junwei Zhou. Remoteclip: A vision language foundation model for remote sensing. IEEE\nTransactions on Geoscience and Remote Sensing, 62:1–13, 2024. doi: 10.1109/TGRS.2024.\n3374824.",
+      "chunk_length": 278,
+      "page": 5
+    },
+    {
+      "chunk_index": 24,
+      "section_type": "semantic_section",
+      "section_title": "Untitled Section",
+      "content": "[11] Haotian Liu, Chunyuan Li, Qingyang Wu, and Yong Jae Lee. Visual instruction tuning, 2023.\nURL https://arxiv.org/abs/2304.08485.",
+      "chunk_length": 132,
+      "page": 6
+    },
+    {
+      "chunk_index": 25,
+      "section_type": "semantic_section",
+      "section_title": "[12] Ioannis Nasios. Ai-driven multi-source data fusion for algal bloom severity classification in\nsmall inland water bodies: Leveraging sentinel-2, dem, and noaa climate data. arXiv preprint,\n2025.",
+      "content": "[12] Ioannis Nasios. Ai-driven multi-source data fusion for algal bloom severity classification in\nsmall inland water bodies: Leveraging sentinel-2, dem, and noaa climate data. arXiv preprint,\n2025.\n\n[13] National Oceanic and Atmospheric Administration (NOAA). 2017–2018 florida red tide de-\ntermined by ocean circulation, 2019. URL https://coastalscience.noaa.gov/news/\n2017-2018-florida-red-tide-determined-by-ocean-circulation/.\nAccessed:\n2025-08-18.\n\n[14] National Oceanic and Atmospheric Administration (NOAA). Economic impacts of harmful algal\nblooms. National Centers for Coastal Ocean Science, 2025. URL https://coastalscience.\nnoaa.gov/science-areas/habs/. Accessed: 2025-08-18.",
+      "chunk_length": 687,
+      "page": 6
+    },
+    {
+      "chunk_index": 26,
+      "section_type": "semantic_section",
+      "section_title": "[15] Jerome Quenum, Wen-Han Hsieh, Tsung-Han Wu, Ritwik Gupta, Trevor Darrell, and David M.\nChan. Lisat: Language-instructed segmentation assistant for satellite imagery. arXiv preprint,\n2025.",
+      "content": "[15] Jerome Quenum, Wen-Han Hsieh, Tsung-Han Wu, Ritwik Gupta, Trevor Darrell, and David M.\nChan. Lisat: Language-instructed segmentation assistant for satellite imagery. arXiv preprint,\n2025.",
+      "chunk_length": 192,
+      "page": 6
+    },
+    {
+      "chunk_index": 27,
+      "section_type": "semantic_section",
+      "section_title": "[16] Arabinda Samantaray, Baijian Yang, J. Eric Dietz, and Byung-Cheol Min. Algae detection\nusing computer vision and deep learning. arXiv preprint, 2018.",
+      "content": "[16] Arabinda Samantaray, Baijian Yang, J. Eric Dietz, and Byung-Cheol Min. Algae detection\nusing computer vision and deep learning. arXiv preprint, 2018.",
+      "chunk_length": 154,
+      "page": 6
+    },
+    {
+      "chunk_index": 28,
+      "section_type": "semantic_section",
+      "section_title": "[17] Raahul Irvin Sultana, Chuang Lia, Hanbing Zhua, Pritam Khanduria, Marco Brocanellib, and\nDacheng Zhua. Geosam: Fine-tuning sam with multi-modal prompts for mobility infrastructure\nsegmentation. arXiv preprint, 2023.",
+      "content": "[17] Raahul Irvin Sultana, Chuang Lia, Hanbing Zhua, Pritam Khanduria, Marco Brocanellib, and\nDacheng Zhua. Geosam: Fine-tuning sam with multi-modal prompts for mobility infrastructure\nsegmentation. arXiv preprint, 2023.\n\n[18] World Health Organization. Guidelines for safe recreational water environments. volume 1:\nCoastal and fresh waters. 2003. URL https://iris.who.int/bitstream/handle/10665/\n42591/9241545801.pdf.\n\n[19] Tsung-Han Wu, Giscard Biamby, David Chan, Lisa Dunlap, Ritwik Gupta, Xudong Wang,\nJoseph E. Gonzalez, and Trevor Darrell. See, say, and segment: Teaching lmms to overcome\nfalse premises, 2023. URL https://arxiv.org/abs/2312.08366.\n\n[20] Liping Yang, Joshua Driscol, Rose Sarigai, Qiaoling Wu, Christopher D. Lippitt, and Madelyn\nMorgan. Towards synoptic water monitoring systems: A review of ai methods for automating\nwater body detection and water quality monitoring using remote sensing. Sensors, 22(6):2416,\n2022. doi: 10.3390/s22062416.",
+      "chunk_length": 966,
+      "page": 6
+    },
+    {
+      "chunk_index": 29,
+      "section_type": "semantic_section",
+      "section_title": "A\nQualitative Comparison Across Models",
+      "content": "A\nQualitative Comparison Across Models\n\nQueries\nLISA–7B\nLISAT\nALGOS (Ours)\nGround Truth\n\nLocate the\ncyanobacterial harmful\nalgal bloom in the\nsatellite image.\n\nLocate all visible\nharmful algal blooms.\n\nFind the cyanobacterial\nharmful algal bloom in\nthe satellite image.\n\nSegment all visible\nharmful algal blooms.\n\nSegment the waterbody\naffected by\ncyanobacteria.\n\nSegment the\ncyanobacterial harmful\nalgal bloom in the\nsatellite image.\n\nSegment the algal\nbloom affected areas.\n\nLocate the\ncyanobacterial harmful\nalgal bloom in the\nsatellite image.",
+      "chunk_length": 546,
+      "page": 7
+    },
+    {
+      "chunk_index": 30,
+      "section_type": "semantic_section",
+      "section_title": "B\nImage Segmentation",
+      "content": "B\nImage Segmentation\n\nIn this section, we illustrate the interactive segmentation workflow used for data curation (Figure 3).\nUsers first provide positive (green) and negative (red) prompts to guide the model. The model then\ngenerates a segmentation mask on Sentinel-2 imagery, from which bounding boxes are extracted to\nobtain object-level representations for downstream analysis.\n\n(a) User-provided prompts.\n\n(b) Generated mask overlay.\n\n(c) Bounding boxes extracted.",
+      "chunk_length": 469,
+      "page": 8
+    },
+    {
+      "chunk_index": 31,
+      "section_type": "semantic_section",
+      "section_title": "This sample demonstrates a structured instruction–image–answer triplet used for model fine-tuning.\nSeverity levels follow the WHO recreational thresholds, refined into five ordinal categories: 1 = Very\nlow, 2 = Low, 3 = Moderate, 4 = High, 5 = Very high.",
+      "content": "This sample demonstrates a structured instruction–image–answer triplet used for model fine-tuning.\nSeverity levels follow the WHO recreational thresholds, refined into five ordinal categories: 1 = Very\nlow, 2 = Low, 3 = Moderate, 4 = High, 5 = Very high.\n\nQuery Prompt\n\n<image >\nAnalyze\nthe\nprovided\nsatellite\nimage of algae -specific\nconditions.\nDetermine\nthe\nseverity level , where:\n1 = Very low , 2 = Low , 3 = Moderate , 4 = High , 5 = Very high.\nOutput\nonly a single\ndigit\nfrom 1-5 with no other\ntext.\nExample\noutput :3\n\nInput Image",
+      "chunk_length": 537,
+      "page": 9
+    },
+    {
+      "chunk_index": 32,
+      "section_type": "semantic_section",
+      "section_title": "Figure 4: Satellite image provided as input.",
+      "content": "Figure 4: Satellite image provided as input.\n\nGround Truth Label\nThis example corresponds to Level 1 (very low), with an expected output of: 1.0",
+      "chunk_length": 144,
+      "page": 9
+    }
+  ],
+  "section_distribution": {
+    "semantic_section": 33
+  },
+  "timestamp": "2025-10-22T13:07:25.798264"
+}
