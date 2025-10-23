@@ -36,11 +36,6 @@ class Config:
         os.environ["OPENAI_API_KEY"] = value
     
     @property
-    def summarization_strategy(self) -> str:
-        """Get summarization strategy (stuff, map_reduce, refine)."""
-        return os.getenv("SUMMARIZATION_STRATEGY", "map_reduce")
-    
-    @property
     def llm_model(self) -> str:
         """Get LLM model name."""
         return os.getenv("OPENAI_MODEL", "gpt-4o-mini")
@@ -57,7 +52,7 @@ class Config:
     
     def __repr__(self) -> str:
         """String representation of configuration."""
-        return f"Config(model={self.llm_model}, strategy={self.summarization_strategy})"
+        return f"Config(model={self.llm_model}, temperature={self.temperature})"
 
 
 # Global configuration instance
