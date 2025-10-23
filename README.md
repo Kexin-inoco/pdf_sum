@@ -57,21 +57,6 @@ Each processed PDF creates:
 - **JSON Summary**: Structured metadata and titles
 - **Document Data**: Raw processing information
 
-## 🐳 Docker Commands
-
-```bash
-# Build and run
-docker-compose up --build
-
-# Run in background
-docker-compose up -d
-
-# View logs
-docker-compose logs -f
-
-# Stop
-docker-compose down
-```
 
 ## 📝 Requirements
 
